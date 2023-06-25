@@ -37,7 +37,7 @@ class HelpCommand extends Command
 		$cur_text = trim($update->getMessage()->text);
 		$cur_command = str_replace('/', '', $cur_text);
 		
-		if($cur_command !== 'help' && strtolower($cur_command) !== 'help') {
+		if($cur_command !== 'help' && strtolower($cur_command) !== 'help' && !$update->isType('callback_query')) {
 			if(isset($commands[strtolower($cur_command)])) {
 				$this->telegram->triggerCommand(strtolower($cur_command), $update);
 				exit;

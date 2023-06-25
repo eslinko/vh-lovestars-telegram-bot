@@ -104,7 +104,7 @@ class StartCommand extends Command
 					[
 						Keyboard::inlineButton([
 							'text' => __('View a list of commands.', $user['language']),
-							'callback_data' => 'start'
+							'callback_data' => 'help'
 						])
 					]
 				],

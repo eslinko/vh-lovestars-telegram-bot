@@ -776,8 +776,10 @@ function choose_language($update, $telegram, $last_message_object) {
 function suggest_new_language($update, $telegram) {
 	$language_to_suggest = trim($update->getMessage()->text);
 	
+	$is_verified = user_is_verified($update->getMessage()->chat->id);
+	
 	$lcApi = new \LCAPPAPI();
-	$result = $lcApi->makeRequest('send-notification-to-admin', ['telegram_id' => $update->getMessage()->chat->id, 'message' => "Alarm! A user {userPublicAlias} suggested adding a new language: " . $language_to_suggest]);
+	$result = $lcApi->makeRequest('send-notification-to-admin', ['telegram_id' => $update->getMessage()->chat->id, 'message' =>  __("Alarm! A user {userPublicAlias} suggested adding a new language:", $is_verified['user']['language']) . ' ' . $language_to_suggest]);
 	
 	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
 }

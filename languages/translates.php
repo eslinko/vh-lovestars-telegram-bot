@@ -327,4 +327,9 @@ $translates = [
 		'ru' => "Предупреждение: Эта команда не поддерживается",
 		'et' => "Hoiatus: See käsk ei ole toetatud"
 	],
+	"Alarm! A user {userPublicAlias} suggested adding a new language:" => [
+		'en' => "Alarm! A user {userPublicAlias} suggested adding a new language:",
+		'ru' => "Внимание! Пользователь {userPublicAlias} предложил добавить новый язык:",
+		'et' => "Häire! Kasutaja {userPublicAlias} soovitas lisada uue keele:"
+	],
 ];
