@@ -41,7 +41,10 @@ class GetMyEventsCommand extends Command
             $text = __("Your events:", $user['user']['language']) . "\n";
             foreach ($return_data['events'] as $key => $event) {
                 $text .= ($key + 1) . ")\n";
-                $text .= __("Url:", $user['user']['language']) . " " . $event['facebook_url'] . "\n";
+                $text .= __("Facebook Url:", $user['user']['language']) . " " . $event['facebook_url'] . "\n";
+                if(!empty($event['name'])) {
+                    $text .= __("Name:", $user['user']['language']) . " " . $event['name'] . "\n";
+                }
                 $text .= __("Status:", $user['user']['language']) . " " . ucfirst($event['status']) . "\n\n";
             }
         } else {

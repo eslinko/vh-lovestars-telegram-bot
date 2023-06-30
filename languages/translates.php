@@ -257,11 +257,16 @@ $translates = [
 		'ru' => "Ваши мероприятия:",
 		'et' => "Teie üritused:"
 	],
-    "Url:" => [
-		'en' => "Url:",
-		'ru' => "Ссылка:",
-		'et' => "Url:"
+    "Facebook Url:" => [
+		'en' => "Facebook Url:",
+		'ru' => "Ссылка Facebook:",
+		'et' => "Facebook Url:"
 	],
+    "Name:" => [
+        'en' => "Name:",
+        'ru' => "Название:",
+        'et' => "Nimi:"
+    ],
     "Status:" => [
 		'en' => "Status:",
 		'ru' => "Статус:",
