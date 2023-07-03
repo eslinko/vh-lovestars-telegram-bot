@@ -76,11 +76,14 @@ class StartCommand extends Command
 				'inline_keyboard' =>  $languages['keyboards'],
 				'resize_keyboard' => true,
 			]);
-		} else if(empty($user['full_name']) || empty($user['publicAlias']) || empty($user['password_hash'])) {
+		} else if(empty($user['full_name']) || empty($user['publicAlias']) || empty($user['password_hash']) || empty($user['invitation_code_id'])) {
 			
 			if(empty($user['full_name']) || empty($user['publicAlias'])) {
 				$options['text'] = __('Hello! To interact with the bot you must first complete a simple registration!', $user['language']);
 				$step = 'registration_step_2';
+			} else if (empty($user['invitation_code_id'])) {
+				$options['text'] = __('Hello. You need to finish registering with the bot.', $user['language']);
+				$step = 'registration_step_invitation_code';
 			} else if (empty($user['password_hash'])) {
 				$options['text'] = __('Hello. You need to finish registering with the bot.', $user['language']);
 				$step = 'registration_step_3';
@@ -98,7 +101,7 @@ class StartCommand extends Command
 				'resize_keyboard' => true,
 			]);
 		} else {
-			$options['text'] = sprintf(__("Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?", $user['language']), $user['publicAlias']);
+			$options['text'] = sprintf(__("Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?", $user['language']), $user['publicAlias']) . $debug;
 			$options['reply_markup'] = Keyboard::make([
 				'inline_keyboard' =>  [
 					[

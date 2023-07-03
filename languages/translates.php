@@ -337,4 +337,54 @@ $translates = [
 		'ru' => "Внимание! Пользователь {userPublicAlias} предложил добавить новый язык:",
 		'et' => "Häire! Kasutaja {userPublicAlias} soovitas lisada uue keele:"
 	],
+	"Please provide your invitation code" => [
+		'en' => "Please provide your invitation code",
+		'ru' => "Пожалуйста, предоставьте свой код приглашения",
+		'et' => "Palun sisestage oma kutsungikood"
+	],
+	"Please make sure your code has format XXX-XXX-XXX" => [
+		'en' => "Please make sure your code has format XXX-XXX-XXX",
+		'ru' => "Пожалуйста, убедитесь, что ваш код имеет формат XXX-XXX-XXX",
+		'et' => "Palun veenduge, et teie kood oleks kujul XXX-XXX-XXX"
+	],
+	"Error! Try again later." => [
+		'en' => "Error! Try again later.",
+		'ru' => "Ошибка! Попробуйте позже.",
+		'et' => "Viga! Proovige hiljem uuesti."
+	],
+	"This code is not valid or has already been redeemed" => [
+		'en' => "This code is not valid or has already been redeemed",
+		'ru' => "Этот код недействителен или уже был использован",
+		'et' => "See kood ei ole kehtiv või on juba kasutatud"
+	],
+	"My invitation codes" => [
+		'en' => "My invitation codes",
+		'ru' => "Мои коды приглашения",
+		'et' => "Minu kutsungikoodid"
+	],
+	"You don\'t have any codes" => [
+		'en' => "You don\'t have any codes",
+		'ru' => "У вас нет никаких кодов",
+		'et' => "Teil pole ühtegi koodi"
+	],
+	"Code" => [
+		'en' => "Code",
+		'ru' => "Код",
+		'et' => "Kood"
+	],
+	"Status" => [
+		'en' => "Status",
+		'ru' => "Статус",
+		'et' => "Staatus"
+	],
+	"Activated by - " => [
+		'en' => "Activated by - ",
+		'ru' => "Активировано пользователем - ",
+		'et' => "Aktiveeritud kasutaja poolt - "
+	],
+	"Not activated" => [
+		'en' => "Not activated",
+		'ru' => "Не активировано",
+		'et' => "Ei ole aktiveeritud"
+	],
 ];

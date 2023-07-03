@@ -54,11 +54,15 @@ function choose_step($user, $telegram_id = '') {
 			'inline_keyboard' =>  $languages['languages'],
 			'resize_keyboard' => true,
 		]);
-	} else if(empty($user['full_name']) || empty($user['publicAlias']) || empty($user['password_hash'])) {
+	} else if(empty($user['full_name']) || empty($user['publicAlias']) || empty($user['password_hash']) || empty($user['invitation_code_id'])) {
 		
 		if(empty($user['full_name']) || empty($user['publicAlias'])) {
 			$res['message'] = __('Hello! To interact with the bot you must first complete a simple registration!', $user['language']);
 			$step = 'registration_step_2';
+			$res['status'] = false;
+		} else if (empty($user['invitation_code_id'])) {
+			$res['text'] = __('Hello. You need to finish registering with the bot.', $user['language']);
+			$step = 'registration_step_invitation_code';
 			$res['status'] = false;
 		} else if (empty($user['password_hash'])) {
 			$res['message'] = __('Hello. You need to finish registering with the bot.', $user['language']);
