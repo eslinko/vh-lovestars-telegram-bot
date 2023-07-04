@@ -9,6 +9,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
 		case 'registration_step_2':
 			after_registration_step_2($update, $telegram);
 			break;
+		case 'registration_step_invitation_code':
+			registration_step_invitation_code($update, $telegram);
+			break;
 		case 'registration_step_3':
 			after_registration_step_3($update, $telegram);
 			break;
@@ -461,9 +464,51 @@ function after_registration_step_2($update, $telegram) {
 		return false;
 	}
 	
-	$telegram->triggerCommand('registration_step_3', $update);
+	$telegram->triggerCommand('registration_step_invitation_code', $update);
 	
-	set_command_to_last_message('registration_step_3', $update->getMessage()->chat->id);
+	set_command_to_last_message('registration_step_invitation_code', $update->getMessage()->chat->id);
+}
+
+function registration_step_invitation_code($update, $telegram) {
+	$code = trim($update->getMessage()->text);
+	$user = user_is_verified($update->getMessage()->chat->id)['user'];
+
+	$lcApi = new \LCAPPAPI();
+	$result = $lcApi->makeRequest('set-invitation-code', ['telegram_id' => $update->getMessage()->chat->id, 'code' => $code]);
+
+	if($result['status'] === 'error') {
+		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $user['language']), 'reply_markup' => Keyboard::make([
+			'inline_keyboard' =>  [
+				[
+					Keyboard::inlineButton([
+						'text' => __('Try again', $user['language']),
+						'callback_data' => 'registration_step_invitation_code'
+					])
+				]
+			],
+			'resize_keyboard' => true,
+		])]);
+		return false;
+	}
+
+	if(empty($user['password_hash'])) {
+		$telegram->triggerCommand('registration_step_3', $update);
+		set_command_to_last_message('registration_step_3', $update->getMessage()->chat->id);
+	} else {
+		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,
+			'text' => __('Congratulations, you have successfully registered!', $user['language']),
+			'reply_markup' => Keyboard::make([
+				'inline_keyboard' =>  [
+					[
+						Keyboard::inlineButton([
+							'text' => __('View a list of commands.', $result['user']['language']),
+							'callback_data' => 'help'
+						])
+					]
+				],
+				'resize_keyboard' => true,
+			])]);
+	}
 }
 
 function after_registration_step_3($update, $telegram) {

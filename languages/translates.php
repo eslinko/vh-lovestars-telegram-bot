@@ -337,4 +337,74 @@ $translates = [
 		'ru' => "Внимание! Пользователь {userPublicAlias} предложил добавить новый язык:",
 		'et' => "Häire! Kasutaja {userPublicAlias} soovitas lisada uue keele:"
 	],
+	"Please provide your invitation code" => [
+		'en' => "Please provide your invitation code",
+		'ru' => "Пожалуйста, предоставьте свой код приглашения",
+		'et' => "Palun sisestage oma kutsungikood"
+	],
+	"Please make sure your code has format XXX-XXX-XXX" => [
+		'en' => "Please make sure your code has format XXX-XXX-XXX",
+		'ru' => "Пожалуйста, убедитесь, что ваш код имеет формат XXX-XXX-XXX",
+		'et' => "Palun veenduge, et teie kood oleks kujul XXX-XXX-XXX"
+	],
+	"Error! Try again later." => [
+		'en' => "Error! Try again later.",
+		'ru' => "Ошибка! Попробуйте позже.",
+		'et' => "Viga! Proovige hiljem uuesti."
+	],
+	"This code is not valid or has already been redeemed" => [
+		'en' => "This code is not valid or has already been redeemed",
+		'ru' => "Этот код недействителен или уже был использован",
+		'et' => "See kood ei ole kehtiv või on juba kasutatud"
+	],
+	"My invitation codes" => [
+		'en' => "My invitation codes",
+		'ru' => "Мои коды приглашения",
+		'et' => "Minu kutsungikoodid"
+	],
+	"You have no invitation codes available" => [
+		'en' => "You have no invitation codes available",
+		'ru' => "У вас нет доступных кодов приглашения",
+		'et' => "Teil pole saadaval ühtegi kutsungikoodi"
+	],
+	"Code" => [
+		'en' => "Code",
+		'ru' => "Код",
+		'et' => "Kood"
+	],
+	"Status" => [
+		'en' => "Status",
+		'ru' => "Статус",
+		'et' => "Staatus"
+	],
+	"Activated by - " => [
+		'en' => "Activated by - ",
+		'ru' => "Активировано пользователем - ",
+		'et' => "Aktiveeritud kasutaja poolt - "
+	],
+	"Not activated" => [
+		'en' => "Not activated",
+		'ru' => "Не активировано",
+		'et' => "Ei ole aktiveeritud"
+	],
+	"Used by" => [
+		'en' => "Used by",
+		'ru' => "Использовано пользователем",
+		'et' => "Kasutatud kasutaja poolt"
+	],
+	"on" => [
+		'en' => "on",
+		'ru' => " ",
+		'et' => " "
+	],
+	"You can forward any code which is not used to any of your telegram contacts along with the message below" => [
+		'en' => "You can forward any code which is not used to any of your telegram contacts along with the message below",
+		'ru' => "Вы можете переслать любой неиспользованный код любому из ваших контактов в Telegram вместе с сообщением ниже",
+		'et' => "Saate edastada mõnele oma Telegrami kontaktile kõik kasutamata koodid koos allpool oleva sõnumiga"
+	],
+	"This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members." => [
+		'en' => "This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members.",
+		'ru' => "Это приглашение в Zeya - сообщество людей, где вы можете найти людей на основе общих интересов и эмоциональной резонансности. Откройте бота: @zeya_community_bot и вставьте свой уникальный код, когда вас попросят. Вы не можете продолжить регистрацию без кода, который можно получить только от существующих участников сообщества.",
+		'et' => "See on kutse Zeya-sse - inimeste kogukonda, kus saate leida inimesi ühiste huvide ja emotsionaalse resonantsi põhjal. Ava bot: @zeya_community_bot ja kui sulle küsitakse, kleebi oma unikaalne kood. Registreerimist ei saa jätkata ilma koodita, mida saad ainult olemasolevatelt kogukonna liikmetelt."
+	],
 ];

@@ -11,12 +11,14 @@ require_once 'user/UpdateMyPublicAliasCommand.php';
 require_once 'user/UpdateMyPasswordCommand.php';
 require_once 'user/ChangeLanguageCommand.php';
 require_once 'user/SuggestNewLanguageCommand.php';
+require_once 'user/GetMyInvitationCodesCommand.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
 require_once 'registration/RegistrationStep2Command.php';
 require_once 'registration/RegistrationStep3Command.php';
 require_once 'registration/RegistrationStep4Command.php';
+require_once 'registration/RegistrationStepInvitationCodeCommand.php';
 
 //teacher command
 //require_once 'teacher/TeacherCreateCommand.php';
@@ -49,11 +51,13 @@ $telegram->addCommand( Telegram\Bot\Commands\UpdateMyPublicAliasCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\UpdateMyPasswordCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ChangeLanguageCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\SuggestNewLanguageCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\GetMyInvitationCodesCommand::class);
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep2Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep3Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep4Command::class);
+$telegram->addCommand( Telegram\Bot\Commands\RegistrationStepInvitationCodeCommand::class);
 
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
