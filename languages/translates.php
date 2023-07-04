@@ -362,10 +362,10 @@ $translates = [
 		'ru' => "Мои коды приглашения",
 		'et' => "Minu kutsungikoodid"
 	],
-	"You don\'t have any codes" => [
-		'en' => "You don\'t have any codes",
-		'ru' => "У вас нет никаких кодов",
-		'et' => "Teil pole ühtegi koodi"
+	"You have no invitation codes available" => [
+		'en' => "You have no invitation codes available",
+		'ru' => "У вас нет доступных кодов приглашения",
+		'et' => "Teil pole saadaval ühtegi kutsungikoodi"
 	],
 	"Code" => [
 		'en' => "Code",
@@ -386,5 +386,25 @@ $translates = [
 		'en' => "Not activated",
 		'ru' => "Не активировано",
 		'et' => "Ei ole aktiveeritud"
+	],
+	"Used by" => [
+		'en' => "Used by",
+		'ru' => "Использовано пользователем",
+		'et' => "Kasutatud kasutaja poolt"
+	],
+	"on" => [
+		'en' => "on",
+		'ru' => " ",
+		'et' => " "
+	],
+	"You can forward any code which is not used to any of your telegram contacts along with the message below" => [
+		'en' => "You can forward any code which is not used to any of your telegram contacts along with the message below",
+		'ru' => "Вы можете переслать любой неиспользованный код любому из ваших контактов в Telegram вместе с сообщением ниже",
+		'et' => "Saate edastada mõnele oma Telegrami kontaktile kõik kasutamata koodid koos allpool oleva sõnumiga"
+	],
+	"This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members." => [
+		'en' => "This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members.",
+		'ru' => "Это приглашение в Zeya - сообщество людей, где вы можете найти людей на основе общих интересов и эмоциональной резонансности. Откройте бота: @zeya_community_bot и вставьте свой уникальный код, когда вас попросят. Вы не можете продолжить регистрацию без кода, который можно получить только от существующих участников сообщества.",
+		'et' => "See on kutse Zeya-sse - inimeste kogukonda, kus saate leida inimesi ühiste huvide ja emotsionaalse resonantsi põhjal. Ava bot: @zeya_community_bot ja kui sulle küsitakse, kleebi oma unikaalne kood. Registreerimist ei saa jätkata ilma koodita, mida saad ainult olemasolevatelt kogukonna liikmetelt."
 	],
 ];

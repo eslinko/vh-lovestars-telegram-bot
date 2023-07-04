@@ -43,19 +43,23 @@ class GetMyInvitationCodesCommand extends Command
 
 		if($data['status'] === 'error' || empty($data)) {
 			$options['text'] = __("Error! Try again later.", $user['user']['language']);
+			$this->telegram->sendMessage($options);
 		} else {
 			if(empty($data['codes'])) {
-				$options['text'] = __('You don\'t have any codes', $user['user']['language']);
+				$options['text'] = __('You have no invitation codes available', $user['user']['language']);
+				$this->telegram->sendMessage($options);
 			} else {
 				foreach ($data['codes'] as $key => $code) {
-					$options['text'] .= ($key + 1) . ".\n";
-					$options['text'] .= __('Code', $user['user']['language']) . ': ' . $code['code'] . "\n";
-					$options['text'] .= __("Status", $user['user']['language']) . ': ' .  (!empty($code['user']) ? __('Activated by - ', $user['user']['language']) . ' ' . '@' . $code['user']['publicAlias'] : __('Not activated', $user['user']['language'])) . "\n\n";
+					$options['text'] = $code['code'] . (empty($code['user']) ? '' : ', ' . __('Used by', $user['user']['language']) . ' @' . $code['user']['publicAlias'] . ' ' . __('on', $user['user']['language']) . ' ' . date('m/d/Y', $code['signup_date']));
+					$this->telegram->sendMessage($options);
 				}
+				$options['text'] = __("You can forward any code which is not used to any of your telegram contacts along with the message below", $user['user']['language']);
+				$this->telegram->sendMessage($options);
+
+				$options['text'] = "\xF0\x9F\x94\xA5 " . __("This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members.", $user['user']['language']);
+				$this->telegram->sendMessage($options);
 			}
 
 		}
-
-		$this->telegram->sendMessage($options);
 	}
 }
