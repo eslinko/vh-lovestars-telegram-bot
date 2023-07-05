@@ -473,6 +473,8 @@ function registration_step_invitation_code($update, $telegram) {
 	$code = trim($update->getMessage()->text);
 	$user = user_is_verified($update->getMessage()->chat->id)['user'];
 
+    if($result['status']) return false;
+
 	$lcApi = new \LCAPPAPI();
 	$result = $lcApi->makeRequest('set-invitation-code', ['telegram_id' => $update->getMessage()->chat->id, 'code' => $code]);
 
