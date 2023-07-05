@@ -407,4 +407,9 @@ $translates = [
 		'ru' => "Это приглашение в Zeya - сообщество людей, где вы можете найти людей на основе общих интересов и эмоциональной резонансности. Откройте бота: @zeya_community_bot и вставьте свой уникальный код, когда вас попросят. Вы не можете продолжить регистрацию без кода, который можно получить только от существующих участников сообщества.",
 		'et' => "See on kutse Zeya-sse - inimeste kogukonda, kus saate leida inimesi ühiste huvide ja emotsionaalse resonantsi põhjal. Ava bot: @zeya_community_bot ja kui sulle küsitakse, kleebi oma unikaalne kood. Registreerimist ei saa jätkata ilma koodita, mida saad ainult olemasolevatelt kogukonna liikmetelt."
 	],
+    "You are already registered" => [
+		'en' => "You are already registered",
+		'ru' => "Вы уже зарегистрированы",
+		'et' => "Te olete juba registreeritud"
+	],
 ];
