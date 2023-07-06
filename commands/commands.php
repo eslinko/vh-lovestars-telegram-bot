@@ -12,6 +12,7 @@ require_once 'user/UpdateMyPasswordCommand.php';
 require_once 'user/ChangeLanguageCommand.php';
 require_once 'user/SuggestNewLanguageCommand.php';
 require_once 'user/GetMyInvitationCodesCommand.php';
+require_once 'user/MyInterestsAndValuesCommand.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -52,6 +53,7 @@ $telegram->addCommand( Telegram\Bot\Commands\UpdateMyPasswordCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ChangeLanguageCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\SuggestNewLanguageCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\GetMyInvitationCodesCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\MyInterestsAndValuesCommand::class);
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep2Command::class);

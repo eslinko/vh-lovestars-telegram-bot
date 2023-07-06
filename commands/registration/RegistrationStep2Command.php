@@ -30,6 +30,12 @@ class RegistrationStep2Command extends Command
 		$options = [
 			'chat_id' => $telegram_id,
 		];
+
+		if(!empty($result['user']['full_name']) && !empty($result['user']['publicAlias'])) {
+			$options['text'] = __('You are already registered', $result['user']['language']);
+			$this->telegram->sendMessage($options);
+			return false;
+		}
 		
 		$options['text'] = __('Enter your public alias.', $result['user']['language']);
 		$this->telegram->sendMessage($options);

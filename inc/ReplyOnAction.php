@@ -69,6 +69,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
 		case 'choose_language':
 			choose_language($update, $telegram, $last_message_object);
             break;
+		case 'my_interests_and_values':
+			my_interests_and_values($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -829,4 +832,29 @@ function suggest_new_language($update, $telegram) {
 	$result = $lcApi->makeRequest('send-notification-to-admin', ['telegram_id' => $update->getMessage()->chat->id, 'message' =>  __("Alarm! A user {userPublicAlias} suggested adding a new language:", $is_verified['user']['language']) . ' ' . $language_to_suggest]);
 	
 	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
+}
+
+function my_interests_and_values($update, $telegram) {
+	$interests = trim($update->getMessage()->text);
+
+	$lcApi = new \LCAPPAPI();
+	$result = $lcApi->makeRequest('get-user-interests', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $interests]);
+
+	if($result['status'] === 'error') {
+		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error, try again', $result['user']['language']), 'reply_markup' => Keyboard::make([
+			'inline_keyboard' =>  [
+				[
+					Keyboard::inlineButton([
+						'text' => __('Try again', $result['user']['language']),
+						'callback_data' => 'my_interests_and_values'
+					])
+				]
+			],
+			'resize_keyboard' => true,
+		])]);
+		return false;
+	}
+
+	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $result['user_interests']]);
+	return false;
 }
