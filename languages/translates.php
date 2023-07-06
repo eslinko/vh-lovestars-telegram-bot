@@ -412,4 +412,14 @@ $translates = [
 		'ru' => "Вы уже зарегистрированы",
 		'et' => "Te olete juba registreeritud"
 	],
+	"My interests and values" => [
+		'en' => "My interests and values",
+		'ru' => "Мои интересы и ценности",
+		'et' => "Minu huvid ja väärtused"
+	],
+	"What are your interests, hobbies and values that you want to share with other people? You can use any language. You can just list topics or even write an essay about who you really are. We will use this information in order to bring you closer to people sharing those values and interests. So, the more specific you are, the more support we can provide" => [
+		'en' => "What are your interests, hobbies and values that you want to share with other people? You can use any language. You can just list topics or even write an essay about who you really are. We will use this information in order to bring you closer to people sharing those values and interests. So, the more specific you are, the more support we can provide",
+		'ru' => "Каковы ваши интересы, хобби и ценности, которыми вы хотите поделиться с другими людьми? Вы можете использовать любой язык. Вы можете просто перечислить темы или даже написать эссе о том, кто вы есть на самом деле. Мы будем использовать эту информацию для того, чтобы сблизить вас с людьми, разделяющими эти ценности и интересы. Таким образом, чем более конкретными будут ваши пожелания, тем большую поддержку мы сможем вам оказать.",
+		'et' => "Millised on teie huvid, hobid ja väärtused, mida soovite teistega jagada? Võite kasutada mis tahes keelt. Võite lihtsalt loetleda teemasid või isegi kirjutada essee selle kohta, kes te tegelikult olete. Me kasutame seda teavet selleks, et tuua teid lähemale inimestele, kes jagavad neid väärtusi ja huvisid. Seega, mida konkreetsem oled, seda rohkem toetust saame pakkuda."
+	],
 ];

@@ -17,21 +17,21 @@ function user_is_verified($telegram_id) {
 			$return['status'] = false;
 			$return['message'] = 'Sorry, there was an error, please contact the administrator.';
 			break;
-		case 'user_not_found':
-			$return['message'] = 'Hello! To interact with the bot you must first complete a simple registration!';
-			$return['status'] = false;
-			$return['reply_markup'] = Keyboard::make([
-				'inline_keyboard' =>  [
-					[
-						Keyboard::inlineButton([
-							'text' => __('Start registration', !empty($return_data['user']['language']) ? $return_data['user']['language'] : 'en'),
-							'callback_data' => 'registration_step_2'
-						])
-					]
-				],
-				'resize_keyboard' => true,
-			]);
-			break;
+//		case 'user_not_found':
+//			$return['message'] = 'Hello! To interact with the bot you must first complete a simple registration!';
+//			$return['status'] = false;
+//			$return['reply_markup'] = Keyboard::make([
+//				'inline_keyboard' =>  [
+//					[
+//						Keyboard::inlineButton([
+//							'text' => __('Start registration', !empty($return_data['user']['language']) ? $return_data['user']['language'] : 'en'),
+//							'callback_data' => 'registration_step_2'
+//						])
+//					]
+//				],
+//				'resize_keyboard' => true,
+//			]);
+//			break;
 		default:
 			$return = choose_step($return_data['user'], $telegram_id);
 			break;

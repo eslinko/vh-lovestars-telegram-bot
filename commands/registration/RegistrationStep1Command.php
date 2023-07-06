@@ -25,9 +25,17 @@ class RegistrationStep1Command extends Command
 
 		$telegram_id = $update->getMessage()->chat->id;
 
+		$result = user_is_verified($telegram_id);
+
 		$options = [
 			'chat_id' => $telegram_id,
 		];
+
+		if(!empty($result['user']['email'])) {
+			$options['text'] = __('You are already registered', $result['user']['language']);
+			$this->telegram->sendMessage($options);
+			return false;
+		}
 		
 		$options['text'] = 'Enter your E-mail.';
 		$this->telegram->sendMessage($options);
