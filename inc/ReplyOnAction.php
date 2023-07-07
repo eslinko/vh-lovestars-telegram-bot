@@ -69,8 +69,14 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
 		case 'choose_language':
 			choose_language($update, $telegram, $last_message_object);
             break;
+        case 'remove_interest_from_list_by_number':
+            remove_interest_from_list_by_number($update, $telegram, $last_message_object);
+            break;
 		case 'my_interests_and_values':
 			my_interests_and_values($update, $telegram, $last_message_object);
+            break;
+        case 'set_user_interests':
+            set_user_interests($update, $telegram, $last_message_object);
             break;
 		default:
 			$telegram->commandsHandler(true);
@@ -834,11 +840,28 @@ function suggest_new_language($update, $telegram) {
 	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
 }
 
-function my_interests_and_values($update, $telegram) {
+function set_user_interests($update, $telegram) {
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+
 	$interests = trim($update->getMessage()->text);
 
+    if(strlen($interests) >= 2000) {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error! The maximum allowed number of characters is 2000', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'set_user_interests'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
 	$lcApi = new \LCAPPAPI();
-	$result = $lcApi->makeRequest('get-user-interests', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $interests]);
+	$result = $lcApi->makeRequest('set-user-interests', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $interests, 'user_lang' => $is_verified['user']['language']]);
 
 	if($result['status'] === 'error') {
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error, try again', $result['user']['language']), 'reply_markup' => Keyboard::make([
@@ -846,6 +869,50 @@ function my_interests_and_values($update, $telegram) {
 				[
 					Keyboard::inlineButton([
 						'text' => __('Try again', $result['user']['language']),
+						'callback_data' => 'set_user_interests'
+					])
+				]
+			],
+			'resize_keyboard' => true,
+		])]);
+		return false;
+	}
+
+	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $result['list_of_interests']]);
+}
+
+function my_interests_and_values($update, $telegram) {
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+	$message = trim($update->getMessage()->text);
+
+    if(is_numeric($message)){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Do you really want to delete an item', $is_verified['user']['language']) . '' . '“'.$message.'”?', 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Yes', $is_verified['user']['language']),
+                        'callback_data' => 'remove_interest_from_list_by_number__' . $message
+                    ]),
+                    Keyboard::inlineButton([
+                        'text' => __('No', $is_verified['user']['language']),
+                        'callback_data' => 'help'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
+	$lcApi = new \LCAPPAPI();
+	$result = $lcApi->makeRequest('add-interest-to-user-list', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $message, 'user_lang' => $is_verified['user']['language']]);
+
+	if($result['status'] === 'error') {
+		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error, try again', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+			'inline_keyboard' =>  [
+				[
+					Keyboard::inlineButton([
+						'text' => __('Try again', $is_verified['user']['language']),
 						'callback_data' => 'my_interests_and_values'
 					])
 				]
@@ -855,6 +922,17 @@ function my_interests_and_values($update, $telegram) {
 		return false;
 	}
 
-	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $result['user_interests']]);
+    $telegram->triggerCommand('my_interests_and_values', $update);
 	return false;
+}
+
+function remove_interest_from_list_by_number($update, $telegram, $last_message_object) {
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    $number_of_item = explode('__', $last_message_object);
+    $number_of_item = $number_of_item[1];
+
+//    $lcApi = new \LCAPPAPI();
+//    $result = $lcApi->makeRequest('remove-interest-from-user-list', ['telegram_id' => $update->getMessage()->chat->id, 'user_lang' => $is_verified['user']['language'], 'number_to_remove' => $number_of_item]);
+
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => 'Мы типа удалили запись под номером - ' . $number_of_item ]);
 }

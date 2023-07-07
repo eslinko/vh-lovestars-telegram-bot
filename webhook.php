@@ -37,7 +37,9 @@ if ($update->isType('callback_query')) {
 	
 	if (strpos($callbackName, 'choose_language') !== false) {
 		reply_on_action_switcher('choose_language', $update, $telegram, $callbackName);
-	} else {
+	} else if (strpos($callbackName, 'remove_interest_from_list_by_number') !== false) {
+        reply_on_action_switcher('remove_interest_from_list_by_number', $update, $telegram, $callbackName);
+    } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
 } else {

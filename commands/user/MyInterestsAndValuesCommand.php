@@ -33,14 +33,32 @@ class MyInterestsAndValuesCommand extends Command
 		if(!$user['status']) {
 			return false;
 		}
+
+        if(empty($user['user']['interests_description']) && empty($user['user']['calculated_interests'])) {
+            $this->telegram->triggerCommand('set_user_interests', $update);
+            return false;
+        }
+
+        $options = [
+            'chat_id' => $telegram_id,
+        ];
+
+        // если выполнили много раз подряд команду то сработает ошибка, нельзя запускать команду чаще чем каждые 10 секунд
+        if((time() - ((int)$user['user']['last_request_to_chatgpt_date'])) < 10) {
+            $options['text'] = __("Do not execute this command more than once every 10 seconds. Try later", $user['user']['language']);
+            $this->telegram->sendMessage($options);
+            return false;
+        }
+
+        $lcApi = new \LCAPPAPI();
+        $data = $lcApi->makeRequest('get-user-interests-list', ['telegram_id' => $telegram_id, 'user_lang' => !empty($user['user']['language']) ? $user['user']['language'] : 'en']);
 		
-		$options = [
-			'chat_id' => $telegram_id,
-		];
-		
-		$options['text'] = __("What are your interests, hobbies and values that you want to share with other people? You can use any language. You can just list topics or even write an essay about who you really are. We will use this information in order to bring you closer to people sharing those values and interests. So, the more specific you are, the more support we can provide", $user['user']['language']);
-		
+		$options['text'] = $data['list_of_interests'];
 		$this->telegram->sendMessage($options);
+
+        $options['text'] = __("Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number", $user['user']['language']);
+		$this->telegram->sendMessage($options);
+
 		set_command_to_last_message($this->name, $telegram_id);
 	}
 }

@@ -422,4 +422,24 @@ $translates = [
 		'ru' => "Каковы ваши интересы, хобби и ценности, которыми вы хотите поделиться с другими людьми? Вы можете использовать любой язык. Вы можете просто перечислить темы или даже написать эссе о том, кто вы есть на самом деле. Мы будем использовать эту информацию для того, чтобы сблизить вас с людьми, разделяющими эти ценности и интересы. Таким образом, чем более конкретными будут ваши пожелания, тем большую поддержку мы сможем вам оказать.",
 		'et' => "Millised on teie huvid, hobid ja väärtused, mida soovite teistega jagada? Võite kasutada mis tahes keelt. Võite lihtsalt loetleda teemasid või isegi kirjutada essee selle kohta, kes te tegelikult olete. Me kasutame seda teavet selleks, et tuua teid lähemale inimestele, kes jagavad neid väärtusi ja huvisid. Seega, mida konkreetsem oled, seda rohkem toetust saame pakkuda."
 	],
+    "Error! The maximum allowed number of characters is 2000" => [
+        'en' => "Error! The maximum allowed number of characters is 2000",
+        'ru' => "Ошибка! Максимально допустимое количество символов 2000",
+        'et' => "Viga! Maksimaalne lubatud tähemärkide arv 2000"
+    ],
+    "Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number" => [
+        'en' => "Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number",
+        'ru' => "Введите любой новый пункт в отдельном сообщении, чтобы добавить его в свой список. Вы можете добавить свои хобби, интересы и ценности. \nЕсли вы хотите удалить какой-либо элемент, введите простое число.",
+        'et' => "Kirjutage iga uus kirje eraldi sõnumisse, et lisada see oma nimekirja. Saate lisada oma hobid, huvid ja väärtused. Kõik, mis aitab luua sidet sarnaselt mõtlevate inimestega.\nKui soovite mõne elemendi kustutada, kirjutage lihtne number"
+    ],
+    "Do not execute this command more than once every 10 seconds. Try later" => [
+        'en' => "Do not execute this command more than once every 10 seconds. Try later",
+        'ru' => "Нельзя выполнять эту команду чаще чем раз в 10 секунд. Попробуйте позже",
+        'et' => "Ärge täitke seda käsku sagedamini kui üks kord iga 10 sekundi järel. Proovige hiljem"
+    ],
+    "Do you really want to delete an item" => [
+        'en' => "Do you really want to delete an item",
+        'ru' => "Действительно ли вы хотите удалить элемент",
+        'et' => "Kas te tõesti soovite objekti kustutada"
+    ],
 ];
