@@ -885,26 +885,44 @@ function my_interests_and_values($update, $telegram) {
     $is_verified = user_is_verified($update->getMessage()->chat->id);
 	$message = trim($update->getMessage()->text);
 
+    $lcApi = new \LCAPPAPI();
+
     if(is_numeric($message)){
-        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Do you really want to delete an item', $is_verified['user']['language']) . '' . '“'.$message.'”?', 'reply_markup' => Keyboard::make([
-            'inline_keyboard' =>  [
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Yes', $is_verified['user']['language']),
-                        'callback_data' => 'remove_interest_from_list_by_number__' . $message
-                    ]),
-                    Keyboard::inlineButton([
-                        'text' => __('No', $is_verified['user']['language']),
-                        'callback_data' => 'help'
-                    ])
-                ]
-            ],
-            'resize_keyboard' => true,
-        ])]);
+        $result = $lcApi->makeRequest('get-calculated-interest-by-list-number', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $message, 'user_lang' => $is_verified['user']['language']]);
+
+        if(empty($result['choosed_interests'])) {
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('There is no such item', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+                'inline_keyboard' =>  [
+                    [
+                        Keyboard::inlineButton([
+                            'text' => __('Try again', $is_verified['user']['language']),
+                            'callback_data' => 'my_interests_and_values'
+                        ])
+                    ]
+                ],
+                'resize_keyboard' => true,
+            ])]);
+        } else {
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Do you really want to delete an item', $is_verified['user']['language']) . ' ' . '“'.$message.'. ' . trim($result['choosed_interests']) . '”?', 'reply_markup' => Keyboard::make([
+                'inline_keyboard' =>  [
+                    [
+                        Keyboard::inlineButton([
+                            'text' => __('Yes', $is_verified['user']['language']),
+                            'callback_data' => 'remove_interest_from_list_by_number__' . $message
+                        ]),
+                        Keyboard::inlineButton([
+                            'text' => __('No', $is_verified['user']['language']),
+                            'callback_data' => 'my_interests_and_values'
+                        ])
+                    ]
+                ],
+                'resize_keyboard' => true,
+            ])]);
+        }
+
         return false;
     }
 
-	$lcApi = new \LCAPPAPI();
 	$result = $lcApi->makeRequest('add-interest-to-user-list', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $message, 'user_lang' => $is_verified['user']['language']]);
 
 	if($result['status'] === 'error') {
@@ -931,8 +949,8 @@ function remove_interest_from_list_by_number($update, $telegram, $last_message_o
     $number_of_item = explode('__', $last_message_object);
     $number_of_item = $number_of_item[1];
 
-//    $lcApi = new \LCAPPAPI();
-//    $result = $lcApi->makeRequest('remove-interest-from-user-list', ['telegram_id' => $update->getMessage()->chat->id, 'user_lang' => $is_verified['user']['language'], 'number_to_remove' => $number_of_item]);
+    $lcApi = new \LCAPPAPI();
+    $result = $lcApi->makeRequest('remove-interest-from-user-list', ['telegram_id' => $update->getMessage()->chat->id, 'user_lang' => $is_verified['user']['language'], 'number_to_remove' => $number_of_item]);
 
-    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => 'Мы типа удалили запись под номером - ' . $number_of_item ]);
+    $telegram->triggerCommand('my_interests_and_values', $update);;
 }

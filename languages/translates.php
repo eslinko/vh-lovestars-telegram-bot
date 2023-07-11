@@ -442,4 +442,19 @@ $translates = [
         'ru' => "Действительно ли вы хотите удалить элемент",
         'et' => "Kas te tõesti soovite objekti kustutada"
     ],
+    "Yes" => [
+        'en' => "Yes",
+        'ru' => "Да",
+        'et' => "Jah"
+    ],
+    "No" => [
+        'en' => "No",
+        'ru' => "Нет",
+        'et' => "Ei"
+    ],
+    "There is no such item" => [
+        'en' => "There is no such item",
+        'ru' => "Такого пункта не существует",
+        'et' => "Sellist eset ei ole olemas"
+    ],
 ];

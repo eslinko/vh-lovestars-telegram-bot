@@ -44,11 +44,11 @@ class MyInterestsAndValuesCommand extends Command
         ];
 
         // если выполнили много раз подряд команду то сработает ошибка, нельзя запускать команду чаще чем каждые 10 секунд
-        if((time() - ((int)$user['user']['last_request_to_chatgpt_date'])) < 10) {
-            $options['text'] = __("Do not execute this command more than once every 10 seconds. Try later", $user['user']['language']);
-            $this->telegram->sendMessage($options);
-            return false;
-        }
+//        if((time() - ((int)$user['user']['last_request_to_chatgpt_date'])) < 10) {
+//            $options['text'] = __("Do not execute this command more than once every 10 seconds. Try later", $user['user']['language']);
+//            $this->telegram->sendMessage($options);
+//            return false;
+//        }
 
         $lcApi = new \LCAPPAPI();
         $data = $lcApi->makeRequest('get-user-interests-list', ['telegram_id' => $telegram_id, 'user_lang' => !empty($user['user']['language']) ? $user['user']['language'] : 'en']);
