@@ -52,6 +52,27 @@ class MyInterestsAndValuesCommand extends Command
 
         $lcApi = new \LCAPPAPI();
         $data = $lcApi->makeRequest('get-user-interests-list', ['telegram_id' => $telegram_id, 'user_lang' => !empty($user['user']['language']) ? $user['user']['language'] : 'en']);
+
+        if(empty($data['list_of_interests'])) {
+            $options['text'] = __("Your list is empty. Should I generate a new one?", $user['user']['language']);
+            $options['reply_markup'] = Keyboard::make([
+                'inline_keyboard' =>  [
+                    [
+                        Keyboard::inlineButton([
+                            'text' => __('Yes', $user['user']['language']),
+                            'callback_data' => 'set_user_interests'
+                        ]),
+                        Keyboard::inlineButton([
+                            'text' => __('No', $user['user']['language']),
+                            'callback_data' => 'help'
+                        ])
+                    ]
+                ],
+                'resize_keyboard' => true,
+            ]);
+            $this->telegram->sendMessage($options);
+            exit;
+        }
 		
 		$options['text'] = $data['list_of_interests'];
 		$this->telegram->sendMessage($options);

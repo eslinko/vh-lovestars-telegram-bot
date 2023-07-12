@@ -878,7 +878,8 @@ function set_user_interests($update, $telegram) {
 		return false;
 	}
 
-	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $result['list_of_interests']]);
+//	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $result['list_of_interests']]);
+    $telegram->triggerCommand('my_interests_and_values', $update);;
 }
 
 function my_interests_and_values($update, $telegram) {

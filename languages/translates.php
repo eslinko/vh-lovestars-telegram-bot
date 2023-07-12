@@ -457,4 +457,14 @@ $translates = [
         'ru' => "Такого пункта не существует",
         'et' => "Sellist eset ei ole olemas"
     ],
+    "Sorry, but your account has been blocked." => [
+        'en' => "Sorry, but your account has been blocked.",
+        'ru' => "Извините, но ваша учетная запись была заблокирована.",
+        'et' => "Vabandust, kuid teie konto on blokeeritud."
+    ],
+    "Your list is empty. Should I generate a new one?" => [
+        'en' => "Your list is empty. Should I generate a new one?",
+        'ru' => "Ваш список пустой. Сгенерировать новый?",
+        'et' => "Teie nimekiri on tühi. Looge uus?"
+    ],
 ];

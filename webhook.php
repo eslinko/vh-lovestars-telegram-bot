@@ -20,6 +20,12 @@ $last_message = $lcApi->makeRequest('get-user-last-message', ['telegram_id' => $
 
 $request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())]);
 
+// user is blocked
+if(!empty($last_message['user']) && (int) $last_message['user']['status'] === 0) {
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, but your account has been blocked.', !empty($last_message['user']['language']) ? $last_message['user']['language'] : 'en')]);
+    exit;
+}
+
 $cur_text = trim($update->getMessage()->text);
 if(substr($cur_text, 0, 1) == "/") {
 	if(find_count_of_aplha_in_string($cur_text, '/') > 1) {
