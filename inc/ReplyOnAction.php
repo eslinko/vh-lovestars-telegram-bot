@@ -924,6 +924,21 @@ function my_interests_and_values($update, $telegram) {
         return false;
     }
 
+    if(strlen($message) >= 50) {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error! The maximum allowed number of characters is 50', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'my_interests_and_values'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
 	$result = $lcApi->makeRequest('add-interest-to-user-list', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $message, 'user_lang' => $is_verified['user']['language']]);
 
 	if($result['status'] === 'error') {
