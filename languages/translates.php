@@ -467,4 +467,34 @@ $translates = [
         'ru' => "Ваш список пустой. Сгенерировать новый?",
         'et' => "Teie nimekiri on tühi. Looge uus?"
     ],
+    "Error! The maximum allowed number of characters is 50" => [
+        'en' => "Error! The maximum allowed number of characters is 50",
+        'ru' => "Ошибка! Максимально допустимое количество символов - 50",
+        'et' => "Viga! Maksimaalne lubatud tähemärkide arv on 50"
+    ],
+    "Error! The new element must be text and be more than 2 characters long." => [
+        'en' => "Error! The new element must be text and be more than 2 characters long.",
+        'ru' => "Ошибка! Новый элемент должен быть текстовым и иметь длину более 2 символов.",
+        'et' => "Viga! Uus element peab olema tekst ja rohkem kui 2 tähemärki pikk."
+    ],
+    "Clear all interests" => [
+        'en' => "Clear all interests",
+        'ru' => "Очистить все интересы",
+        'et' => "Tühjendage kõik huvid"
+    ],
+    "Are you sure you want to clear all your interests? This action cannot be undone." => [
+        'en' => "Are you sure you want to clear all your interests? This action cannot be undone.",
+        'ru' => "Вы уверены, что хотите очистить все свои интересы? Это действие не может быть отменено.",
+        'et' => "Kas olete kindel, et soovite kõik oma huvid kustutada? Seda tegevust ei saa tagasi võtta."
+    ],
+    "Yes, clear all" => [
+        'en' => "Yes, clear all",
+        'ru' => "Да, очистить все",
+        'et' => "Jah, tühjendage kõik"
+    ],
+    "No, cancel" => [
+        'en' => "No, cancel",
+        'ru' => "Нет, отмена",
+        'et' => "Ei, tühista"
+    ],
 ];

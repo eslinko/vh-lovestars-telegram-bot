@@ -884,7 +884,7 @@ function set_user_interests($update, $telegram) {
 
 function my_interests_and_values($update, $telegram) {
     $is_verified = user_is_verified($update->getMessage()->chat->id);
-	$message = trim($update->getMessage()->text);
+    $message = removeEmoji(trim($update->getMessage()->text));
 
     $lcApi = new \LCAPPAPI();
 
@@ -926,6 +926,21 @@ function my_interests_and_values($update, $telegram) {
 
     if(strlen($message) >= 50) {
         $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error! The maximum allowed number of characters is 50', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'my_interests_and_values'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
+    if(strlen($message) < 2) {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error! The new element must be text and be more than 2 characters long.', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
             'inline_keyboard' =>  [
                 [
                     Keyboard::inlineButton([

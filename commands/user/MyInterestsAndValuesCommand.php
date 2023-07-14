@@ -78,6 +78,17 @@ class MyInterestsAndValuesCommand extends Command
 		$this->telegram->sendMessage($options);
 
         $options['text'] = __("Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number", $user['user']['language']);
+        $options['reply_markup'] = Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Clear all interests', $user['user']['language']),
+                        'callback_data' => 'clear_all_interests_question'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ]);
 		$this->telegram->sendMessage($options);
 
 		set_command_to_last_message($this->name, $telegram_id);
