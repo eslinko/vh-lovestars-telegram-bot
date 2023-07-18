@@ -31,7 +31,7 @@ class RegistrationStepInvitationCodeCommand extends Command
 			'chat_id' => $telegram_id,
 		];
 
-        if($result['user']['invitation_code_id'] !== '0') {
+        if($result['user']['invitation_code_id'] !== 0) {
             $options['text'] = __('You are already registered', $result['user']['language']);
             $this->telegram->sendMessage($options);
             return false;
