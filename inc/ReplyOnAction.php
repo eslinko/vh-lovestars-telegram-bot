@@ -842,7 +842,6 @@ function suggest_new_language($update, $telegram) {
 
 function set_user_interests($update, $telegram) {
     $is_verified = user_is_verified($update->getMessage()->chat->id);
-
 	$interests = trim($update->getMessage()->text);
 
     if(strlen($interests) >= 2000) {
@@ -860,6 +859,22 @@ function set_user_interests($update, $telegram) {
         return false;
     }
 
+    if(strlen($interests) < 2) {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Error! The new element must be text and be more than 2 characters long.', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'set_user_interests'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
+    $interests = json_encode($interests);
 	$lcApi = new \LCAPPAPI();
 	$result = $lcApi->makeRequest('set-user-interests', ['telegram_id' => $update->getMessage()->chat->id, 'entered_text' => $interests, 'user_lang' => $is_verified['user']['language']]);
 
@@ -878,13 +893,13 @@ function set_user_interests($update, $telegram) {
 		return false;
 	}
 
-//	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $result['list_of_interests']]);
     $telegram->triggerCommand('my_interests_and_values', $update);;
 }
 
 function my_interests_and_values($update, $telegram) {
     $is_verified = user_is_verified($update->getMessage()->chat->id);
-    $message = removeEmoji(trim($update->getMessage()->text));
+    $message = trim($update->getMessage()->text);
+//    $message = removeEmoji(trim($update->getMessage()->text));
 
     $lcApi = new \LCAPPAPI();
 
