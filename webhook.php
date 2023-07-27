@@ -19,7 +19,7 @@ $update = $telegram->getWebhookUpdate();
 $last_message = $lcApi->makeRequest('get-user-last-message', ['telegram_id' => $update->getMessage()->chat->id]);
 
 $request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())]);
-
+file_put_contents('log.txt',json_encode($update->getMessage(),JSON_PRETTY_PRINT)."\n\n",FILE_APPEND);
 // user is blocked
 if(!empty($last_message['user']) && (int) $last_message['user']['status'] === 0) {
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, but your account has been blocked.', !empty($last_message['user']['language']) ? $last_message['user']['language'] : 'en')]);
@@ -45,6 +45,15 @@ if ($update->isType('callback_query')) {
 		reply_on_action_switcher('choose_language', $update, $telegram, $callbackName);
 	} else if (strpos($callbackName, 'remove_interest_from_list_by_number') !== false) {
         reply_on_action_switcher('remove_interest_from_list_by_number', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'create_new_connection')!==false) {
+        //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $callbackName]);
+        reply_on_action_switcher('create_new_connection', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'delete_connection_by_id')!==false) {
+        reply_on_action_switcher('delete_connection_by_id', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'accept_connection')!==false) {
+        reply_on_action_switcher('accept_connection', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'decline_connection')!==false) {
+        reply_on_action_switcher('decline_connection', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}

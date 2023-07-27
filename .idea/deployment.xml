@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="realmart_programist" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="telegram" confirmBeforeUploading="false" autoUploadExternalChanges="true">
+    <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="realmart_programist">
+      <paths name="telegram">
         <serverdata>
           <mappings>
-            <mapping deploy="/realmart.com.ua/skoryk2" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/telegram/public_html" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

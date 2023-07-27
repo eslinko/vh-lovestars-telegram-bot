@@ -502,4 +502,79 @@ $translates = [
         'ru' => "Нет, отмена",
         'et' => "Ei, tühista"
     ],
+    'Type Zeya platform alias or Telegram alias of a person you want to make a connection with.'=>[
+        'en' => "Type Zeya platform alias or Telegram alias of a person you want to make a connection with.",
+        'ru' => "Введите псевдоним платформы Zeya или псевдоним Telegram человека, с которым вы хотите установить связь.",
+        'et' => "Sisestage Zeya platvormi alias või Telegrami alias isiku kohta, kellega soovite ühendust luua."
+    ],
+    'You do not have connections'=>[
+        'en' => "You do not have connections",
+        'ru' => "У вас нет связей",
+        'et' => "Teil ei ole ühendusi"
+    ],
+    'Delete connections:'=>[
+        'en' => "Delete connections:",
+        'ru' => "Удалить связи:",
+        'et' => "Kustuta ühendused:"
+    ],
+    'Add new'=>[
+        'en' => "Add new",
+        'ru' => "Добавить новую",
+        'et' => "Lisa uus"
+    ],
+    'Delete'=>[
+        'en' => "Delete",
+        'ru' => "Удалить",
+        'et' => "Kustuta"
+    ],
+    'User alias'=>[
+        'en' => "User alias",
+        'ru' => "Псевдоним пользователя",
+        'et' => "Kasutaja varjunimi"
+    ],
+    'Telegram alias'=>[
+        'en' => "Telegram alias",
+        'ru' => "Псевдоним Telegram",
+        'et' => "Telegrammi varjunimi"
+    ],
+    'Search results:'=>[
+        'en' => "Search results:",
+        'ru' => "Результаты поиска:",
+        'et' => "Otsingu tulemused:"
+    ],
+    'Would you like to send request to this user to be part of your connections?'=>[
+        'en' => "Would you like to send request to this user to be part of your connections?",
+        'ru' => "Хотите ли вы отправить запрос этому пользователю, чтобы добавить в список ваших связей?",
+        'et' => "Kas soovite saata sellele kasutajale taotluse, et ta oleks osa teie ühendustest?"
+    ],
+    'Nothing found'=>[
+        'en' => "Nothing found",
+        'ru' => "Ничего не найдено",
+        'et' => "Midagi ei leitud"
+    ],
+    'Request has been sent.'=>[
+        'en' => "Request has been sent.",
+        'ru' => "Запрос отправлен.",
+        'et' => "Taotlus on saadetud."
+    ],
+    'sent you a connection request.'=>[
+        'en' => "sent you a connection request.",
+        'ru' => "отправил вам запрос на создание связи.",
+        'et' => "saatis teile ühendustaotluse."
+    ],
+    'Connection has been deleted.'=>[
+        'en' => "Connection has been deleted.",
+        'ru' => "Связь удалена.",
+        'et' => "Ühendus on kustutatud."
+    ],
+    'Request has been accepted.'=>[
+        'en' => "Request has been accepted.",
+        'ru' => "Запрос принят.",
+        'et' => "Taotlus on vastu võetud."
+    ],
+    'Request has been declined.'=>[
+        'en' => "Request has been declined.",
+        'ru' => "Запрос отклонён.",
+        'et' => "Taotlus on tagasi lükatud."
+    ],
 ];
