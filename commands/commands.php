@@ -16,6 +16,10 @@ require_once 'user/MyInterestsAndValuesCommand.php';
 require_once 'user/SetUserInterestsCommand.php';
 require_once 'user/ClearAllInterestsQuestionCommand.php';
 require_once 'user/ClearAllInterestsCommand.php';
+require_once  'user/MyConnectionsCommand.php';
+require_once  'user/AddNewConnectionCommand.php';
+require_once  'user/DeleteConnectionsCommand.php';
+
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -60,6 +64,9 @@ $telegram->addCommand( Telegram\Bot\Commands\MyInterestsAndValuesCommand::class)
 $telegram->addCommand( Telegram\Bot\Commands\SetUserInterestsCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ClearAllInterestsQuestionCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ClearAllInterestsCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\MyConnectionsCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\AddNewConnectionCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\DeleteConnectionsCommand::class);
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep2Command::class);
