@@ -577,4 +577,24 @@ $translates = [
         'ru' => "Запрос отклонён.",
         'et' => "Taotlus on tagasi lükatud."
     ],
+    'This invitation was already sent by you and still pending.'=>[
+        'en' => "This invitation was already sent by you and still pending.",
+        'ru' => "Это приглашение уже было отправлено Вами и все ещё находится на рассмотрении.",
+        'et' => "See kutse on teie poolt juba saadetud ja on endiselt menetluses."
+    ],
+    'This invitation was already sent by you and accepted.'=>[
+        'en' => "This invitation was already sent by you and accepted.",
+        'ru' => "Это приглашение уже было отправлено Вами и принято.",
+        'et' => "See kutse on juba teie poolt saadetud ja vastu võetud."
+    ],
+    'This invitation was already sent by you and rejected.'=>[
+        'en' => "This invitation was already sent by you and rejected. You may contact the person and ask to find your rejected invitation and re-accept it.",
+        'ru' => "Это приглашение уже было отправлено Вами и отклонено. Вы можете связаться с этим человеком и попросить найти ваше отклоненное приглашение и принять его повторно.",
+        'et' => "See kutse on juba teie poolt saadetud ja tagasi lükatud. Võite võtta isikuga ühendust ja paluda, et ta leiaks teie tagasi lükatud kutse ja võtaks selle uuesti vastu."
+    ],
+    'This invitation was already sent to you and accepted.'=>[
+        'en' => "This invitation was already sent to you and accepted.",
+        'ru' => "Это приглашение уже было отправлено Вам и принято.",
+        'et' => "See kutse on teile juba saadetud ja vastu võetud."
+    ],
 ];
