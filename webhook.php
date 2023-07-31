@@ -45,15 +45,14 @@ if ($update->isType('callback_query')) {
 		reply_on_action_switcher('choose_language', $update, $telegram, $callbackName);
 	} else if (strpos($callbackName, 'remove_interest_from_list_by_number') !== false) {
         reply_on_action_switcher('remove_interest_from_list_by_number', $update, $telegram, $callbackName);
-    } elseif(strpos($callbackName,'create_new_connection')!==false) {
-        //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $callbackName]);
-        reply_on_action_switcher('create_new_connection', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'delete_connection_by_id')!==false) {
         reply_on_action_switcher('delete_connection_by_id', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'accept_connection')!==false) {
         reply_on_action_switcher('accept_connection', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'decline_connection')!==false) {
         reply_on_action_switcher('decline_connection', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'check_connection')!==false) {
+        reply_on_action_switcher('check_connection', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}

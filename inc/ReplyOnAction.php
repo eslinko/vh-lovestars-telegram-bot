@@ -93,6 +93,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'decline_connection':
             decline_connection($update, $telegram, $last_message_object);
             break;
+        case 'check_connection':
+            check_connection($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1024,7 +1027,7 @@ function add_new_connection($update, $telegram)
     $is_verified = user_is_verified($update->getMessage()->chat->id);
 
     $lcApi = new \LCAPPAPI();
-    $return_data = $lcApi->makeRequest('get-users-by-any-alias-without-connections-with-me', ['alias' => $look_for,'telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
+    $return_data = $lcApi->makeRequest('get-users-by-any-alias', ['alias' => $look_for,'telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
     if(isset($return_data['status']) AND $return_data['status']==='error'){
         $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language'])]);
         return;
@@ -1042,7 +1045,7 @@ function add_new_connection($update, $telegram)
                [
                    Keyboard::inlineButton([
                        'text' => $button_text,
-                       'callback_data' => 'create_new_connection__'.$user['id']
+                       'callback_data' => 'check_connection__'.$is_verified['user']['id'].'__'.$user['id']//'callback_data' => 'create_new_connection__'.$user['id']
                    ])
                ];
         }
@@ -1060,7 +1063,7 @@ function add_new_connection($update, $telegram)
                 [
                     Keyboard::inlineButton([
                         'text' => __('Yes', $is_verified['user']['language']),
-                        'callback_data' => 'create_new_connection__'.$return_data[0]['id']
+                        'callback_data' => 'check_connection__'.$is_verified['user']['id'].'__'.$return_data[0]['id']//'callback_data' => 'create_new_connection__'.$return_data[0]['id']
                     ]),
                     Keyboard::inlineButton([
                         'text' => __('No', $is_verified['user']['language']),
@@ -1084,12 +1087,12 @@ function add_new_connection($update, $telegram)
         return false;
 
 }
-function create_new_connection($update, $telegram,$callbackName)
+function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
 {
     $is_verified = user_is_verified($update->getMessage()->chat->id);
     if(!$is_verified['status']) return false;
 
-    $user_id_2=intval(substr($callbackName,strpos($callbackName,'__')+2));
+    //$user_id_2=intval(substr($callbackName,strpos($callbackName,'__')+2));
     $telegram_id = $update->getMessage()->chat->id;
 
     $lcApi = new \LCAPPAPI();
@@ -1182,5 +1185,48 @@ function decline_connection($update, $telegram,$callbackName)
         return false;
     }
     $telegram->sendMessage(['chat_id' => $telegram_id,'text'=>__('Request has been declined.', $is_verified['user']['language'])]);
+    return true;
+}
+
+function check_connection($update, $telegram,$callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+    $telegram_id = $update->getMessage()->chat->id;
+    $ids=explode('__',$callbackName);
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('check-user-connection', ['telegram_id' => $telegram_id,'user_id_1' => intval($ids[1]),'user_id_2' => intval($ids[2])]);
+
+    if($return_data['status'] === 'error') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+    if($return_data['connection']===NULL){
+        create_new_connection($update, $telegram,$ids[2]);
+    }elseif($return_data['connection']['status']==='pending'){
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("This invitation was already sent by you and still pending.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+    }elseif($return_data['connection']['status']==='accepted'){
+        $options['chat_id'] = $telegram_id;
+        if($return_data['connection']['user_id_1']==$ids[1])
+            $options['text'] = __("This invitation was already sent by you and accepted.", $is_verified['user']['language']);
+        else
+            $options['text'] = __("This invitation was already sent to you and accepted.", $is_verified['user']['language']);
+
+        $telegram->sendMessage($options);
+    }elseif($return_data['connection']['status']==='declined'){
+        if($return_data['connection']['user_id_1']==$ids[1]) {//sent by us, friend rejected
+            $options['chat_id'] = $telegram_id;
+            $options['text'] = __("This invitation was already sent by you and rejected.", $is_verified['user']['language']);
+            $telegram->sendMessage($options);
+        }
+        if($return_data['connection']['user_id_2']==$ids[1]) {//sent to us, we rejected
+            create_new_connection($update, $telegram,$ids[2]);
+        }
+    }
+
     return true;
 }
