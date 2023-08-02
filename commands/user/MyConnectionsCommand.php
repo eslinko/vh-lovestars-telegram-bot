@@ -32,13 +32,23 @@ class MyConnectionsCommand extends Command
 		if(!$user['status']) {
 			return false;
 		}
+        $options = [
+            'chat_id' => $telegram_id,
+        ];
+
+
+        //show commands
+        $options['text'] = '/sent_invites - '.__("Your sent invites.", $user['user']['language'])."\n";
+        $options['text'] .= '/rejected_invites - '.__("Rejected invites.", $user['user']['language']);
+        $this->telegram->sendMessage($options);
+        $options['text'] = '';
+
+
 
         $lcApi = new \LCAPPAPI();
         $data = $lcApi->makeRequest('get-user-connections', ['telegram_id' => $telegram_id]);
 
-        $options = [
-            'chat_id' => $telegram_id,
-        ];
+
 
         if($data['status'] === 'error' || empty($data)) {
             $options['text'] = __("Error! Try again later.", $user['user']['language']);

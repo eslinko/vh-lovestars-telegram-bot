@@ -53,6 +53,8 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher('decline_connection', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'check_connection')!==false) {
         reply_on_action_switcher('check_connection', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'ask_to_revert_connection')!==false) {
+        reply_on_action_switcher('ask_to_revert_connection', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
