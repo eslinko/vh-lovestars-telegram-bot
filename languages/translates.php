@@ -597,4 +597,54 @@ $translates = [
         'ru' => "Это приглашение уже было отправлено Вам и принято.",
         'et' => "See kutse on teile juba saadetud ja vastu võetud."
     ],
+    'Please enter text only. Try again.'=>[
+        'en' => "Please enter text only. Try again.",
+        'ru' => "Пожалуйста, вводите только текст. Попробуйте ещё раз.",
+        'et' => "Palun sisestage ainult tekst. Proovige uuesti."
+    ],
+    'This person is not registered on Zeya.'=>[
+        'en' => "This person is not registered on Zeya. You can use one of your invitation codes listed below and forward one of it with the proceeding message that contains indications regarding how to use it.",
+        'ru' => "Этот человек не зарегистрирован в Zeya. Вы можете воспользоваться одним из приведенных ниже кодов приглашения и переслать его вместе с соответствующим сообщением, содержащим указания по его использованию.",
+        'et' => "See isik ei ole Zeyas registreeritud. Võite kasutada ühte allpool loetletud kutsekoodidest ja edastada ühe neist koos edasise sõnumiga, mis sisaldab viiteid selle kasutamise kohta."
+    ],
+    'You do not have pending or rejected invites'=>[
+        'en' => "You do not have pending or rejected invites",
+        'ru' => "У вас нет ожидающих или отклоненных приглашений",
+        'et' => "Teil ei ole pooleliolevaid või tagasilükatud kutseid"
+    ],
+    'Your sent invites.'=>[
+        'en' => "Your sent invites.",
+        'ru' => "Ваши отправленные приглашения",
+        'et' => "Teie saadetud kutsed."
+    ],
+    'Rejected invites.'=>[
+        'en' => "Rejected invites.",
+        'ru' => "Отклонённые приглашения.",
+        'et' => "Tagasilükatud kutsed."
+    ],
+    'pending'=>[
+        'en' => "pending",
+        'ru' => "в ожидании",
+        'et' => "ootab"
+    ],
+    'rejected'=>[
+        'en' => "rejected",
+        'ru' => "отклонено",
+        'et' => "tagasi lükatud"
+    ],
+    'Accept'=>[
+        'en' => "Accept",
+        'ru' => "Принять",
+        'et' => "Aktsepteeri"
+    ],
+    'Rejected invites:'=>[
+        'en' => "Rejected invites:",
+        'ru' => "Отклонённые приглашения:",
+        'et' => "Tagasilükatud kutsed:"
+    ],
+    'Are you sure that you want to revert reject and accept this invite from'=>[
+        'en' => "Are you sure that you want to revert reject and accept this invite from",
+        'ru' => "Вы уверены, что хотите отменить отказ и принять это приглашение от",
+        'et' => "Kas olete kindel, et soovite tagasi lükata ja vastu võtta selle kutse alates"
+    ],
 ];

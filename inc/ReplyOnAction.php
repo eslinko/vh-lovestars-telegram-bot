@@ -81,9 +81,6 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'add_new_connection':
             add_new_connection($update, $telegram);
             break;
-        case 'create_new_connection':
-            create_new_connection($update, $telegram, $last_message_object);
-            break;
         case 'delete_connection_by_id':
             delete_connection_by_id($update, $telegram, $last_message_object);
             break;
@@ -95,6 +92,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
             break;
         case 'check_connection':
             check_connection($update, $telegram, $last_message_object);
+            break;
+        case 'ask_to_revert_connection':
+            ask_to_revert_connection($update, $telegram, $last_message_object);
             break;
 		default:
 			$telegram->commandsHandler(true);
@@ -1020,11 +1020,15 @@ function remove_interest_from_list_by_number($update, $telegram, $last_message_o
 }
 
 function add_new_connection($update, $telegram)
-{        //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text'=>'ii']);die();
-    //$is_verified = user_is_verified($update->getMessage()->chat->id);
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!isset($update->getMessage()['text'])){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please enter text only. Try again.', $is_verified['user']['language'])]);
+        set_command_to_last_message("add_new_connection", $update->getMessage()->chat->id);
+        return;
+    }
     $look_for = trim($update->getMessage()->text);
     if (str_contains($look_for, '@')) $look_for = mb_substr($look_for, 1);
-    $is_verified = user_is_verified($update->getMessage()->chat->id);
 
     $lcApi = new \LCAPPAPI();
     $return_data = $lcApi->makeRequest('get-users-by-any-alias', ['alias' => $look_for,'telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
@@ -1081,10 +1085,31 @@ function add_new_connection($update, $telegram)
         $telegram->sendMessage($options);
 
     }elseif(count($return_data)==0){
-        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __("Nothing found", $is_verified['user']['language'])]);
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __("This person is not registered on Zeya.", $is_verified['user']['language'])]);
+        $lcApi = new \LCAPPAPI();
+        $return_data = $lcApi->makeRequest('get-my-not-used-invitation-codes', ['telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
+        if(isset($return_data['status']) AND $return_data['status']==='error'){
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language'])]);
+            return;
+        }
+        foreach ($return_data['codes'] as $code){
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text' => $code['code']]);
+        }
+        if(empty($return_data['codes'])){
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text' => __('You have no invitation codes available', $is_verified['user']['language'])]);
+        }
+        else{
+            $options = [
+                'chat_id' => $update->getMessage()->chat->id,
+            ];
+            $options['text'] = __("You can forward any code which is not used to any of your telegram contacts along with the message below", $is_verified['user']['language']);
+            $telegram->sendMessage($options);
 
+            $options['text'] = "\xF0\x9F\x94\xA5 " . __("This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members.", $is_verified['user']['language']);
+            $telegram->sendMessage($options);
+        }
     }
-        return false;
+
 
 }
 function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
@@ -1229,4 +1254,47 @@ function check_connection($update, $telegram,$callbackName)
     }
 
     return true;
+}
+
+function ask_to_revert_connection($update, $telegram,$callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+    $telegram_id = $update->getMessage()->chat->id;
+    $ids=explode('__',$callbackName);
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('get-user-by-user-id', ['telegram_id' => $telegram_id,'user_id' => intval($ids[2])]);
+
+    if($return_data['status'] === 'error') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+
+    $username = $return_data['user']['publicAlias'];
+    if(empty($username)){
+        $username=$return_data['user']['full_name'];
+        if(empty($username)){
+            $username=$return_data['user']['username'];
+        }
+    }
+
+
+    $options['chat_id'] = $telegram_id;
+    $options['text'] = __("Are you sure that you want to revert reject and accept this invite from", $is_verified['user']['language']).' '.$username.'?';
+    $options['reply_markup'] = Keyboard::make([
+        'inline_keyboard' =>  [
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Yes', $is_verified['user']['language']),
+                    'callback_data' => 'accept_connection__'.$ids[2].'__'.$ids[1]
+                ])
+            ]
+        ],
+        'resize_keyboard' => true,
+    ]);
+
+    $telegram->sendMessage($options);
 }
