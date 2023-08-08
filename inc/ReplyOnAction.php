@@ -1040,9 +1040,9 @@ function add_new_connection($update, $telegram)
         $users_buttons=[];
         foreach ($return_data as $user){
             $button_text='';
-            if($user['publicAlias']===$look_for)
+            if(mb_strtolower($user['publicAlias'])===mb_strtolower($look_for))
                 $button_text.=__('User alias', $is_verified['user']['language']).': '.$user['publicAlias'];
-            if($user['telegram_alias']===$look_for)
+            if(mb_strtolower($user['telegram_alias'])===mb_strtolower($look_for))
                 $button_text.=__('Telegram alias', $is_verified['user']['language']).': '.$user['telegram_alias'];
 
             $users_buttons[]=
