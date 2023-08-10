@@ -96,6 +96,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'ask_to_revert_connection':
             ask_to_revert_connection($update, $telegram, $last_message_object);
             break;
+        case 'create_expressions':
+            create_expressions($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1295,6 +1298,18 @@ function ask_to_revert_connection($update, $telegram,$callbackName)
         ],
         'resize_keyboard' => true,
     ]);
+
+    $telegram->sendMessage($options);
+}
+
+function create_expressions($update, $telegram, $callbackName)
+{
+    $telegram_id = $update->getMessage()->chat->id;
+    $description = trim($update->getMessage()->text);
+
+    $options['chat_id'] = $telegram_id;
+    $options['text'] = $description;
+    $options['reply_markup'] = Keyboard::remove();
 
     $telegram->sendMessage($options);
 }
