@@ -3,6 +3,7 @@
 namespace Telegram\Bot\Commands;
 
 use Telegram\Bot\Keyboard\Keyboard;
+use TGKeyboard;
 
 class StartCommand extends Command
 {
@@ -113,6 +114,7 @@ class StartCommand extends Command
 				],
 				'resize_keyboard' => true,
 			]);
+           TGKeyboard::showMainKeyboard($telegram_id,$this->telegram,$user,"\xF0\x9F\x91\x8B");
 		}
 	
 		return $options;

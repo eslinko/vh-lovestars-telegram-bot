@@ -11,6 +11,9 @@ require './inc/LCAPPAPI.php';
 require './inc/ReplyOnAction.php';
 require './inc/helpers_func.php';
 require './commands/commands.php';
+require './inc/Connections.php';
+require './inc/TGKeyboard.php';
+
 
 $lcApi = new \LCAPPAPI(getenv('API_URL'));
 
@@ -19,7 +22,6 @@ $update = $telegram->getWebhookUpdate();
 $last_message = $lcApi->makeRequest('get-user-last-message', ['telegram_id' => $update->getMessage()->chat->id]);
 
 $request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())]);
-file_put_contents('log.txt',json_encode($update->getMessage(),JSON_PRETTY_PRINT)."\n\n",FILE_APPEND);
 // user is blocked
 if(!empty($last_message['user']) && (int) $last_message['user']['status'] === 0) {
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, but your account has been blocked.', !empty($last_message['user']['language']) ? $last_message['user']['language'] : 'en')]);
@@ -33,14 +35,13 @@ if(substr($cur_text, 0, 1) == "/") {
 		$telegram->triggerCommand('help', $update);
 		exit;
 	}
-	
 	$telegram->commandsHandler(true);
 	exit;
 }
 
 if ($update->isType('callback_query')) {
 	$callbackName = $update->callbackQuery->data;
-	
+
 	if (strpos($callbackName, 'choose_language') !== false) {
 		reply_on_action_switcher('choose_language', $update, $telegram, $callbackName);
 	} else if (strpos($callbackName, 'remove_interest_from_list_by_number') !== false) {
@@ -59,6 +60,7 @@ if ($update->isType('callback_query')) {
 		$telegram->triggerCommand($callbackName, $update);
 	}
 } else {
+    TGKeyboard::processKeyboard($update,$telegram);
 	if($last_message['status'] !== 'error') {
 		$last_message_object = json_decode($last_message['message']['last_message']);
 

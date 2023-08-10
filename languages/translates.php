@@ -647,4 +647,24 @@ $translates = [
         'ru' => "Вы уверены, что хотите отменить отказ и принять это приглашение от",
         'et' => "Kas olete kindel, et soovite tagasi lükata ja vastu võtta selle kutse alates"
     ],
+    'My connections'=>[
+        'en' => "My connections",
+        'ru' => "Мои связи",
+        'et' => "Minu ühendused"
+    ],
+    'Add connections'=>[
+        'en' => "Add connections",
+        'ru' => "Добавить связь",
+        'et' => "Lisage ühendused"
+    ],
+    'Delete connection'=>[
+        'en' => "Delete connection",
+        'ru' => "Удалить связь",
+        'et' => "Kustuta ühendus"
+    ],
+    'Home'=>[
+        'en' => "Home",
+        'ru' => "Домой",
+        'et' => "Koju"
+    ],
 ];
