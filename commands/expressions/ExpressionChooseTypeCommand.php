@@ -4,17 +4,17 @@ namespace Telegram\Bot\Commands;
 
 use Telegram\Bot\Keyboard\Keyboard;
 
-class CreateExpressionsStep1Command extends Command
+class ExpressionChooseTypeCommand extends Command
 {
     /**
      * @var string Command Name
      */
-    protected $name = "create_expressions";
+    protected $name = "expression_choose_type";
 
     /**
      * @var string Command Description
      */
-    protected $description = "Create New Expressions";
+    protected $description = "Choose type for expression";
 
     /**
      * @inheritdoc
@@ -32,7 +32,7 @@ class CreateExpressionsStep1Command extends Command
         }
 
         $lcApi = new \LCAPPAPI();
-        $return_data = $lcApi->makeRequest('start-creating-expressions', ['telegram_id' => $telegram_id]);
+        $return_data = $lcApi->makeRequest('get-creative-types', ['telegram_id' => $telegram_id]);
 
         $options = [
             'chat_id' => $telegram_id,
@@ -49,7 +49,6 @@ class CreateExpressionsStep1Command extends Command
 
         $options['reply_markup'] = Keyboard::make([
             'keyboard' =>  $keyboards,
-//            'resize_keyboard' => true,
             'one_time_keyboard' => true
         ]);
 
