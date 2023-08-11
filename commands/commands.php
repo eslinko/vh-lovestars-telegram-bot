@@ -2,6 +2,7 @@
 // general command
 require_once 'StartCommand.php';
 require_once 'HelpCommand.php';
+require_once 'ShowKeyboardCommand.php';
 
 //user command
 require_once 'user/GetMyDataCommand.php';
@@ -53,6 +54,7 @@ require_once 'events/GetMyEventsCommand.php';
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\HelpCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ShowKeyboardCommand::class);
 //user command
 $telegram->addCommand( Telegram\Bot\Commands\GetMyDataCommand::class);
 //$telegram->addCommand( Telegram\Bot\Commands\UpdateMyEmailCommand::class);
