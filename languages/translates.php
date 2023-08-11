@@ -677,4 +677,19 @@ $translates = [
         'ru' => "Домой",
         'et' => "Koju"
     ],
+    'No such type was found! Try using a type from the suggested variants.'=>[
+        'en' => "No such type was found! Try using a type from the suggested variants.",
+        'ru' => "Такой тип не найден! Попробуйте использовать тип из предложенных вариантов.",
+        'et' => "Sellist tüüpi ei leitud! Proovige kasutada tüüpi soovitatud variantide hulgast."
+    ],
+    'Please provide a description of your creative expression:'=>[
+        'en' => "Please provide a description of your creative expression:",
+        'ru' => "Пожалуйста, дайте описание Вашего творческого самовыражения:",
+        'et' => "Palun esitage oma loomingulise väljenduse kirjeldus:"
+    ],
+    'Thank you'=>[
+        'en' => "Thank you",
+        'ru' => "Спасибо",
+        'et' => "Tänan teid"
+    ],
 ];

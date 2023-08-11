@@ -51,8 +51,9 @@ require_once 'events/EventsCreateCommand.php';
 require_once 'events/GetMyEventsCommand.php';
 
 //expressions commands
-require_once 'expressions/CreateExpressionsStep1Command.php';
-require_once 'expressions/CreateExpressionsStep2Command.php';
+require_once 'expressions/ExpressionStartCreateCommand.php';
+require_once 'expressions/ExpressionChooseTypeCommand.php';
+require_once 'expressions/ExpressionChooseDescriptionCommand.php';
 
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
@@ -82,8 +83,9 @@ $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep3Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep4Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStepInvitationCodeCommand::class);
 //expressions commands
-$telegram->addCommand( Telegram\Bot\Commands\CreateExpressionsStep1Command::class);
-$telegram->addCommand( Telegram\Bot\Commands\CreateExpressionsStep2Command::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionStartCreateCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseTypeCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseDescriptionCommand::class);
 
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);

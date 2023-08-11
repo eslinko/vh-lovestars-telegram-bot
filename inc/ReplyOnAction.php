@@ -96,8 +96,11 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'ask_to_revert_connection':
             ask_to_revert_connection($update, $telegram, $last_message_object);
             break;
-        case 'create_expressions':
-            create_expressions($update, $telegram, $last_message_object);
+        case 'expression_choose_type':
+            expression_choose_type($update, $telegram, $last_message_object);
+            break;
+        case 'expression_choose_description':
+            expression_choose_description($update, $telegram, $last_message_object);
             break;
 		default:
 			$telegram->commandsHandler(true);
@@ -1302,14 +1305,69 @@ function ask_to_revert_connection($update, $telegram,$callbackName)
     $telegram->sendMessage($options);
 }
 
-function create_expressions($update, $telegram, $callbackName)
+function expression_choose_type($update, $telegram, $callbackName)
 {
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+
     $telegram_id = $update->getMessage()->chat->id;
     $description = trim($update->getMessage()->text);
 
+    $lcApi = new \LCAPPAPI();
+    $result = $lcApi->makeRequest('set-creative-type-to-expression', ['telegram_id' => $telegram_id, 'type_title' => $description]);
+
+    if($result['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => 'Try again',
+                        'callback_data' => 'expression_choose_type'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
+    TGKeyboard::showMainKeyboard($telegram_id, $telegram, $is_verified['user'], __('Thank you', $is_verified['user']['language']));
+
+    $telegram->triggerCommand('expression_choose_description', $update);
+    set_command_to_last_message('expression_choose_description', $update->getMessage()->chat->id);
+}
+
+function expression_choose_description($update, $telegram, $callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+
+    $telegram_id = $update->getMessage()->chat->id;
+    $description = trim($update->getMessage()->text);
+
+    $lcApi = new \LCAPPAPI();
+    $result = $lcApi->makeRequest('set-description-to-expression', ['telegram_id' => $telegram_id, 'desc' => $description]);
+
+    if($result['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => 'Try again',
+                        'callback_data' => 'expression_choose_type'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
     $options['chat_id'] = $telegram_id;
     $options['text'] = $description;
-    $options['reply_markup'] = Keyboard::remove();
 
     $telegram->sendMessage($options);
+
+//    $telegram->triggerCommand('expression_choose_description', $update);
+//    set_command_to_last_message('expression_choose_description', $update->getMessage()->chat->id);
 }
