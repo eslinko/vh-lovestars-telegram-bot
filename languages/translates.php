@@ -647,6 +647,16 @@ $translates = [
         'ru' => "Вы уверены, что хотите отменить отказ и принять это приглашение от",
         'et' => "Kas olete kindel, et soovite tagasi lükata ja vastu võtta selle kutse alates"
     ],
+    'Create New Expressions'=>[
+        'en' => "Create New Expressions",
+        'ru' => "Создание новых выражений",
+        'et' => "Uute väljendite loomine"
+    ],
+    'Please select the type of your creative expression:' => [
+        'en' => "Please select the type of your creative expression:",
+        'ru' => "Пожалуйста, выберите тип Вашего творческого самовыражения:",
+        'et' => "Palun valige oma loomingulise väljenduse tüüp:"
+    ],
     'My connections'=>[
         'en' => "My connections",
         'ru' => "Мои связи",

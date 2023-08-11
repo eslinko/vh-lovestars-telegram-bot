@@ -1,8 +1,8 @@
 <?php
 
 class LCAPPAPI {
-	public function makeRequest($apiMethod, $data = [], $return_data = 'array') {
-		$data = $this->curl(getenv('API_URL') . $apiMethod, $data);
+	public function makeRequest($apiMethod, $data = [], $return_data = 'array', $method = 'GET') {
+		$data = $this->curl(getenv('API_URL') . $apiMethod, $data, $method);
 		return $return_data === 'array' ? json_decode($data, true) : json_decode($data);
 	}
 	

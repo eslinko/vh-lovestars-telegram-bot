@@ -50,6 +50,10 @@ require_once 'registration/RegistrationStepInvitationCodeCommand.php';
 require_once 'events/EventsCreateCommand.php';
 require_once 'events/GetMyEventsCommand.php';
 
+//expressions commands
+require_once 'expressions/CreateExpressionsStep1Command.php';
+require_once 'expressions/CreateExpressionsStep2Command.php';
+
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\HelpCommand::class);
@@ -77,7 +81,9 @@ $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep2Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep3Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep4Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStepInvitationCodeCommand::class);
-
+//expressions commands
+$telegram->addCommand( Telegram\Bot\Commands\CreateExpressionsStep1Command::class);
+$telegram->addCommand( Telegram\Bot\Commands\CreateExpressionsStep2Command::class);
 
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
