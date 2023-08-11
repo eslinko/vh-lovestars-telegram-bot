@@ -39,15 +39,15 @@ class GetMyDataCommand extends Command
 		];
 		
 		$options['text'] = __("My public alias:", $user['user']['language']) . " " . $user['user']['publicAlias'] . "\n";
-		$options['text'] .= __("My e-mail:", $user['user']['language']) . " " . $user['user']['email'];
+//		$options['text'] .= __("My e-mail:", $user['user']['language']) . " " . $user['user']['email'];
 		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
-				[
-					Keyboard::inlineButton([
-						'text' => __('Update Email', $user['user']['language']),
-						'callback_data' => 'update_my_email'
-					])
-				],
+//				[
+//					Keyboard::inlineButton([
+//						'text' => __('Update Email', $user['user']['language']),
+//						'callback_data' => 'update_my_email'
+//					])
+//				],
 				[
 					Keyboard::inlineButton([
 						'text' => __('Update Public Alias', $user['user']['language']),
