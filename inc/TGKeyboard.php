@@ -15,8 +15,8 @@ class TGKeyboard
         $text=$update->getMessage()['text'];
         switch ($text) {
             case "\xF0\x9F\x94\x97".__('My connections', $user['user']['language']):
-                $text=Connections::showConnections($telegram_id, $telegram, $user, $update);
-                TGKeyboard::showConnectionsKeyboard($telegram_id, $telegram, $user, $update, $text);
+                $text_resp=Connections::showConnections($telegram_id, $telegram, $user, $update);
+                TGKeyboard::showConnectionsKeyboard($telegram_id, $telegram, $user, $update, $text_resp);
                 break;
             case "\xE2\x9E\x95".__('Add connections', $user['user']['language']):
                 $telegram->triggerCommand('add_new_connection', $update);
