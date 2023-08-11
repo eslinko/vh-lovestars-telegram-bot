@@ -59,8 +59,8 @@ $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\HelpCommand::class);
 //user command
 $telegram->addCommand( Telegram\Bot\Commands\GetMyDataCommand::class);
-$telegram->addCommand( Telegram\Bot\Commands\UpdateMyEmailCommand::class);
-$telegram->addCommand( Telegram\Bot\Commands\UpdateMyEmailConfirmCodeCommand::class);
+//$telegram->addCommand( Telegram\Bot\Commands\UpdateMyEmailCommand::class);
+//$telegram->addCommand( Telegram\Bot\Commands\UpdateMyEmailConfirmCodeCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\UpdateMyPublicAliasCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\UpdateMyPasswordCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ChangeLanguageCommand::class);

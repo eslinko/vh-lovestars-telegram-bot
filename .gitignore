@@ -1,6 +1,4 @@
 .env
 /vendor
 .idea
-.idea/
-.idea/*
-.idea/deployment.xml
+.git

@@ -652,9 +652,29 @@ $translates = [
         'ru' => "Создание новых выражений",
         'et' => "Uute väljendite loomine"
     ],
-    'Please select the type of your creative expression:'=>[
+    'Please select the type of your creative expression:' => [
         'en' => "Please select the type of your creative expression:",
         'ru' => "Пожалуйста, выберите тип Вашего творческого самовыражения:",
         'et' => "Palun valige oma loomingulise väljenduse tüüp:"
+    ],
+    'My connections'=>[
+        'en' => "My connections",
+        'ru' => "Мои связи",
+        'et' => "Minu ühendused"
+    ],
+    'Add connections'=>[
+        'en' => "Add connections",
+        'ru' => "Добавить связь",
+        'et' => "Lisage ühendused"
+    ],
+    'Delete connection'=>[
+        'en' => "Delete connection",
+        'ru' => "Удалить связь",
+        'et' => "Kustuta ühendus"
+    ],
+    'Home'=>[
+        'en' => "Home",
+        'ru' => "Домой",
+        'et' => "Koju"
     ],
 ];
