@@ -102,7 +102,7 @@ class StartCommand extends Command
 				'resize_keyboard' => true,
 			]);
 		} else {
-			$options['text'] = sprintf(__("Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?", $user['language']), $user['publicAlias']) . $debug;
+			$options['text'] = sprintf(__("Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?", $user['language']), $user['publicAlias']);// . $debug;
 			$options['reply_markup'] = Keyboard::make([
 				'inline_keyboard' =>  [
 					[

@@ -692,4 +692,24 @@ $translates = [
         'ru' => "Спасибо",
         'et' => "Tänan teid"
     ],
+    'Congratulations! You have received your first Lovestar!'=>[
+        'en' => "Congratulations! You have received your first Lovestar!\nInvite 5 people with your unique codes and get one Lovestar per each successful registration.",
+        'ru' => "Поздравляем! Вы получили свой первый Lovestar!\nПригласите 5 человек, используя свои уникальные коды, и получите по одному Lovestar за каждую успешную регистрацию.",
+        'et' => "Palju õnne! Sa oled saanud oma esimese Lovestari!\nKutsu 5 inimest oma unikaalsete koodidega ja saad ühe Lovestari iga eduka registreerimise eest."
+    ],
+    'Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.'=>[
+        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.",
+        'ru' => "Поздравляем! Вы получили один Lovestar, потому что %s%s зарегистрировался на Zeya888 с Вашим кодом приглашения (%s). Теперь у вас %s Lovestar",
+        'et' => "Palju õnne! Saite ühe Lovestari, sest %s%s registreerus Zeyal oma kutsekoodiga (%s). Sul on nüüd %s Lovestars."
+    ],
+    'Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.'=>[
+        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.\n\nP.S. This is a temporary bonus that we offer on an early stage of the community in order to boost users growth.",
+        'ru' => "Поздравляем! Вы получили один Lovestar, потому что %s%s зарегистрировался на Zeya888 по приглашению вашей связи %s%s. Теперь у вас есть %s Lovestars.\n\nP.S. Это временный бонус, который мы предлагаем на ранней стадии развития сообщества, чтобы стимулировать рост пользователей.",
+        'et' => "Palju õnne! Sa oled saanud ühe Lovestari, sest %s%s registreerus Zeya888 oma ühenduse %s%s kutse kaudu. Sul on nüüd %s Lovestar.\n\nP.S. See on ajutine boonus, mida me pakume kogukonna varajases etapis, et suurendada kasutajate kasvu."
+    ],
+    'You have %s Lovestars'=>[
+        'en' => "You have %s Lovestars",
+        'ru' => "У вас %s Lovestar",
+        'et' => "Sul on %s Lovestarsi"
+    ],
 ];
