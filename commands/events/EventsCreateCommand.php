@@ -32,13 +32,13 @@ class EventsCreateCommand extends Command
 			return false;
 		}
 		
-		$options = [
+/*		$options = [
 			'chat_id' => $telegram_id,
 		];
 		
 		$options['text'] = __('Enter Event Url', $result['user']['language']);
-		$this->telegram->sendMessage($options);
-		
-		set_command_to_last_message($this->name, $telegram_id);
+		$this->telegram->sendMessage($options);*/
+        \TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __('Enter Event Url', $result['user']['language']));
+        set_command_to_last_message($this->name, $telegram_id);
 	}
 }
