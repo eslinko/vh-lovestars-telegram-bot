@@ -520,6 +520,7 @@ function registration_step_invitation_code($update, $telegram) {
 		return false;
 	}
 
+
 	if(empty($user['password_hash'])) {
 		$telegram->triggerCommand('registration_step_3', $update);
 		set_command_to_last_message('registration_step_3', $update->getMessage()->chat->id);
@@ -537,7 +538,38 @@ function registration_step_invitation_code($update, $telegram) {
 				],
 				'resize_keyboard' => true,
 			])]);
+        //here we come once, after registration only
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram,$result['user'],"\xF0\x9F\x91\x8B");
+        $resp = $lcApi->makeRequest('set-user-registration-lovecoins', ['telegram_id' => $update->getMessage()->chat->id]);
+        if($resp['status'] === false OR $resp['status'] === 'error'){
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($resp['message'], $result['user']['language'])]);
+        } else {
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $result['user']['language'])]);
+        }
 	}
+
+    //send message to go code owner
+    if($result['status'] === 'success' AND isset($result['owner_user'])){
+        if (empty($user['telegram_alias']))
+            $telegram_alias = '';
+        else
+            $telegram_alias = ' (@'.$user['telegram_alias'].')';
+        $telegram->sendMessage(['chat_id' => $result['owner_user']['telegram'], 'text' => sprintf(__("Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.", $result['owner_user']['language']), $user['publicAlias'], $telegram_alias, $code, $user['currentLovestarsCounter'])]);
+    }
+    //send message to code owner connections
+    if(isset($result['code_owner_connections']) AND !isset($result['code_owner_connections']['status'])){
+        foreach ($result['code_owner_connections'] as $conn_user){
+            if (empty($user['telegram_alias']))
+                $telegram_alias = '';
+            else
+                $telegram_alias = ' (@'.$user['telegram_alias'].')';
+            if (empty($result['owner_user']['telegram_alias']))
+                $telegram_alias2 = '';
+            else
+                $telegram_alias2 = ' (@'.$result['owner_user']['telegram_alias'].')';
+            $telegram->sendMessage(['chat_id' => $conn_user['telegram'], 'text' => sprintf(__("Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.", $conn_user['language']), $user['publicAlias'], $telegram_alias, $result['owner_user']['publicAlias'], $telegram_alias2, $conn_user['currentLovestarsCounter'])]);
+        }
+    }
 }
 
 function after_registration_step_3($update, $telegram) {
@@ -559,6 +591,14 @@ function after_registration_step_3($update, $telegram) {
         ],
         'resize_keyboard' => true,
     ])]);
+    //here we come once, after registration only
+    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram,$result['user'],"\xF0\x9F\x91\x8B");
+    $resp = $lcApi->makeRequest('set-user-registration-lovecoins', ['telegram_id' => $update->getMessage()->chat->id]);
+    if($resp['status'] === false OR $resp['status'] === 'error'){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($resp['message'], $result['user']['language'])]);
+    } else {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $result['user']['language'])]);
+    }
 
 //	$telegram->triggerCommand('registration_step_4', $update);
 	
@@ -728,7 +768,9 @@ function update_my_public_alias($update, $telegram) {
 		],
 		'resize_keyboard' => true,
 	])]);
-	return false;
+    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $user, $update, 'OK');
+
+   return false;
 }
 
 function update_my_password($update, $telegram) {
@@ -763,7 +805,8 @@ function update_my_password($update, $telegram) {
 		],
 		'resize_keyboard' => true,
 	])]);
-	return false;
+    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], $update, 'OK');
+    return false;
 }
 
 function events_create($update, $telegram) {
@@ -1034,7 +1077,8 @@ function add_new_connection($update, $telegram)
     $lcApi = new \LCAPPAPI();
     $return_data = $lcApi->makeRequest('get-users-by-any-alias', ['alias' => $look_for,'telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
     if(isset($return_data['status']) AND $return_data['status']==='error'){
-        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language'])]);
+        //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language'])]);
+        TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language']));
         return;
     }
     if(count($return_data)>1){
@@ -1110,8 +1154,7 @@ function add_new_connection($update, $telegram)
             $telegram->sendMessage($options);
         }
     }
-
-
+    TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], $update, 'OK');
 }
 function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
 {

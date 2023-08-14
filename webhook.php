@@ -68,9 +68,11 @@ if ($update->isType('callback_query')) {
 			$callbackName = $last_message_object->reply_markup->inline_keyboard[0][0]->callback_data;
 			reply_on_action_switcher($callbackName, $update, $telegram, $last_message_object);
 		} else {
+            //TGKeyboard::processKeyboard($update,$telegram);
 			$telegram->commandsHandler(true);
 		}
 	} else {
+        //TGKeyboard::processKeyboard($update,$telegram);
 		$telegram->commandsHandler(true);
 	}
 }
