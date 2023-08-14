@@ -52,6 +52,9 @@ class TGKeyboard
             case "\xF0\x9F\x94\xA5".__('My interests and values', $user['language']):
                 $telegram->triggerCommand('my_interests_and_values', $update);
                 break;
+            case "\xF0\x9F\x92\x9B".__('My Lovestars', $user['language']):
+                $telegram->triggerCommand('my_lovestars', $update);
+                break;
             case "\xF0\x9F\x8F\xA0".'Home':
                 TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user, 'Home');
                 break;
@@ -63,6 +66,7 @@ class TGKeyboard
     static public function showStartKeyboard(){
 
     }
+
     static public function showMainKeyboard($telegram_id, $telegram, $user, $text){
         $options =[];
         $options['chat_id'] = $telegram_id;
@@ -71,6 +75,8 @@ class TGKeyboard
                 [
                     Keyboard::button(['text' => "\xF0\x9F\x93\x9C".__('My data', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x8E\xAB".__('My invitation codes', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x92\x9B".__('My Lovestars', $user['language'])]),
+
                 ],[
                     Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('My interests and values', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
@@ -112,7 +118,7 @@ class TGKeyboard
             'keyboard' =>  [
                 [
                     Keyboard::button(['text' => "\xF0\x9F\x8F\xA0".__('Home', $user['language'])]),
-                    Keyboard::button(['text' => "\xF0\x9F\x93\xA7".__('Update Email', $user['language'])]),
+                    //Keyboard::button(['text' => "\xF0\x9F\x93\xA7".__('Update Email', $user['language'])]),
                     Keyboard::button(['text' => "\xE2\x9C\x8F".__('Update Public Alias', $user['language'])]),
                 ],[
                     Keyboard::button(['text' => "\xF0\x9F\x94\x92".__('Update Password', $user['language'])]),
@@ -126,6 +132,13 @@ class TGKeyboard
 
         $telegram->sendMessage($options);
 
+    }
+    static public function hideKeyboard($telegram_id, $telegram, $text){
+        $options =[];
+        $options['chat_id'] = $telegram_id;
+        $options['reply_markup'] = Keyboard::remove();
+        $options['text'] = $text;
+        $telegram->sendMessage($options);
     }
 
 }
