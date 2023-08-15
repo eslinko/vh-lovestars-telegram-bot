@@ -60,7 +60,9 @@ class MyConnectionsCommand extends Command
             } else {
                 $i=1;
                 foreach ($data['connections'] as $item) {
-                    $options['text'].=$i.'. @'.$item['username'].' created on '.date('j/m/y',strtotime($item['created_on']))."\n";
+                    $user_name_text = $item['public_alias'];
+                    if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
+                    $options['text'].=$i.'. '.$user_name_text.' created on '.date('j/m/y',strtotime($item['created_on']))."\n";
                     $i++;
                 }
             }

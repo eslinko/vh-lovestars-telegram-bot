@@ -774,7 +774,7 @@ function update_my_public_alias($update, $telegram) {
 		],
 		'resize_keyboard' => true,
 	])]);
-    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $user, $update, 'OK');
+    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $user, 'OK');
 
    return false;
 }
@@ -811,7 +811,7 @@ function update_my_password($update, $telegram) {
 		],
 		'resize_keyboard' => true,
 	])]);
-    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], $update, 'OK');
+    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
     return false;
 }
 
@@ -837,6 +837,8 @@ function events_create($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
+
         return false;
     }
 
@@ -877,6 +879,7 @@ function events_create($update, $telegram) {
         ],
         'resize_keyboard' => true,
     ])]);
+    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
     return false;
 }
 
@@ -924,6 +927,7 @@ function set_user_interests($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -939,6 +943,7 @@ function set_user_interests($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -958,10 +963,11 @@ function set_user_interests($update, $telegram) {
 			],
 			'resize_keyboard' => true,
 		])]);
-		return false;
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        return false;
 	}
-
-    $telegram->triggerCommand('my_interests_and_values', $update);;
+    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+    $telegram->triggerCommand('my_interests_and_values', $update);
 }
 
 function my_interests_and_values($update, $telegram) {
@@ -1003,7 +1009,7 @@ function my_interests_and_values($update, $telegram) {
                 'resize_keyboard' => true,
             ])]);
         }
-
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -1019,6 +1025,7 @@ function my_interests_and_values($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -1034,6 +1041,7 @@ function my_interests_and_values($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -1051,9 +1059,10 @@ function my_interests_and_values($update, $telegram) {
 			],
 			'resize_keyboard' => true,
 		])]);
-		return false;
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        return false;
 	}
-
+    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
     $telegram->triggerCommand('my_interests_and_values', $update);
 	return false;
 }
@@ -1160,7 +1169,7 @@ function add_new_connection($update, $telegram)
             $telegram->sendMessage($options);
         }
     }
-    TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], $update, 'OK');
+    TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
 }
 function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
 {
