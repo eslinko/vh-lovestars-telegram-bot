@@ -54,7 +54,9 @@ class SentInvitesCommand extends Command
                         $status = __('pending', $user['user']['language']);
                     else
                         $status = __('rejected', $user['user']['language']);
-                    $options['text'].=$i.'. @'.$item['username'].' updated at  '.date('j/m/y',strtotime($item['updated_at'])).' - '.$status."\n";
+                    $user_name_text = $item['public_alias'];
+                    if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
+                    $options['text'].=$i.'. '.$user_name_text.' updated at  '.date('j/m/y',strtotime($item['updated_at'])).' - '.$status."\n";
                     $i++;
                 }
             }
