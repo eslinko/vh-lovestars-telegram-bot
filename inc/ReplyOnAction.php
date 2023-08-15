@@ -102,6 +102,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_choose_description':
             expression_choose_description($update, $telegram, $last_message_object);
             break;
+        case 'expression_choose_file':
+            expression_choose_file($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1407,7 +1410,7 @@ function expression_choose_description($update, $telegram, $callbackName)
                 [
                     Keyboard::inlineButton([
                         'text' => 'Try again',
-                        'callback_data' => 'expression_choose_type'
+                        'callback_data' => 'expression_choose_description'
                     ])
                 ]
             ],
@@ -1416,11 +1419,57 @@ function expression_choose_description($update, $telegram, $callbackName)
         return false;
     }
 
-    $options['chat_id'] = $telegram_id;
-    $options['text'] = $description;
+    $telegram->triggerCommand('expression_choose_file', $update);
+    set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
+}
 
-    $telegram->sendMessage($options);
+//https://api.telegram.org/bot6325727268:AAHCpUa6mGrXwzhBP4CpOcWsEffug2xvlV0/getFile?file_id=BQACAgIAAxkBAAIvImTbqgiXTDADqg5MAeKa_UNyEDRYAAKGMAAC78LgSvb3rxYAAfB6RDAE - получаем file_path
+//https://api.telegram.org/file/bot6325727268:AAHCpUa6mGrXwzhBP4CpOcWsEffug2xvlV0/file_path - скачиваем файл
+function expression_choose_file($update, $telegram, $callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
 
-//    $telegram->triggerCommand('expression_choose_description', $update);
-//    set_command_to_last_message('expression_choose_description', $update->getMessage()->chat->id);
+    $telegram_id = $update->getMessage()->chat->id;
+    $description = trim($update->getMessage()->text);
+
+//    ob_start();
+//    echo "<pre>";
+//    var_dump($update->getMessage());
+//    echo "</pre>";
+//    $debug = ob_get_contents();
+//    ob_get_clean();
+
+
+//    $options['chat_id'] = $telegram_id;
+//    $options['text'] = $debug;
+////
+//    $telegram->sendMessage($options);
+
+
+//    $lcApi = new \LCAPPAPI();
+//    $result = $lcApi->makeRequest('set-description-to-expression', ['telegram_id' => $telegram_id, 'desc' => $description]);
+//
+//    if($result['status'] === 'error') {
+//        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+//            'inline_keyboard' =>  [
+//                [
+//                    Keyboard::inlineButton([
+//                        'text' => 'Try again',
+//                        'callback_data' => 'expression_choose_description'
+//                    ])
+//                ]
+//            ],
+//            'resize_keyboard' => true,
+//        ])]);
+//        return false;
+//    }
+//
+//    $options['chat_id'] = $telegram_id;
+//    $options['text'] = $description;
+//
+//    $telegram->sendMessage($options);
+//
+//    $telegram->triggerCommand('expression_choose_file', $update);
+//    set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
 }

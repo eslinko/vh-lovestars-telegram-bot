@@ -40,8 +40,8 @@ function user_is_verified($telegram_id) {
     $return['user'] = $return_data['user'];
     $return['expressions_in_proccess'] = $return_data['expressions_in_proccess'];
 
-    if(!empty($return['expressions_in_proccess'])) {
-        $return['expressions_create_command'] = get_command_for_expressions_create($return['expressions_in_proccess']);
+    if(!empty($return_data['expressions_in_proccess'])) {
+        $return['expressions_create_command'] = get_command_for_expressions_create($return_data['expressions_in_proccess']);
     }
 
 	return $return;
@@ -53,8 +53,9 @@ function get_command_for_expressions_create($expression)
         return 'expression_choose_type';
     } else if(empty($expression['description'])) {
         return 'expression_choose_description';
+    } else if (empty($expression['content'])) {
+        return 'expression_choose_file';
     }
-
 }
 
 function choose_step($user, $telegram_id = '') {

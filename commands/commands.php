@@ -57,6 +57,7 @@ require_once 'events/GetMyEventsCommand.php';
 require_once 'expressions/ExpressionStartCreateCommand.php';
 require_once 'expressions/ExpressionChooseTypeCommand.php';
 require_once 'expressions/ExpressionChooseDescriptionCommand.php';
+require_once 'expressions/ExpressionChooseFileCommand.php';
 
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
@@ -92,6 +93,7 @@ $telegram->addCommand( Telegram\Bot\Commands\RegistrationStepInvitationCodeComma
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionStartCreateCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseTypeCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseDescriptionCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseFileCommand::class);
 
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
