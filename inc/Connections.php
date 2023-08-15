@@ -18,7 +18,9 @@ class Connections
                 $i=1;
                 $text='';
                 foreach ($data['connections'] as $item) {
-                    $text.=$i.'. @'.$item['username'].' created on '.date('j/m/y',strtotime($item['created_on']))."\n";
+                    $user_name_text = $item['public_alias'];
+                    if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
+                    $text.=$i.'. '.$user_name_text.' created on '.date('j/m/y',strtotime($item['created_on']))."\n";
                     $i++;
                 }
             }
