@@ -51,10 +51,12 @@ class DeleteConnectionsCommand extends Command
             } else {
                 $users_buttons=[];
                 foreach ($data['connections'] as $item) {
+                    $user_name_text = $item['public_alias'];
+                    if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
                     $users_buttons[]=
                         [
                             Keyboard::inlineButton([
-                                'text' => $item['username'].' created on '.date('j/m/y',strtotime($item['created_on'])),
+                                'text' => $user_name_text.' created on '.date('j/m/y',strtotime($item['created_on'])),
                                 'callback_data' => 'delete_connection_by_id__'.$item['connection_id']
                             ])
                         ];
