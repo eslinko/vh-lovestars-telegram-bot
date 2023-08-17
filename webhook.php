@@ -2,7 +2,7 @@
 require './vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 use Telegram\Bot\Api;
 $telegram = new Api(getenv('BOT_ID'));
