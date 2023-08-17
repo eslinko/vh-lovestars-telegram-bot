@@ -13,9 +13,9 @@ $translates = [
 		'en' => 'Great job! You\'ve successfully set your language preferences.',
 		'ru' => 'Отличная работа! Ты успешно настроил(а) языковые предпочтения.'
 	],
-	'Welcome %s! You’re successfully connected to your Zeya account. How can I help you?' => [
-		'en' => 'Hey there, %s! You\'re now part of Zeya community. How can I assist you today?',
-		'ru' => 'Привет, %s! Поздравляю! Ты теперь часть сообщества Зеи. Как я могу тебе помочь?'
+	"Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?" => [
+		'en' => "Hey there, %s!\nYou are now part of Zeya community. How can I assist you today?",
+		'ru' => "Привет, %s!\nПоздравляю! Ты теперь часть сообщества Зеи. Как я могу тебе помочь?"
 	],
 	'Sorry, there was an error, please contact the administrator.' => [
 		'en' => 'Oops, something went sideways. Please give us a shout, so we can sort it out.',
@@ -369,4 +369,16 @@ $translates = [
 		'en' => 'Select an item from the list',
 		'ru' => 'Выбери из списка'
 	],
+    'Btn_remove_connection' => [
+        'en' => 'Remove connection',
+        'ru' => 'Удалить связь'
+    ],
+    'Tap on the user you want to remove from your connections in the list below' => [
+    'en' => 'Hey there! To remove a user from your connections, just tap on their name in the list below. Easy peasy!',
+    'ru' => 'Привет! Чтобы удалить пользователя из своих контактов, просто нажми на него в списке ниже. Просто и легко!'
+    ],
+    'Do you confirm that you want to remove from your connections user' => [
+        'en' => 'Are you sure you wanna kick this user out of your connections',
+        'ru' => 'Ты в курсе, что хочешь из своих контактов убрать пользователя'
+    ],
 ];

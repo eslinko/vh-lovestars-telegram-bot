@@ -50,23 +50,24 @@ class DeleteConnectionsCommand extends Command
                 $this->telegram->sendMessage($options);
             } else {
                 $users_buttons=[];
+                $i=1;
                 foreach ($data['connections'] as $item) {
                     $user_name_text = $item['public_alias'];
                     if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
                     $users_buttons[]=
                         [
                             Keyboard::inlineButton([
-                                'text' => $user_name_text.' created on '.date('j/m/y',strtotime($item['created_on'])),
-                                'callback_data' => 'delete_connection_by_id__'.$item['connection_id']
+                                'text' => $i.'. '.$user_name_text.' created on '.date('j/m/y',strtotime($item['created_on'])),
+                                'callback_data' => 'confirm_remove_connection_by_id__'.$item['connection_id'].'__'.$item['user_id']
                             ])
                         ];
-
+                    $i++;
                 }
                 $options['reply_markup'] = Keyboard::make([
                     'inline_keyboard' =>  $users_buttons,
                     'resize_keyboard' => true
                 ]);
-                $options['text'] = __('Delete connections:', $user['user']['language']);
+                $options['text'] = __('Tap on the user you want to remove from your connections in the list below', $user['user']['language']);
                 $this->telegram->sendMessage($options);
             }
         }

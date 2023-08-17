@@ -48,6 +48,8 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher('remove_interest_from_list_by_number', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'delete_connection_by_id')!==false) {
         reply_on_action_switcher('delete_connection_by_id', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'confirm_remove_connection_by_id')!==false) {
+        reply_on_action_switcher('confirm_remove_connection_by_id', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'accept_connection')!==false) {
         reply_on_action_switcher('accept_connection', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'decline_connection')!==false) {

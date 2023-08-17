@@ -105,6 +105,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_choose_file':
             expression_choose_file($update, $telegram, $last_message_object);
             break;
+        case 'confirm_remove_connection_by_id':
+            confirm_remove_connection_by_id($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1218,6 +1221,50 @@ function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
         ]);
         $telegram->sendMessage($options);
     }
+    return true;
+}
+function confirm_remove_connection_by_id($update, $telegram,$callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+    $telegram_id = $update->getMessage()->chat->id;
+    $ids = explode('__',$callbackName);
+    $connection_id=$ids[1];
+    $foe_id = $ids[2];
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('get-user-by-user-id', ['telegram_id' => $telegram_id,'user_id' => $foe_id]);
+
+    if($return_data['status'] === 'error' || empty($return_data)) {
+        $options =[];
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+
+    if(!empty($return_data['user']['telegram_alias']))
+        $usertext = $return_data['user']['publicAlias'].' (@'.$return_data['user']['telegram_alias'].')';
+    else
+        $usertext = $return_data['user']['publicAlias'];
+
+    $options = ['chat_id' => $telegram_id];
+    $options['text'] = __("Do you confirm that you want to remove from your connections user".' '.$usertext.'?', $is_verified['user']['language']);
+    $options['reply_markup'] = Keyboard::make([
+        'inline_keyboard' =>  [
+            [
+            Keyboard::inlineButton([
+                'text' => __('Yes', $is_verified['user']['language']),
+                'callback_data' => 'delete_connection_by_id__'.$connection_id
+            ]),
+            Keyboard::inlineButton([
+                'text' => __('No', $is_verified['user']['language']),
+                'callback_data' => 'help'
+            ])
+            ]
+        ],
+        'resize_keyboard' => true
+    ]);
+    $telegram->sendMessage($options);
     return true;
 }
 function delete_connection_by_id($update, $telegram,$callbackName)

@@ -21,7 +21,7 @@ class TGKeyboard
             case "\xE2\x9E\x95".__('Add connections', $user['language']):
                 $telegram->triggerCommand('add_new_connection', $update);
                 break;
-            case "\xE2\x9E\x96".__('Delete connection', $user['language']):
+            case "\xE2\x9E\x96".__('Btn_remove_connection', $user['language']):
                 $telegram->triggerCommand('delete_connections', $update);
                 break;
             case  "\xF0\x9F\x91\x8B".__('Sent invites', $user['language']):
@@ -128,7 +128,7 @@ class TGKeyboard
                     Keyboard::button(['text' => "\xE2\x9D\x8C".__('Rejected invites', $user['language'])]),
                 ],[
                     Keyboard::button(['text' => "\xE2\x9E\x95".__('Add connections', $user['language'])]),
-                    Keyboard::button(['text' => "\xE2\x9E\x96".__('Delete connection', $user['language'])]),
+                    Keyboard::button(['text' => "\xE2\x9E\x96".__('Btn_remove_connection', $user['language'])]),
                 ]
             ],
             'resize_keyboard' => true
