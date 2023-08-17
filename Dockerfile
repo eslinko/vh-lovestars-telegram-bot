@@ -37,6 +37,7 @@ RUN set -eux; \
 
 # copy sources
 COPY . ./
+RUN mv .env.prod .env
 RUN rm -Rf .docker/
 
 RUN set -eux; \
