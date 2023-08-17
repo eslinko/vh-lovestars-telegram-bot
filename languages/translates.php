@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 $translates = [
 	'Hello! To interact with the bot you must first complete a simple registration!' => [
 		'en' => 'Welcome to Zeya\'s Platform! To get started, let\'s create your profile real quick. It\'s a breeze, I promise!',
