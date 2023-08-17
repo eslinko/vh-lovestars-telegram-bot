@@ -1,715 +1,486 @@
 <?php
 
+<?php
+
 $translates = [
 	'Hello! To interact with the bot you must first complete a simple registration!' => [
-		'en' => 'Hello! To interact with the bot you must first complete a simple registration!',
-		'ru' => 'Здравствуйте! Чтобы взаимодействовать с ботом, сначала необходимо пройти простую регистрацию!',
-		'et' => 'Tere! Botiga suhtlemiseks peate esmalt täitma lihtsa registreerimise!'
+		'en' => 'Welcome to Zeya\'s Platform! To get started, let\'s create your profile real quick. It\'s a breeze, I promise!',
+		'ru' => 'Добро пожаловать на Платформу Зеи! Для начала создай свой профиль — это легко и быстро. Обещаю, это не займет больше пары минут!'
 	],
 	'Get a list of commands' => [
-		'en' => 'Get a list of commands',
-		'ru' => 'Получить список команд',
-		'et' => 'Abi käsk, saada käskude nimekiri'
+		'en' => 'Wondering what to do? Just ask me for a list of commands, and I\'ll lay them all out for you.',
+		'ru' => 'Что дальше? Просто спроси меня о списке команд, и я все расскажу.'
 	],
 	'You have successfully installed the language' => [
-		'en' => 'You have successfully installed the language',
-		'ru' => 'Вы успешно установили язык',
-		'et' => 'Olete edukalt paigaldanud keele',
-		'es' => 'Ha instalado correctamente el idioma',
-	],
-	"Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?" => [
-		'en' => "Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?",
-		'ru' => "Добро пожаловать, %s!\nВы успешно подключены к вашему счету Zeya.\nЧем я могу вам помочь?",
-		'et' => "Tere tulemast %s!\nTe olete edukalt ühendatud oma Zeya kontoga.\nMillega saan teid aidata?"
-	],
-	"Sorry, there was an error, please contact the administrator." => [
-		'en' => "Sorry, there was an error, please contact the administrator.",
-		'ru' => "Извините, произошла ошибка, пожалуйста, свяжитесь с администратором.",
-		'et' => "Vabandust, siin oli viga, palun võtke ühendust administraatoriga."
-	],
-	"Hello. Select a communication language:" => [
-		'en' => "Hello. Select a communication language:",
-		'ru' => "Здравствуйте. Выберите язык для общения с вами:",
-		'et' => "Tere. Valige suhtluskeel:"
-	],
-    "Select a communication language:" => [
-		'en' => "Select a communication language:",
-		'ru' => "Выберите язык для взаимодействия:",
-		'et' => "Valige suhtluskeel:"
-	],
-	"View a list of commands." => [
-		'en' => "View a list of commands.",
-		'ru' => "Просмотр списка команд.",
-		'et' => "Vaadake käskude loetelu."
-	],
-	"Start Command to get you started" => [
-		'en' => "Start command to get you started",
-		'ru' => "Начальная комманда",
-		'et' => "Käivita käsk, et alustada."
-	],
-	"My data" => [
-		'en' => "My data",
-		'ru' => "Мои данные",
-		'et' => "Minu andmed"
-	],
-	"Continue registration" => [
-		'en' => "Continue registration",
-		'ru' => "Продолжить регистрацию",
-		'et' => "Jätka registreerimist"
-	],
-	"Enter your public alias." => [
-		'en' => "Enter your public alias.",
-		'ru' => "Введите свой публичный псевдоним.",
-		'et' => "Sisestage oma avalik varjunimi."
-	],
-	"Start registration" => [
-		'en' => "Start registration",
-		'ru' => "Начать регистрацию",
-		'et' => "Alusta registreerimist"
-	],
-	"User public alias cannot contain spaces (should follow typical username style)!" => [
-		'en' => "User public alias cannot contain spaces (should follow typical username style)!",
-		'ru' => "Публичный псевдоним пользователя не может содержать пробелы (должен соответствовать типичному стилю имени пользователя)!",
-		'et' => "Kasutaja avalik alias ei tohi sisaldada tühikuid (peaks järgima tüüpilist kasutajanime stiili)!"
-	],
-	"Try again" => [
-		'en' => "Try again",
-		'ru' => "Попробуйте еще раз",
-		'et' => "Proovi uuesti"
-	],
-	"Such public alias already exists." => [
-		'en' => "Such public alias already exists.",
-		'ru' => "Такой публичный псевдоним уже существует.",
-		'et' => "Sellised avalikud varjunimed on juba olemas."
-	],
-	"Enter your password." => [
-		'en' => "Enter your password.",
-		'ru' => "Введите свой пароль.",
-		'et' => "Sisestage oma parool."
-	],
-	"Hello. You need to finish registering with the bot." => [
-		'en' => "Hello. You need to finish registering with the bot.",
-		'ru' => "Здравствуйте. Вам необходимо завершить регистрацию в боте.",
-		'et' => "Tere. Sa pead lõpetama botiga registreerimise."
-	],
-	"Congratulations, you have successfully registered!" => [
-		'en' => "Congratulations, you have successfully registered!",
-		'ru' => "Поздравляем, вы успешно зарегистрировались!",
-		'et' => "Palju õnne, olete edukalt registreerunud!"
-	],
-	"Update my public alias." => [
-		'en' => "Update my public alias.",
-		'ru' => "Обновите мой публичный псевдоним.",
-		'et' => "Minu avaliku varjunime ajakohastamine."
-	],
-	"Enter your new public alias." => [
-		'en' => "Enter your new public alias.",
-		'ru' => "Введите свой новый публичный псевдоним.",
-		'et' => "Sisestage oma uus avalik varjunimi."
-	],
-	"My public alias:" => [
-		'en' => "My public alias:",
-		'ru' => "Мой публичный псевдоним:",
-		'et' => "Minu avalik varjunimi:"
-	],
-	"My e-mail:" => [
-		'en' => "My e-mail:",
-		'ru' => "Мой е-мейл:",
-		'et' => "Minu e-post:"
-	],
-	"Update Email" => [
-		'en' => "Update Email",
-		'ru' => "Обновить Email",
-		'et' => "E-posti ajakohastamine"
-	],
-	"Update Public Alias" => [
-		'en' => "Update Public Alias",
-		'ru' => "Обновить пуб. псевдоним",
-		'et' => "Avaliku varjunime ajakohastamine"
-	],
-	"Update Password" => [
-		'en' => "Update Password",
-		'ru' => "Обновить пароль",
-		'et' => "Parooli uuendamine"
-	],
-	"Enter your new e-mail." => [
-		'en' => "Enter your new e-mail.",
-		'ru' => "Введите свой новый e-mail.",
-		'et' => "Sisestage oma uus e-posti aadress."
-	],
-	"Wrong e-mail format!" => [
-		'en' => "Wrong e-mail format!",
-		'ru' => "Неправильный формат электронной почты!",
-		'et' => "Vale e-posti vorming!"
-	],
-	"A user with such a e-mail already exists!" => [
-		'en' => "A user with such a e-mail already exists!",
-		'ru' => "Пользователь с таким E-mail уже существует!",
-		'et' => "Sellise e-postiga kasutaja on juba olemas!"
-	],
-	"Update my email confirmation code." => [
-		'en' => "Update my email confirmation code.",
-		'ru' => "Обновите код подтверждения моей электронной почты.",
-		'et' => "Uuenda minu e-posti kinnituskoodi."
-	],
-	"Enter the code you received in your new email to confirm the email change" => [
-		'en' => "Enter the code you received in your new email to confirm the email change",
-		'ru' => "Введите код, который вы получили на новый адрес электронной почты, чтобы подтвердить изменение электронной почты",
-		'et' => "Sisestage kood, mille saite oma uude e-posti aadressi, et kinnitada e-posti muutust"
-	],
-	"Incorrect code!" => [
-		'en' => "Incorrect code!",
-		'ru' => "Неверный код!",
-		'et' => "Vale kood!"
-	],
-	"You have successfully changed e-mail." => [
-		'en' => "You have successfully changed e-mail.",
-		'ru' => "Вы успешно изменили адрес электронной почты.",
-		'et' => "Olete edukalt muutnud e-posti aadressi."
-	],
-	"Show my data" => [
-		'en' => "Show my data",
-		'ru' => "Показать мои данные",
-		'et' => "Näita minu andmeid"
-	],
-	"Error, try again" => [
-		'en' => "Error, try again",
-		'ru' => "Ошибка, попробуйте еще раз",
-		'et' => "Viga, proovige uuesti"
-	],
-	"You have successfully changed your public alias." => [
-		'en' => "You have successfully changed your public alias.",
-		'ru' => "Вы успешно изменили публичный псевдоним.",
-		'et' => "Te olete edukalt muutnud avalikku aliase."
-	],
-	"Enter your new password." => [
-		'en' => "Enter your new password.",
-		'ru' => "Введите новый пароль.",
-		'et' => "Sisestage uus parool."
-	],
-	"You have successfully changed your password." => [
-		'en' => "You have successfully changed your password.",
-		'ru' => "Вы успешно изменили пароль.",
-		'et' => "Olete edukalt muutnud salasõna."
-	],
-    "Update my email." => [
-		'en' => "Update my email.",
-		'ru' => "Обновите мою электронную почту.",
-		'et' => "Uuenda minu e-posti aadressi."
-	],
-    "Update my password." => [
-		'en' => "Update my password.",
-		'ru' => "Обновите мой пароль.",
-		'et' => "Uuenda oma salasõna."
-	],
-    "First step of registration" => [
-		'en' => "First step of registration",
-		'ru' => "Первый шаг регистрации",
-		'et' => "Registreerimise esimene samm"
-	],
-    "Enter your E-mail." => [
-		'en' => "Enter your E-mail.",
-		'ru' => "Введите свой E-mail.",
-		'et' => "Sisestage oma e-posti aadress."
-	],
-    "Second step of registration" => [
-		'en' => "Second step of registration",
-		'ru' => "Второй этап регистрации",
-		'et' => "Registreerimise teine etapp"
-	],
-    "Third step of registration" => [
-		'en' => "Third step of registration",
-		'ru' => "Третий этап регистрации",
-		'et' => "Registreerimise kolmas etapp"
-	],
-    "Fourth step of registration" => [
-		'en' => "Fourth step of registration",
-		'ru' => "Четвертый этап регистрации",
-		'et' => "Registreerimise neljas etapp"
-	],
-    "We have emailed you a code. Enter it here" => [
-		'en' => "We have emailed you a code. Enter it here",
-		'ru' => "Мы отправили вам код по электронной почте. Введите его.",
-		'et' => "Oleme saatnud teile e-koodi. Sisestage see siia."
-	],
-    "Message about successful registration" => [
-		'en' => "Message about successful registration",
-		'ru' => "Сообщение об успешной регистрации",
-		'et' => "Teade eduka registreerimise kohta"
-	],
-    "Add event url." => [
-		'en' => "Add event url.",
-		'ru' => "Добавьте url события.",
-		'et' => "Lisa sündmuse url."
-	],
-    "Enter Event Url" => [
-		'en' => "Enter Event Url",
-		'ru' => "Введите Url события",
-		'et' => "Sisestage ürituse URL"
-	],
-    "Get list of my events." => [
-		'en' => "Get list of my events.",
-		'ru' => "Получите список своих мероприятий.",
-		'et' => "Hankige minu sündmuste nimekiri."
-	],
-    "Your events:" => [
-		'en' => "Your events:",
-		'ru' => "Ваши мероприятия:",
-		'et' => "Teie üritused:"
-	],
-    "Facebook Url:" => [
-		'en' => "Facebook Url:",
-		'ru' => "Ссылка Facebook:",
-		'et' => "Facebook Url:"
-	],
-    "Name:" => [
-        'en' => "Name:",
-        'ru' => "Название:",
-        'et' => "Nimi:"
-    ],
-    "Status:" => [
-		'en' => "Status:",
-		'ru' => "Статус:",
-		'et' => "Staatus:"
-	],
-    "You have no events of your own..." => [
-		'en' => "You have no events of your own...",
-		'ru' => "У вас нет собственных событий...",
-		'et' => "Teil ei ole oma üritusi..."
-	],
-    "An error has occurred." => [
-		'en' => "An error has occurred.",
-		'ru' => "Произошла ошибка.",
-		'et' => "Tekkis viga."
-	],
-    "Events successfully created:" => [
-		'en' => "Events successfully created:",
-		'ru' => "События успешно созданы:",
-		'et' => "Sündmused edukalt loodud:"
-	],
-    "Events already exist:" => [
-		'en' => "Events already exist:",
-		'ru' => "События уже существуют:",
-		'et' => "Sündmused on juba olemas:"
-	],
-    "The links to events are wrong:" => [
-		'en' => "The links to events are wrong:",
-		'ru' => "Ссыллки на события неправильные:",
-		'et' => "Lingid sündmustele on valed:"
-	],
-    "Show my events" => [
-		'en' => "Show my events",
-		'ru' => "Покажи мои события",
-		'et' => "Näita minu sündmusi"
-	],
-    "Change the language" => [
-		'en' => "Change the language",
-		'ru' => "Изменить язык",
-		'et' => "Keele muutmine"
-	],
-    "Another language" => [
-		'en' => "Another language",
-		'ru' => "Другой язык",
-		'et' => "Teine keel"
-	],
-	"Suggest a new language" => [
-		'en' => "Suggest a new language",
-		'ru' => "Предложите новый язык",
-		'et' => "Ettepanek uue keele kohta"
-	],
-	"Enter the language in which you would like to receive information from our chatbot, we will pass this information to the administrators and see what we can do:" => [
-		'en' => "Enter the language in which you would like to receive information from our chatbot, we will pass this information to the administrators and see what we can do:",
-		'ru' => "Введите язык, на котором вы хотели бы получать информацию от нашего чатбота, мы передадим эту информацию администраторам и посмотрим, что можно сделать:",
-		'et' => "Sisestage keel, milles soovite meie juturobotilt teavet saada, me edastame selle teabe administraatoritele ja vaatame, mida saame teha:"
-	],
-	"Thank you! Our administrators will consider your application :)" => [
-		'en' => "Thank you! Our administrators will consider your application :)",
-		'ru' => "Спасибо! Наши администраторы рассмотрят Вашу заявку :)",
-		'et' => "Aitäh! Meie administraatorid kaaluvad teie avaldust :)"
-	],
-	"Warning: This command is not supported" => [
-		'en' => "Warning: This command is not supported",
-		'ru' => "Предупреждение: Эта команда не поддерживается",
-		'et' => "Hoiatus: See käsk ei ole toetatud"
-	],
-	"Alarm! A user {userPublicAlias} suggested adding a new language:" => [
-		'en' => "Alarm! A user {userPublicAlias} suggested adding a new language:",
-		'ru' => "Внимание! Пользователь {userPublicAlias} предложил добавить новый язык:",
-		'et' => "Häire! Kasutaja {userPublicAlias} soovitas lisada uue keele:"
-	],
-	"Please provide your invitation code" => [
-		'en' => "Please provide your invitation code",
-		'ru' => "Пожалуйста, предоставьте свой код приглашения",
-		'et' => "Palun sisestage oma kutsungikood"
-	],
-	"Please make sure your code has format XXX-XXX-XXX" => [
-		'en' => "Please make sure your code has format XXX-XXX-XXX",
-		'ru' => "Пожалуйста, убедитесь, что ваш код имеет формат XXX-XXX-XXX",
-		'et' => "Palun veenduge, et teie kood oleks kujul XXX-XXX-XXX"
-	],
-	"Error! Try again later." => [
-		'en' => "Error! Try again later.",
-		'ru' => "Ошибка! Попробуйте позже.",
-		'et' => "Viga! Proovige hiljem uuesti."
-	],
-	"This code is not valid or has already been redeemed" => [
-		'en' => "This code is not valid or has already been redeemed",
-		'ru' => "Этот код недействителен или уже был использован",
-		'et' => "See kood ei ole kehtiv või on juba kasutatud"
-	],
-	"My invitation codes" => [
-		'en' => "My invitation codes",
-		'ru' => "Мои коды приглашения",
-		'et' => "Minu kutsungikoodid"
-	],
-	"You have no invitation codes available" => [
-		'en' => "You have no invitation codes available",
-		'ru' => "У вас нет доступных кодов приглашения",
-		'et' => "Teil pole saadaval ühtegi kutsungikoodi"
-	],
-	"Code" => [
-		'en' => "Code",
-		'ru' => "Код",
-		'et' => "Kood"
-	],
-	"Status" => [
-		'en' => "Status",
-		'ru' => "Статус",
-		'et' => "Staatus"
-	],
-	"Activated by - " => [
-		'en' => "Activated by - ",
-		'ru' => "Активировано пользователем - ",
-		'et' => "Aktiveeritud kasutaja poolt - "
-	],
-	"Not activated" => [
-		'en' => "Not activated",
-		'ru' => "Не активировано",
-		'et' => "Ei ole aktiveeritud"
-	],
-	"Used by" => [
-		'en' => "Used by",
-		'ru' => "Использовано пользователем",
-		'et' => "Kasutatud kasutaja poolt"
-	],
-	"on" => [
-		'en' => "on",
-		'ru' => " ",
-		'et' => " "
-	],
-	"You can forward any code which is not used to any of your telegram contacts along with the message below" => [
-		'en' => "You can forward any code which is not used to any of your telegram contacts along with the message below",
-		'ru' => "Вы можете переслать любой неиспользованный код любому из ваших контактов в Telegram вместе с сообщением ниже",
-		'et' => "Saate edastada mõnele oma Telegrami kontaktile kõik kasutamata koodid koos allpool oleva sõnumiga"
-	],
-	"This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members." => [
-		'en' => "This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members.",
-		'ru' => "Это приглашение в Zeya - сообщество людей, где вы можете найти людей на основе общих интересов и эмоциональной резонансности. Откройте бота: @zeya_community_bot и вставьте свой уникальный код, когда вас попросят. Вы не можете продолжить регистрацию без кода, который можно получить только от существующих участников сообщества.",
-		'et' => "See on kutse Zeya-sse - inimeste kogukonda, kus saate leida inimesi ühiste huvide ja emotsionaalse resonantsi põhjal. Ava bot: @zeya_community_bot ja kui sulle küsitakse, kleebi oma unikaalne kood. Registreerimist ei saa jätkata ilma koodita, mida saad ainult olemasolevatelt kogukonna liikmetelt."
-	],
-    "You are already registered" => [
-		'en' => "You are already registered",
-		'ru' => "Вы уже зарегистрированы",
-		'et' => "Te olete juba registreeritud"
-	],
-	"My interests and values" => [
-		'en' => "My interests and values",
-		'ru' => "Мои интересы и ценности",
-		'et' => "Minu huvid ja väärtused"
-	],
-	"What are your interests, hobbies and values that you want to share with other people? You can use any language. You can just list topics or even write an essay about who you really are. We will use this information in order to bring you closer to people sharing those values and interests. So, the more specific you are, the more support we can provide" => [
-		'en' => "What are your interests, hobbies and values that you want to share with other people? You can use any language. You can just list topics or even write an essay about who you really are. We will use this information in order to bring you closer to people sharing those values and interests. So, the more specific you are, the more support we can provide",
-		'ru' => "Каковы ваши интересы, хобби и ценности, которыми вы хотите поделиться с другими людьми? Вы можете использовать любой язык. Вы можете просто перечислить темы или даже написать эссе о том, кто вы есть на самом деле. Мы будем использовать эту информацию для того, чтобы сблизить вас с людьми, разделяющими эти ценности и интересы. Таким образом, чем более конкретными будут ваши пожелания, тем большую поддержку мы сможем вам оказать.",
-		'et' => "Millised on teie huvid, hobid ja väärtused, mida soovite teistega jagada? Võite kasutada mis tahes keelt. Võite lihtsalt loetleda teemasid või isegi kirjutada essee selle kohta, kes te tegelikult olete. Me kasutame seda teavet selleks, et tuua teid lähemale inimestele, kes jagavad neid väärtusi ja huvisid. Seega, mida konkreetsem oled, seda rohkem toetust saame pakkuda."
-	],
-    "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?" => [
-		'en' => "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?",
-		'ru' => "Представь себе, что у тебя решились все насущные задачи. У тебя достаточно денег на любой каприз, у тебя полная гармония с близкими, у них тоже все хорошо. Твои жилищные условия решены так, как ты сам(а) этого хочешь. И вот у тебя уйма времени, которое ты можешь тратить на себя. Перечисли списком (можно через запятую, можно просто в столбик), чем ты будетешь заниматься? По сути, какие действия тебя будут радовать и наполнять (едва ли ты захочешь заниматься тем, что тебе не нравится).",
-		'et' => "Kujutage ette, et kõik teie pakilised ülesanded on lahendatud. Teil on rohkem kui piisavalt raha iga kapriisiks ja te naudite täielikku harmooniat oma lähedastega, teades, et ka neil läheb kõik hästi. Teie elutingimused on täpselt sellised, nagu te soovite. Nüüd on teil palju vaba aega, mida saate kulutada iseendale. Loetlege need üles (võite kasutada komasid või kirjutada need lihtsalt veergu): Milliste tegevustega te tegeleksite? Sisuliselt millised tegevused tooksid teile rõõmu ja rahuldust (sest olgem ausad, te ei tahaks teha asju, mida te ei naudi)?"
-	],
-    "Error! The maximum allowed number of characters is 2000" => [
-        'en' => "Error! The maximum allowed number of characters is 2000",
-        'ru' => "Ошибка! Максимально допустимое количество символов 2000",
-        'et' => "Viga! Maksimaalne lubatud tähemärkide arv 2000"
-    ],
-    "Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number" => [
-        'en' => "Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number",
-        'ru' => "Введите любой новый пункт в отдельном сообщении, чтобы добавить его в свой список. Вы можете добавить свои хобби, интересы и ценности. \nЕсли вы хотите удалить какой-либо элемент, введите простое число.",
-        'et' => "Kirjutage iga uus kirje eraldi sõnumisse, et lisada see oma nimekirja. Saate lisada oma hobid, huvid ja väärtused. Kõik, mis aitab luua sidet sarnaselt mõtlevate inimestega.\nKui soovite mõne elemendi kustutada, kirjutage lihtne number"
-    ],
-    "Do not execute this command more than once every 10 seconds. Try later" => [
-        'en' => "Do not execute this command more than once every 10 seconds. Try later",
-        'ru' => "Нельзя выполнять эту команду чаще чем раз в 10 секунд. Попробуйте позже",
-        'et' => "Ärge täitke seda käsku sagedamini kui üks kord iga 10 sekundi järel. Proovige hiljem"
-    ],
-    "Do you really want to delete an item" => [
-        'en' => "Do you really want to delete an item",
-        'ru' => "Действительно ли вы хотите удалить элемент",
-        'et' => "Kas te tõesti soovite objekti kustutada"
-    ],
-    "Yes" => [
-        'en' => "Yes",
-        'ru' => "Да",
-        'et' => "Jah"
-    ],
-    "No" => [
-        'en' => "No",
-        'ru' => "Нет",
-        'et' => "Ei"
-    ],
-    "There is no such item" => [
-        'en' => "There is no such item",
-        'ru' => "Такого пункта не существует",
-        'et' => "Sellist eset ei ole olemas"
-    ],
-    "Sorry, but your account has been blocked." => [
-        'en' => "Sorry, but your account has been blocked.",
-        'ru' => "Извините, но ваша учетная запись была заблокирована.",
-        'et' => "Vabandust, kuid teie konto on blokeeritud."
-    ],
-    "Your list is empty. Should I generate a new one?" => [
-        'en' => "Your list is empty. Should I generate a new one?",
-        'ru' => "Ваш список пустой. Сгенерировать новый?",
-        'et' => "Teie nimekiri on tühi. Looge uus?"
-    ],
-    "Error! The maximum allowed number of characters is 50" => [
-        'en' => "Error! The maximum allowed number of characters is 50",
-        'ru' => "Ошибка! Максимально допустимое количество символов - 50",
-        'et' => "Viga! Maksimaalne lubatud tähemärkide arv on 50"
-    ],
-    "Error! The new element must be text and be more than 2 characters long." => [
-        'en' => "Error! The new element must be text and be more than 2 characters long.",
-        'ru' => "Ошибка! Новый элемент должен быть текстовым и иметь длину более 2 символов.",
-        'et' => "Viga! Uus element peab olema tekst ja rohkem kui 2 tähemärki pikk."
-    ],
-    "Clear all interests" => [
-        'en' => "Clear all interests",
-        'ru' => "Очистить все интересы",
-        'et' => "Tühjendage kõik huvid"
-    ],
-    "Are you sure you want to clear all your interests? This action cannot be undone." => [
-        'en' => "Are you sure you want to clear all your interests? This action cannot be undone.",
-        'ru' => "Вы уверены, что хотите очистить все свои интересы? Это действие не может быть отменено.",
-        'et' => "Kas olete kindel, et soovite kõik oma huvid kustutada? Seda tegevust ei saa tagasi võtta."
-    ],
-    "Yes, clear all" => [
-        'en' => "Yes, clear all",
-        'ru' => "Да, очистить все",
-        'et' => "Jah, tühjendage kõik"
-    ],
-    "No, cancel" => [
-        'en' => "No, cancel",
-        'ru' => "Нет, отмена",
-        'et' => "Ei, tühista"
-    ],
-    'Type Zeya platform alias or Telegram alias of a person you want to make a connection with.'=>[
-        'en' => "Type Zeya platform alias or Telegram alias of a person you want to make a connection with.",
-        'ru' => "Введите псевдоним платформы Zeya или псевдоним Telegram человека, с которым вы хотите установить связь.",
-        'et' => "Sisestage Zeya platvormi alias või Telegrami alias isiku kohta, kellega soovite ühendust luua."
-    ],
-    'You do not have connections'=>[
-        'en' => "You do not have connections",
-        'ru' => "У вас нет связей",
-        'et' => "Teil ei ole ühendusi"
-    ],
-    'Delete connections:'=>[
-        'en' => "Delete connections:",
-        'ru' => "Удалить связи:",
-        'et' => "Kustuta ühendused:"
-    ],
-    'Add new'=>[
-        'en' => "Add new",
-        'ru' => "Добавить новую",
-        'et' => "Lisa uus"
-    ],
-    'Delete'=>[
-        'en' => "Delete",
-        'ru' => "Удалить",
-        'et' => "Kustuta"
-    ],
-    'User alias'=>[
-        'en' => "User alias",
-        'ru' => "Псевдоним пользователя",
-        'et' => "Kasutaja varjunimi"
-    ],
-    'Telegram alias'=>[
-        'en' => "Telegram alias",
-        'ru' => "Псевдоним Telegram",
-        'et' => "Telegrammi varjunimi"
-    ],
-    'Search results:'=>[
-        'en' => "Search results:",
-        'ru' => "Результаты поиска:",
-        'et' => "Otsingu tulemused:"
-    ],
-    'Would you like to send request to this user to be part of your connections?'=>[
-        'en' => "Would you like to send request to this user to be part of your connections?",
-        'ru' => "Хотите ли вы отправить запрос этому пользователю, чтобы добавить в список ваших связей?",
-        'et' => "Kas soovite saata sellele kasutajale taotluse, et ta oleks osa teie ühendustest?"
-    ],
-    'Nothing found'=>[
-        'en' => "Nothing found",
-        'ru' => "Ничего не найдено",
-        'et' => "Midagi ei leitud"
-    ],
-    'Request has been sent.'=>[
-        'en' => "Request has been sent.",
-        'ru' => "Запрос отправлен.",
-        'et' => "Taotlus on saadetud."
-    ],
-    'sent you a connection request.'=>[
-        'en' => "sent you a connection request.",
-        'ru' => "отправил вам запрос на создание связи.",
-        'et' => "saatis teile ühendustaotluse."
-    ],
-    'Connection has been deleted.'=>[
-        'en' => "Connection has been deleted.",
-        'ru' => "Связь удалена.",
-        'et' => "Ühendus on kustutatud."
-    ],
-    'Request has been accepted.'=>[
-        'en' => "Request has been accepted.",
-        'ru' => "Запрос принят.",
-        'et' => "Taotlus on vastu võetud."
-    ],
-    'Request has been declined.'=>[
-        'en' => "Request has been declined.",
-        'ru' => "Запрос отклонён.",
-        'et' => "Taotlus on tagasi lükatud."
-    ],
-    'This invitation was already sent by you and still pending.'=>[
-        'en' => "This invitation was already sent by you and still pending.",
-        'ru' => "Это приглашение уже было отправлено Вами и все ещё находится на рассмотрении.",
-        'et' => "See kutse on teie poolt juba saadetud ja on endiselt menetluses."
-    ],
-    'This invitation was already sent by you and accepted.'=>[
-        'en' => "This invitation was already sent by you and accepted.",
-        'ru' => "Это приглашение уже было отправлено Вами и принято.",
-        'et' => "See kutse on juba teie poolt saadetud ja vastu võetud."
-    ],
-    'This invitation was already sent by you and rejected.'=>[
-        'en' => "This invitation was already sent by you and rejected. You may contact the person and ask to find your rejected invitation and re-accept it.",
-        'ru' => "Это приглашение уже было отправлено Вами и отклонено. Вы можете связаться с этим человеком и попросить найти ваше отклоненное приглашение и принять его повторно.",
-        'et' => "See kutse on juba teie poolt saadetud ja tagasi lükatud. Võite võtta isikuga ühendust ja paluda, et ta leiaks teie tagasi lükatud kutse ja võtaks selle uuesti vastu."
-    ],
-    'This invitation was already sent to you and accepted.'=>[
-        'en' => "This invitation was already sent to you and accepted.",
-        'ru' => "Это приглашение уже было отправлено Вам и принято.",
-        'et' => "See kutse on teile juba saadetud ja vastu võetud."
-    ],
-    'Please enter text only. Try again.'=>[
-        'en' => "Please enter text only. Try again.",
-        'ru' => "Пожалуйста, вводите только текст. Попробуйте ещё раз.",
-        'et' => "Palun sisestage ainult tekst. Proovige uuesti."
-    ],
-    'This person is not registered on Zeya.'=>[
-        'en' => "This person is not registered on Zeya. You can use one of your invitation codes listed below and forward one of it with the proceeding message that contains indications regarding how to use it.",
-        'ru' => "Этот человек не зарегистрирован в Zeya. Вы можете воспользоваться одним из приведенных ниже кодов приглашения и переслать его вместе с соответствующим сообщением, содержащим указания по его использованию.",
-        'et' => "See isik ei ole Zeyas registreeritud. Võite kasutada ühte allpool loetletud kutsekoodidest ja edastada ühe neist koos edasise sõnumiga, mis sisaldab viiteid selle kasutamise kohta."
-    ],
-    'You do not have pending or rejected invites'=>[
-        'en' => "You do not have pending or rejected invites",
-        'ru' => "У вас нет ожидающих или отклоненных приглашений",
-        'et' => "Teil ei ole pooleliolevaid või tagasilükatud kutseid"
-    ],
-    'Your sent invites.'=>[
-        'en' => "Your sent invites.",
-        'ru' => "Ваши отправленные приглашения",
-        'et' => "Teie saadetud kutsed."
-    ],
-    'Rejected invites.'=>[
-        'en' => "Rejected invites.",
-        'ru' => "Отклонённые приглашения.",
-        'et' => "Tagasilükatud kutsed."
-    ],
-    'pending'=>[
-        'en' => "pending",
-        'ru' => "в ожидании",
-        'et' => "ootab"
-    ],
-    'rejected'=>[
-        'en' => "rejected",
-        'ru' => "отклонено",
-        'et' => "tagasi lükatud"
-    ],
-    'Accept'=>[
-        'en' => "Accept",
-        'ru' => "Принять",
-        'et' => "Aktsepteeri"
-    ],
-    'Rejected invites:'=>[
-        'en' => "Rejected invites:",
-        'ru' => "Отклонённые приглашения:",
-        'et' => "Tagasilükatud kutsed:"
-    ],
-    'Are you sure that you want to revert reject and accept this invite from'=>[
-        'en' => "Are you sure that you want to revert reject and accept this invite from",
-        'ru' => "Вы уверены, что хотите отменить отказ и принять это приглашение от",
-        'et' => "Kas olete kindel, et soovite tagasi lükata ja vastu võtta selle kutse alates"
-    ],
-    'Create New Expressions'=>[
-        'en' => "Create New Expressions",
-        'ru' => "Создание новых выражений",
-        'et' => "Uute väljendite loomine"
-    ],
-    'Please select the type of your creative expression:' => [
-        'en' => "Please select the type of your creative expression:",
-        'ru' => "Пожалуйста, выберите тип Вашего творческого самовыражения:",
-        'et' => "Palun valige oma loomingulise väljenduse tüüp:"
-    ],
-    'My connections'=>[
-        'en' => "My connections",
-        'ru' => "Мои связи",
-        'et' => "Minu ühendused"
-    ],
-    'Add connections'=>[
-        'en' => "Add connections",
-        'ru' => "Добавить связь",
-        'et' => "Lisage ühendused"
-    ],
-    'Delete connection'=>[
-        'en' => "Delete connection",
-        'ru' => "Удалить связь",
-        'et' => "Kustuta ühendus"
-    ],
-    'Home'=>[
-        'en' => "Home",
-        'ru' => "Домой",
-        'et' => "Koju"
-    ],
-    'No such type was found! Try using a type from the suggested variants.'=>[
-        'en' => "No such type was found! Try using a type from the suggested variants.",
-        'ru' => "Такой тип не найден! Попробуйте использовать тип из предложенных вариантов.",
-        'et' => "Sellist tüüpi ei leitud! Proovige kasutada tüüpi soovitatud variantide hulgast."
-    ],
-    'Please provide a description of your creative expression:'=>[
-        'en' => "Please provide a description of your creative expression:",
-        'ru' => "Пожалуйста, дайте описание Вашего творческого самовыражения:",
-        'et' => "Palun esitage oma loomingulise väljenduse kirjeldus:"
-    ],
-    'Thank you'=>[
-        'en' => "Thank you",
-        'ru' => "Спасибо",
-        'et' => "Tänan teid"
-    ],
-    'Congratulations! You have received your first Lovestar!'=>[
-        'en' => "Congratulations! You have received your first Lovestar!\nInvite 5 people with your unique codes and get one Lovestar per each successful registration.",
-        'ru' => "Поздравляем! Вы получили свой первый Lovestar!\nПригласите 5 человек, используя свои уникальные коды, и получите по одному Lovestar за каждую успешную регистрацию.",
-        'et' => "Palju õnne! Sa oled saanud oma esimese Lovestari!\nKutsu 5 inimest oma unikaalsete koodidega ja saad ühe Lovestari iga eduka registreerimise eest."
-    ],
-    'Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.'=>[
-        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.",
-        'ru' => "Поздравляем! Вы получили один Lovestar, потому что %s%s зарегистрировался на Zeya888 с Вашим кодом приглашения (%s). Теперь у вас %s Lovestar",
-        'et' => "Palju õnne! Saite ühe Lovestari, sest %s%s registreerus Zeyal oma kutsekoodiga (%s). Sul on nüüd %s Lovestars."
-    ],
-    'Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.'=>[
-        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.\n\nP.S. This is a temporary bonus that we offer on an early stage of the community in order to boost users growth.",
-        'ru' => "Поздравляем! Вы получили один Lovestar, потому что %s%s зарегистрировался на Zeya888 по приглашению вашей связи %s%s. Теперь у вас есть %s Lovestars.\n\nP.S. Это временный бонус, который мы предлагаем на ранней стадии развития сообщества, чтобы стимулировать рост пользователей.",
-        'et' => "Palju õnne! Sa oled saanud ühe Lovestari, sest %s%s registreerus Zeya888 oma ühenduse %s%s kutse kaudu. Sul on nüüd %s Lovestar.\n\nP.S. See on ajutine boonus, mida me pakume kogukonna varajases etapis, et suurendada kasutajate kasvu."
-    ],
-    'You have %s Lovestars'=>[
-        'en' => "You have %s Lovestars",
-        'ru' => "У вас %s Lovestar",
-        'et' => "Sul on %s Lovestarsi"
-    ],
+		'en' => 'Great job! You\'ve successfully set your language preferences.',
+		'ru' => 'Отличная работа! Ты успешно настроил(а) языковые предпочтения.'
+	],
+	'Welcome %s! You’re successfully connected to your Zeya account. How can I help you?' => [
+		'en' => 'Hey there, %s! You\'re now part of Zeya community. How can I assist you today?',
+		'ru' => 'Привет, %s! Поздравляю! Ты теперь часть сообщества Зеи. Как я могу тебе помочь?'
+	],
+	'Sorry, there was an error, please contact the administrator.' => [
+		'en' => 'Oops, something went sideways. Please give us a shout, so we can sort it out.',
+		'ru' => 'Ой, что-то пошло не так. Просто дай нам знать, и мы все исправим.'
+	],
+	'Hello. Select a communication language:' => [
+		'en' => 'Hello! Pick your preferred language, and let\'s dive in together.',
+		'ru' => 'Привет! Выбери желаемый язык, и вперед!'
+	],
+	'Select a communication language:' => [
+		'en' => 'Time to pick your language!',
+		'ru' => 'Пора выбрать язык!'
+	],
+	'View a list of commands.' => [
+		'en' => 'View a list of commands.',
+		'ru' => 'Список команд'
+	],
+	'Start Command to get you started' => [
+		'en' => 'Feeling a bit lost? Start with the handy \'Start\' command to kick off your journey.',
+		'ru' => 'Чувствуешь себя немного растерянным(ой)? Начните с удобной команды "Начать".'
+	],
+	'My data' => [
+		'en' => 'My Data',
+		'ru' => 'Мои данные'
+	],
+	'Continue registration' => [
+		'en' => 'Continue my registration!',
+		'ru' => 'Продолжаю процесс регистрации!'
+	],
+	'Enter your public alias.' => [
+		'en' => 'Your Public Persona: Enter the public alias that represents you best.',
+		'ru' => 'Твой алиас: назови себя так, как душе угодно!'
+	],
+	'Start registration' => [
+		'en' => 'Start the registration journey',
+		'ru' => 'Давайте начнем регистрацию'
+	],
+	'User public alias cannot contain spaces (should follow typical username style)!' => [
+		'en' => 'Name Wisely: Remember, your public alias can\'t have spaces. Go for that classic username style!',
+		'ru' => 'Выбирайте имя с умом: Помни, что алиас не должен содержать пробелов.'
+	],
+	'Try again' => [
+		'en' => 'Another Shot: Don\'t worry, you\'ve got this. Give it another go.',
+		'ru' => 'Другая попытка: Не переживай, ты сможешь. Попробуй еще раз.'
+	],
+	'Such public alias already exists.' => [
+		'en' => 'One of a Kind: Oops, looks like that public alias is already taken. Time to get creative!',
+		'ru' => 'Уникальность имени: Ой, кажется, такое имя уже занято. Придумай что-то свое!'
+	],
+	'Enter your password.' => [
+		'en' => 'Access Granted: Time to set up your password. Choose wisely!',
+		'ru' => 'Доступ предоставлен: Пора установить пароль. Выбери его внимательно!'
+	],
+	'Hello. You need to finish registering with the bot.' => [
+		'en' => 'Almost There: Welcome back! Finish up your registration journey with the bot.',
+		'ru' => 'Почти готово: С возвращением! Давай закончим регистрацию.'
+	],
+	'Congratulations, you have successfully registered!' => [
+		'en' => 'Welcome Aboard: It\'s official – you\'re part of Zeya community now! Congratulations on a successful registration!',
+		'ru' => 'Добро пожаловать на борт: Теперь ты часть сообщества Зеи! Поздравляем с успешной регистрацией!'
+	],
+	'Update my public alias.' => [
+		'en' => 'Update my public alias.',
+		'ru' => 'Обновление алиаса'
+	],
+	'Enter your new public alias.' => [
+		'en' => 'New Alias, Who This: Ready for a change? Enter your fresh new public alias.',
+		'ru' => 'Новый алиас: Готов(а) сменить внешний облик? Введи новый алиас!'
+	],
+	'My public alias:' => [
+		'en' => 'Here\'s how you\'ll be known: your public alias.',
+		'ru' => 'Тебя будут узнавать в нашем сообществе по этому алиасу.'
+	],
+	'My e-mail:' => [
+		'en' => 'Stay Connected: This is where we\'ll reach you: your e-mail.',
+		'ru' => 'Оставайся на связи: Это, где с тобой свяжутся: твой е-мейл.'
+	],
+	'Update Email' => [
+		'en' => 'Update e-mail',
+		'ru' => 'Обновить е-мейл'
+	],
+	'Update Public Alias' => [
+		'en' => 'Update Public Alias',
+		'ru' => 'Обновить алиас'
+	],
+	'Update Password' => [
+		'en' => 'Update Password',
+		'ru' => 'Обновить пароль'
+	],
+	'Enter your new e-mail.' => [
+		'en' => 'Fresh Inbox: Enter your shiny new e-mail address.',
+		'ru' => 'Новая почта: Введи новый е-мейл'
+	],
+	'Wrong e-mail format!' => [
+		'en' => 'Oops, Format It Right: Make sure your e-mail format is spot-on.',
+		'ru' => 'Правильный формат: Проверь, что е-мейл указан правильно.'
+	],
+	'A user with such a e-mail already exists!' => [
+		'en' => 'Already in Use: Looks like someone else is using that e-mail. Choose another!',
+		'ru' => 'Уже используется: Кажется, этот е-мейл уже занят. Выбери другой!'
+	],
+	'Update my email confirmation code.' => [
+		'en' => 'Security First: Ready to update your e-mail confirmation code? Let\'s do it.',
+		'ru' => 'Безопасность превыше всего: Готов(а) обновить код подтверждения почты? Давай начнем.'
+	],
+	'Enter the code you received in your new email to confirm the email change' => [
+		'en' => 'Confirm Your New E-mail: Enter the code sent to your new e-mail to complete the change.',
+		'ru' => 'Подтверди новый е-мейл: Введи код, отправленный тебе на е-мейл.'
+	],
+	'Incorrect code!' => [
+		'en' => 'Oops, Not Quite Right: Incorrect code! Double-check and try again.',
+		'ru' => 'Ой, не так: Неверный код! Попробуй снова.'
+	],
+	'You have successfully changed e-mail.' => [
+		'en' => 'Mission Accomplished: You\'ve successfully changed your e-mail. Nice work!',
+		'ru' => 'Задача выполнена: е-мейл успешно изменен!'
+	],
+	'Show my data' => [
+		'en' => 'Reveal My Details',
+		'ru' => 'Покажи мои данные'
+	],
+	'Error, try again' => [
+		'en' => 'Oops, Try Again: Sorry, an error occurred. Give it another shot.',
+		'ru' => 'Ой, еще раз: Ошибка. Попробуй еще раз.'
+	],
+	'You have successfully changed your public alias.' => [
+		'en' => 'Your public alias has been successfully changed.',
+		'ru' => 'Твой алиас успешно изменен.'
+	],
+	'Enter your new password.' => [
+		'en' => 'Enter your fresh new password.',
+		'ru' => 'Введи новый пароль.'
+	],
+	'You have successfully changed your password.' => [
+		'en' => 'Congrats! Your password has been updated successfully.',
+		'ru' => 'Поздравляем! Пароль успешно обновлен.'
+	],
+	'Update my email.' => [
+		'en' => 'Let\'s update your e-mail, shall we?',
+		'ru' => 'Давай обновим почту, ок?'
+	],
+	'Update my password.' => [
+		'en' => 'Ready for a password change? Let\'s make it happen.',
+		'ru' => 'Сменить пароль? Давай сделаем это.'
+	],
+	'First step of registration' => [
+		'en' => 'First Step of Your Journey:',
+		'ru' => 'Первый шаг:'
+	],
+	'Enter your E-mail.' => [
+		'en' => 'Enter your e-mail address to continue.',
+		'ru' => 'Введи е-мейл, чтобы продолжить.'
+	],
+	'Second step of registration' => [
+		'en' => 'Next Step Ahead:',
+		'ru' => 'Следующий шаг:'
+	],
+	'Third step of registration' => [
+		'en' => 'Moving Along:',
+		'ru' => 'Дальше:'
+	],
+	'Fourth step of registration' => [
+		'en' => 'Almost There:',
+		'ru' => 'Почти готово:'
+	],
+	'We have emailed you a code. Enter it here' => [
+		'en' => 'Check your e-mail! We\'ve sent you a code. Enter it here.',
+		'ru' => 'Проверь почту! Мы отправили код. Введи его здесь.'
+	],
+	'Message about successful registration' => [
+		'en' => 'You\'ve successfully registered! Welcome aboard to Zeya Community!',
+		'ru' => 'Успешная регистрация! Добро пожаловать в Зею!'
+	],
+	'Add event url.' => [
+		'en' => 'Add Event URL',
+		'ru' => 'Добавить URL мероприятия'
+	],
+	'Enter Event Url' => [
+		'en' => 'Type in the event URL, and we\'ll get things set up.',
+		'ru' => 'Введи URL мероприятия, мы все настроим.'
+	],
+	'Get list of my events.' => [
+		'en' => 'Fetch Your Event List',
+		'ru' => 'Список мероприятий'
+	],
+	'Your events:' => [
+		'en' => 'Here are your events.',
+		'ru' => 'Твои мероприятия.'
+	],
+	'Facebook Url:' => [
+		'en' => 'Facebook URL:',
+		'ru' => 'URL в Facebook:'
+	],
+	'Name:' => [
+		'en' => 'Tell us your name (how you want it to sound):',
+		'ru' => 'Скажи, как тебя зовут:'
+	],
+	'Status:' => [
+		'en' => 'Current Status:',
+		'ru' => 'Текущий статус:'
+	],
+	'You have no events of your own...' => [
+		'en' => 'No events of your own',
+		'ru' => 'Нет мероприятий'
+	],
+	'An error has occurred.' => [
+		'en' => 'Houston, We Have a Problem: Oops! An error has occurred.',
+		'ru' => 'Проблема: Ой! Произошла ошибка.'
+	],
+	'Events successfully created:' => [
+		'en' => 'Event Creation Triumph: Success! Your events have been created.',
+		'ru' => 'Успешно создано: Ура! Мероприятия созданы.'
+	],
+	'Update my email confirmation code.' => [
+		'en' => 'Security First: Ready to update your e-mail confirmation code? Let\'s do it.',
+		'ru' => 'Безопасность превыше всего: Готов(а) обновить код подтверждения почты? Давай начнем.'
+	],
+	'Enter the code you received in your new email to confirm the email change' => [
+		'en' => 'Confirm Your New E-mail: Enter the code sent to your new e-mail to complete the change.',
+		'ru' => 'Подтверди новый е-мейл: Введи код, отправленный тебе на е-мейл.'
+	],
+	'Incorrect code!' => [
+		'en' => 'Oops, Not Quite Right: Incorrect code! Double-check and try again.',
+		'ru' => 'Ой, не так: Неверный код! Попробуй снова.'
+	],
+	'You have successfully changed e-mail.' => [
+		'en' => 'Mission Accomplished: You\'ve successfully changed your e-mail. Nice work!',
+		'ru' => 'Задача выполнена: е-мейл успешно изменен!'
+	],
+	'Show my data' => [
+		'en' => 'Reveal My Details',
+		'ru' => 'Покажи мои данные'
+	],
+	'Error, try again' => [
+		'en' => 'Oops, Try Again: Sorry, an error occurred. Give it another shot.',
+		'ru' => 'Ой, еще раз: Ошибка. Попробуй еще раз.'
+	],
+	'You have successfully changed your public alias.' => [
+		'en' => 'Your public alias has been successfully changed.',
+		'ru' => 'Твой алиас успешно изменен.'
+	],
+	'Enter your new password.' => [
+		'en' => 'Enter your fresh new password.',
+		'ru' => 'Введи новый пароль.'
+	],
+	'You have successfully changed your password.' => [
+		'en' => 'Congrats! Your password has been updated successfully.',
+		'ru' => 'Поздравляем! Пароль успешно обновлен.'
+	],
+	'Update my email.' => [
+		'en' => 'Let\'s update your e-mail, shall we?',
+		'ru' => 'Давай обновим почту, ок?'
+	],
+	'Update my password.' => [
+		'en' => 'Ready for a password change? Let\'s make it happen.',
+		'ru' => 'Сменить пароль? Давай сделаем это.'
+	],
+	'First step of registration' => [
+		'en' => 'First Step of Your Journey:',
+		'ru' => 'Первый шаг:'
+	],
+	'Enter your E-mail.' => [
+		'en' => 'Enter your e-mail address to continue.',
+		'ru' => 'Введи е-мейл, чтобы продолжить.'
+	],
+	'Second step of registration' => [
+		'en' => 'Next Step Ahead:',
+		'ru' => 'Следующий шаг:'
+	],
+	'Third step of registration' => [
+		'en' => 'Moving Along:',
+		'ru' => 'Дальше:'
+	],
+	'Fourth step of registration' => [
+		'en' => 'Almost There:',
+		'ru' => 'Почти готово:'
+	],
+	'We have emailed you a code. Enter it here' => [
+		'en' => 'Check your e-mail! We\'ve sent you a code. Enter it here.',
+		'ru' => 'Проверь почту! Мы отправили код. Введи его здесь.'
+	],
+	'Message about successful registration' => [
+		'en' => 'You\'ve successfully registered! Welcome aboard to Zeya Community!',
+		'ru' => 'Успешная регистрация! Добро пожаловать в Зею!'
+	],
+	'Add event url.' => [
+		'en' => 'Add Event URL',
+		'ru' => 'Добавить URL мероприятия'
+	],
+	'Enter Event Url' => [
+		'en' => 'Type in the event URL, and we\'ll get things set up.',
+		'ru' => 'Введи URL мероприятия, мы все настроим.'
+	],
+	'Get list of my events.' => [
+		'en' => 'Fetch Your Event List',
+		'ru' => 'Список мероприятий'
+	],
+	'Your events:' => [
+		'en' => 'Here are your events.',
+		'ru' => 'Твои мероприятия.'
+	],
+	'Facebook Url:' => [
+		'en' => 'Facebook URL:',
+		'ru' => 'URL в Facebook:'
+	],
+	'Name:' => [
+		'en' => 'Tell us your name (how you want it to sound):',
+		'ru' => 'Скажи, как тебя зовут:'
+	],
+	'Status:' => [
+		'en' => 'Current Status:',
+		'ru' => 'Текущий статус:'
+	],
+	'You have no events of your own...' => [
+		'en' => 'No events of your own',
+		'ru' => 'Нет мероприятий'
+	],
+	'An error has occurred.' => [
+		'en' => 'Houston, We Have a Problem: Oops! An error has occurred.',
+		'ru' => 'Проблема: Ой! Произошла ошибка.'
+	],
+	'Events successfully created:' => [
+		'en' => 'Event Creation Triumph: Success! Your events have been created.',
+		'ru' => 'Успешно создано: Ура! Мероприятия созданы.'
+	],
+	'Events already exist:' => [
+		'en' => 'Events Already Exist: Looks like those events already exist.',
+		'ru' => 'Мероприятия уже есть: Такие мероприятия уже есть.'
+	],
+	'The links to events are wrong:' => [
+		'en' => 'Link Trouble: Something\'s not right with the event links.',
+		'ru' => 'Проблемы со ссылками: Что-то не так с ссылками на мероприятия.'
+	],
+	'Show my events' => [
+		'en' => 'Time to showcase your events.',
+		'ru' => 'Пора представить мероприятия.'
+	],
+	'Change the language' => [
+		'en' => 'Change Up the Language: Let\'s switch things up! Change the language.',
+		'ru' => 'Сменить язык: Давай что-то новое! Поменяй язык.'
+	],
+	'Another language' => [
+		'en' => 'Exploring New Languages: Curious about other languages? Let\'s explore!',
+		'ru' => 'Новые языки: Интересно другие языки? Давай их исследовать!'
+	],
+	'Suggest a new language' => [
+		'en' => 'Language Suggestions: Want to suggest a new language? Speak up!',
+		'ru' => 'Предложи язык: Хочешь добавить новый язык? Расскажи!'
+	],
+	'Enter the language in which you would like to receive information from our chatbot...' => [
+		'en' => 'Your Preferred Language: Share your preferred language with us. We\'ll pass it along.',
+		'ru' => 'Твой язык: Расскажи, какой язык предпочитаешь. Мы передадим.'
+	],
+	'Thank you! Our administrators will consider your application :)' => [
+		'en' => 'Gratitude for Your Input: Thanks! Our administrators will consider your application. 😊',
+		'ru' => 'Спасибо за идею: Спасибо! Администраторы рассмотрят. 😊'
+	],
+	'Warning: This command is not supported' => [
+		'en' => 'Warning: Unsupported Command: Uh-oh! This command isn\'t supported.',
+		'ru' => 'Внимание: Не поддерживается: Упс! Эта команда не работает.'
+	],
+	'Alarm! A user {userPublicAlias} suggested adding a new language:' => [
+		'en' => 'Attention: Language Suggestion: Alert! User {userPublicAlias} has a new language suggestion:',
+		'ru' => 'Внимание: Предложение: Пользователь {userPublicAlias} предложил язык:'
+	],
+	'Please provide your invitation code' => [
+		'en' => 'Invitation Code Needed: Please provide your invitation code.',
+		'ru' => 'Код приглашения: Введи код приглашения.'
+	],
+	'Please make sure your code has format XXX-XXX-XXX' => [
+		'en' => 'Code Format Reminder: Ensure your code is in the format XXX-XXX-XXX.',
+		'ru' => 'Формат кода: Проверь, XXX-XXX-XXX.'
+	],
+	'Error! Try again later.' => [
+		'en' => 'Oops, Try Again Later: Something went wrong. Give it another shot later.',
+		'ru' => 'Попробуй позже: Что-то не так. Попробуй позже.'
+	],
+	'This code is not valid or has already been redeemed' => [
+		'en' => 'Invalid or Redeemed Code: This code isn\'t valid or has already been used.',
+		'ru' => 'Недействителен или использован: Этот код недействителен или уже использован.'
+	],
+	'My invitation codes' => [
+		'en' => 'My Invitation Codes: Let\'s see how many people you can invite!',
+		'ru' => 'Мои коды приглашения: Сколько друзей можешь пригласить?'
+	],
+	'You have no invitation codes available' => [
+		'en' => 'No Invitation Codes Available: You\'re all out of invitation codes.',
+		'ru' => 'Уже, у тебя закончились приглашения. Но если очень нужно, напиши к нам в поддержку.'
+	],
+	'Code' => [
+		'en' => 'Code',
+		'ru' => 'Код'
+	],
+	'Status' => [
+		'en' => 'Status',
+		'ru' => 'Статус'
+	],
+	'Activated by - ' => [
+		'en' => 'Activated by - ',
+		'ru' => 'Активировано - '
+	],
+	'Not activated' => [
+		'en' => 'Not activated',
+		'ru' => 'Не активировано'
+	],
+	'Used by' => [
+		'en' => 'Used by',
+		'ru' => 'Использовано'
+	],
+	'on' => [
+		'en' => 'on',
+		'ru' => 'на'
+	],
+	'You can forward any code which is not used to any of your telegram contacts along with the message below' => [
+		'en' => 'Spread the Word: You can forward unused codes to your Telegram contacts.',
+		'ru' => 'Поделись вестью о нашей платформе: Разошли приглашения своим друзьям в Telegram.'
+	],
+	'This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance...' => [
+		'en' => 'Zeya Community Invite: Welcome to Zeya! Connect with like-minded people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and use your unique code during registration.',
+		'ru' => 'Приглашение в сообщество Зеи: Добро пожаловать! Найди единомышленников по интересам. Бот: @zeya_community_bot, код — при регистрации.'
+	],
+	'You are already registered' => [
+		'en' => 'Already Part of the Community: You\'re already registered with Zeya.',
+		'ru' => 'Уже в Зее: Ты уже зарегистрирован.'
+	],
+	'My interests and values' => [
+		'en' => 'My Passions and Values: What drives you? Share your interests, hobbies, and values.',
+		'ru' => 'Мои интересы: Что тобой движет? Поделись!'
+	],
+	'What are your interests, hobbies and values that you want to share with other people?...' => [
+		'en' => 'Share Yourself: What makes you tick? Let others know your interests and values.',
+		'ru' => 'Расскажи, кто ты? Каковы твои интересы и ценности.'
+	],
+	'Error! The maximum allowed number of characters is 2000' => [
+		'en' => 'Oops, Too Much Text: Keep it under 2000 characters, please.',
+		'ru' => 'Слишкм много текста: Макс. 2000 знаков.'
+	],
+	'Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values...' => [
+		'en' => 'Your Identity, Your Way: Add new interests, hobbies, and values.',
+		'ru' => 'Вводи любой новый элемент в отдельном сообщении, чтобы добавить его в свой список. Можешь добавить свои увлечения, интересы и ценности. Любое, что поможет связаться с единомышленниками. Если хочешь удалить какой-либо элемент, введи просто число.'
+	],
+	'Do not execute this command more than once every 10 seconds. Try later' => [
+		'en' => 'Slow Down: Please wait 10 seconds before using this command again.',
+		'ru' => 'Подожди 10 секунд перед следующей командой.'
+	],
+	'Do you really want to delete an item' => [
+		'en' => 'Confirm Deletion: Are you sure you want to delete this item?',
+		'ru' => 'Удалить? Ты уверен(а)?'
+	],
+	'Yes' => [
+		'en' => 'Yes: Yes, I\'m sure.',
+		'ru' => 'Да: Да, я уверен(а).'
+	],
+	'No' => [
+		'en' => 'No: No, I changed my mind.',
+		'ru' => 'Нет: Нет, передумал.'
+	],
+	'There is no such item' => [
+		'en' => 'Oops, that item doesn\'t exist.',
+		'ru' => 'Ой, этого элемента нет.'
+	],
+	'Select Something' => [
+		'en' => 'Select an item from the list',
+		'ru' => 'Выбери из списка'
+	],
 ];
