@@ -17,7 +17,7 @@ class MyInterestsAndValuesCommand extends Command
 	/**
 	 * @var string Command Description
 	 */
-	protected $description = "My interests and values";
+	protected $description = "Description_My interests and values";
 	
 	/**
 	 * {@inheritdoc}

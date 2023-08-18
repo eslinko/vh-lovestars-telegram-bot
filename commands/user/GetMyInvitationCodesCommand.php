@@ -17,7 +17,7 @@ class GetMyInvitationCodesCommand extends Command
 	/**
 	 * @var string Command Description
 	 */
-	protected $description = "My invitation codes";
+	protected $description = "Description_My invitation codes";
 	
 	/**
 	 * {@inheritdoc}

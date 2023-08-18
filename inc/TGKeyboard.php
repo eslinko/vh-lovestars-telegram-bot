@@ -30,7 +30,7 @@ class TGKeyboard
             case "\xE2\x9D\x8C".__('Rejected invites', $user['language']):
                 $telegram->triggerCommand('rejected_invites', $update);
                 break;
-            case "\xF0\x9F\x8E\xAB".__('My invitation codes', $user['language']):
+            case "\xF0\x9F\x8E\xAB".__('Btn_My invitation codes', $user['language']):
                 $telegram->triggerCommand('my_invitation_codes', $update);
                 break;
             case "\xF0\x9F\x93\x9C".__('My data', $user['language']):
@@ -49,7 +49,7 @@ class TGKeyboard
             case "\xF0\x9F\x91\x84".__('Change the language', $user['language']):
                 $telegram->triggerCommand('change_language', $update);
                 break;
-            case "\xF0\x9F\x94\xA5".__('My interests and values', $user['language']):
+            case "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language']):
                 $telegram->triggerCommand('my_interests_and_values', $update);
                 break;
             case "\xF0\x9F\x92\x9B".__('My Lovestars', $user['language']):
@@ -82,11 +82,11 @@ class TGKeyboard
                 'keyboard' =>  [
                     [
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9C".__('My data', $user['language'])]),
-                        Keyboard::button(['text' => "\xF0\x9F\x8E\xAB".__('My invitation codes', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x8E\xAB".__('Btn_My invitation codes', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x92\x9B".__('My Lovestars', $user['language'])]),
 
                     ],[
-                        Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('My interests and values', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
                     ],[
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url', $user['language'])]),
@@ -100,11 +100,11 @@ class TGKeyboard
                 'keyboard' =>  [
                     [
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9C".__('My data', $user['language'])]),
-                        Keyboard::button(['text' => "\xF0\x9F\x8E\xAB".__('My invitation codes', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x8E\xAB".__('Btn_My invitation codes', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x92\x9B".__('My Lovestars', $user['language'])]),
 
                     ],[
-                        Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('My interests and values', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
                     ]
                 ],

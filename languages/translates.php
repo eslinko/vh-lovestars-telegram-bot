@@ -285,7 +285,7 @@ $translates = [
 		'en' => 'Invalid or Redeemed Code: This code isn\'t valid or has already been used.',
 		'ru' => 'Недействителен или использован: Этот код недействителен или уже использован.'
 	],
-	'My invitation codes' => [
+	'Description_My invitation codes' => [
 		'en' => 'My Invitation Codes: Let\'s see how many people you can invite!',
 		'ru' => 'Мои коды приглашения: Сколько друзей можешь пригласить?'
 	],
@@ -329,7 +329,7 @@ $translates = [
 		'en' => 'Already Part of the Community: You\'re already registered with Zeya.',
 		'ru' => 'Уже в Зее: Ты уже зарегистрирован.'
 	],
-	'My interests and values' => [
+	'Description_My interests and values' => [
 		'en' => 'My Passions and Values: What drives you? Share your interests, hobbies, and values.',
 		'ru' => 'Мои интересы: Что тобой движет? Поделись!'
 	],
@@ -380,5 +380,13 @@ $translates = [
     'Do you confirm that you want to remove from your connections user' => [
         'en' => 'Are you sure you wanna kick this user out of your connections',
         'ru' => 'Ты в курсе, что хочешь из своих контактов убрать пользователя'
+    ],
+    'Btn_My invitation codes' => [
+        'en' => 'My Invitation Codes',
+        'ru' => 'Мои коды приглашения'
+    ],
+    'Btn_My interests and values' => [
+        'en' => 'My Passions and Values',
+        'ru' => 'Мои интересы'
     ],
 ];
