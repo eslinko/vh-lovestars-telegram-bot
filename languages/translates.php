@@ -475,7 +475,10 @@ $translates = [
         'en' => 'Remove connection',
         'ru' => 'Удалить связь'
     ],
-
+    'Btn_Change the language' => [
+        'en' => 'Change Up the Language',
+        'ru' => 'Сменить язык'
+    ],
 
     'Add new'=>[
         'en' => "Add new",
