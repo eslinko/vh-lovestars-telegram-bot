@@ -641,6 +641,10 @@ $translates = [
         'en' => 'My Passions and Values',
         'ru' => 'Мои интересы'
     ],
+    'Btn_Change the language' => [
+        'en' => 'Change Up the Language',
+        'ru' => 'Сменить язык'
+    ],
     "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?" => [
         'en' => "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?",
         'ru' => "Представь себе, что у тебя решились все насущные задачи. У тебя достаточно денег на любой каприз, у тебя полная гармония с близкими, у них тоже все хорошо. Твои жилищные условия решены так, как ты сам(а) этого хочешь. И вот у тебя уйма времени, которое ты можешь тратить на себя. Перечисли списком (можно через запятую, можно просто в столбик), чем ты будетешь заниматься? По сути, какие действия тебя будут радовать и наполнять (едва ли ты захочешь заниматься тем, что тебе не нравится).",
