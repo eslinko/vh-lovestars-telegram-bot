@@ -1200,8 +1200,10 @@ function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
     $return_data = $lcApi->makeRequest('get-user-by-user-id', ['user_id' => $user_id_2]);
     $user_id_1=$is_verified['user']['id'];
     if($return_data['status'] === 'success') {
+        $user_text='';
+        if(!empty($is_verified['user']['telegram_alias'])) $user_text=' (@'.$is_verified['user']['telegram_alias'].')';
         $options['chat_id'] = $return_data['user']['telegram'];
-        $options['text'] = $is_verified['user']['publicAlias'].' '.__("sent you a connection request.", $return_data['user']['language']);
+        $options['text'] = $is_verified['user']['publicAlias'].$user_text.' '.__("sent you a connection request.", $return_data['user']['language']);
         $options['reply_markup'] = Keyboard::make([
             'inline_keyboard' =>  [
                 [
