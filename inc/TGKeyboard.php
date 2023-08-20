@@ -46,7 +46,7 @@ class TGKeyboard
             case "\xF0\x9F\x94\x92".__('Update Password', $user['language']):
                 $telegram->triggerCommand('update_my_password', $update);
                 break;
-            case "\xF0\x9F\x91\x84".__('Change the language', $user['language']):
+            case "\xF0\x9F\x91\x84".__('Btn_Change the language', $user['language']):
                 $telegram->triggerCommand('change_language', $update);
                 break;
             case "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language']):
@@ -150,7 +150,7 @@ class TGKeyboard
                     Keyboard::button(['text' => "\xE2\x9C\x8F".__('Update Public Alias', $user['language'])]),
                 ],[
                     Keyboard::button(['text' => "\xF0\x9F\x94\x92".__('Update Password', $user['language'])]),
-                    Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Change the language', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Btn_Change the language', $user['language'])]),
                 ]
             ],
             'resize_keyboard' => true
