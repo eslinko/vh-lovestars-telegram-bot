@@ -70,7 +70,8 @@ function choose_step($user, $telegram_id = '') {
 			'inline_keyboard' =>  $languages['languages'],
 			'resize_keyboard' => true,
 		]);
-	} else if(empty($user['full_name']) || empty($user['publicAlias']) || empty($user['password_hash']) || empty($user['invitation_code_id'])) {
+        //TO ASK FOR PASSWORD UNCOMMENT "empty($user['password_hash'])" and BELOW and in function registration_step_invitation_code
+	} else if(empty($user['full_name']) || empty($user['publicAlias']) /*|| empty($user['password_hash'])*/ || empty($user['invitation_code_id'])) {
 		
 		if(empty($user['full_name']) || empty($user['publicAlias'])) {
 			$res['message'] = __('Hello! To interact with the bot you must first complete a simple registration!', $user['language']);
@@ -80,11 +81,12 @@ function choose_step($user, $telegram_id = '') {
 			$res['text'] = __('Hello. You need to finish registering with the bot.', $user['language']);
 			$step = 'registration_step_invitation_code';
 			$res['status'] = false;
-		} else if (empty($user['password_hash'])) {
+            //TO ASK FOR PASSWORD UNCOMMENT BELOW and in function registration_step_invitation_code
+		}/* else if (empty($user['password_hash'])) {
 			$res['message'] = __('Hello. You need to finish registering with the bot.', $user['language']);
 			$step = 'registration_step_3';
 			$res['status'] = false;
-		}
+		}*/
 		
 		$res['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [

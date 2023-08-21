@@ -532,11 +532,11 @@ function registration_step_invitation_code($update, $telegram) {
 		return false;
 	}
 
-
-	if(empty($user['password_hash'])) {
+//TO ASK FOR PASSWORD UNCOMMENT BELOW and in function choose_step
+/*	if(empty($user['password_hash'])) {
 		$telegram->triggerCommand('registration_step_3', $update);
 		set_command_to_last_message('registration_step_3', $update->getMessage()->chat->id);
-	} else {
+	} else {*/
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,
 			'text' => __('Congratulations, you have successfully registered!', $user['language']),
 			'reply_markup' => Keyboard::make([
@@ -558,7 +558,7 @@ function registration_step_invitation_code($update, $telegram) {
         } else {
             $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $result['user']['language'])]);
         }
-	}
+//	}
 
     //send message to go code owner
     if($result['status'] === 'success' AND isset($result['owner_user'])){
