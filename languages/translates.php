@@ -104,8 +104,8 @@ $translates = [
 	],
 
 	'My public alias:' => [
-		'en' => 'Here\'s how you\'ll be known: your public alias.',
-		'ru' => 'Тебя будут узнавать в нашем сообществе по этому алиасу.'
+		'en' => 'Here\'s how you\'ll be known:',
+		'ru' => 'Тебя будут узнавать в нашем сообществе по этому алиасу:'
 	],
 
 	'My e-mail:' => [
