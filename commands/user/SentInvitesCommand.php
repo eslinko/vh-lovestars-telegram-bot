@@ -49,15 +49,31 @@ class SentInvitesCommand extends Command
                 $options['text'] = __('You do not have pending or rejected invites', $user['user']['language']);
             } else {
                 $i=1;
+                $pending_exist=false;
                 foreach ($data['connections'] as $item) {
-                    if($item['status']==='pending')
+                    if($item['status']==='pending'){
                         $status = __('pending', $user['user']['language']);
+                        $pending_exist=true;
+                    }
                     else
                         $status = __('rejected', $user['user']['language']);
                     $user_name_text = $item['public_alias'];
                     if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
                     $options['text'].=$i.'. '.$user_name_text.' updated at  '.date('j/m/y',strtotime($item['updated_at'])).' - '.$status."\n";
                     $i++;
+                }
+                if($pending_exist==true){
+                    $options['reply_markup'] = Keyboard::make([
+                        'inline_keyboard' =>  [
+                            [
+                                Keyboard::inlineButton([
+                                    'text' => __('Resend Invite', $is_verified['user']['language']),
+                                    'callback_data' => 'resend_pending_invites'
+                                ]),
+                            ]
+                        ],
+                        'resize_keyboard' => true
+                    ]);
                 }
             }
 

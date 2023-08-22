@@ -694,4 +694,16 @@ $translates = [
         'en' => 'Decline',
         'ru' => 'Отклонить'
     ],
+    'Resend Invite' => [
+        'en' => 'Resend Invite',
+        'ru' => 'Отправить инвайт снова'
+    ],
+    "You can only use the 'Re-send' action once, please select the person you want to re-send the connection:" => [
+        'en' => "You can only use the 'Re-send' action once, please select the person you want to re-send the connection:",
+        'ru' => "Вы можете отправить инвайт повторно только один раз, пожалуйста, выберите человека, которому вы хотите повторно отправить инвайт:"
+    ],
+    "This invitation was re-sent by you." => [
+        'en' => "This invitation was re-sent by you.",
+        'ru' => "Приглашение отправлено повторно."
+    ],
 ];

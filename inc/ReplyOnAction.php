@@ -111,6 +111,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'accept_or_decline_pending_connection_by_id':
             accept_or_decline_pending_connection_by_id($update, $telegram, $last_message_object);
             break;
+        case 'resend_invitation':
+            resend_invitation($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1198,6 +1201,72 @@ function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
         return false;
     }
     $telegram->sendMessage(['chat_id' => $telegram_id,'text'=>__('Request has been sent.', $is_verified['user']['language'])]);
+
+    //notify potential friend
+    $return_data = $lcApi->makeRequest('get-user-by-user-id', ['user_id' => $user_id_2]);
+    $user_id_1=$is_verified['user']['id'];
+    if($return_data['status'] === 'success') {
+        $user_text='';
+        if(!empty($is_verified['user']['telegram_alias'])) $user_text=' (@'.$is_verified['user']['telegram_alias'].')';
+        $options['chat_id'] = $return_data['user']['telegram'];
+        $options['text'] = $is_verified['user']['publicAlias'].$user_text.' '.__("sent you a connection request.", $return_data['user']['language']);
+        $options['reply_markup'] = Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Accept', $return_data['user']['language']),
+                        'callback_data' => 'accept_connection__'.$user_id_1.'__'.$user_id_2
+                    ]),
+                    Keyboard::inlineButton([
+                        'text' => __('Decline', $return_data['user']['language']),
+                        'callback_data' => 'decline_connection__'.$user_id_1.'__'.$user_id_2
+                    ])
+                ]
+
+
+            ],
+            'resize_keyboard' => true
+        ]);
+        $telegram->sendMessage($options);
+    }
+    return true;
+}
+function resend_invitation($update, $telegram, $callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+    $ids = explode('__',$callbackName);
+    $user_id_2 = $ids[1];
+    //$user_id_2=intval(substr($callbackName,strpos($callbackName,'__')+2));
+    $telegram_id = $update->getMessage()->chat->id;
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('get-user-sent-pending-invitation', ['telegram_id' => $telegram_id, 'user_id_2' => $user_id_2]);
+
+    if($return_data['status'] === 'error' || empty($return_data)) {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+
+    if(intval($return_data['connection']['attempts']) > 1){//cannot send again
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("This invitation was already sent by you and still pending.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('increment-user-sent-pending-invitation', ['telegram_id' => $telegram_id,'user_id_2' => $user_id_2]);
+
+    if($return_data['status'] === 'error' || empty($return_data)) {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+    $telegram->sendMessage(['chat_id' => $telegram_id,'text'=>__('This invitation was re-sent by you.', $is_verified['user']['language'])]);
 
     //notify potential friend
     $return_data = $lcApi->makeRequest('get-user-by-user-id', ['user_id' => $user_id_2]);
