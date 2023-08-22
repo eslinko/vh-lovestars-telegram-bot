@@ -77,7 +77,8 @@ class StartCommand extends Command
 				'inline_keyboard' =>  $languages['keyboards'],
 				'resize_keyboard' => true,
 			]);
-		} else if(empty($user['full_name']) || empty($user['publicAlias']) || empty($user['password_hash']) || empty($user['invitation_code_id'])) {
+            //TO TURN ON PASSWORD uncomment empty($user['password_hash'])
+		} else if(empty($user['full_name']) || empty($user['publicAlias']) /*|| empty($user['password_hash'])*/ || empty($user['invitation_code_id'])) {
 			
 			if(empty($user['full_name']) || empty($user['publicAlias'])) {
 				$options['text'] = __('Hello! To interact with the bot you must first complete a simple registration!', $user['language']);
@@ -85,10 +86,12 @@ class StartCommand extends Command
 			} else if (empty($user['invitation_code_id'])) {
 				$options['text'] = __('Hello. You need to finish registering with the bot.', $user['language']);
 				$step = 'registration_step_invitation_code';
-			} else if (empty($user['password_hash'])) {
+			}
+            //TO TURN ON PASSWORD uncomment below
+            /*else if (empty($user['password_hash'])) {
 				$options['text'] = __('Hello. You need to finish registering with the bot.', $user['language']);
 				$step = 'registration_step_3';
-			}
+			}*/
 			
 			$options['reply_markup'] = Keyboard::make([
 				'inline_keyboard' =>  [

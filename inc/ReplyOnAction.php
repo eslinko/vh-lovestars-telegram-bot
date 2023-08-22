@@ -108,6 +108,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'confirm_remove_connection_by_id':
             confirm_remove_connection_by_id($update, $telegram, $last_message_object);
             break;
+        case 'accept_or_decline_pending_connection_by_id':
+            accept_or_decline_pending_connection_by_id($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1285,6 +1288,50 @@ function delete_connection_by_id($update, $telegram,$callbackName)
         return false;
     }
     $telegram->sendMessage(['chat_id' => $telegram_id,'text'=>__('Connection has been deleted.', $is_verified['user']['language'])]);
+    return true;
+}
+function accept_or_decline_pending_connection_by_id($update, $telegram,$callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+    $telegram_id = $update->getMessage()->chat->id;
+    $ids = explode('__',$callbackName);
+    //$connection_id=$ids[1];
+    $person_id = $ids[2];
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('get-user-by-user-id', ['telegram_id' => $telegram_id,'user_id' => $person_id]);
+
+    if($return_data['status'] === 'error' || empty($return_data)) {
+        $options =[];
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+
+    if(!empty($return_data['user']['telegram_alias']))
+        $usertext = $return_data['user']['publicAlias'].' (@'.$return_data['user']['telegram_alias'].')';
+    else
+        $usertext = $return_data['user']['publicAlias'];
+
+    $options = ['chat_id' => $telegram_id];
+    $options['text'] = sprintf(__('Would you like to confirm a request from %s to be part of your connections?', $is_verified['user']['language']),$usertext);
+    $options['reply_markup'] = Keyboard::make([
+        'inline_keyboard' =>  [
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Accept', $is_verified['user']['language']),
+                    'callback_data' => 'accept_connection__'.$person_id.'__'.$is_verified['user']['id']
+                ]),
+                Keyboard::inlineButton([
+                    'text' => __('Decline', $is_verified['user']['language']),
+                    'callback_data' => 'help'
+                ])
+            ]
+        ],
+        'resize_keyboard' => true
+    ]);
+    $telegram->sendMessage($options);
     return true;
 }
 function accept_connection($update, $telegram,$callbackName)
