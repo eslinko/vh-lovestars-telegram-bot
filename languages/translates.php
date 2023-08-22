@@ -670,4 +670,28 @@ $translates = [
         'en' => "You have %s Lovestars",
         'ru' => "У вас %s Lovestar",
     ],
+    'Btn_Pending Invites' => [
+        'en' => 'Pending Invites',
+        'ru' => 'Ожидающие Инвайты'
+    ],
+    'You do not have pending invites.' => [
+        'en' => 'You do not have pending invites.',
+        'ru' => 'У тебя нет ожидающих инвайтов.'
+    ],
+    '%s sent you a connection request on %s' => [
+        'en' => '%s sent you a connection request on %s',
+        'ru' => '%s отправил тебе инвайт %s'
+    ],
+    'Would you like to confirm a request from %s to be part of your connections?' => [
+        'en' => 'Would you like to confirm a request from %s to be part of your connections?',
+        'ru' => 'Хочешь принять инвайт от %s на добавление в контакты?'
+    ],
+    'Accept' => [
+        'en' => 'Accept',
+        'ru' => 'Принять'
+    ],
+    'Decline' => [
+        'en' => 'Decline',
+        'ru' => 'Отклонить'
+    ],
 ];

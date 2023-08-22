@@ -22,8 +22,10 @@ require_once  'user/MyConnectionsCommand.php';
 require_once  'user/AddNewConnectionCommand.php';
 require_once  'user/DeleteConnectionsCommand.php';
 require_once  'user/SentInvitesCommand.php';
+require_once  'user/PendingInvitesCommand.php';
 require_once  'user/RejectedInvitesCommand.php';
 require_once  'user/MyLovestarsCommand.php';
+
 
 
 //registration user command
@@ -81,8 +83,10 @@ $telegram->addCommand( Telegram\Bot\Commands\MyConnectionsCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\AddNewConnectionCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\DeleteConnectionsCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\SentInvitesCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\PendingInvitesCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\RejectedInvitesCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\MyLovestarsCommand::class);
+
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep2Command::class);

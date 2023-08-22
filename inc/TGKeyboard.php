@@ -30,6 +30,9 @@ class TGKeyboard
             case "\xE2\x9D\x8C".__('Rejected invites', $user['language']):
                 $telegram->triggerCommand('rejected_invites', $update);
                 break;
+            case "\xE2\x8F\xB3".__('Btn_Pending Invites', $user['language']):
+                $telegram->triggerCommand('pending_invites', $update);
+                break;
             case "\xF0\x9F\x8E\xAB".__('Btn_My invitation codes', $user['language']):
                 $telegram->triggerCommand('my_invitation_codes', $update);
                 break;
@@ -129,6 +132,8 @@ class TGKeyboard
                 ],[
                     Keyboard::button(['text' => "\xE2\x9E\x95".__('Add connections', $user['language'])]),
                     Keyboard::button(['text' => "\xE2\x9E\x96".__('Btn_remove_connection', $user['language'])]),
+                    Keyboard::button(['text' => "\xE2\x8F\xB3".__('Btn_Pending Invites', $user['language'])]),
+
                 ]
             ],
             'resize_keyboard' => true
