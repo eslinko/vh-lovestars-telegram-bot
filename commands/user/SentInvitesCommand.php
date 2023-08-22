@@ -67,7 +67,7 @@ class SentInvitesCommand extends Command
                         'inline_keyboard' =>  [
                             [
                                 Keyboard::inlineButton([
-                                    'text' => __('Resend Invite', $is_verified['user']['language']),
+                                    'text' => __('Resend Invite', $user['user']['language']),
                                     'callback_data' => 'resend_pending_invites'
                                 ]),
                             ]

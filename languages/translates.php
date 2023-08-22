@@ -594,11 +594,6 @@ $translates = [
         'ru' => "отклонено",
     ],
 
-    'Accept'=>[
-        'en' => "Accept",
-        'ru' => "Принять",
-    ],
-
     'Rejected invites:'=>[
         'en' => "Rejected invites:",
         'ru' => "Отклонённые приглашения:",
