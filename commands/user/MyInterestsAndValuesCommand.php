@@ -80,7 +80,7 @@ class MyInterestsAndValuesCommand extends Command
             'inline_keyboard' =>  [
                 [
                     Keyboard::inlineButton([
-                        'text' => __('Add new interests', $user['user']['language']),
+                        'text' => __('Btn_Add new interests', $user['user']['language']),
                         'callback_data' => 'add_new_interests'
                     ]),
                     Keyboard::inlineButton([
