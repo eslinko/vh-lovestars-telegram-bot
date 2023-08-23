@@ -1109,6 +1109,8 @@ function add_new_connection($update, $telegram)
         TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language']));
         return;
     }
+    TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+
     if(count($return_data)>1){
         $users_buttons=[];
         foreach ($return_data as $user){
@@ -1182,7 +1184,6 @@ function add_new_connection($update, $telegram)
             $telegram->sendMessage($options);
         }
     }
-    TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
 }
 function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
 {

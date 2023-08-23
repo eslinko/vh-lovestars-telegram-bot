@@ -57,7 +57,7 @@ class DeleteConnectionsCommand extends Command
                     $users_buttons[]=
                         [
                             Keyboard::inlineButton([
-                                'text' => $i.'. '.$user_name_text.' created on '.date('j/m/y',strtotime($item['created_on'])),
+                                'text' => $i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['created_on'])),
                                 'callback_data' => 'confirm_remove_connection_by_id__'.$item['connection_id'].'__'.$item['user_id']
                             ])
                         ];

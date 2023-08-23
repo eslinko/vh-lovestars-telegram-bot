@@ -58,7 +58,7 @@ class RejectedInvitesCommand extends Command
                     $users_buttons[]=
                         [
                             Keyboard::inlineButton([
-                                'text' => $i.'. '.__('Accept', $user['user']['language']).' '.$user_name_text.' rejected at  '.date('j/m/y',strtotime($item['updated_at'])),
+                                'text' => $i.'. '.__('Accept', $user['user']['language']).' '.$user_name_text.' '.__('rejected at', $user['user']['language']).' '.date('j/m/y',strtotime($item['updated_at'])),
                                 'callback_data' => 'ask_to_revert_connection__'.$user['user']['id'].'__'.$item['user_id']//'callback_data' => 'create_new_connection__'.$user['id']
                             ])
                         ];
