@@ -17,7 +17,7 @@ class RejectedInvitesCommand extends Command
 	/**
 	 * @var string Command Description
 	 */
-	protected $description = "Rejected invites";
+	protected $description = "Rejected invites.";
 	
 	/**
 	 * {@inheritdoc}
@@ -69,7 +69,7 @@ class RejectedInvitesCommand extends Command
                     'resize_keyboard' => true
                 ]);
                 $options['chat_id'] = $telegram_id;
-                $options['text'] = __('Rejected invites:', $user['user']['language']);
+                $options['text'] = __('Rejected invites', $user['user']['language']);
                 $this->telegram->sendMessage($options);
             }
 

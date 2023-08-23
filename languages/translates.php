@@ -575,13 +575,13 @@ $translates = [
     ],
 
     'Your sent invites.'=>[
-        'en' => "Your sent invites.",
-        'ru' => "Ваши отправленные приглашения",
+        'en' => "Sent invites",
+        'ru' => "Отправленные приглашения",
     ],
 
     'Rejected invites.'=>[
-        'en' => "Rejected invites.",
-        'ru' => "Отклонённые приглашения.",
+        'en' => "Rejected invites",
+        'ru' => "Отклонённые приглашения",
     ],
 
     'pending'=>[
@@ -594,9 +594,9 @@ $translates = [
         'ru' => "отклонено",
     ],
 
-    'Rejected invites:'=>[
-        'en' => "Rejected invites:",
-        'ru' => "Отклонённые приглашения:",
+    'Rejected invites'=>[
+        'en' => "Rejected invites",
+        'ru' => "Отклонённые приглашения",
     ],
 
     'Are you sure that you want to revert reject and accept this invite from'=>[

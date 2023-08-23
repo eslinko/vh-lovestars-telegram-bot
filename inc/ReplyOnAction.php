@@ -1394,7 +1394,7 @@ function accept_or_decline_pending_connection_by_id($update, $telegram,$callback
                 ]),
                 Keyboard::inlineButton([
                     'text' => __('Decline', $is_verified['user']['language']),
-                    'callback_data' => 'help'
+                    'callback_data' => 'decline_connection__'.$person_id.'__'.$is_verified['user']['id']
                 ])
             ]
         ],
