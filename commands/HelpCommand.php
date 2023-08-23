@@ -8,7 +8,7 @@ namespace Telegram\Bot\Commands;
 class HelpCommand extends Command
 {
 
-	private $excludeCommands = ['registration_step_1', 'registration_step_2', 'registration_step_3', 'registration_step_4', 'succesfully_registrated', 'teacher_create_step_2', 'teacher_create_step_3', 'teacher_create_step_4', 'teacher_update_title', 'teacher_update_public_alias', 'teacher_update_description', 'teacher_update_hashtags', 'update_my_email', 'update_my_email_confirm_code', 'update_my_public_alias', 'update_my_password', 'suggest_new_language', 'registration_step_invitation_code', 'set_user_interests', 'clear_all_interests_question', 'clear_all_interests','add_new_connection','delete_connections','sent_invites','rejected_invites','show_keyboard', 'expression_choose_type', 'expression_choose_description', 'add_new_interests', 'expression_choose_file'];
+	private $excludeCommands = ['registration_step_1', 'registration_step_2', 'registration_step_3', 'registration_step_4', 'succesfully_registrated', 'teacher_create_step_2', 'teacher_create_step_3', 'teacher_create_step_4', 'teacher_update_title', 'teacher_update_public_alias', 'teacher_update_description', 'teacher_update_hashtags', 'update_my_email', 'update_my_email_confirm_code', 'update_my_public_alias', 'update_my_password', 'suggest_new_language', 'registration_step_invitation_code', 'set_user_interests', 'clear_all_interests_question', 'clear_all_interests','add_new_connection','delete_connections','sent_invites','rejected_invites','show_keyboard', 'expression_choose_type', 'expression_choose_description', 'add_new_interests', 'expression_choose_file','resend_pending_invites','pending_invites'];
 
     /**
      * @var string Command Name

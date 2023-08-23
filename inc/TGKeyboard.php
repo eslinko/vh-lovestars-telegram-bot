@@ -8,6 +8,7 @@ class TGKeyboard
         $telegram_id = $update->getMessage()->chat->id;
         $user = user_is_verified($telegram_id);
         if(!$user['status']) {//unknown user, show start keyboard
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $user['text'], 'reply_markup' => $user['reply_markup']]);
             TGKeyboard::showStartKeyboard();
             return;
         }
@@ -58,13 +59,13 @@ class TGKeyboard
             case "\xF0\x9F\x92\x9B".__('My Lovestars', $user['language']):
                 $telegram->triggerCommand('my_lovestars', $update);
                 break;
-            case "\xF0\x9F\x93\x9D".__('Add event url', $user['language']):
+            case "\xF0\x9F\x93\x9D".__('Add event url.', $user['language']):
                 $telegram->triggerCommand('events_create', $update);
                 break;
-            case "\xF0\x9F\x93\x84".__('Get list of my events', $user['language']):
+            case "\xF0\x9F\x93\x84".__('Get list of my events.', $user['language']):
                 $telegram->triggerCommand('get_my_events', $update);
                 break;
-            case "\xF0\x9F\x8F\xA0".'Home':
+            case "\xF0\x9F\x8F\xA0".__('Home', $user['language']):
                 TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user, 'Home');
                 break;
 
@@ -92,8 +93,8 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
                     ],[
-                        Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url', $user['language'])]),
-                        Keyboard::button(['text' => "\xF0\x9F\x93\x84".__('Get list of my events', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url.', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x93\x84".__('Get list of my events.', $user['language'])]),
                     ]
                 ],
                 'resize_keyboard' => true
