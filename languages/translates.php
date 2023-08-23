@@ -299,7 +299,7 @@ $translates = [
 		'en' => 'Language Suggestions: Want to suggest a new language? Speak up!',
 		'ru' => 'Предложи язык: Хочешь добавить новый язык? Расскажи!'
 	],
-	'Enter the language in which you would like to receive information from our chatbot...' => [
+	'Enter the language in which you..' => [
 		'en' => 'Your Preferred Language: Share your preferred language with us. We\'ll pass it along.',
 		'ru' => 'Твой язык: Расскажи, какой язык предпочитаешь. Мы передадим.'
 	],

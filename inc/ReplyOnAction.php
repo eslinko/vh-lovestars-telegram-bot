@@ -920,7 +920,8 @@ function suggest_new_language($update, $telegram) {
 	$lcApi = new \LCAPPAPI();
 	$result = $lcApi->makeRequest('send-notification-to-admin', ['telegram_id' => $update->getMessage()->chat->id, 'message' =>  __("Alarm! A user {userPublicAlias} suggested adding a new language:", $is_verified['user']['language']) . ' ' . $language_to_suggest]);
 	
-	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
+	//$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
+    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Thank you! Our administrators will consider your application :)', $is_verified['user']['language']));
 }
 
 function set_user_interests($update, $telegram) {
