@@ -1324,7 +1324,7 @@ function confirm_remove_connection_by_id($update, $telegram,$callbackName)
         $usertext = $return_data['user']['publicAlias'];
 
     $options = ['chat_id' => $telegram_id];
-    $options['text'] = __("Do you confirm that you want to remove from your connections user".' '.$usertext.'?', $is_verified['user']['language']);
+    $options['text'] = __("Do you confirm that you want to remove from your connections user", $is_verified['user']['language']).' '.$usertext.'?';
     $options['reply_markup'] = Keyboard::make([
         'inline_keyboard' =>  [
             [
