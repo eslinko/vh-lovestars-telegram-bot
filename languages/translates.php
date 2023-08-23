@@ -367,7 +367,7 @@ $translates = [
 		'en' => 'Spread the Word: You can forward unused codes to your Telegram contacts.',
 		'ru' => 'Поделись вестью о нашей платформе: Разошли приглашения своим друзьям в Telegram.'
 	],
-	'This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance...' => [
+	'This is an invitation to Zeya' => [
 		'en' => 'Zeya Community Invite: Welcome to Zeya! Connect with like-minded people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and use your unique code during registration.',
 		'ru' => 'Приглашение в сообщество Зеи: Добро пожаловать! Найди единомышленников по интересам. Бот: @zeya_community_bot, код — при регистрации.'
 	],
