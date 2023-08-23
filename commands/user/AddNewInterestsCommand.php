@@ -34,7 +34,7 @@ class AddNewInterestsCommand extends Command
             return false;
         }
 
-        \TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __("Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values. Anything that helps connect with like-minded people.\nIf you want to delete any item, type a simple number", $user['user']['language']));
+        \TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __("Type any new item in a separate message in order to...", $user['user']['language']));
         set_command_to_last_message("my_interests_and_values", $telegram_id);
     }
 }

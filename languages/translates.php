@@ -389,7 +389,7 @@ $translates = [
 		'ru' => 'Слишкм много текста: Макс. 2000 знаков.'
 	],
 
-	'Type any new item in a separate message in order to add it to your list. You can add your hobbies, interests, and values...' => [
+	'Type any new item in a separate message in order to...' => [
 		'en' => 'Your Identity, Your Way: Add new interests, hobbies, and values.',
 		'ru' => 'Вводи любой новый элемент в отдельном сообщении, чтобы добавить его в свой список. Можешь добавить свои увлечения, интересы и ценности. Любое, что поможет связаться с единомышленниками. Если хочешь удалить какой-либо элемент, введи просто число.'
 	],
@@ -705,4 +705,8 @@ $translates = [
         'en' => 'Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!',
         'ru' => 'Привет! Чтобы выбрать ожидающий запрос просто нажми на имя пользователя в списке ниже. Легко и просто!'
     ],
+    'Btn_Add new interests' => [
+        'en' => 'Add new interests',
+        'ru' => 'Добавить новые интересы'
+    ]
 ];
