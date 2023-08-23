@@ -572,7 +572,7 @@ function registration_step_invitation_code($update, $telegram) {
             $telegram_alias = '';
         else
             $telegram_alias = ' (@'.$user['telegram_alias'].')';
-        $telegram->sendMessage(['chat_id' => $result['owner_user']['telegram'], 'text' => sprintf(__("Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.", $result['owner_user']['language']), $user['publicAlias'], $telegram_alias, $code, $user['currentLovestarsCounter'])]);
+        $telegram->sendMessage(['chat_id' => $result['owner_user']['telegram'], 'text' => sprintf(__("Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.", $result['owner_user']['language']), $user['publicAlias'], $telegram_alias, $code, $result['owner_user']['currentLovestarsCounter'])]);
     }
     //send message to code owner connections
     if(isset($result['code_owner_connections']) AND !isset($result['code_owner_connections']['status'])){
