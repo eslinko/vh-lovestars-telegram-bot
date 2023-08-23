@@ -708,5 +708,17 @@ $translates = [
     'Btn_Add new interests' => [
         'en' => 'Add new interests',
         'ru' => 'Добавить новые интересы'
-    ]
+    ],
+    'updated at' => [
+    'en' => 'updated at',
+    'ru' => 'обновлено'
+    ],
+    'created on' => [
+        'en' => 'created on',
+        'ru' => 'создано'
+    ],
+    'rejected at' => [
+        'en' => 'rejected at',
+        'ru' => 'отклонено'
+    ],
 ];

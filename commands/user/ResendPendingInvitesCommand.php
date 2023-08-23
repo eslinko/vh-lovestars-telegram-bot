@@ -57,7 +57,7 @@ class ResendPendingInvitesCommand extends Command
                     $users_buttons[]=
                         [
                             Keyboard::inlineButton([
-                                'text' => $i.'. '.$user_name_text.' updated at  '.date('j/m/y',strtotime($item['updated_at'])).' - '.__('pending', $user['user']['language']),
+                                'text' => $i.'. '.$user_name_text.' '.__('updated at', $user['user']['language']).' '.date('j/m/y',strtotime($item['updated_at'])).' - '.__('pending', $user['user']['language']),
                                 'callback_data' => 'resend_invitation__'.$item['user_id']
                             ])
                         ];
