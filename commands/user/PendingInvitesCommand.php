@@ -73,7 +73,7 @@ class PendingInvitesCommand extends Command
                     'inline_keyboard' =>  $users_buttons,
                     'resize_keyboard' => true
                 ]);
-                $options['text'] = __('Tap on the user you want to remove from your connections in the list below', $user['user']['language']);
+                $options['text'] = __('Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!', $user['user']['language']);
 
             }
         }
