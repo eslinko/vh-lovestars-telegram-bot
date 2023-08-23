@@ -1178,7 +1178,7 @@ function add_new_connection($update, $telegram)
             $options['text'] = __("You can forward any code which is not used to any of your telegram contacts along with the message below", $is_verified['user']['language']);
             $telegram->sendMessage($options);
 
-            $options['text'] = "\xF0\x9F\x94\xA5 " . __("This is an invitation to Zeya — a chatbot-based community of people where you can find people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and paste your unique code when asked. You cannot proceed with registration without a code which you can only get from existing community members.", $is_verified['user']['language']);
+            $options['text'] = "\xF0\x9F\x94\xA5 " . __("This is an invitation to Zeya", $is_verified['user']['language']);
             $telegram->sendMessage($options);
         }
     }
