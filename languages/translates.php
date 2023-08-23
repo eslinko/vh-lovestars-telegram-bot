@@ -701,4 +701,8 @@ $translates = [
         'en' => "This invitation was re-sent by you.",
         'ru' => "Приглашение отправлено повторно."
     ],
+    'Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!' => [
+        'en' => 'Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!',
+        'ru' => 'Привет! Чтобы выбрать ожидающий запрос просто нажми на имя пользователя в списке ниже. Легко и просто!'
+    ],
 ];
