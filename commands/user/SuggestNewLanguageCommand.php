@@ -36,8 +36,9 @@ class SuggestNewLanguageCommand extends Command
 			'chat_id' => $telegram_id,
 		];
 		
-		$options['text'] = __('Enter the language in which you would like to receive information from our chatbot, we will pass this information to the administrators and see what we can do:', $user['user']['language']);
-		$this->telegram->sendMessage($options);
-		set_command_to_last_message($this->name, $telegram_id);
+		//$options['text'] = __('Enter the language in which you..', $user['user']['language']);
+		//$this->telegram->sendMessage($options);
+        \TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __('Enter the language in which you..', $user['user']['language']));
+        set_command_to_last_message($this->name, $telegram_id);
 	}
 }
