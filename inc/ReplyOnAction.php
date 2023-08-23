@@ -543,13 +543,14 @@ function registration_step_invitation_code($update, $telegram) {
 		$telegram->triggerCommand('registration_step_3', $update);
 		set_command_to_last_message('registration_step_3', $update->getMessage()->chat->id);
 	} else {*/
-		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,
+    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram,$user,"\xF0\x9F\x91\x8B");
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,
 			'text' => __('Congratulations, you have successfully registered!', $user['language']),
 			'reply_markup' => Keyboard::make([
 				'inline_keyboard' =>  [
 					[
 						Keyboard::inlineButton([
-							'text' => __('View a list of commands.', $result['user']['language']),
+							'text' => __('View a list of commands.', $user['language']),
 							'callback_data' => 'help'
 						])
 					]
@@ -557,7 +558,6 @@ function registration_step_invitation_code($update, $telegram) {
 				'resize_keyboard' => true,
 			])]);
         //here we come once, after registration only
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram,$result['user'],"\xF0\x9F\x91\x8B");
         $resp = $lcApi->makeRequest('set-user-registration-lovecoins', ['telegram_id' => $update->getMessage()->chat->id]);
         if($resp['status'] === false OR $resp['status'] === 'error'){
             $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($resp['message'], $result['user']['language'])]);
