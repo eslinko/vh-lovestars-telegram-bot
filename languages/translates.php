@@ -721,4 +721,8 @@ $translates = [
         'en' => 'rejected at',
         'ru' => 'отклонено'
     ],
+    'You do not have rejected invites' => [
+        'en' => 'You do not have rejected invites',
+        'ru' => 'У тебя нет отклонённых связей'
+    ]
 ];
