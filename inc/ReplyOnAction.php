@@ -1102,6 +1102,12 @@ function add_new_connection($update, $telegram)
     $look_for = trim($update->getMessage()->text);
     if (str_contains($look_for, '@')) $look_for = mb_substr($look_for, 1);
 
+    if(strlen($look_for)==0){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Mmmm...enter user alias. Try again.', $is_verified['user']['language'])]);
+        set_command_to_last_message("add_new_connection", $update->getMessage()->chat->id);
+        return;
+    }
+
     $lcApi = new \LCAPPAPI();
     $return_data = $lcApi->makeRequest('get-users-by-any-alias', ['alias' => $look_for,'telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
     if(isset($return_data['status']) AND $return_data['status']==='error'){
