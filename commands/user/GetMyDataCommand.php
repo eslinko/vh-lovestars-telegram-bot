@@ -54,12 +54,12 @@ class GetMyDataCommand extends Command
 						'callback_data' => 'update_my_public_alias'
 					])
 				],
-				[
+/*				[
 					Keyboard::inlineButton([
 						'text' => __('Update Password', $user['user']['language']),
 						'callback_data' => 'update_my_password'
 					])
-				],
+				],*/
                 [
                     Keyboard::inlineButton([
                         'text' => __('Change the language', $user['user']['language']),
