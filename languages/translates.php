@@ -421,312 +421,259 @@ $translates = [
 
     "Sorry, but your account has been blocked." => [
         'en' => "I'm sorry, but your account seems to have been blocked.",
-        'ru' => "Извини, но похоже что твой аккаунт был заблокирован.",
+        'ru' => "Извини, но похоже что твой аккаунт был заблокирован."
     ],
-
     "Your list is empty. Should I generate a new one?" => [
         'en' => "Your list is empty. Should I generate a new one?",
-        'ru' => "Ваш список пустой. Сгенерировать новый?",
+        'ru' => "Ваш список пустой. Сгенерировать новый?"
     ],
-
     "Error! The maximum allowed number of characters is 50" => [
         'en' => "Error! The maximum allowed number of characters is 50",
-        'ru' => "Ошибка! Максимально допустимое количество символов - 50",
+        'ru' => "Ошибка! Максимально допустимое количество символов - 50"
     ],
-
     "Error! The new element must be text and be more than 2 characters long." => [
         'en' => "Error! The new element must be text and be more than 2 characters long.",
-        'ru' => "Ошибка! Новый элемент должен быть текстовым и иметь длину более 2 символов.",
+        'ru' => "Ошибка! Новый элемент должен быть текстовым и иметь длину более 2 символов."
     ],
-
     "Clear all interests" => [
         'en' => "Clear all interests",
-        'ru' => "Очистить все интересы",
+        'ru' => "Очистить все интересы"
     ],
-
     "Are you sure you want to clear all your interests? This action cannot be undone." => [
         'en' => "Are you sure you want to clear all your interests? This action cannot be undone.",
-        'ru' => "Вы уверены, что хотите очистить все свои интересы? Это действие не может быть отменено.",
+        'ru' => "Ты уверен(а), что хочешь удалить все свои интересы? Это действие нельзя отменить."
     ],
-
     "Yes, clear all" => [
         'en' => "Yes, clear all",
-        'ru' => "Да, очистить все",
+        'ru' => "Да, очистить все"
     ],
-
-
     "No, cancel" => [
         'en' => "No, cancel",
-        'ru' => "Нет, отмена",
+        'ru' => "Нет, отмена"
     ],
-
-    'Type Zeya platform alias or Telegram alias of a person you want to make a connection with.'=>[
+    "Type Zeya platform alias or Telegram alias of a person you want to make a connection with." => [
         'en' => "Type Zeya platform alias or Telegram alias of a person you want to make a connection with.",
-        'ru' => "Введите псевдоним платформы Zeya или псевдоним Telegram человека, с которым вы хотите установить связь.",
+        'ru' => "Введи свой псевдоним на платформе Зея или псевдоним в Телеграмме того человека, с которым ты хочешь соединиться."
     ],
-
-    'You do not have connections'=>[
+    "You do not have connections" => [
         'en' => "You do not have connections",
-        'ru' => "У вас нет связей",
+        'ru' => "У тебя нет связей"
     ],
-
-
-    'Btn_remove_connection' => [
-        'en' => 'Remove connection',
-        'ru' => 'Удалить связь'
+    "Btn_remove_connection" => [
+        'en' => "Remove connection",
+        'ru' => "Удалить связь"
     ],
-
-
-    'Add new'=>[
+    "Add new" => [
         'en' => "Add new",
-        'ru' => "Добавить новую",
+        'ru' => "Добавить новую"
     ],
-
-
-    'Delete'=>[
+    "Delete" => [
         'en' => "Delete",
-        'ru' => "Удалить",
+        'ru' => "Удалить"
     ],
-
-    'User alias'=>[
+    "User alias" => [
         'en' => "User alias",
-        'ru' => "Псевдоним пользователя",
+        'ru' => "Псевдоним пользователя"
     ],
-
-    'Telegram alias'=>[
+    "Telegram alias" => [
         'en' => "Telegram alias",
-        'ru' => "Псевдоним Telegram",
+        'ru' => "Псевдоним в Телеграмме"
     ],
-
-    'Search results:'=>[
+    "Search results:" => [
         'en' => "Search results:",
-        'ru' => "Результаты поиска:",
+        'ru' => "Результаты поиска:"
     ],
-
-    'Would you like to send request to this user to be part of your connections?'=>[
-        'en' => "Would you like to send request to this user to be part of your connections?",
-        'ru' => "Хотите ли вы отправить запрос этому пользователю, чтобы добавить в список ваших связей?",
+    "Would you like to send request to this user to be part of your connections?" => [
+        'en' => "Would you like to send a connection request to this user?",
+        'ru' => "Ты хочешь отправить запрос на установление связи с этим пользователем?"
     ],
-
-    'Nothing found'=>[
+    "Nothing found" => [
         'en' => "Nothing found",
-        'ru' => "Ничего не найдено",
+        'ru' => "Ничего не найдено"
     ],
-
-    'Request has been sent.'=>[
+    "Request has been sent." => [
         'en' => "Request has been sent.",
-        'ru' => "Запрос отправлен.",
+        'ru' => "Запрос был отправлен."
     ],
-
-    'sent you a connection request.'=>[
+    "sent you a connection request." => [
         'en' => "sent you a connection request.",
-        'ru' => "отправил вам запрос на создание связи.",
+        'ru' => "отправил тебе запрос на установление связи."
     ],
-
-    'Connection has been deleted.'=>[
+    "Connection has been deleted." => [
         'en' => "Connection has been deleted.",
-        'ru' => "Связь удалена.",
+        'ru' => "Связь была удалена."
     ],
-
-
-    'Request has been accepted.'=>[
+    "Request has been accepted." => [
         'en' => "Request has been accepted.",
-        'ru' => "Запрос принят.",
+        'ru' => "Запрос был принят."
     ],
-
-    'Request has been declined.'=>[
+    "Request has been declined." => [
         'en' => "Request has been declined.",
-        'ru' => "Запрос отклонён.",
+        'ru' => "Запрос был отклонен."
     ],
-
-    'This invitation was already sent by you and still pending.'=>[
-        'en' => "This invitation was already sent by you and still pending.",
-        'ru' => "Это приглашение уже было отправлено Вами и все ещё находится на рассмотрении.",
+    "This invitation was already sent by you and still pending." => [
+        'en' => "You've already sent this invitation, and it's pending.",
+        'ru' => "Ты уже отправил(а) это приглашение, и оно в режиме ожидания."
     ],
-
-    'This invitation was already sent by you and accepted.'=>[
-        'en' => "This invitation was already sent by you and accepted.",
-        'ru' => "Это приглашение уже было отправлено Вами и принято.",
+ "This invitation was already sent by you and accepted." => [
+        'en' => "You've already sent this invitation, and it's accepted.",
+        'ru' => "Ты уже отправил(а) это приглашение, и оно принято."
     ],
-
-    'This invitation was already sent by you and rejected.'=>[
-        'en' => "This invitation was already sent by you and rejected. You may contact the person and ask to find your rejected invitation and re-accept it.",
-        'ru' => "Это приглашение уже было отправлено Вами и отклонено. Вы можете связаться с этим человеком и попросить найти ваше отклоненное приглашение и принять его повторно.",
+    "This invitation was already sent by you and rejected." => [
+        'en' => "You've already sent this invitation, and it's rejected. You may contact the person and ask them to find your rejected invitation and re-accept it.",
+        'ru' => "Ты уже отправил(а) это приглашение, и оно отклонено. Ты можешь связаться с этим человеком и попросить его найти твое приглашение, чтобы его принять."
     ],
-
-    'This invitation was already sent to you and accepted.'=>[
-        'en' => "This invitation was already sent to you and accepted.",
-        'ru' => "Это приглашение уже было отправлено Вам и принято.",
+    "This invitation was already sent to you and accepted." => [
+        'en' => "You've already received this invitation, and it's accepted.",
+        'ru' => "Ты уже получил(а) это приглашение, и оно принято."
     ],
-
-    'Please enter text only. Try again.'=>[
-        'en' => "Please enter text only. Try again.",
-        'ru' => "Пожалуйста, вводите только текст. Попробуйте ещё раз.",
+    "Please enter text only. Try again." => [
+        'en' => "Please enter text only. Please try again.",
+        'ru' => "Введи только текст. Пожалуйста, попробуй снова."
     ],
-
-    'This person is not registered on Zeya.'=>[
-        'en' => "This person is not registered on Zeya. You can use one of your invitation codes listed below and forward one of it with the proceeding message that contains indications regarding how to use it.",
-        'ru' => "Этот человек не зарегистрирован в Zeya. Вы можете воспользоваться одним из приведенных ниже кодов приглашения и переслать его вместе с соответствующим сообщением, содержащим указания по его использованию.",
+    "This person is not registered on Zeya." => [
+        'en' => "This person isn't registered on Zeya. You can use one of your invitation codes listed below and forward it with instructions on how to use it.",
+        'ru' => "Этот пользователь не зарегистрирован на платформе Зея. Ты можешь использовать один из своих кодов приглашений, перечисленных ниже, и отправить его вместе с инструкциями о том, как его использовать."
     ],
-
-    'You do not have pending or rejected invites'=>[
+    "You do not have pending or rejected invites" => [
         'en' => "You do not have pending or rejected invites",
-        'ru' => "У вас нет ожидающих или отклоненных приглашений",
+        'ru' => "У тебя нет ожидающих или отклоненных приглашений"
     ],
-
-    'Your sent invites.'=>[
+    "Your sent invites." => [
         'en' => "Sent invites",
-        'ru' => "Отправленные приглашения",
+        'ru' => "Отправленные приглашения"
     ],
-
-    'Rejected invites.'=>[
+    "Rejected invites." => [
         'en' => "Rejected invites",
-        'ru' => "Отклонённые приглашения",
+        'ru' => "Отклоненные приглашения"
     ],
-
-    'pending'=>[
+    "pending" => [
         'en' => "pending",
-        'ru' => "в ожидании",
+        'ru' => "Ожидающие"
     ],
-
-    'rejected'=>[
+    "rejected" => [
         'en' => "rejected",
-        'ru' => "отклонено",
+        'ru' => "Отклоненные"
     ],
-
-    'Rejected invites'=>[
+"Rejected invites" => [
         'en' => "Rejected invites",
-        'ru' => "Отклонённые приглашения",
+        'ru' => "Отклоненные приглашения"
     ],
-
-    'Are you sure that you want to revert reject and accept this invite from'=>[
-        'en' => "Are you sure that you want to revert reject and accept this invite from",
-        'ru' => "Вы уверены, что хотите отменить отказ и принять это приглашение от",
+    "Are you sure that you want to revert reject and accept this invite from" => [
+        'en' => "Are you sure you want to revert the reject and accept this invite from",
+        'ru' => "Ты уверен(а), что хочешь все-таки принять это приглашение от"
     ],
-
-    'My connections'=>[
+    "My connections" => [
         'en' => "My connections",
-        'ru' => "Мои связи",
+        'ru' => "Мои связи"
     ],
-
-    'Add connections'=>[
+    "Add connections" => [
         'en' => "Add connections",
-        'ru' => "Добавить связь",
+        'ru' => "Добавить связи"
     ],
-
-    'Home'=>[
+    "Home" => [
         'en' => "Home",
-        'ru' => "Домой",
+        'ru' => "Домой"
     ],
-
-    'Tap on the user you want to remove from your connections in the list below' => [
-    'en' => 'Hey there! To remove a user from your connections, just tap on their name in the list below. Easy peasy!',
-    'ru' => 'Привет! Чтобы удалить пользователя из своих контактов, просто нажми на него в списке ниже. Просто и легко!'
+    "Tap on the user you want to remove from your connections in the list below," => [
+        'en' => "Hey there! To remove a user from your connections, tap on their name in the list below.",
+        'ru' => "Привет! Чтобы удалить пользователя из своих связей, просто нажми на его имя в списке ниже."
     ],
-
-    'Do you confirm that you want to remove from your connections user' => [
-        'en' => 'Are you sure you wanna kick this user out of your connections',
-        'ru' => 'Ты в курсе, что хочешь из своих контактов убрать пользователя'
+    "Do you confirm that you want to remove from your connections user" => [
+        'en' => "Are you sure you want to remove this user from your connections?",
+        'ru' => "Ты уверен(а), что хочешь удалить этого пользователя из своих связей?"
     ],
-    'Btn_My invitation codes' => [
-        'en' => 'My Invitation Codes',
-        'ru' => 'Мои коды приглашения'
+    "Btn_My invitation codes" => [
+        'en' => "My Invitation Codes",
+        'ru' => "Мои коды приглашений"
     ],
-    'Btn_My interests and values' => [
-        'en' => 'My Passions and Values',
-        'ru' => 'Мои интересы'
+    "Btn_My interests and values" => [
+        'en' => "My Passions and Values",
+        'ru' => "Мои увлечения и ценности"
     ],
-    'Btn_Change the language' => [
-        'en' => 'Change Up the Language',
-        'ru' => 'Сменить язык'
+    "Btn_Change the language" => [
+        'en' => "Change Up the Language",
+        'ru' => "Сменить язык"
     ],
-    "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?" => [
-        'en' => "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?",
-        'ru' => "Представь себе, что у тебя решились все насущные задачи. У тебя достаточно денег на любой каприз, у тебя полная гармония с близкими, у них тоже все хорошо. Твои жилищные условия решены так, как ты сам(а) этого хочешь. И вот у тебя уйма времени, которое ты можешь тратить на себя. Перечисли списком (можно через запятую, можно просто в столбик), чем ты будетешь заниматься? По сути, какие действия тебя будут радовать и наполнять (едва ли ты захочешь заниматься тем, что тебе не нравится).",
-
+ "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (you can use commas or simply write them in a column): What activities would you engage in? Essentially, what actions would bring you joy and fulfilment (because let's face it, you wouldn't want to do things you don't enjoy)?" => [
+        'en' => "Just imagine, all your pressing tasks are sorted out. You have more than enough money for any whim, and you enjoy complete harmony with your loved ones, knowing that everything is going well for them too. Your living conditions are exactly as you desire. Now, you have plenty of free time to spend on yourself. List them out (use commas or columns): What activities would bring you joy and fulfillment (because, let's face it, you wouldn't want to do things you don't enjoy)?",
+        'ru' => "Представь себе, что все твои срочные дела улажены. У тебя есть достаточно денег на все свои капризы, и ты наслаждаешься полной гармонией со своими близкими, зная, что у них тоже все идет хорошо. Твое жилище идеально соответствует твоим пожеланиям. Теперь у тебя много свободного времени, которое ты можешь потратить на себя. Перечисли все то, чем ты хочешь заниматься (используйте запятые или столбцы). Какие занятия приносят тебе радость и удовлетворение (потому что, дава будем честны, ты не захочешь заниматься тем, что тебе не нравится)?"
     ],
-
-    'Congratulations! You have received your first Lovestar!'=>[
-        'en' => "Congratulations! You have received your first Lovestar!\nInvite 5 people with your unique codes and get one Lovestar per each successful registration.",
-        'ru' => "Поздравляем! Вы получили свой первый Lovestar!\nПригласите 5 человек, используя свои уникальные коды, и получите по одному Lovestar за каждую успешную регистрацию.",
-
+    "Congratulations! You have received your first Lovestar!" => [
+        'en' => "Congratulations! You have received your first Lovestar!",
+        'ru' => "Поздравляем! Вы получили свою первую Любезную Звезду!"
     ],
-
-    'Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.'=>[
-        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars.",
-        'ru' => "Поздравляем! Вы получили один Lovestar, потому что %s%s зарегистрировался на Zeya888 с Вашим кодом приглашения (%s). Теперь у вас %s Lovestar",
+    "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars." => [
+        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya with your invitation code (%s). You now have %s Lovestars.",
+        'ru' => "Поздравляем! Ты получил(а) Лавстар, потому что %s%s зарегистрировался на платформе Зея с кодом приглашения (%s). Теперь у тебя %s Лавстаров."
     ],
-    'Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.'=>[
-        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.\n\nP.S. This is a temporary bonus that we offer on an early stage of the community in order to boost users growth.",
-        'ru' => "Поздравляем! Вы получили один Lovestar, потому что %s%s зарегистрировался на Zeya888 по приглашению вашей связи %s%s. Теперь у вас есть %s Lovestars.\n\nP.S. Это временный бонус, который мы предлагаем на ранней стадии развития сообщества, чтобы стимулировать рост пользователей.",
-
+    "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars." => [
+        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya via the invitation of your connection %s%s. You now have %s Lovestars. P.S. This is a bonus offered in the early stage of the community to boost user growth.",
+        'ru' => "Поздравляем! Ты получил(а) Лавстар, потому что %s%s зарегистрировался(ась) на платформе Зея с помощью приглашения от %s%s. Теперь у вас %s Лавстаров. P.S. Это бонус, который мы предлагаем на раннем этапе развития сообщества для стимулирования роста пользователей."
     ],
-    'You have %s Lovestars'=>[
+    "You have %s Lovestars" => [
         'en' => "You have %s Lovestars",
-        'ru' => "У вас %s Lovestar",
+        'ru' => "У тебя %s Лавстаров"
     ],
-    'Btn_Pending Invites' => [
-        'en' => 'Pending Invites',
-        'ru' => 'Ожидающие Инвайты'
+    "Btn_Pending Invites" => [
+        'en' => "Pending Invites",
+        'ru' => "Ожидающие приглашения"
     ],
-    'You do not have pending invites.' => [
-        'en' => 'You do not have pending invites.',
-        'ru' => 'У тебя нет ожидающих инвайтов.'
+    "%s sent you a connection request on %s" => [
+        'en' => "%s sent you a connection request on %s",
+        'ru' => "%s отправил тебе запрос на установление связи на %s"
     ],
-    '%s sent you a connection request on %s' => [
-        'en' => '%s sent you a connection request on %s',
-        'ru' => '%s отправил тебе инвайт %s'
+    "Would you like to confirm a request from %s to be part of your connections?" => [
+        'en' => "Would you like to confirm the request from %s to be part of your connections?",
+        'ru' => "Ты хочешь принять запрос от %s в качестве связи на платформе Зея?"
     ],
-    'Would you like to confirm a request from %s to be part of your connections?' => [
-        'en' => 'Would you like to confirm a request from %s to be part of your connections?',
-        'ru' => 'Хочешь принять инвайт от %s на добавление в контакты?'
+    "Accept" => [
+        'en' => "Accept",
+        'ru' => "Принять"
     ],
-    'Accept' => [
-        'en' => 'Accept',
-        'ru' => 'Принять'
+"Decline" => [
+        'en' => "Decline",
+        'ru' => "Отклонить"
     ],
-    'Decline' => [
-        'en' => 'Decline',
-        'ru' => 'Отклонить'
-    ],
-    'Resend Invite' => [
-        'en' => 'Resend Invite',
-        'ru' => 'Отправить инвайт снова'
+    "Resend Invite" => [
+        'en' => "Resend Invite",
+        'ru' => "Повторно отправить приглашение"
     ],
     "You can only use the 'Re-send' action once, please select the person you want to re-send the connection:" => [
-        'en' => "You can only use the 'Re-send' action once, please select the person you want to re-send the connection:",
-        'ru' => "Вы можете отправить инвайт повторно только один раз, пожалуйста, выберите человека, которому вы хотите повторно отправить инвайт:"
+        'en' => "You can only use the 'Re-send' action once. Please select the person you want to re-send the connection to:",
+        'ru' => "Ты можешь использовать действие 'Повторно отправить' только один раз. Пожалуйста, выбери человека, которому ты хочешь повторно отправить приглашение:"
     ],
     "This invitation was re-sent by you." => [
         'en' => "This invitation was re-sent by you.",
-        'ru' => "Приглашение отправлено повторно."
+        'ru' => "Это приглашение было отправлено тобой повторно."
     ],
-    'Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!' => [
-        'en' => 'Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!',
-        'ru' => 'Привет! Чтобы выбрать ожидающий запрос просто нажми на имя пользователя в списке ниже. Легко и просто!'
+    "Hello there! To choose a user and select an option from a pending request, just tap on their name in the list below. Easy peasy!" => [
+        'en' => "Hello there! To choose a user and an option from a pending request, tap on their name in the list below.",
+        'ru' => "Привет! Чтобы выбрать пользователя и действие из ожидающего запроса, просто нажмите на его имя в списке ниже."
     ],
-    'Btn_Add new interests' => [
-        'en' => 'Add new interests',
-        'ru' => 'Добавить новые интересы'
+    "Btn_Add new interests" => [
+        'en' => "Add new passions and interests",
+        'ru' => "Добавить новые увлечения и интересы"
     ],
-    'updated at' => [
-    'en' => 'updated at',
-    'ru' => 'обновлено'
+    "updated at" => [
+        'en' => "Updated at",
+        'ru' => "Обновлено в"
     ],
-    'created on' => [
-        'en' => 'created on',
-        'ru' => 'создано'
+    "created on" => [
+        'en' => "Created on",
+        'ru' => "Создано в"
     ],
-    'rejected at' => [
-        'en' => 'rejected at',
-        'ru' => 'отклонено'
+    "rejected at" => [
+        'en' => "Rejected at",
+        'ru' => "Отклонено в"
     ],
-    'You do not have rejected invites' => [
-        'en' => 'You do not have rejected invites',
-        'ru' => 'У тебя нет отклонённых связей'
+    "You do not have rejected invites" => [
+        'en' => "You do not have rejected invites",
+        'ru' => "У вас нет отклоненных приглашений"
     ],
-    'Mmmm...enter user alias. Try again.' => [
-        'en' => 'Mmmm...enter user alias. Try again.',
-        'ru' => 'Ммм...введи алиас. Попробуй ещё раз.'
+    "Mmmm...enter user alias. Try again." => [
+        'en' => "Mmmm...enter user alias. Please try again.",
+        'ru' => "Ммм...введите псевдоним пользователя. Пожалуйста, попробуйте снова."
     ]
+
 ];
