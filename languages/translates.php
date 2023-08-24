@@ -724,5 +724,9 @@ $translates = [
     'You do not have rejected invites' => [
         'en' => 'You do not have rejected invites',
         'ru' => 'У тебя нет отклонённых связей'
+    ],
+    'Mmmm...enter user alias. Try again.' => [
+        'en' => 'Mmmm...enter user alias. Try again.',
+        'ru' => 'Ммм...введи алиас. Попробуй ещё раз.'
     ]
 ];
