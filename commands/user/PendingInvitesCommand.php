@@ -53,7 +53,7 @@ class PendingInvitesCommand extends Command
             return false;
         } else {
             if(empty($data['connections'])) {
-                $options['text'] = __('You do not have pending invites.', $user['user']['language']);
+                $options['text'] = __('You do not have pending invites', $user['user']['language']);
             } else {
                 $users_buttons=[];
                 $i=1;
