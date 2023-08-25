@@ -661,7 +661,7 @@ $translates = [
     ],
     "created on" => [
         'en' => "Created on",
-        'ru' => "Создано в"
+        'ru' => "Создано"
     ],
     "rejected at" => [
         'en' => "Rejected at",
@@ -674,6 +674,14 @@ $translates = [
     "Mmmm...enter user alias. Try again." => [
         'en' => "Mmmm...enter user alias. Please try again.",
         'ru' => "Ммм...введите псевдоним пользователя. Пожалуйста, попробуйте снова."
+    ],
+    "You do not have pending invites" => [
+        'en' => "You do not have pending invites",
+        'ru' => "У вас нет ожидающих приглашений"
+    ],
+    "My Lovestars" => [
+        'en' => "My Lovestars",
+        'ru' => "Мои Lovestar"
     ]
 
 ];
