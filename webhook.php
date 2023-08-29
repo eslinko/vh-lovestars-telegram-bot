@@ -39,6 +39,8 @@ if(substr($cur_text, 0, 1) == "/") {
 	exit;
 }
 
+if(TGKeyboard::processKeyboard($update,$telegram)) exit;
+
 if ($update->isType('callback_query')) {
 	$callbackName = $update->callbackQuery->data;
 

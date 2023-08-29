@@ -786,7 +786,7 @@ function update_my_public_alias($update, $telegram) {
 		],
 		'resize_keyboard' => true,
 	])]);
-    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $user, 'OK');
+    //TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $user, 'OK');
 
    return false;
 }
@@ -823,7 +823,7 @@ function update_my_password($update, $telegram) {
 		],
 		'resize_keyboard' => true,
 	])]);
-    TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
+    //TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
     return false;
 }
 
@@ -849,7 +849,7 @@ function events_create($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
 
         return false;
     }
@@ -891,7 +891,7 @@ function events_create($update, $telegram) {
         ],
         'resize_keyboard' => true,
     ])]);
-    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
+    //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
     return false;
 }
 
@@ -908,7 +908,7 @@ function choose_language($update, $telegram, $last_message_object) {
 	} else {
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('You have successfully installed the language', $lang_to_set)]);
         $telegram->triggerCommand('help', $update);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id, $telegram, $result['user'], 'Home');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id, $telegram, $result['user'], 'Home');
 	}
 }
 
@@ -921,7 +921,7 @@ function suggest_new_language($update, $telegram) {
 	$result = $lcApi->makeRequest('send-notification-to-admin', ['telegram_id' => $update->getMessage()->chat->id, 'message' =>  __("Alarm! A user {userPublicAlias} suggested adding a new language:", $is_verified['user']['language']) . ' ' . $language_to_suggest]);
 	
 	//$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
-    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Thank you! Our administrators will consider your application :)', $is_verified['user']['language']));
+    //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Thank you! Our administrators will consider your application :)', $is_verified['user']['language']));
 }
 
 function set_user_interests($update, $telegram) {
@@ -940,7 +940,7 @@ function set_user_interests($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -956,7 +956,7 @@ function set_user_interests($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -976,10 +976,10 @@ function set_user_interests($update, $telegram) {
 			],
 			'resize_keyboard' => true,
 		])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
 	}
-    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+    //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
     $telegram->triggerCommand('my_interests_and_values', $update);
 }
 
@@ -1022,7 +1022,7 @@ function my_interests_and_values($update, $telegram) {
                 'resize_keyboard' => true,
             ])]);
         }
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -1038,7 +1038,7 @@ function my_interests_and_values($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -1054,7 +1054,7 @@ function my_interests_and_values($update, $telegram) {
             ],
             'resize_keyboard' => true,
         ])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
     }
 
@@ -1072,10 +1072,10 @@ function my_interests_and_values($update, $telegram) {
 			],
 			'resize_keyboard' => true,
 		])]);
-        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
         return false;
 	}
-    TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+    //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
     $telegram->triggerCommand('my_interests_and_values', $update);
 	return false;
 }
@@ -1112,10 +1112,10 @@ function add_new_connection($update, $telegram)
     $return_data = $lcApi->makeRequest('get-users-by-any-alias', ['alias' => $look_for,'telegram_id'=>$update->getMessage()->chat->id]);//'get-users-by-any-alias'
     if(isset($return_data['status']) AND $return_data['status']==='error'){
         //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language'])]);
-        TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language']));
+        //TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language']));
         return;
     }
-    TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
+    //TGKeyboard::showConnectionsKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], 'OK');
 
     if(count($return_data)>1){
         $users_buttons=[];
@@ -1560,7 +1560,7 @@ function expression_choose_type($update, $telegram, $callbackName)
         return false;
     }
 
-    TGKeyboard::showMainKeyboard($telegram_id, $telegram, $is_verified['user'], __('Thank you', $is_verified['user']['language']));
+    //TGKeyboard::showMainKeyboard($telegram_id, $telegram, $is_verified['user'], __('Thank you', $is_verified['user']['language']));
 
     $telegram->triggerCommand('expression_choose_description', $update);
     set_command_to_last_message('expression_choose_description', $update->getMessage()->chat->id);

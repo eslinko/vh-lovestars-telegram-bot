@@ -34,7 +34,9 @@ class AddNewInterestsCommand extends Command
             return false;
         }
 
-        \TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __("Type any new item in a separate message in order to...", $user['user']['language']));
+        $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Type any new item in a separate message in order to...", $user['user']['language'])]);
+
+        //\TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __("Type any new item in a separate message in order to...", $user['user']['language']));
         set_command_to_last_message("my_interests_and_values", $telegram_id);
     }
 }
