@@ -50,7 +50,12 @@ class GetMyInvitationCodesCommand extends Command
 				$this->telegram->sendMessage($options);
 			} else {
 				foreach ($data['codes'] as $key => $code) {
-					$options['text'] = $code['code'] . (empty($code['user']) ? '' : ', ' . __('Used by', $user['user']['language']) . ' @' . $code['user']['publicAlias'] . ' ' . __('on', $user['user']['language']) . ' ' . date('m/d/Y', $code['signup_date']));
+
+                    if(empty($code['user']['telegram_alias']))
+                        $user_name_text = $code['user']['publicAlias'];
+                    else
+                        $user_name_text=$code['user']['publicAlias'].' (@'.$code['user']['telegram_alias'].')';
+					$options['text'] = $code['code'] . (empty($code['user']) ? '' : ', ' . __('Used by', $user['user']['language']) .' '.$user_name_text. ' ' . __('on', $user['user']['language']) . ' ' . date('m/d/Y', $code['signup_date']));
 					$this->telegram->sendMessage($options);
 				}
 				$options['text'] = __("You can forward any code which is not used to any of your telegram contacts along with the message below", $user['user']['language']);
