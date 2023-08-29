@@ -575,7 +575,7 @@ $translates = [
         'en' => "Home",
         'ru' => "Домой"
     ],
-    "Tap on the user you want to remove from your connections in the list below," => [
+    "Tap on the user you want to remove from your connections in the list below" => [
         'en' => "Hey there! To remove a user from your connections, tap on their name in the list below.",
         'ru' => "Привет! Чтобы удалить пользователя из своих связей, просто нажми на его имя в списке ниже."
     ],
