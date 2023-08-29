@@ -10,7 +10,7 @@ class TGKeyboard
         if(!$user['status']) {//unknown user, show start keyboard
             $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $user['text'], 'reply_markup' => $user['reply_markup']]);
             TGKeyboard::showStartKeyboard();
-            return;
+            return false;
         }
         $user = $user['user'];
         $text=$update->getMessage()['text'];
@@ -71,8 +71,10 @@ class TGKeyboard
 
             default:
                 //TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user);
+                return false;
                 break;
         }
+        return true;
     }
     static public function showStartKeyboard(){
 

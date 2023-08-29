@@ -32,15 +32,15 @@ class UpdateMyPasswordCommand extends Command
 			return false;
 		}
 		
-		/*$options = [
+		$options = [
 			'chat_id' => $telegram_id,
 		];
 		
 		$options['text'] = __('Enter your new password.', $user['user']['language']);
-		$this->telegram->sendMessage($options);*/
+		$this->telegram->sendMessage($options);
 
 
-        \TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __('Enter your new password.', $user['user']['language']));
+        //\TGKeyboard::hideKeyboard($telegram_id, $this->telegram, __('Enter your new password.', $user['user']['language']));
         set_command_to_last_message($this->name, $telegram_id);
     }
 }
