@@ -560,9 +560,9 @@ function registration_step_invitation_code($update, $telegram) {
         //here we come once, after registration only
         $resp = $lcApi->makeRequest('set-user-registration-lovecoins', ['telegram_id' => $update->getMessage()->chat->id]);
         if($resp['status'] === false OR $resp['status'] === 'error'){
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($resp['message'], $result['user']['language'])]);
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($resp['message'], $user['language'])]);
         } else {
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $result['user']['language'])]);
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $user['language'])]);
         }
 //	}
 
