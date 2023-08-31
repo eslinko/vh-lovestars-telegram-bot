@@ -588,7 +588,7 @@ $translates = [
         'ru' => "Мои коды приглашений"
     ],
     "Btn_My interests and values" => [
-        'en' => "My Passions and Values",
+        'en' => "My interests and values",
         'ru' => "Мои увлечения и ценности"
     ],
     "Btn_Change the language" => [
