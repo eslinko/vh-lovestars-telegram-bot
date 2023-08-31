@@ -600,8 +600,8 @@ $translates = [
         'ru' => "Представь себе, что все твои срочные дела улажены. У тебя есть достаточно денег на все свои капризы, и ты наслаждаешься полной гармонией со своими близкими, зная, что у них тоже все идет хорошо. Твое жилище идеально соответствует твоим пожеланиям. Теперь у тебя много свободного времени, которое ты можешь потратить на себя. Перечисли все то, чем ты хочешь заниматься (используйте запятые или столбцы). Какие занятия приносят тебе радость и удовлетворение (потому что, дава будем честны, ты не захочешь заниматься тем, что тебе не нравится)?"
     ],
     "Congratulations! You have received your first Lovestar!" => [
-        'en' => "Congratulations! You have received your first Lovestar!",
-        'ru' => "Поздравляем! Вы получили свой первый Лавстар!"
+        'en' => "Congratulations! You have received your first Lovestar!\nInvite 5 people with your unique codes and get one Lovestar per each successful registration.",
+        'ru' => "Поздравляем! Вы получили свой первый Лавстар!\nПригласите 5 человек с помощью своих уникальных кодов и получите по одному Lovestar за каждую успешную регистрацию."
     ],
     "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars." => [
         'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya with your invitation code (%s). You now have %s Lovestars.",
