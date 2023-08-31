@@ -8,7 +8,8 @@ class TGKeyboard
         $telegram_id = $update->getMessage()->chat->id;
         $user = user_is_verified($telegram_id);
         if(!$user['status']) {//unknown user, show start keyboard
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $user['text'], 'reply_markup' => $user['reply_markup']]);
+            //sendMessage causes duplicated useless messages at registration
+            //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $user['text'], 'reply_markup' => $user['reply_markup']]);
             TGKeyboard::showStartKeyboard();
             return false;
         }
