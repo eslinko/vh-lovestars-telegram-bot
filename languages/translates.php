@@ -601,7 +601,7 @@ $translates = [
     ],
     "Congratulations! You have received your first Lovestar!" => [
         'en' => "Congratulations! You have received your first Lovestar!",
-        'ru' => "Поздравляем! Вы получили свою первую Любезную Звезду!"
+        'ru' => "Поздравляем! Вы получили свой первый Лавстар!"
     ],
     "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars." => [
         'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya with your invitation code (%s). You now have %s Lovestars.",
