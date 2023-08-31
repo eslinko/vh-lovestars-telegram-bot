@@ -908,7 +908,7 @@ function choose_language($update, $telegram, $last_message_object) {
 	} else {
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('You have successfully installed the language', $lang_to_set)]);
         $telegram->triggerCommand('help', $update);
-        //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id, $telegram, $result['user'], 'Home');
+        TGKeyboard::showMainKeyboard($update->getMessage()->chat->id, $telegram, $result['user'], 'Home');
 	}
 }
 
