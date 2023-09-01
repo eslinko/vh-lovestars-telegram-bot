@@ -390,7 +390,7 @@ $translates = [
 	],
 
 	'Type any new item in a separate message in order to...' => [
-		'en' => 'Your Identity, Your Way: Add new interests, hobbies, and values.',
+		'en' => "Feel free to share any new things you're into by sending them in a separate message. Whether it's your passions, interests, or values, adding them here will help you connect with people who share your vibe. If you ever want to remove something from your list, just type the number and it's gone!",
 		'ru' => 'Вводи любой новый элемент в отдельном сообщении, чтобы добавить его в свой список. Можешь добавить свои увлечения, интересы и ценности. Любое, что поможет связаться с единомышленниками. Если хочешь удалить какой-либо элемент, введи просто число.'
 	],
 
