@@ -43,7 +43,7 @@ class GetMyEventsCommand extends Command
                 $text .= ($key + 1) . ")\n";
                 $text .= __("Facebook Url:", $user['user']['language']) . " " . $event['facebook_url'] . "\n";
                 if(!empty($event['name'])) {
-                    $text .= __("Name:", $user['user']['language']) . " " . $event['name'] . "\n";
+                    $text .= __("Event Title:", $user['user']['language']) . " " . $event['name'] . "\n";
                 }
                 $text .= __("Status:", $user['user']['language']) . " " . ucfirst($event['status']) . "\n\n";
             }

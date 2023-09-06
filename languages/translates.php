@@ -682,6 +682,10 @@ $translates = [
     "My Lovestars" => [
         'en' => "My Lovestars",
         'ru' => "Мои Lovestar"
+    ],
+    "Event Title:" => [
+        'en' => "Event Title:",
+        'ru' => "Название мероприятия:"
     ]
 
 ];
