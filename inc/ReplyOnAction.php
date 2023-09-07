@@ -114,6 +114,12 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'resend_invitation':
             resend_invitation($update, $telegram, $last_message_object);
             break;
+        case 'generate_codes':
+            generate_invitation_codes($update, $telegram, $last_message_object);
+            break;
+        case 'generate_codes_step_enter_alias':
+            generate_codes_step_enter_alias($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1534,6 +1540,57 @@ function ask_to_revert_connection($update, $telegram,$callbackName)
     $telegram->sendMessage($options);
 }
 
+function generate_invitation_codes($update, $telegram, $callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+    if(!isset($update->getMessage()['text'])){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please enter number only. Try again.', $is_verified['user']['language'])]);
+        set_command_to_last_message("generate_codes", $update->getMessage()->chat->id);
+        return;
+    }
+    $amount = trim($update->getMessage()->text);
+    if (is_numeric($amount) == false) {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please enter number only. Try again.', $is_verified['user']['language'])]);
+        set_command_to_last_message("generate_codes", $update->getMessage()->chat->id);
+        return;
+    }
+
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Type the platform alias of the user who will receive those invitation codes starting with @', $is_verified['user']['language'])]);
+    set_command_to_last_message("generate_codes_step_enter_alias", $update->getMessage()->chat->id,['amount' => $amount]);
+
+}
+
+function generate_codes_step_enter_alias($update, $telegram, $last_message_object)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!isset($update->getMessage()['text'])){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please enter text only. Try again.', $is_verified['user']['language'])]);
+        set_command_to_last_message("generate_codes_step_enter_alias", $update->getMessage()->chat->id,['amount' => $last_message_object->amount]);
+        return;
+    }
+    $look_for = trim($update->getMessage()->text);
+    if (str_contains($look_for, '@')) $look_for = mb_substr($look_for, 1);
+
+    if(strlen($look_for)==0){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Mmmm...enter user alias. Try again.', $is_verified['user']['language'])]);
+        set_command_to_last_message("generate_codes_step_enter_alias", $update->getMessage()->chat->id,['amount' => $last_message_object->amount]);
+        return;
+    }
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('generate-codes', ['amount' => $last_message_object->amount, 'telegram_id'=>$update->getMessage()->chat->id, 'alias' => $look_for]);
+    if(isset($return_data['status']) AND $return_data['status']==='error'){
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($return_data['text'], $is_verified['user']['language'])]);
+        set_command_to_last_message("generate_codes_step_enter_alias", $update->getMessage()->chat->id,['amount' => $last_message_object->amount]);
+        return;
+    }
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => sprintf(__('%d invite codes have been generated and a notification has been sent to %s', $is_verified['user']['language']),$last_message_object->amount,$look_for)]);
+
+    //send message to codes owner
+    $telegram->sendMessage(['chat_id' => $return_data['owner_user']['telegram'], 'text' => sprintf(__('You were granted %d invitation codes. Use /my_invitation_codes command to access them.', $return_data['owner_user']['language']),$last_message_object->amount)]);
+
+}
 function expression_choose_type($update, $telegram, $callbackName)
 {
     $is_verified = user_is_verified($update->getMessage()->chat->id);

@@ -26,7 +26,7 @@ require_once  'user/PendingInvitesCommand.php';
 require_once  'user/RejectedInvitesCommand.php';
 require_once  'user/MyLovestarsCommand.php';
 require_once  'user/ResendPendingInvitesCommand.php';
-
+require_once  'user/GenerateCodesCommand.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -125,4 +125,8 @@ if(in_array($user['user']['role'], ['event_organizer', 'admin'])) {
     //Events command
     $telegram->addCommand( Telegram\Bot\Commands\EventsCreateCommand::class);
     $telegram->addCommand( Telegram\Bot\Commands\GetMyEventsCommand::class);
+}
+
+if($user['user']['role'] === 'admin') {
+    $telegram->addCommand( Telegram\Bot\Commands\GenerateCodesCommand::class);
 }
