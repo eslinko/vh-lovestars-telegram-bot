@@ -686,6 +686,29 @@ $translates = [
     "Event Title:" => [
         'en' => "Event Title:",
         'ru' => "Название мероприятия:"
-    ]
-
+    ],
+    'User not found' => [
+        'en' => 'User not found. Try again',
+        'ru' => 'Пользователь не найден, попробуйте снова'
+    ],
+    'How many codes do you need to generate?' => [
+        'en' => 'How many codes do you need to generate?',
+        'ru' => 'Сколько кодов вы хотите создать?'
+    ],
+    'Please enter number only. Try again.' => [
+        'en' => 'Please enter number only. Try again.',
+        'ru' => 'Пожалуйста вводите только числа. Попробуйте снова.'
+    ],
+    'Type the platform alias of the user who will receive those invitation codes starting with @' => [
+        'en' => 'Type the platform alias of the user who will receive those invitation codes starting with @',
+        'ru' => 'Пожалуйста введите начиная с @ платформенный алиас пользователя который получит коды приглашения'
+    ],
+    '%d invite codes have been generated and a notification has been sent to %s' => [
+        'en' => '%d invite codes have been generated and a notification has been sent to %s',
+        'ru' => 'Было создано %d кодов приглашения и уведомление отправлено %s'
+    ],
+    'You were granted %d invitation codes. Use /my_invitation_codes command to access them.' => [
+        'en' => 'You were granted %d invitation codes. Use /my_invitation_codes command to access them.',
+        'ru' => 'Вы получили %d кодов приглашения. Используйте команду /my_invitation_codes чтобы посмотреть их'
+    ],
 ];
