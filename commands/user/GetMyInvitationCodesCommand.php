@@ -51,7 +51,7 @@ class GetMyInvitationCodesCommand extends Command
 			} else {
 				//foreach ($data['codes'] as $key => $code) {
                 for ($i = 0; $i < count($data['codes']); $i++){
-                    if($i==count($data['codes'])-2)break;
+                    if($i==count($data['codes'])-9)break;
                     $code = $data['codes'][$i];
                     if(empty($code['user'])){
                         $options['text'] = $code['code'];
