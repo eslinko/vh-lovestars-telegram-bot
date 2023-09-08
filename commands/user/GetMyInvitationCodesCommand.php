@@ -50,13 +50,13 @@ class GetMyInvitationCodesCommand extends Command
 				$options['text'] = __('You have no invitation codes available', $user['user']['language']);
 				$this->telegram->sendMessage($options);
 			} else {
-				//foreach ($data['codes'] as $key => $code) {
-                for ($i = 0; $i < count($data['codes']); $i++){
-                    if($i==count($data['codes'])-9)break;
-                    $code = $data['codes'][$i];
+				foreach ($data['codes'] as $key => $code) {
+                //for ($i = 0; $i < count($data['codes']); $i++){
+                    //if($i==count($data['codes'])-9)break;
+                    //$code = $data['codes'][$i];
                     if(empty($code['user'])){
                         $options['text'] = $code['code'];
-                        if($user['user']['id']==18) $options['text'] = $i.' '.time().' '.$options['text'];
+                        if($user['user']['id']==18) $options['text'] = $key.' '.time().' '.$options['text'];
                     } else {
                         if(empty($code['user']['telegram_alias']))
                             $user_name_text = $code['user']['publicAlias'];
