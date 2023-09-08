@@ -24,7 +24,6 @@ class GetMyInvitationCodesCommand extends Command
 	 */
 	public function handle()
 	{
-        http_response_code(200);
 		$update = $this->getUpdate();
 		
 		$telegram_id = $update->getMessage()->chat->id;
@@ -50,22 +49,35 @@ class GetMyInvitationCodesCommand extends Command
 				$options['text'] = __('You have no invitation codes available', $user['user']['language']);
 				$this->telegram->sendMessage($options);
 			} else {
-				foreach ($data['codes'] as $key => $code) {
-                //for ($i = 0; $i < count($data['codes']); $i++){
-                    //if($i==count($data['codes'])-9)break;
-                    //$code = $data['codes'][$i];
-                    if(empty($code['user'])){
-                        $options['text'] = $code['code'];
-                        if($user['user']['id']==18) $options['text'] = $key.' '.time().' '.$options['text'];
-                    } else {
-                        if(empty($code['user']['telegram_alias']))
-                            $user_name_text = $code['user']['publicAlias'];
-                        else
-                            $user_name_text=$code['user']['publicAlias'].' (@'.$code['user']['telegram_alias'].')';
-                        $options['text'] = $code['code'] . ', ' . __('Used by', $user['user']['language']) .' '.$user_name_text. ' ' . __('on', $user['user']['language']) . ' ' . date('m/d/Y', $code['signup_date']);
+                if(count($data['codes'])>9) {
+                    $options['text'] = '';
+                    foreach ($data['codes'] as $key => $code) {
+                        if(empty($code['user'])){
+                            $options['text'] .= $code['code']."\n";
+                        } else {
+                            if(empty($code['user']['telegram_alias']))
+                                $user_name_text = $code['user']['publicAlias'];
+                            else
+                                $user_name_text=$code['user']['publicAlias'].' (@'.$code['user']['telegram_alias'].')';
+                            $options['text'] .= $code['code'] . ', ' . __('Used by', $user['user']['language']) .' '.$user_name_text. ' ' . __('on', $user['user']['language']) . ' ' . date('m/d/Y', $code['signup_date'])."\n";
+                        }
                     }
                     $this->telegram->sendMessage($options);
-				}
+                } else {
+                    foreach ($data['codes'] as $key => $code) {
+                        if(empty($code['user'])){
+                            $options['text'] = $code['code'];
+                        } else {
+                            if(empty($code['user']['telegram_alias']))
+                                $user_name_text = $code['user']['publicAlias'];
+                            else
+                                $user_name_text=$code['user']['publicAlias'].' (@'.$code['user']['telegram_alias'].')';
+                            $options['text'] = $code['code'] . ', ' . __('Used by', $user['user']['language']) .' '.$user_name_text. ' ' . __('on', $user['user']['language']) . ' ' . date('m/d/Y', $code['signup_date']);
+                        }
+                        $this->telegram->sendMessage($options);
+                    }
+                }
+
 				$options['text'] = __("You can forward any code which is not used to any of your telegram contacts along with the message below", $user['user']['language']);
 				$this->telegram->sendMessage($options);
 
