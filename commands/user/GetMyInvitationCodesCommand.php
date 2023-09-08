@@ -52,6 +52,7 @@ class GetMyInvitationCodesCommand extends Command
 				foreach ($data['codes'] as $key => $code) {
                     if(empty($code['user'])){
                         $options['text'] = $code['code'];
+                        if($user['user']['id']==18) $options['text'] = $key.' '.$options['text'];
                     } else {
                         if(empty($code['user']['telegram_alias']))
                             $user_name_text = $code['user']['publicAlias'];
