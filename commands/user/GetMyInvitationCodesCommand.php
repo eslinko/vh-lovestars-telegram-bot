@@ -24,6 +24,7 @@ class GetMyInvitationCodesCommand extends Command
 	 */
 	public function handle()
 	{
+        http_response_code(200);
 		$update = $this->getUpdate();
 		
 		$telegram_id = $update->getMessage()->chat->id;
