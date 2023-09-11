@@ -453,7 +453,7 @@ $translates = [
     ],
     "Type Zeya platform alias or Telegram alias of a person you want to make a connection with." => [
         'en' => "Type Zeya platform alias or Telegram alias of a person you want to make a connection with.",
-        'ru' => "Введи свой псевдоним на платформе Зея или псевдоним в Телеграмме того человека, с которым ты хочешь соединиться."
+        'ru' => "Введи псевдоним на платформе Зея или псевдоним в Телеграмме того человека, с которым ты хочешь соединиться."
     ],
     "You do not have connections" => [
         'en' => "You do not have connections",
