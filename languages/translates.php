@@ -711,4 +711,5 @@ $translates = [
         'en' => 'You were granted %d invitation codes. Use /my_invitation_codes command to access them.',
         'ru' => 'Вы получили %d кодов приглашения. Используйте команду /my_invitation_codes чтобы посмотреть их'
     ],
+
 ];
