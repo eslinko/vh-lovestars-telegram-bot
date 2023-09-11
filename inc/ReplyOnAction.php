@@ -1179,9 +1179,19 @@ function add_new_connection($update, $telegram)
             $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, there was an error, please contact the administrator.', $is_verified['user']['language'])]);
             return;
         }
-        foreach ($return_data['codes'] as $code){
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text' => $code['code']]);
+        if(count($return_data['codes'])>9) {
+            $text = '';
+            foreach ($return_data['codes'] as $code){
+                $text .= $code['code']."\n";
+            }
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text' => $text]);
+
+        } else {
+            foreach ($return_data['codes'] as $code){
+                $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text' => $code['code']]);
+            }
         }
+
         if(empty($return_data['codes'])){
             $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id,'text' => __('You have no invitation codes available', $is_verified['user']['language'])]);
         }
