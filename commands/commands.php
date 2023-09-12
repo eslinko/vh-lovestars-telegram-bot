@@ -27,6 +27,7 @@ require_once  'user/RejectedInvitesCommand.php';
 require_once  'user/MyLovestarsCommand.php';
 require_once  'user/ResendPendingInvitesCommand.php';
 require_once  'user/GenerateCodesCommand.php';
+require_once  'user/ReportAnIssueCommand.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -87,6 +88,7 @@ $telegram->addCommand( Telegram\Bot\Commands\PendingInvitesCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\RejectedInvitesCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\MyLovestarsCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ResendPendingInvitesCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ReportAnIssueCommand::class);
 
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);

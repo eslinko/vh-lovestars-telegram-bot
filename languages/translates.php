@@ -711,5 +711,16 @@ $translates = [
         'en' => 'You were granted %d invitation codes. Use /my_invitation_codes command to access them.',
         'ru' => 'Вы получили %d кодов приглашения. Используйте команду /my_invitation_codes чтобы посмотреть их'
     ],
-
+    'If you ever run into a hiccup with our chatbot' => [
+        'en' => "If you ever run into a hiccup with our chatbot, don't hesitate to give us the lowdown on what went down. We'll roll up our sleeves and do our darnedest to sort it out. If we need to chat you up on Telegram to dive deeper into the nitty-gritty, we hope you're cool with that 😄. Thanks for being awesome! 🚀",
+        'ru' => "Если у тебя возникли какие-либо проблемы с нашим чат-ботом, не стесняйся рассказать нам, что случилось, и мы сделаем всё возможное, чтобы разобраться в ситуации. Может быть, нам придется связаться с тобой в Telegram, чтобы получить дополнительные детали для исследования. Надеемся на твое понимание 😄. Спасибо, что ты с нами! 🚀"
+    ],
+    'Alarm! A user {userPublicAlias} reported an issue:' => [
+        'en' => "Alarm! A user {userPublicAlias} reported an issue:",
+        'ru' => 'Внимание: Пользователь {userPublicAlias} сообщил об ошибке:'
+    ],
+    'Thank you! Our administrators received your report' => [
+        'en' => 'Thank you! Our administrators received your message',
+        'ru' => 'Спасибо! Наши администраторы получили ваше сообщение'
+    ]
 ];
