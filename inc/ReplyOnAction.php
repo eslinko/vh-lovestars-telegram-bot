@@ -120,6 +120,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'generate_codes_step_enter_alias':
             generate_codes_step_enter_alias($update, $telegram, $last_message_object);
             break;
+        case 'report_an_issue':
+            report_an_issue($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -928,6 +931,17 @@ function suggest_new_language($update, $telegram) {
 	
 	//$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators will consider your application :)', $result['user']['language'])]);
     //TGKeyboard::showMainKeyboard($update->getMessage()->chat->id,$telegram, $is_verified['user'], __('Thank you! Our administrators will consider your application :)', $is_verified['user']['language']));
+}
+
+function report_an_issue($update, $telegram, $last_message_object){
+    $message = trim($update->getMessage()->text);
+
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+
+    $lcApi = new \LCAPPAPI();
+    $lcApi->makeRequest('send-notification-to-admin', ['telegram_id' => $update->getMessage()->chat->id, 'message' =>  __("Alarm! A user {userPublicAlias} reported an issue:", $is_verified['user']['language']) . ' ' . $message]);
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Thank you! Our administrators received your report', $is_verified['user']['language'])]);
+
 }
 
 function set_user_interests($update, $telegram) {
