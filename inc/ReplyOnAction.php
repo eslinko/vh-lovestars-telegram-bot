@@ -1685,45 +1685,42 @@ function expression_choose_file($update, $telegram, $callbackName)
     if(!$is_verified['status']) return false;
 
     $telegram_id = $update->getMessage()->chat->id;
-    $description = trim($update->getMessage()->text);
+    $message = trim($update->getMessage()->text);
 
-//    ob_start();
-//    echo "<pre>";
-//    var_dump($update->getMessage());
-//    echo "</pre>";
-//    $debug = ob_get_contents();
-//    ob_get_clean();
+    // if its url to content
+    if(filter_var($message, FILTER_VALIDATE_URL)){
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = 'its a url content';
 
+        $telegram->sendMessage($options);
+        return false;
+    }
 
-//    $options['chat_id'] = $telegram_id;
-//    $options['text'] = $debug;
-////
-//    $telegram->sendMessage($options);
+    if(!empty($update->getMessage()['document'])) {
+        $options['chat_id'] = $telegram_id;
+        ob_start();
+        echo "<pre>";
+        var_dump($update->getMessage()['document']);
+        echo "</pre>";
+        $debug = ob_get_contents();
+        ob_get_clean();
 
+        $options['text'] = $debug;
+        $options['text'] .= 'its a file content';
 
-//    $lcApi = new \LCAPPAPI();
-//    $result = $lcApi->makeRequest('set-description-to-expression', ['telegram_id' => $telegram_id, 'desc' => $description]);
-//
-//    if($result['status'] === 'error') {
-//        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
-//            'inline_keyboard' =>  [
-//                [
-//                    Keyboard::inlineButton([
-//                        'text' => 'Try again',
-//                        'callback_data' => 'expression_choose_description'
-//                    ])
-//                ]
-//            ],
-//            'resize_keyboard' => true,
-//        ])]);
-//        return false;
-//    }
-//
-//    $options['chat_id'] = $telegram_id;
-//    $options['text'] = $description;
-//
-//    $telegram->sendMessage($options);
-//
-//    $telegram->triggerCommand('expression_choose_file', $update);
-//    set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
+        $telegram->sendMessage($options);
+        return false;
+    }
+
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Provide a url to your work or upload a file of your work!', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+        'inline_keyboard' =>  [
+            [
+                Keyboard::inlineButton([
+                    'text' => 'Try again',
+                    'callback_data' => 'expression_choose_file'
+                ])
+            ]
+        ],
+        'resize_keyboard' => true,
+    ])]);
 }

@@ -97,10 +97,10 @@ $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep3Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep4Command::class);
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStepInvitationCodeCommand::class);
 //expressions commands
-//$telegram->addCommand( Telegram\Bot\Commands\ExpressionStartCreateCommand::class);
-//$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseTypeCommand::class);
-//$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseDescriptionCommand::class);
-//$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseFileCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionStartCreateCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseTypeCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseDescriptionCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseFileCommand::class);
 
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
