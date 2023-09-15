@@ -2,17 +2,17 @@
 
 namespace Telegram\Bot\Commands;
 
-class ExpressionChooseFileCommand extends Command
+class ExpressionChooseTagsCommand extends Command
 {
     /**
      * @var string Command Name
      */
-    protected $name = "expression_choose_file";
+    protected $name = "expression_choose_tags";
 
     /**
      * @var string Command Description
      */
-    protected $description = "File for expression";
+    protected $description = "Tags for expression";
 
     /**
      * @inheritdoc
@@ -33,7 +33,7 @@ class ExpressionChooseFileCommand extends Command
             'chat_id' => $telegram_id,
         ];
 
-        $options['text'] = __('Please provide a file (image/video/audio) or url of your creative expression:', $result['user']['language']);
+        $options['text'] = __('Please enter tags (separated by commas) to describe your creative expression:', $result['user']['language']);
         $this->telegram->sendMessage($options);
         set_command_to_last_message($this->name, $telegram_id);
     }

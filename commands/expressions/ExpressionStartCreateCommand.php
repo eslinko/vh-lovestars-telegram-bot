@@ -2,8 +2,6 @@
 
 namespace Telegram\Bot\Commands;
 
-use Telegram\Bot\Keyboard\Keyboard;
-
 class ExpressionStartCreateCommand extends Command
 {
     /**

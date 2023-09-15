@@ -102,6 +102,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_choose_description':
             expression_choose_description($update, $telegram, $last_message_object);
             break;
+        case 'expression_choose_tags':
+            expression_choose_tags($update, $telegram, $last_message_object);
+            break;
         case 'expression_choose_file':
             expression_choose_file($update, $telegram, $last_message_object);
             break;
@@ -1631,7 +1634,7 @@ function expression_choose_type($update, $telegram, $callbackName)
             'inline_keyboard' =>  [
                 [
                     Keyboard::inlineButton([
-                        'text' => 'Try again',
+                        'text' => __('Try again', $is_verified['user']['language']),
                         'callback_data' => 'expression_choose_type'
                     ])
                 ]
@@ -1663,8 +1666,38 @@ function expression_choose_description($update, $telegram, $callbackName)
             'inline_keyboard' =>  [
                 [
                     Keyboard::inlineButton([
-                        'text' => 'Try again',
+                        'text' => __('Try again', $is_verified['user']['language']),
                         'callback_data' => 'expression_choose_description'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
+    $telegram->triggerCommand('expression_choose_tags', $update);
+    set_command_to_last_message('expression_choose_tags', $update->getMessage()->chat->id);
+}
+
+function expression_choose_tags($update, $telegram, $callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+
+    $telegram_id = $update->getMessage()->chat->id;
+    $tags = trim($update->getMessage()->text);
+
+    $lcApi = new \LCAPPAPI();
+    $result = $lcApi->makeRequest('set-tags-to-expression', ['telegram_id' => $telegram_id, 'tags' => $tags]);
+
+    if($result['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'expression_choose_tags'
                     ])
                 ]
             ],
@@ -1681,6 +1714,7 @@ function expression_choose_description($update, $telegram, $callbackName)
 //https://api.telegram.org/file/bot6325727268:AAHCpUa6mGrXwzhBP4CpOcWsEffug2xvlV0/file_path - скачиваем файл
 function expression_choose_file($update, $telegram, $callbackName)
 {
+    $lcApi = new \LCAPPAPI();
     $is_verified = user_is_verified($update->getMessage()->chat->id);
     if(!$is_verified['status']) return false;
 
@@ -1689,10 +1723,11 @@ function expression_choose_file($update, $telegram, $callbackName)
 
     // if its url to content
     if(filter_var($message, FILTER_VALIDATE_URL)){
-        $options['chat_id'] = $telegram_id;
-        $options['text'] = 'its a url content';
+        $result = $lcApi->makeRequest('set-url-content-to-expression', ['telegram_id' => $telegram_id, 'url' => $message]);
 
-        $telegram->sendMessage($options);
+        $telegram->triggerCommand('expression_confirm_creation', $update);
+        set_command_to_last_message('expression_confirm_creation', $update->getMessage()->chat->id);
+
         return false;
     }
 
@@ -1716,7 +1751,7 @@ function expression_choose_file($update, $telegram, $callbackName)
         'inline_keyboard' =>  [
             [
                 Keyboard::inlineButton([
-                    'text' => 'Try again',
+                    'text' => __('Try again', $is_verified['user']['language']),
                     'callback_data' => 'expression_choose_file'
                 ])
             ]

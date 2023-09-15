@@ -60,7 +60,11 @@ require_once 'events/GetMyEventsCommand.php';
 require_once 'expressions/ExpressionStartCreateCommand.php';
 require_once 'expressions/ExpressionChooseTypeCommand.php';
 require_once 'expressions/ExpressionChooseDescriptionCommand.php';
+require_once 'expressions/ExpressionChooseTagsCommand.php';
 require_once 'expressions/ExpressionChooseFileCommand.php';
+require_once 'expressions/ExpressionConfirmCreationCommand.php';
+require_once 'expressions/ExpressionCancelCreationCommand.php';
+require_once 'expressions/ExpressionFinishedCreationCommand.php';
 
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
@@ -100,7 +104,11 @@ $telegram->addCommand( Telegram\Bot\Commands\RegistrationStepInvitationCodeComma
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionStartCreateCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseTypeCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseDescriptionCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseTagsCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseFileCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionConfirmCreationCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionCancelCreationCommand::class);
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionFinishedCreationCommand::class);
 
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
