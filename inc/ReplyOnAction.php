@@ -1549,7 +1549,6 @@ function ask_to_revert_connection($update, $telegram,$callbackName)
         }
     }
 
-
     $options['chat_id'] = $telegram_id;
     $options['text'] = __("Are you sure that you want to revert reject and accept this invite from", $is_verified['user']['language']).' '.$username.'?';
     $options['reply_markup'] = Keyboard::make([
@@ -1710,44 +1709,53 @@ function expression_choose_tags($update, $telegram, $callbackName)
     set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
 }
 
-//https://api.telegram.org/bot6325727268:AAHCpUa6mGrXwzhBP4CpOcWsEffug2xvlV0/getFile?file_id=BQACAgIAAxkBAAIvImTbqgiXTDADqg5MAeKa_UNyEDRYAAKGMAAC78LgSvb3rxYAAfB6RDAE - получаем file_path
-//https://api.telegram.org/file/bot6325727268:AAHCpUa6mGrXwzhBP4CpOcWsEffug2xvlV0/file_path - скачиваем файл
+//https://api.telegram.org/bot6591014421:AAEalxqSNOKdae4gz6TrIdupwlvHGKp-A6Y/getFile?file_id=BQACAgIAAxkBAAIJtmUIdQSERugaA7_rc7cZocoOteC2AALXOQACJRJJSAABmShZ5O5BEjAE- получаем file_path
+//https://api.telegram.org/file/bot6591014421:AAEalxqSNOKdae4gz6TrIdupwlvHGKp-A6Y/file_path - скачиваем файл
 function expression_choose_file($update, $telegram, $callbackName)
 {
+    $message = $update->getMessage();
+    $telegram_id = $message->chat->id;
+
     $lcApi = new \LCAPPAPI();
-    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    $is_verified = user_is_verified($telegram_id);
     if(!$is_verified['status']) return false;
 
-    $telegram_id = $update->getMessage()->chat->id;
-    $message = trim($update->getMessage()->text);
+    $message_text = trim($message->text);
 
     // if its url to content
-    if(filter_var($message, FILTER_VALIDATE_URL)){
-        $result = $lcApi->makeRequest('set-url-content-to-expression', ['telegram_id' => $telegram_id, 'url' => $message]);
+    if(filter_var($message_text, FILTER_VALIDATE_URL)){
+        $result = $lcApi->makeRequest('set-url-content-to-expression', ['telegram_id' => $telegram_id, 'url' => $message_text]);
 
         $telegram->triggerCommand('expression_confirm_creation', $update);
-        set_command_to_last_message('expression_confirm_creation', $update->getMessage()->chat->id);
+        set_command_to_last_message('expression_confirm_creation', $telegram_id);
 
         return false;
     }
 
-    if(!empty($update->getMessage()['document'])) {
-        $options['chat_id'] = $telegram_id;
-        ob_start();
-        echo "<pre>";
-        var_dump($update->getMessage()['document']);
-        echo "</pre>";
-        $debug = ob_get_contents();
-        ob_get_clean();
+    if(!empty($message['document']) || !empty($message['photo']) || !empty($message['video']) || !empty($message['voice'])) {
 
-        $options['text'] = $debug;
-        $options['text'] .= 'its a file content';
+        if(!empty($message['document'])) {
+            $file_id = $message['document']['file_id'];
+        } else if (!empty($message['photo'])) {
+            $file_id = end($message['photo'])['file_id'];
+        } else if(!empty($message['video'])) {
+            $file_id = $message['video']['file_id'];
+        } else if(!empty($message['voice'])) {
+            $file_id = $message['voice']['file_id'];
+        }
 
-        $telegram->sendMessage($options);
-        return false;
+        if(!empty($file_id)) {
+            $result = $lcApi->makeRequest('set-file-content-to-expression', ['telegram_id' => $telegram_id, 'file_id' => $file_id]);
+
+            $telegram->triggerCommand('expression_confirm_creation', $update);
+            set_command_to_last_message('expression_confirm_creation', $update->getMessage()->chat->id);
+
+            return false;
+        }
+
     }
 
-    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Provide a url to your work or upload a file of your work!', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Provide a url to your work or upload a file of your work!', $is_verified['user']['language']) . $debug, 'reply_markup' => Keyboard::make([
         'inline_keyboard' =>  [
             [
                 Keyboard::inlineButton([
