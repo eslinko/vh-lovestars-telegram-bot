@@ -722,5 +722,13 @@ $translates = [
     'Thank you! Our administrators received your report' => [
         'en' => 'Thank you! Our administrators received your message',
         'ru' => 'Спасибо! Наши администраторы получили ваше сообщение'
+    ],
+    'You do not have matches' => [
+        'en' => 'You do not have matches',
+        'ru' => 'У вас нет совпадений'
+    ],
+    'Btn_My matches' => [
+        'en' => 'My matches',
+        'ru' => 'Мои совпадения'
     ]
 ];
