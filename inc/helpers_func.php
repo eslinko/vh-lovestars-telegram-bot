@@ -53,8 +53,12 @@ function get_command_for_expressions_create($expression)
         return 'expression_choose_type';
     } else if(empty($expression['description'])) {
         return 'expression_choose_description';
+    } else if(empty($expression['tags'])) {
+        return 'expression_choose_tags';
     } else if (empty($expression['content'])) {
         return 'expression_choose_file';
+    } else {
+        return 'expression_confirm_creation';
     }
 }
 
