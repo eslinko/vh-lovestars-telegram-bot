@@ -69,7 +69,9 @@ class TGKeyboard
             case "\xF0\x9F\x8F\xA0".__('Home', $user['language']):
                 TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user, 'Home');
                 break;
-
+            case "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language']):
+                $telegram->triggerCommand('my_matches', $update);
+                break;
             default:
                 //TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user);
                 return false;
@@ -95,6 +97,7 @@ class TGKeyboard
                     ],[
                         Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language'])])
                     ],[
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url.', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x93\x84".__('Get list of my events.', $user['language'])]),
