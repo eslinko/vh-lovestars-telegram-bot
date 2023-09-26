@@ -625,7 +625,7 @@ $translates = [
     ],
     "Would you like to confirm a request from %s to be part of your connections?" => [
         'en' => "Would you like to confirm the request from %s to be part of your connections?",
-        'ru' => "Ты хочешь принять запрос от %s в качестве связи на платформе Зея?"
+        'ru' => "Ты хочешь принять запрос от %s в качестве связи на платформе Zeya4eve?"
     ],
     "Accept" => [
         'en' => "Accept",
