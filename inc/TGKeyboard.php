@@ -58,7 +58,11 @@ class TGKeyboard
                 $telegram->triggerCommand('my_interests_and_values', $update);
                 break;
             case "\xF0\x9F\x92\x9C".__('My Lovestars', $user['language']):
+                TGKeyboard::showMyLovestarsKeyboard($telegram_id, $telegram, $user, __('My Lovestars', $user['language']));
                 $telegram->triggerCommand('my_lovestars', $update);
+                break;
+            case "\xE2\x9C\x8F".__('Claim my Lovestars', $user['language']):
+                $telegram->triggerCommand('claim_my_lovestars', $update);
                 break;
             case "\xF0\x9F\x93\x9D".__('Add event url.', $user['language']):
                 $telegram->triggerCommand('events_create', $update);
@@ -163,6 +167,25 @@ class TGKeyboard
                 ],[
                     //Keyboard::button(['text' => "\xF0\x9F\x94\x92".__('Update Password', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Btn_Change the language', $user['language'])]),
+                ]
+            ],
+            'resize_keyboard' => true
+        ]);
+
+        $options['text'] = $text;
+
+        $telegram->sendMessage($options);
+
+    }
+    static public function showMyLovestarsKeyboard($telegram_id, $telegram, $user, $text){
+        $options =[];
+        $options['chat_id'] = $telegram_id;
+        $options['reply_markup'] = Keyboard::make([
+            'keyboard' =>  [
+                [
+                    Keyboard::button(['text' => "\xF0\x9F\x8F\xA0".__('Home', $user['language'])]),
+                    //Keyboard::button(['text' => "\xF0\x9F\x93\xA7".__('Update Email', $user['language'])]),
+                    Keyboard::button(['text' => "\xE2\x9C\x8F".__('Claim my Lovestars', $user['language'])]),
                 ]
             ],
             'resize_keyboard' => true
