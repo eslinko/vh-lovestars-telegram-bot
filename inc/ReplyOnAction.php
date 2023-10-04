@@ -105,6 +105,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_choose_tags':
             expression_choose_tags($update, $telegram, $last_message_object);
             break;
+        case 'claim_my_lovestars':
+            claim_my_lovestars($update, $telegram, $last_message_object);
+            break;
         case 'expression_choose_file':
             expression_choose_file($update, $telegram, $last_message_object);
             break;
@@ -1713,8 +1716,6 @@ function expression_choose_tags($update, $telegram, $callbackName)
     set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
 }
 
-//https://api.telegram.org/bot6591014421:AAEalxqSNOKdae4gz6TrIdupwlvHGKp-A6Y/getFile?file_id=BQACAgIAAxkBAAIJtmUIdQSERugaA7_rc7cZocoOteC2AALXOQACJRJJSAABmShZ5O5BEjAE- получаем file_path
-//https://api.telegram.org/file/bot6591014421:AAEalxqSNOKdae4gz6TrIdupwlvHGKp-A6Y/file_path - скачиваем файл
 function expression_choose_file($update, $telegram, $callbackName)
 {
     $message = $update->getMessage();
@@ -1770,4 +1771,33 @@ function expression_choose_file($update, $telegram, $callbackName)
         ],
         'resize_keyboard' => true,
     ])]);
+}
+
+function claim_my_lovestars($update, $telegram, $callbackName)
+{
+    $is_verified = user_is_verified($update->getMessage()->chat->id);
+    if(!$is_verified['status']) return false;
+
+    $telegram_id = $update->getMessage()->chat->id;
+    $code = trim($update->getMessage()->text);
+
+    $lcApi = new \LCAPPAPI();
+    $result = $lcApi->makeRequest('claim-my-lovestars', ['telegram_id' => $telegram_id, 'code' => $code]);
+
+    if($result['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'claim_my_lovestars'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+        return false;
+    }
+
+    $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => sprintf(__('Congrats! You received %d Lovestars 💜', $is_verified['user']['language']), (int) $result['emitted_lovestars'])]);
 }

@@ -734,5 +734,17 @@ $translates = [
     "Bonus Lovestars have been added to your account courtesy of a special invitation code. Your total Lovestars tally is now %s. You can always check your Lovestars balance in the \"My Lovestars\" section. \nStay tuned for updates on all the cool things you can do with those Lovestars as our platform expands its functionality." => [
         'en' => "Bonus Lovestars have been added to your account courtesy of a special invitation code. Your total Lovestars tally is now %s. You can always check your Lovestars balance in the \"My Lovestars\" section. \nStay tuned for updates on all the cool things you can do with those Lovestars as our platform expands its functionality.",
         'ru' => "Бонусные Лавстары были добавлены на твой аккаунт благодаря специальному коду приглашения. Теперь твой общий счет Лавстаров составляет %s. Ты всегда можешь проверить баланс своих Лавстаров в разделе \"Мои Лавстары\". \nОставайся с нами и будь в курсе всех новых возможностей, которые открываются по мере расширения функционала нашей платформы!"
-    ]
+    ],
+    "Claim my Lovestars" => [
+        'en' => "Claim my Lovestars",
+        'ru' => "Востребовать Lovestars"
+    ],
+    "Please enter your magic code" => [
+        'en' => "Please enter your magic code",
+        'ru' => "Пожалуйста, введите свой магический код"
+    ],
+    "Congrats! You received %d Lovestars 💜" => [
+        'en' => "Congrats! You received %d Lovestars 💜",
+        'ru' => "Ура! У тебя появилось %d новых Лавстаров 💜"
+    ],
 ];
