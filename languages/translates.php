@@ -368,8 +368,8 @@ $translates = [
 		'ru' => 'Поделись вестью о нашей платформе: Разошли приглашения своим друзьям в Telegram.'
 	],
 	'This is an invitation to Zeya' => [
-		'en' => 'Zeya4eve Community Invite: Welcome to Zeya4eve! Connect with like-minded people based on shared interests and emotional resonance. Open bot: @zeya_community_bot and use your unique code during registration.',
-		'ru' => 'Приглашение в сообщество Zeya4eve: Добро пожаловать! Найди единомышленников по интересам. Бот: @zeya_community_bot, код — при регистрации.'
+		'en' => 'Zeya4eve Community Invite: Welcome to Zeya4eve! Connect with like-minded people based on shared interests and emotional resonance. Open bot: @Zeya4eve_bot and use your unique code during registration.',
+		'ru' => 'Приглашение в сообщество Zeya4eve: Добро пожаловать! Найди единомышленников по интересам. Бот: @Zeya4eve_bot, код — при регистрации.'
 	],
 	'You are already registered' => [
 		'en' => 'Already Part of the Community: You\'re already registered with Zeya4eve.',
