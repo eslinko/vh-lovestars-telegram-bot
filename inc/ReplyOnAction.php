@@ -539,7 +539,7 @@ function registration_step_invitation_code($update, $telegram) {
 	$result = $lcApi->makeRequest('set-invitation-code', ['telegram_id' => $update->getMessage()->chat->id, 'code' => $code]);
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($result)]);
 
-	if($result['status'] === 'error') {
+	if(isset($result['status'])==false OR $result['status'] !== 'success') {
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $user['language']), 'reply_markup' => Keyboard::make([
 			'inline_keyboard' =>  [
 				[
