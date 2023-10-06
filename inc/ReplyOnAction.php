@@ -537,6 +537,7 @@ function registration_step_invitation_code($update, $telegram) {
 
 	$lcApi = new \LCAPPAPI();
 	$result = $lcApi->makeRequest('set-invitation-code', ['telegram_id' => $update->getMessage()->chat->id, 'code' => $code]);
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($result)]);
 
 	if($result['status'] === 'error') {
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $user['language']), 'reply_markup' => Keyboard::make([
@@ -1760,7 +1761,7 @@ function expression_choose_file($update, $telegram, $callbackName)
 
     }
 
-    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Provide a url to your work or upload a file of your work!', $is_verified['user']['language']) . $debug, 'reply_markup' => Keyboard::make([
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Provide a url to your work or upload a file of your work!', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
         'inline_keyboard' =>  [
             [
                 Keyboard::inlineButton([
