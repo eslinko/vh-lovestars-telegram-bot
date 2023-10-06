@@ -113,6 +113,7 @@ function choose_step($user, $telegram_id = '') {
 
 function __($text, $lang = 'en') {
 //    require realpath($_SERVER['DOCUMENT_ROOT']) . '/languages/translates.php';
+    if(!is_string($text)) $text = 'Sorry, there was an error, please contact the administrator.';
 	require dirname(__DIR__) . '/languages/translates.php';
 	return !empty($translates[$text]) && !empty($translates[$text][$lang]) ? $translates[$text][$lang] : $text;
 }
