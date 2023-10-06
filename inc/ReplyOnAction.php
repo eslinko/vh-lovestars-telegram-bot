@@ -542,8 +542,11 @@ function registration_step_invitation_code($update, $telegram) {
 	if(isset($result['status'])==false OR $result['status'] !== 'success') {
         if(isset($result['text']))
             $text = $result['text'];
-        else
+        else {
             $text = 'Error! Try again later.';
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => print_r($result['text'],true)]);
+
+        }
 		$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($text, $user['language']), 'reply_markup' => Keyboard::make([
 			'inline_keyboard' =>  [
 				[
