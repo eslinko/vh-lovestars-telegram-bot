@@ -57,14 +57,13 @@ class MyMatchesCommand extends Command
                 foreach ($data['matches'] as $item) {
                     $user_name_text = $item['user']['publicAlias'];
                     if(!empty($item['user']['telegram_alias']))$user_name_text = '(@'.$item['user']['telegram_alias'].') '.$user_name_text;
-                    $options['text'].=$i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['timestamp']))."\n";
+                    $options['text'] .= $i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['timestamp']))."\n";
                     $i++;
                 }
             }
 
         }
         $url = parse_url(getenv('API_URL'));
-
 
 		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
@@ -74,8 +73,6 @@ class MyMatchesCommand extends Command
 						'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/swipe/swipe.htm']
 					])
 				]
-
-
 			],
 			'resize_keyboard' => true
 		]);
