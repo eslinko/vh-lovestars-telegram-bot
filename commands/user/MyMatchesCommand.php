@@ -63,16 +63,15 @@ class MyMatchesCommand extends Command
             }
 
         }
-        $url = parse_url(dirname(__DIR__));
-
-        $options['text'].=dirname(__DIR__).' p '.$url['scheme']."://".$url['host'];
+        $url = parse_url(getenv('API_URL'));
+        $options['text'].=$url['scheme']."://".$url['host'];
 
 		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
 				[
 					Keyboard::inlineButton([
 						'text' => __('Explore CE (tinder)', $user['user']['language']),
-						'web_app' => ['url' => $url.'/frontend/web/swipe/swipe.htm']//'https://api.siberianlegend.ru/swipe/swipe.htm']
+						'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/swipe/swipe.htm']
 					])
 				]
 
