@@ -38,12 +38,8 @@ class MyMatchesCommand extends Command
 
         $options['text'] = '';
 
-
-
         $lcApi = new \LCAPPAPI();
         $data = $lcApi->makeRequest('get-user-matches', ['telegram_id' => $telegram_id]);
-
-
 
         if($data['status'] === 'error' || empty($data)) {
             $options['text'] = __("Error! Try again later.", $user['user']['language']);
