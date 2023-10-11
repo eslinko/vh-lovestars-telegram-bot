@@ -120,6 +120,8 @@ class TGKeyboard
                     ],[
                         Keyboard::button(['text' => "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
+                        Keyboard::button(['text' => "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language'])])
+
                     ]
                 ],
                 'resize_keyboard' => true
