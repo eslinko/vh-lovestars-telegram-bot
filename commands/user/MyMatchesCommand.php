@@ -64,7 +64,7 @@ class MyMatchesCommand extends Command
 
         }
         $url = parse_url(getenv('API_URL'));
-        $options['text'].=$url['scheme']."://".$url['host'];
+
 
 		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
