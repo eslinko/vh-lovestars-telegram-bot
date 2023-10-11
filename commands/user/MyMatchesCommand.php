@@ -65,23 +65,19 @@ class MyMatchesCommand extends Command
         }
 
 
-/*		$options['reply_markup'] = Keyboard::make([
+		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
 				[
 					Keyboard::inlineButton([
-						'text' => __('Add new', $user['user']['language']),
-						'callback_data' => 'add_new_connection'
-					]),
-                    Keyboard::inlineButton([
-                        'text' => __('Delete', $user['user']['language']),
-                        'callback_data' => 'delete_connections'
-                    ])
+						'text' => __('Explore CE (tinder)', $user['user']['language']),
+						'web_app' => ['url' => 'https://staging-server.zeya888.com/frontend/web/swipe/swipe.html']//'https://api.siberianlegend.ru/swipe/swipe.htm']
+					])
 				]
 
 
 			],
 			'resize_keyboard' => true
-		]);*/
+		]);
 		
 		$this->telegram->sendMessage($options);
 	}
