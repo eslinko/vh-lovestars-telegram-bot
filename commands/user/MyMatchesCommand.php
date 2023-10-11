@@ -55,7 +55,7 @@ class MyMatchesCommand extends Command
             } else {
                 $i=1;
                 foreach ($data['matches'] as $item) {
-                    $user_name_text = $item['user']['public_alias'];
+                    $user_name_text = $item['user']['publicAlias'];
                     if(!empty($item['user']['telegram_alias']))$user_name_text = '(@'.$item['user']['telegram_alias'].') '.$user_name_text;
                     $options['text'].=$i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['timestamp']))."\n";
                     $i++;
