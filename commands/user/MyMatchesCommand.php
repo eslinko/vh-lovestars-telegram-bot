@@ -70,7 +70,7 @@ class MyMatchesCommand extends Command
 				[
 					Keyboard::inlineButton([
 						'text' => __('Explore CE (tinder)', $user['user']['language']),
-						'web_app' => ['url' => 'https://staging-server.zeya888.com/frontend/web/swipe/swipe.html']//'https://api.siberianlegend.ru/swipe/swipe.htm']
+						'web_app' => ['url' => 'https://staging-server.zeya888.com/frontend/web/swipe/swipe.htm']//'https://api.siberianlegend.ru/swipe/swipe.htm']
 					])
 				]
 
