@@ -76,6 +76,9 @@ class TGKeyboard
             case "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language']):
                 $telegram->triggerCommand('my_matches', $update);
                 break;
+            case "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language']):
+                $telegram->triggerCommand('explore_ce', $update);
+                break;
             default:
                 //TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user);
                 return false;
@@ -103,6 +106,8 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language'])])
                     ],[
+                        Keyboard::button(['text' => "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language'])])
+                    ],[
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url.', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x93\x84".__('Get list of my events.', $user['language'])]),
                     ]
@@ -122,6 +127,9 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language'])])
 
+                    ],
+                    [
+                        Keyboard::button(['text' => "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language'])])
                     ]
                 ],
                 'resize_keyboard' => true
