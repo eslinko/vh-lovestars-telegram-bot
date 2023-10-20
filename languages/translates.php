@@ -747,4 +747,8 @@ $translates = [
         'en' => "Congrats! You received %d Lovestars 💜",
         'ru' => "Ура! У тебя появилось %d новых Лавстаров 💜"
     ],
+    "Please provide a file (image/video/audio) or url of your creative expression" => [
+        'en' => "Please provide a file (image/video/audio) or url of your creative expression\nJust to let you know, bot can upload files up to 20MB in size",
+        'ru' => "Пожалуйста загрузи файл (картинку/видео/аудио) или вставь ссылку на своё творчество.\nИ ещё кстати, в через бот можно загружать файлы размером до 20МБ"
+    ],
 ];
