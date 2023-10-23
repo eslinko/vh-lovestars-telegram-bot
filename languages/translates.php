@@ -751,4 +751,24 @@ $translates = [
         'en' => "Please provide a file (image/video/audio) or url of your creative expression\nJust to let you know, bot can upload files up to 20MB in size",
         'ru' => "Пожалуйста загрузи файл (картинку/видео/аудио) или вставь ссылку на своё творчество.\nИ ещё кстати, в через бот можно загружать файлы размером до 20МБ"
     ],
+    "Btn_URL" => [
+        'en' => "URL",
+        'ru' => "URL"
+    ],
+    "Btn_Video" => [
+        'en' => "Video",
+        'ru' => "Видео"
+    ],
+    "Btn_Image" => [
+        'en' => "Image",
+        'ru' => "Изображение"
+    ],
+    "Btn_Audio" => [
+        'en' => "Audio",
+        'ru' => "Аудио"
+    ],
+    "Btn_Text" => [
+        'en' => "Text",
+        'ru' => "Текст"
+    ],
 ];
