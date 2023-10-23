@@ -36,6 +36,7 @@ class ExpressionStartCreateCommand extends Command
 
         $lcApi = new \LCAPPAPI();
         $lcApi->makeRequest('start-creating-expressions', ['telegram_id' => $telegram_id]);
-        $this->telegram->triggerCommand('expression_choose_type', $update);
+        //$this->telegram->triggerCommand('expression_choose_type', $update);
+        \TGKeyboard::showCreativeExpressionsTypeKeyboard($telegram_id, $this->telegram, $result['user'], __('Please select the type of your creative expression:', $result['user']['language']));
     }
 }

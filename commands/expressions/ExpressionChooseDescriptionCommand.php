@@ -1,5 +1,5 @@
 <?php
-
+//DEPRECATED
 namespace Telegram\Bot\Commands;
 
 class ExpressionChooseDescriptionCommand extends Command
@@ -12,7 +12,7 @@ class ExpressionChooseDescriptionCommand extends Command
     /**
      * @var string Command Description
      */
-    protected $description = "Description for expression";
+    protected $description = "Description for expression(deprecated)";
 
     /**
      * @inheritdoc

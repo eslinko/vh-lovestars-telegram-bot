@@ -1625,7 +1625,7 @@ function generate_codes_step_enter_alias($update, $telegram, $last_message_objec
 
 }
 function expression_choose_type($update, $telegram, $callbackName)
-{
+{//DEPRECATED
     $is_verified = user_is_verified($update->getMessage()->chat->id);
     if(!$is_verified['status']) return false;
 
@@ -1712,9 +1712,11 @@ function expression_choose_tags($update, $telegram, $callbackName)
         return false;
     }
 
-    $telegram->triggerCommand('expression_choose_file', $update);
+    //$telegram->triggerCommand('expression_choose_file', $update);
+    TGKeyboard::showMainKeyboard($telegram_id, $telegram, $is_verified['user'], __('Please provide a file (image/video/audio) or url of your creative expression:', $result['user']['language']));
+
     set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
-}
+    }
 
 function expression_choose_file($update, $telegram, $callbackName)
 {
