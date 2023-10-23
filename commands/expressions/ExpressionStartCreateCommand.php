@@ -29,10 +29,10 @@ class ExpressionStartCreateCommand extends Command
             return false;
         }
 
-       if(!empty($result['expressions_create_command'])) {
+/*       if(!empty($result['expressions_create_command'])) {
            $this->telegram->triggerCommand($result['expressions_create_command'], $update);
            exit;
-       }
+       }*/
 
         $lcApi = new \LCAPPAPI();
         $lcApi->makeRequest('start-creating-expressions', ['telegram_id' => $telegram_id]);

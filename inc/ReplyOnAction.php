@@ -1712,8 +1712,7 @@ function expression_choose_tags($update, $telegram, $callbackName)
         return false;
     }
 
-    //$telegram->triggerCommand('expression_choose_file', $update);
-    TGKeyboard::showMainKeyboard($telegram_id, $telegram, $is_verified['user'], __('Please provide a file (image/video/audio) or url of your creative expression:', $result['user']['language']));
+    $telegram->triggerCommand('expression_choose_file', $update);
 
     set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
     }
