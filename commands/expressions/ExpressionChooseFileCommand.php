@@ -1,7 +1,7 @@
 <?php
-
+//DEPRECATED
 namespace Telegram\Bot\Commands;
-
+use TGKeyboard;
 class ExpressionChooseFileCommand extends Command
 {
     /**
@@ -12,7 +12,7 @@ class ExpressionChooseFileCommand extends Command
     /**
      * @var string Command Description
      */
-    protected $description = "File for expression";
+    protected $description = "File for expression(deprecated)";
 
     /**
      * @inheritdoc
@@ -29,12 +29,14 @@ class ExpressionChooseFileCommand extends Command
             return false;
         }
 
-        $options = [
+/*        $options = [
             'chat_id' => $telegram_id,
         ];
 
         $options['text'] = __('Please provide a file (image/video/audio) or url of your creative expression:', $result['user']['language']);
-        $this->telegram->sendMessage($options);
+        $this->telegram->sendMessage($options);*/
+        TGKeyboard::showMainKeyboard($telegram_id, $this->telegram, $result['user'],__('Please provide a file (image/video/audio) or url of your creative expression:', $result['user']['language']));
+
         set_command_to_last_message($this->name, $telegram_id);
     }
 }

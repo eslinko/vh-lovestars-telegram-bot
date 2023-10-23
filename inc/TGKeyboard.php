@@ -79,6 +79,21 @@ class TGKeyboard
             case "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language']):
                 $telegram->triggerCommand('explore_ce', $update);
                 break;
+            case "\xF0\x9F\x8E\x9E".__('Btn_Video', $user['language']):
+                TGKeyboard::setCreativeExpressionType(__('Btn_Video', $user['language']), $telegram_id, $telegram, $user);
+                break;
+            case "\xF0\x9F\x93\xB7".__('Btn_Image', $user['language']):
+                TGKeyboard::setCreativeExpressionType(__('Btn_Image', $user['language']), $telegram_id, $telegram, $user);
+                break;
+            case "\xF0\x9F\x8E\xB6".__('Btn_Audio', $user['language']):
+                TGKeyboard::setCreativeExpressionType(__('Btn_Audio', $user['language']), $telegram_id, $telegram, $user);
+                break;
+            case "\xF0\x9F\x96\xB9".__('Btn_Text', $user['language']):
+                TGKeyboard::setCreativeExpressionType(__('Btn_Text', $user['language']), $telegram_id, $telegram, $user);
+                break;
+            case "\xF0\x9F\x94\x97".__('Btn_URL', $user['language']):
+                TGKeyboard::setCreativeExpressionType(__('Btn_URL', $user['language']), $telegram_id, $telegram, $user);
+                break;
             default:
                 //TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user);
                 return false;
@@ -206,6 +221,30 @@ class TGKeyboard
         $telegram->sendMessage($options);
 
     }
+    static public function showCreativeExpressionsTypeKeyboard($telegram_id, $telegram, $user, $text){
+        $options =[];
+        $options['chat_id'] = $telegram_id;
+        $options['reply_markup'] = Keyboard::make([
+            'keyboard' =>  [
+                [
+                    Keyboard::button(['text' => "\xF0\x9F\x8E\x9E".__('Btn_Video', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x8E\xB6".__('Btn_Audio', $user['language'])]),
+                ],[
+                    Keyboard::button(['text' => "\xF0\x9F\x93\xB7".__('Btn_Image', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x96\xB9".__('Btn_Text', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('Btn_URL', $user['language'])]),
+
+                ]
+            ],
+            'resize_keyboard' => true,
+            'one_time_keyboard' => true
+        ]);
+
+        $options['text'] = $text;
+
+        $telegram->sendMessage($options);
+
+    }
     static public function hideKeyboard($telegram_id, $telegram, $text){
         $options =[];
         $options['chat_id'] = $telegram_id;
@@ -214,4 +253,36 @@ class TGKeyboard
         $telegram->sendMessage($options);
     }
 
+    static public function setCreativeExpressionType($text, $telegram_id, $telegram, $user){
+        switch ($text){
+            case __('Btn_URL', $user['language']):
+                $ce_type = 'URL';
+                break;
+            case __('Btn_Video', $user['language']):
+                $ce_type = 'Video';
+                break;
+            case __('Btn_Image', $user['language']):
+                $ce_type = 'Image';
+                break;
+            case __('Btn_Audio', $user['language']):
+                $ce_type = 'Audio';
+                break;
+            case __('Btn_Text', $user['language']):
+                $ce_type = 'Text';
+                break;
+            default:
+                $ce_type = 'URL';
+        }
+
+        $lcApi = new \LCAPPAPI();
+        $result = $lcApi->makeRequest('set-creative-type-to-expression', ['telegram_id' => $telegram_id, 'type' => $ce_type]);
+
+        if($result['status'] === 'error') {
+            $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __($result['text'], $user['language'])]);
+            return;
+        }
+        TGKeyboard::hideKeyboard($telegram_id, $telegram, __('Please provide a description of your creative expression:', $result['user']['language']));
+
+        set_command_to_last_message('expression_choose_description', $telegram_id);
+    }
 }
