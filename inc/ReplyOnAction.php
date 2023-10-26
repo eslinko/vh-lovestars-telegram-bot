@@ -1833,7 +1833,7 @@ function interests_answers_fillup($update, $telegram) {
         'INTEREST_FESTIVAL',
         'LIFE_BOOK'];
 
-
+    $telegram_id = $update->getMessage()->chat->id;
     $user = user_is_verified($telegram_id);
     if(!$user['status']) {
         return false;
