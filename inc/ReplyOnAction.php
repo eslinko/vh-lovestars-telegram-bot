@@ -1847,7 +1847,7 @@ function interests_answers_fillup($update, $telegram) {
     }
     $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => '11'.json_encode($interests_answers)]);
 
-    $message_counter = $user['message_counter'];
+    $message_counter = $user['user']['message_counter'];
     if($interests_answers['status'] === 'success'){
         if($message_counter != -1){//process answer
             $answer = trim($update->getMessage()->text);
