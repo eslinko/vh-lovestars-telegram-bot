@@ -1832,13 +1832,17 @@ function interests_answers_fillup($update, $telegram) {
         'MAGIC_WISH',
         'INTEREST_FESTIVAL',
         'LIFE_BOOK'];
-    $telegram_id = $update->getMessage()->chat->id;
+    $telegram_id = $update->getMessage()->chat->id;$telegram->sendMessage(['chat_id' => $telegram_id, 'text' =>'11']);
+
     $user = user_is_verified($telegram_id);
     if(!$user['status']) {
         return false;
-    }
+    }$telegram_id = $update->getMessage()->chat->id;$telegram->sendMessage(['chat_id' => $telegram_id, 'text' =>'22']);
+
     $lcApi = new \LCAPPAPI();
     $interests_answers = $lcApi->makeRequest('get-interests-answers', ['telegram_id' => $telegram_id]);
+    $telegram_id = $update->getMessage()->chat->id;$telegram->sendMessage(['chat_id' => $telegram_id, 'text' =>'33'.json_encode($interests_answers)]);
+
     if($interests_answers['status'] === 'error') {
         $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
         return false;
