@@ -55,7 +55,8 @@ class TGKeyboard
                 $telegram->triggerCommand('change_language', $update);
                 break;
             case "\xF0\x9F\x94\xA5".__('Btn_My interests and values', $user['language']):
-                $telegram->triggerCommand('my_interests_and_values', $update);
+                //$telegram->triggerCommand('my_interests_and_values', $update);
+                $telegram->triggerCommand('interests_answers', $update);
                 break;
             case "\xF0\x9F\x92\x9C".__('My Lovestars', $user['language']):
                 TGKeyboard::showMyLovestarsKeyboard($telegram_id, $telegram, $user, __('My Lovestars', $user['language']));
