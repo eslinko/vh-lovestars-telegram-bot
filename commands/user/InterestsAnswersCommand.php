@@ -34,7 +34,7 @@ class InterestsAnswersCommand extends Command
 		}
         $lcApi = new \LCAPPAPI();
         //set message_counter to -1 to start receiving answers
-        $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'counter' => -1]);
+        $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'message_counter' => -1]);
         if($data['status'] === 'error') {
             $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
             return false;
