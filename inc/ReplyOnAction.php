@@ -1863,7 +1863,7 @@ function interests_answers_fillup($update, $telegram) {
             $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
             return false;
         }
-        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 22 '.json_encode($data)]);
+        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 22 '.json_encode($data).env('DOMAIN')]);
 
         $options = [];
         $options ['chat_id'] = $telegram_id;
