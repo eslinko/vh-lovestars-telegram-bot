@@ -64,11 +64,13 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher('accept_or_decline_pending_connection_by_id', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'resend_invitation')!==false) {
         reply_on_action_switcher('resend_invitation', $update, $telegram, $callbackName);
+    } elseif($callbackName === 'interests_answers_fillup') {
+        reply_on_action_switcher('interests_answers_fillup', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
 } else {
-    TGKeyboard::processKeyboard($update,$telegram);
+    //TGKeyboard::processKeyboard($update,$telegram);
 	if($last_message['status'] !== 'error') {
 		$last_message_object = json_decode($last_message['message']['last_message']);
 
