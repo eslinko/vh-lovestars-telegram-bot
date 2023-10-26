@@ -1863,7 +1863,7 @@ function interests_answers_fillup($update, $telegram) {
             $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
             return false;
         }
-        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 22 '.json_encode($data).env('DOMAIN')]);
+        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 22 '.json_encode($data).getenv('DOMAIN')]);
 
         $options = [];
         $options ['chat_id'] = $telegram_id;
@@ -1884,7 +1884,7 @@ function interests_answers_fillup($update, $telegram) {
         ]);
         switch ($message_counter){
             case 0:
-                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/time_travel.png';
+                $options ['photo'] = getenv('DOMAIN').'/frontend/web/bot_images/time_travel.png';
                 $options ['caption'] = __("Imagine you have a time machine", $user['user']['language']);
                 $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 00 '.json_encode($options)]);
 
@@ -1892,25 +1892,25 @@ function interests_answers_fillup($update, $telegram) {
                 set_command_to_last_message('interests_answers_fillup', $telegram_id);
                 break;
             case 1:
-                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/borderless_island.png';
+                $options ['photo'] = getenv('DOMAIN').'/frontend/web/bot_images/borderless_island.png';
                 $options ['caption'] = __("You are stranded on a desert island", $user['user']['language']);
                 $telegram->sendPhoto($options);
                 set_command_to_last_message('interests_answers_fillup', $telegram_id);
                 break;
             case 2:
-                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/magical_wish.png';
+                $options ['photo'] = getenv('DOMAIN').'/frontend/web/bot_images/magical_wish.png';
                 $options ['caption'] = __("Suddenly you have the opportunity to fulfill", $user['user']['language']);
                 $telegram->sendPhoto($options);
                 set_command_to_last_message('interests_answers_fillup', $telegram_id);
                 break;
             case 3:
-                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/festival_of_interests.png';
+                $options ['photo'] = getenv('DOMAIN').'/frontend/web/bot_images/festival_of_interests.png';
                 $options ['caption'] = __("Imagine you are organizing a festival", $user['user']['language']);
                 $telegram->sendPhoto($options);
                 set_command_to_last_message('interests_answers_fillup', $telegram_id);
                 break;
             case 4:
-                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/a_book_of_life.png';
+                $options ['photo'] = getenv('DOMAIN').'/frontend/web/bot_images/a_book_of_life.png';
                 $options ['caption'] = __("If you were writing a book about your life", $user['user']['language']);
                 $telegram->sendPhoto($options);
                 set_command_to_last_message('interests_answers_fillup', $telegram_id);
