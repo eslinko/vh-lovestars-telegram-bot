@@ -129,6 +129,12 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'report_an_issue':
             report_an_issue($update, $telegram, $last_message_object);
             break;
+        case 'message_counter_increment':
+            message_counter_increment($update, $telegram);
+            break;
+        case 'interests_answers_fillup':
+            interests_answers_fillup($update, $telegram);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1801,4 +1807,114 @@ function claim_my_lovestars($update, $telegram, $callbackName)
     }
 
     $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => sprintf(__('Congrats! You received %d Lovestars 💜', $is_verified['user']['language']), (int) $result['emitted_lovestars'])]);
+}
+
+function message_counter_increment($update, $telegram)
+{
+    $telegram_id = $update->getMessage()->chat->id;
+    $user = user_is_verified($telegram_id);
+    if(!$user['status']) {
+        return false;
+    }
+    $lcApi = new \LCAPPAPI();
+    $data = $lcApi->makeRequest('message-counter-increment', ['telegram_id' => $telegram_id]);
+    if($data['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+        return false;
+    }
+    interests_answers_fillup($update, $telegram);
+    return true;
+}
+function interests_answers_fillup($update, $telegram) {
+    $answer_number_array =
+        ['TIME_TRAVEL',
+        'UNLIMITED_ISLAND',
+        'MAGIC_WISH',
+        'INTEREST_FESTIVAL',
+        'LIFE_BOOK'];
+    $telegram_id = $update->getMessage()->chat->id;
+    $user = user_is_verified($telegram_id);
+    if(!$user['status']) {
+        return false;
+    }
+    $lcApi = new \LCAPPAPI();
+    $interests_answers = $lcApi->makeRequest('get-interests-answers', ['telegram_id' => $telegram_id]);
+    if($interests_answers['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+        return false;
+    }
+
+    $message_counter = $user['message_counter'];
+    if($interests_answers['status'] === 'success'){
+        if($message_counter != -1){//process answer
+            $answer = trim($update->getMessage()->text);
+            $data = $lcApi->makeRequest('set-interests-answers', ['telegram_id' => $telegram_id, 'question_type' => $answer_number_array[$message_counter], 'answer' => $answer]);
+            if($data['status'] === 'error') {
+                $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+                return false;
+            }
+            $message_counter = $message_counter + 1;
+            $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'message_counter' => $message_counter]);
+            if($data['status'] === 'error') {
+                $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+                return false;
+            }
+        }
+        $options = [];
+        $options ['chat_id'] = $telegram_id;
+        $options['reply_markup'] = Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __("Skip it!", $user['user']['language']),
+                        'callback_data' => 'interests_message_counter_increment'
+                    ]),
+                    /*                        Keyboard::inlineButton([
+                                                'text' => __('No', $user['user']['language']),
+                                                'callback_data' => 'help'
+                                            ])*/
+                ]
+            ],
+            'resize_keyboard' => true
+        ]);
+        switch ($message_counter){
+            case 0:
+                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/time_travel.png';
+                $options ['caption'] = __("Imagine you have a time machine", $user['user']['language']);
+                $telegram->sendPhoto($options);
+                set_command_to_last_message('interests_answers_fillup', $telegram_id);
+                break;
+            case 1:
+                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/borderless_island.png';
+                $options ['caption'] = __("You are stranded on a desert island", $user['user']['language']);
+                $telegram->sendPhoto($options);
+                set_command_to_last_message('interests_answers_fillup', $telegram_id);
+                break;
+            case 2:
+                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/magical_wish.png';
+                $options ['caption'] = __("Suddenly you have the opportunity to fulfill", $user['user']['language']);
+                $telegram->sendPhoto($options);
+                set_command_to_last_message('interests_answers_fillup', $telegram_id);
+                break;
+            case 3:
+                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/festival_of_interests.png';
+                $options ['caption'] = __("Imagine you are organizing a festival", $user['user']['language']);
+                $telegram->sendPhoto($options);
+                set_command_to_last_message('interests_answers_fillup', $telegram_id);
+                break;
+            case 4:
+                $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/a_book_of_life.png';
+                $options ['caption'] = __("If you were writing a book about your life", $user['user']['language']);
+                $telegram->sendPhoto($options);
+                set_command_to_last_message('interests_answers_fillup', $telegram_id);
+                break;
+            case 5://end interests survey
+                $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("We're all set, thanks!", $user['user']['language'])]);
+            default:
+                $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+                return false;
+        }
+    }
+
+    //set_command_to_last_message($this->name, $telegram_id);
 }

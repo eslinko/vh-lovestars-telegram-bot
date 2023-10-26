@@ -771,4 +771,33 @@ $translates = [
         'en' => "Text",
         'ru' => "Текст"
     ],
+    "If you were writing a book about your life" => [
+        'en' => "If you were writing a book about your life, what chapters or events would be the most vivid and important? What hobbies or interests would be central to the book?",
+        'ru' => "Если бы ты писал книгу о своей жизни, какие главы или события были бы наиболее яркими и важными? Какие увлечения или интересы заняли бы центральное место в книге?"
+    ],
+
+    "Imagine you are organizing a festival" => [
+        'en' => "Imagine you are organizing a festival of your interests that thousands of people will attend. What areas or activities would be at this festival? What kind of workshops, exhibitions or concerts?",
+        'ru' => "Представь, что ты организуешь фестиваль по своим интересам, который посетят тысячи людей. Какие направления или виды деятельности будут представлены на этом фестивале? Какие мастер-классы, выставки или концерты?"
+    ],
+    "Suddenly you have the opportunity to fulfill" => [
+        'en' => "Suddenly you have the opportunity to fulfill one magical wish - it could be any activity, skill or thing. What would it be?",
+        'ru' => "Внезапно у тебя появилась возможность исполнить одно волшебное желание - это может быть любое занятие, умение или вещь. Что бы это могло быть?"
+    ],
+    "You are stranded on a desert island" => [
+        'en' => "You are stranded on a desert island with access to all resources and materials, but only for one month. What would you create or do on this island?",
+        'ru' => "Ты оказался/оказалась на необитаемом острове с доступом ко всем ресурсам и материалам, но только на один месяц. Что бы ты создал(а) или сделал(а) на этом острове?"
+    ],
+    "Imagine you have a time machine" => [
+        'en' => "Imagine you have a time machine and the ability to spend one day in any era of the past or future. Which era would you go to and what would you do there?",
+        'ru' => "Представь, что у тебя есть машина времени и возможность провести один день в любой эпохе прошлого или будущего. В какую эпоху ты бы отправились/отправилась и что бы ты там делал(а)?"
+    ],
+    "We're all set, thanks!" => [
+        'en' => "We're all set, thanks!",
+        'ru' => "Всё готово, спасибо!"
+    ],
+    "Skip it!" => [
+        'en' => "Skip it!",
+        'ru' => "Пропустить"
+    ],
 ];
