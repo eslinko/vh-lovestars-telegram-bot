@@ -1845,6 +1845,7 @@ function interests_answers_fillup($update, $telegram) {
         $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
         return false;
     }
+    $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => '11'.json_encode($interests_answers)]);
 
     $message_counter = $user['message_counter'];
     if($interests_answers['status'] === 'success'){
@@ -1855,13 +1856,15 @@ function interests_answers_fillup($update, $telegram) {
                 $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
                 return false;
             }
-            $message_counter = $message_counter + 1;
-            $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'message_counter' => $message_counter]);
-            if($data['status'] === 'error') {
-                $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
-                return false;
-            }
         }
+        $message_counter = $message_counter + 1;
+        $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'message_counter' => $message_counter]);
+        if($data['status'] === 'error') {
+            $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+            return false;
+        }
+        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 22 '.json_encode($data)]);
+
         $options = [];
         $options ['chat_id'] = $telegram_id;
         $options['reply_markup'] = Keyboard::make([
@@ -1883,6 +1886,8 @@ function interests_answers_fillup($update, $telegram) {
             case 0:
                 $options ['photo'] = env('DOMAIN').'/frontend/web/bot_images/time_travel.png';
                 $options ['caption'] = __("Imagine you have a time machine", $user['user']['language']);
+                $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $message_counter.' 00 '.json_encode($options)]);
+
                 $telegram->sendPhoto($options);
                 set_command_to_last_message('interests_answers_fillup', $telegram_id);
                 break;
