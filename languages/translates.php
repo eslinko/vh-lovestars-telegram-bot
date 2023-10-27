@@ -816,4 +816,8 @@ $translates = [
         'en' => "Your saved answer:",
         'ru' => "Твой сохранённый ответ:"
     ],
+    "Let's do it!" => [
+        'en' => "Let's do it!",
+        'ru' => "Начнём!"
+    ],
 ];
