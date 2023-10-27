@@ -3,6 +3,7 @@
 namespace Telegram\Bot\Commands;
 
 use Telegram\Bot\Keyboard\Keyboard;
+use Telegram\Bot\FileUpload\InputFile;
 
 /**
  * Class InterestsAnswersCommand.
@@ -32,9 +33,10 @@ class InterestsAnswersCommand extends Command
 		if(!$user['status']) {
 			return false;
 		}
+
         $lcApi = new \LCAPPAPI();
-        //set message_counter to -1 to start receiving answers
-        $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'message_counter' => -1]);
+        //set message_counter to 0 to show question 0
+        $data = $lcApi->makeRequest('set-message-counter', ['telegram_id' => $telegram_id, 'message_counter' => 0]);
         if($data['status'] === 'error') {
             $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
             return false;
@@ -52,7 +54,7 @@ class InterestsAnswersCommand extends Command
                     [
                         Keyboard::inlineButton([
                             'text' => __("Let's do it!", $user['user']['language']),
-                            'callback_data' => 'interests_answers_fillup'
+                            'callback_data' => 'interests_answers_fillup_ignore_input'
                         ]),
 /*                        Keyboard::inlineButton([
                             'text' => __('No', $user['user']['language']),
@@ -66,9 +68,9 @@ class InterestsAnswersCommand extends Command
             if(count($data['data']) == 0){
                 $options ['text'] = __("Hey there! We're super curious about what lights you up in life", $user['user']['language']);
             } elseif(count($data['data']) == 5) {
-                $options ['text'] = __("It seems like you've been there, done that with these questions. Wanna hit us up with some fresh answers or are you sticking with your original answers?", $user['user']['language']);
+                $options ['text'] = __("It seems like you've been there, done that with these questions", $user['user']['language']);
             } else {//1,2,3,4
-                $options ['text'] = __("Looks like you started the survey but didn't finish it. Want to continue and wrap it up?", $user['user']['language']);
+                $options ['text'] = __("Looks like you started the survey", $user['user']['language']);
             }
             $this->telegram->sendMessage($options);
         } else  {
@@ -76,6 +78,6 @@ class InterestsAnswersCommand extends Command
             return false;
         }
 
-		//set_command_to_last_message($this->name, $telegram_id);
+
 	}
 }
