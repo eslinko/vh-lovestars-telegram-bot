@@ -800,4 +800,24 @@ $translates = [
         'en' => "Skip it!",
         'ru' => "Пропустить"
     ],
+    "Hey there! We're super curious about what lights you up in life" => [
+        'en' => "Hey there! We're super curious about what lights you up in life. What are you passionate about learning, and what skills or knowledge do you love sharing with others? Give us the lowdown in your own unique way!",
+        'ru' => "Привет! Нас очень интересует то, что тебя вдохновляет в жизни. Что тебе нравится изучать и какими навыками или знаниями ты хотел(а) бы поделиться с другими? Расскажи нам в своём уникальном стиле!"
+    ],
+    "It seems like you've been there, done that with these questions" => [
+        'en' => "It seems like you've been there, done that with these questions. Wanna hit us up with some fresh answers?",
+        'ru' => "Похоже, что ты уже тут был(а) и ответил(а) на все вопросы. Хочешь предложить новые ответы?"
+    ],
+    "Looks like you started the survey" => [
+        'en' => "Looks like you started the survey but didn't finish it. Want to wrap it up?",
+        'ru' => "Похоже, что ты начал(а) опрос, но не закончил(а) его. Хочешь завершить его?"
+    ],
+    "Your saved answer:" => [
+        'en' => "Your saved answer:",
+        'ru' => "Твой сохранённый ответ:"
+    ],
+    "Let's do it!" => [
+        'en' => "Let's do it!",
+        'ru' => "Начнём!"
+    ],
 ];
