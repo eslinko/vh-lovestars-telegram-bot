@@ -1836,6 +1836,8 @@ function interests_answers_fillup($update, $telegram, $ignore_input) {
     foreach ($interests_resp['data'] as $answ){
         $interests_answers[$answ['question_type']] = $answ['response'];
     }
+    //$telegram->sendMessage(['chat_id' => $telegram_id, 'text' => json_encode($interests_answers, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)]);
+
     $message_counter = $user['user']['message_counter'];
     if($interests_resp['status'] === 'success'){
         if($ignore_input == false){//process previous answer
@@ -1925,6 +1927,15 @@ function interests_answers_fillup($update, $telegram, $ignore_input) {
                 break;
             case 5://end interests survey
                 $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("We're all set, thanks!", $user['user']['language'])]);
+                $data = $lcApi->makeRequest('set-user-interests-answers', ['telegram_id' => $update->getMessage()->chat->id, 'user_lang' => $user['user']['language']]);
+                if($data['status'] === 'error') {
+                    $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
+                    return false;
+                }
+                //if($data['status'] === 'success')
+                    //$telegram->sendMessage(['chat_id' => $telegram_id, 'text' => json_encode($data['list_of_interests'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)]);
+
+
                 break;
             default:
                 $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Error! Try again later.", $user['user']['language'])]);
