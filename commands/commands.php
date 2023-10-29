@@ -68,7 +68,7 @@ require_once 'expressions/ExpressionChooseFileCommand.php';
 require_once 'expressions/ExpressionConfirmCreationCommand.php';
 require_once 'expressions/ExpressionCancelCreationCommand.php';
 require_once 'expressions/ExpressionFinishedCreationCommand.php';
-require_once 'expressions/ExploreCeCommand.php';
+
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\HelpCommand::class);
@@ -115,7 +115,7 @@ $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseFileCommand::class)
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionConfirmCreationCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionCancelCreationCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionFinishedCreationCommand::class);
-$telegram->addCommand( Telegram\Bot\Commands\ExploreCeCommand::class);
+
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateStep2Command::class);
