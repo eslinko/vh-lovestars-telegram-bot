@@ -33,7 +33,7 @@ class ExpressionChooseTagsCommand extends Command
             'chat_id' => $telegram_id,
         ];
 
-        $options['text'] = __('Please enter tags (separated by commas) to describe your creative expression:', $result['user']['language']);
+        $options['text'] = __('Please enter tags (separated by commas):', $result['user']['language']);
         $this->telegram->sendMessage($options);
         set_command_to_last_message($this->name, $telegram_id);
     }
