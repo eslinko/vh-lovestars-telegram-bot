@@ -72,7 +72,7 @@ class TGKeyboard
                 $telegram->triggerCommand('get_my_events', $update);
                 break;
             case "\xF0\x9F\x8F\xA0".__('Home', $user['language']):
-                TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user, 'Home');
+                TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user, "\xF0\x9F\x8F\xA0".__('Home', $user['language']));
                 break;
             case "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language']):
                 $telegram->triggerCommand('my_matches', $update);
@@ -233,6 +233,7 @@ class TGKeyboard
         $options['reply_markup'] = Keyboard::make([
             'keyboard' =>  [
                 [
+                    Keyboard::button(['text' => "\xF0\x9F\x8F\xA0".__('Home', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x8E\x9E".__('Btn_Video', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x8E\xB6".__('Btn_Audio', $user['language'])]),
                 ],[
