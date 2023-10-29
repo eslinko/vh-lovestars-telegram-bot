@@ -856,8 +856,24 @@ $translates = [
         'en' => "Tags:",
         'ru' => "Теги:"
     ],
-    "Content:" => [
-        'en' => "Content:",
-        'ru' => "Контент:"
+    "Report an issue" => [
+        'en' => "Report an issue",
+        'ru' => "Сообщить о проблеме"
+    ],
+    "My matches" => [
+        'en' => "My matches",
+        'ru' => "Мои совпадения"
+    ],
+    "Explore CE (tinder)" => [
+        'en' => "Explore Creative Expressions",
+        'ru' => "Исследовать творчество"
+    ],
+    "Generate invitation codes" => [
+        'en' => "Generate invitation codes",
+        'ru' => "Сгенерировать пригласительные коды"
+    ],
+    "Description_interests_answers" => [
+        'en' => "\xF0\x9F\x94\xA5"."My interests and values",
+        'ru' => "\xF0\x9F\x94\xA5"."Мои увлечения и ценности"
     ],
 ];

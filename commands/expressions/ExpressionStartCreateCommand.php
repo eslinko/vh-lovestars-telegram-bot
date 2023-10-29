@@ -12,7 +12,7 @@ class ExpressionStartCreateCommand extends Command
     /**
      * @var string Command Description
      */
-    protected $description = "Create New Expressions";
+    protected $description = "Add creative expression";
 
     /**
      * @inheritdoc
