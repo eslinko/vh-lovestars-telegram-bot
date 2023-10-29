@@ -17,7 +17,7 @@ class ExploreCeCommand extends Command
 	/**
 	 * @var string Command Description
 	 */
-	protected $description = "Explore CE";
+	protected $description = "Explore CE (tinder)";
 	
 	/**
 	 * {@inheritdoc}
