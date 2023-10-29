@@ -38,7 +38,6 @@ class ExploreCeCommand extends Command
 
         $options['text'] = __('Press button to explore Creative Expressions', $user['user']['language']);
         $url = parse_url(getenv('API_URL'));
-
 		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
 				[
@@ -50,7 +49,6 @@ class ExploreCeCommand extends Command
 			],
 			'resize_keyboard' => true
 		]);
-		
 		$this->telegram->sendMessage($options);
 	}
 }
