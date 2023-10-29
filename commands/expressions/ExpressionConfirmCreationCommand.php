@@ -36,7 +36,7 @@ class ExpressionConfirmCreationCommand extends Command
         ];
 
         $options['text'] = __('Confirm the creation of a creative expression.', $result['user']['language']) . "\n";
-        $options['text'] .= "Type: {$result['expressions_in_proccess']['type_names']['type_' . $result['user']['language']]} \n";
+        $options['text'] .= "Type: ".__($result['expressions_in_proccess']['type_enum'], $result['user']['language'])."\n";
         $options['text'] .= "Description: {$result['expressions_in_proccess']['description']} \n";
         $options['text'] .= "Tags: {$result['expressions_in_proccess']['tags']} \n";
         $options['text'] .= "Content: {$result['expressions_in_proccess']['content']} \n";
