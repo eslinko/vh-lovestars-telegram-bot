@@ -822,10 +822,42 @@ $translates = [
     ],
     "Please attach file of CE" => [
         'en' => "Please attach a file (maximum size 20MB) or share a link to your creative expression",
-        'ru' => "Прикрепит файл (максимальный размер 20МБ) или поделись ссылкой на твоё творчество"
+        'ru' => "Прикрепи файл (максимальный размер 20МБ) или поделись ссылкой на твоё творчество"
     ],
     "Add creative expression" => [
         'en' => "Add creative expression",
         'ru' => "Добавить творчество"
+    ],
+    "Please select the type of your creative expression:" => [
+        'en' => "Please select the type of your creative expression:",
+        'ru' => "Пожалуйста выбери тип своего творчества:"
+    ],
+    "Please provide a description of your creative expression:" => [
+        'en' => "Enter a description of your creative expression:",
+        'ru' => "Введи описание своего творчества"
+    ],
+    "Please enter tags (separated by commas):" => [
+        'en' => "Please enter tags separated by commas:",
+        'ru' => "Введи теги разделённые запятыми:"
+    ],
+    "Confirm the creation of a creative expression." => [
+        'en' => "Ready to roll with new creative expression? Confirm it!",
+        'ru' => "Проверь и подтверди!"
+    ],
+    "Type:" => [
+        'en' => "Type:",
+        'ru' => "Тип:"
+    ],
+    "Description:" => [
+        'en' => "Description:",
+        'ru' => "Описание:"
+    ],
+    "Tags:" => [
+        'en' => "Tags:",
+        'ru' => "Теги:"
+    ],
+    "Content:" => [
+        'en' => "Content:",
+        'ru' => "Контент:"
     ],
 ];
