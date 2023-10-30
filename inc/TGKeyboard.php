@@ -288,7 +288,7 @@ class TGKeyboard
             $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __($result['text'], $user['language'])]);
             return;
         }
-        TGKeyboard::hideKeyboard($telegram_id, $telegram, __('Please provide a description of your creative expression:', $result['user']['language']));
+        TGKeyboard::hideKeyboard($telegram_id, $telegram, __('give description of ce:', $user['language']));
 
         set_command_to_last_message('expression_choose_description', $telegram_id);
     }

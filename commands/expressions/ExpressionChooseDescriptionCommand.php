@@ -33,7 +33,7 @@ class ExpressionChooseDescriptionCommand extends Command
             'chat_id' => $telegram_id,
         ];
 
-        $options['text'] = __('Please provide a description of your creative expression:', $result['user']['language']);
+        $options['text'] = __('give description of ce:', $result['user']['language']);
         $this->telegram->sendMessage($options);
         set_command_to_last_message($this->name, $telegram_id);
     }

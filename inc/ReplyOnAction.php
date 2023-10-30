@@ -1747,7 +1747,7 @@ function expression_choose_file($update, $telegram, $callbackName)
         return false;
     }
 
-    if(!empty($message['document']) || !empty($message['photo']) || !empty($message['video']) || !empty($message['voice'])) {
+    if(!empty($message['document']) || !empty($message['photo']) || !empty($message['video']) || !empty($message['voice']) || !empty($message['audio'])) {
 
         if(!empty($message['document'])) {
             $file_id = $message['document']['file_id'];
@@ -1757,6 +1757,8 @@ function expression_choose_file($update, $telegram, $callbackName)
             $file_id = $message['video']['file_id'];
         } else if(!empty($message['voice'])) {
             $file_id = $message['voice']['file_id'];
+        } elseif(!empty($message['audio'])){
+            $file_id = $message['audio']['file_id'];
         }
 
         if(!empty($file_id)) {
@@ -1770,7 +1772,7 @@ function expression_choose_file($update, $telegram, $callbackName)
 
     }
 
-    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Provide a url to your work or upload a file of your work!', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please attach file of CE', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
         'inline_keyboard' =>  [
             [
                 Keyboard::inlineButton([
