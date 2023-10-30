@@ -876,8 +876,12 @@ $translates = [
         'en' => "\xF0\x9F\x94\xA5"."My interests and values",
         'ru' => "\xF0\x9F\x94\xA5"."Мои увлечения и ценности"
     ],
-    'Press button to explore Creative Expressions'=> [
+    'Press button to explore Creative Expressions' => [
         'en' => "Press button to explore Creative Expressions",
         'ru' => "Нажми на кнопу чтобы исследовать творчество других"
     ],
+    'My creative expressions' => [
+    'en' => "My creative expressions",
+    'ru' => "Моё творчество"
+],
 ];
