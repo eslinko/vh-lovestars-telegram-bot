@@ -36,13 +36,13 @@ class ExploreCeCommand extends Command
             'chat_id' => $telegram_id,
         ];
 
-        $options['text'] = __('Press button to explore Creative Expressions', $user['user']['language']);
+        $options['text'] = __('Press button to explore Creative Expressions', $user['language']);
         $url = parse_url(getenv('API_URL'));
 		$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
 				[
 					Keyboard::inlineButton([
-						'text' => __("\xF0\x9F\x91\x80".'Explore CE (tinder)', $user['user']['language']),
+						'text' => __("\xF0\x9F\x91\x80".'Explore CE (tinder)', $user['language']),
 						'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/swipe/swipe.htm']
 					])
 				]
