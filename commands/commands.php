@@ -70,7 +70,7 @@ require_once 'expressions/ExpressionCancelCreationCommand.php';
 require_once 'expressions/ExpressionFinishedCreationCommand.php';
 require_once 'expressions/ExploreCeCommand.php';
 require_once 'expressions/ViewCreativeExpressions.php';
-
+require_once 'expressions/ExpressionChooseExpirationCommand.php';
 // general command
 $telegram->addCommand(Telegram\Bot\Commands\StartCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\HelpCommand::class);
@@ -119,7 +119,7 @@ $telegram->addCommand( Telegram\Bot\Commands\ExpressionCancelCreationCommand::cl
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionFinishedCreationCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExploreCeCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ViewCreativeExpressionsCommand::class);
-
+$telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseExpirationCommand::class);
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateStep2Command::class);

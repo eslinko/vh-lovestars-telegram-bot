@@ -881,7 +881,35 @@ $translates = [
         'ru' => "Нажми на кнопу чтобы исследовать творчество других"
     ],
     'My creative expressions' => [
-    'en' => "My creative expressions",
-    'ru' => "Моё творчество"
-],
+        'en' => "My creative expressions",
+        'ru' => "Моё творчество"
+    ],
+    '%d hours left' => [
+        'en' => "%d hours left",
+        'ru' => "осталось %d часов"
+    ],
+    'select ce expiration:' => [
+        'en' => "Pick how long it stays cool",
+        'ru' => "Выбери как долго оно будет актуальным"
+    ],
+    '24 hours' => [
+        'en' => "24 hours",
+        'ru' => "24 часа"
+    ],
+    '48 hours' => [
+        'en' => "48 hours",
+        'ru' => "48 часов"
+    ],
+    '72 hours' => [
+        'en' => "72 hours",
+        'ru' => "72 часа"
+    ],
+    'Success! Create a new creative expression?' => [
+        'en' => "Boom! Wanna upload something cool again?",
+        'ru' => "OK, хочешь загрузить что-то крутое снова?"
+    ],
+    'Expiration time:' => [
+        'en' => "Expiration time:",
+        'ru' => "Время действия:"
+    ],
 ];

@@ -34,11 +34,19 @@ class ExpressionConfirmCreationCommand extends Command
         $options = [
             'chat_id' => $telegram_id,
         ];
+        $exp_time = ($result['expressions_in_proccess']['active_period'] - time())/3600;
+        if($exp_time > 0){
+            $exp_text = sprintf(__('%d hours left', $result['user']['language']),round($exp_time));
+        } else{
+            $exp_text = __('Expired', $result['user']['language']);
+        }
 
         $options['text'] = __('Confirm the creation of a creative expression.', $result['user']['language']) . "\n";
         $options['text'] .= __("Type:", $result['user']['language']).' '.__($result['expressions_in_proccess']['type_enum'], $result['user']['language'])."\n";
         $options['text'] .= __("Description:", $result['user']['language']).' '.$result['expressions_in_proccess']['description']."\n";
         $options['text'] .= __("Tags:", $result['user']['language']).' '.$result['expressions_in_proccess']['tags']."\n";
+        $options['text'] .= __("Expiration time:", $result['user']['language']).' '.$exp_text."\n";
+
         $options['text'] .= __("Content:", $result['user']['language']).' '.$result['expressions_in_proccess']['content']."\n";
 
         $options['reply_markup'] = Keyboard::make([

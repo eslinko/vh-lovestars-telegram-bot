@@ -138,6 +138,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'interests_answers_fillup_ignore_input':
             interests_answers_fillup($update, $telegram, true);
             break;
+        case 'expression_choose_expiration':
+            expression_choose_expiration($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1691,8 +1694,8 @@ function expression_choose_description($update, $telegram, $callbackName)
         return false;
     }
 
-    $telegram->triggerCommand('expression_choose_tags', $update);
-    set_command_to_last_message('expression_choose_tags', $update->getMessage()->chat->id);
+    $telegram->triggerCommand('expression_choose_expiration', $update);
+    //set_command_to_last_message('expression_choose_tags', $update->getMessage()->chat->id);
 }
 
 function expression_choose_tags($update, $telegram, $callbackName)
@@ -1944,4 +1947,26 @@ function interests_answers_fillup($update, $telegram, $ignore_input) {
                 return false;
         }
     }
+}
+
+function expression_choose_expiration($update, $telegram, $callbackName)
+{
+    $telegram_id = $update->getMessage()->chat->id;
+    $is_verified = user_is_verified($telegram_id );
+    if(!$is_verified['status']) return false;
+
+    $ids=explode('__',$callbackName);
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('set-expiration-to-expression', ['telegram_id' => $telegram_id,'expiration' => intval($ids[1])]);
+
+    if($return_data['status'] === 'error') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+    $telegram->triggerCommand('expression_choose_tags', $update);
+    set_command_to_last_message('expression_choose_tags', $update->getMessage()->chat->id);
+
 }
