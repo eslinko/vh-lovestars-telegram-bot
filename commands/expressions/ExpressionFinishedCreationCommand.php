@@ -52,7 +52,7 @@ class ExpressionFinishedCreationCommand extends Command
                         ]),
                         Keyboard::inlineButton([
                             'text' => __('View your creative expressions', $result['user']['language']),
-                            'callback_data' => 'expressions_view_all'
+                            'callback_data' => 'view_creative_expressions'
                         ]),
                     ],
                 ],
