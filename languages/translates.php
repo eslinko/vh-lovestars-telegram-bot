@@ -832,7 +832,7 @@ $translates = [
         'en' => "Please select the type of your creative expression:",
         'ru' => "Пожалуйста выбери тип своего творчества:"
     ],
-    "Please provide a description of your creative expression:" => [
+    "give description of ce:" => [
         'en' => "Enter a description of your creative expression:",
         'ru' => "Введи описание своего творчества"
     ],
