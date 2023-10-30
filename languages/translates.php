@@ -886,7 +886,7 @@ $translates = [
     ],
     '%d hours left' => [
         'en' => "%d hours left",
-        'ru' => "осталось %d часов"
+        'ru' => "осталось %d часа(ов)"
     ],
     'select ce expiration:' => [
         'en' => "Pick how long it stays cool",
@@ -911,5 +911,21 @@ $translates = [
     'Expiration time:' => [
         'en' => "Expiration time:",
         'ru' => "Время действия:"
+    ],
+    'Yes, create it' => [
+        'en' => "Yes, create it!",
+        'ru' => "Да, подтверждаю!"
+    ],
+    'Success! What do we do next?' => [
+        'en' => "Awesome! So, what's the plan now?",
+        'ru' => "Круто! А что делаем дальше?"
+    ],
+    'Create new creative expression' => [
+        'en' => "New creativity - let's roll!",
+        'ru' => "Поехали, создаем новый креатив"
+    ],
+    'View your creative expressions' => [
+        'en' => "Check out your cool stuff",
+        'ru' => "Заглянуть в свои креативные штучки"
     ],
 ];
