@@ -66,6 +66,8 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher('resend_invitation', $update, $telegram, $callbackName);
     } elseif(in_array($callbackName, ['interests_answers_fillup','interests_answers_fillup_ignore_input'])) {
         reply_on_action_switcher($callbackName, $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'expression_choose_expiration')!==false) {
+        reply_on_action_switcher('expression_choose_expiration', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
