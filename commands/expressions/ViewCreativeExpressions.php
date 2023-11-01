@@ -12,7 +12,7 @@ class ViewCreativeExpressionsCommand extends Command
     /**
      * @var string Command Description
      */
-    protected $description = "View creative expressions";
+    protected $description = "My creative expressions";
 
     /**
      * @inheritdoc
@@ -55,5 +55,7 @@ class ViewCreativeExpressionsCommand extends Command
             $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text]);
 
         }
+
+
     }
 }

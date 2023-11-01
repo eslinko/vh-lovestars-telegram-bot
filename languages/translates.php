@@ -928,4 +928,5 @@ $translates = [
         'en' => "Check out your cool stuff",
         'ru' => "Заглянуть в свои креативные штучки"
     ],
+
 ];
