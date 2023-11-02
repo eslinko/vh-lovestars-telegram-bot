@@ -1776,8 +1776,8 @@ function expression_choose_file($update, $telegram, $callbackName)
     }
 
     if(!empty($message_text)){//TEXT
-        $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text]);
-
+        $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text], 'array', 'POST');
+        file_put_contents('loggg.txt', json_encode($result),JSON_PRETTY_PRINT);
         if($result['status'] === 'success')
         {//if our format was TEXT we set text, otherwise error
             $telegram->triggerCommand('expression_confirm_creation', $update);
