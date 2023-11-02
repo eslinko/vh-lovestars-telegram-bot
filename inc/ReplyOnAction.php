@@ -1750,6 +1750,7 @@ function expression_choose_file($update, $telegram, $callbackName)
         return false;
     }
 
+
     if(!empty($message['document']) || !empty($message['photo']) || !empty($message['video']) || !empty($message['voice']) || !empty($message['audio'])) {
 
         if(!empty($message['document'])) {
@@ -1772,7 +1773,17 @@ function expression_choose_file($update, $telegram, $callbackName)
 
             return false;
         }
+    }
 
+    if(!empty($message_text)){//TEXT
+        $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text]);
+
+        if($result['status'] === 'success')
+        {//if our format was TEXT we set text, otherwise error
+            $telegram->triggerCommand('expression_confirm_creation', $update);
+            set_command_to_last_message('expression_confirm_creation', $telegram_id);
+            return false;
+        }
     }
 
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please attach file of CE', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
