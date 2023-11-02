@@ -932,4 +932,8 @@ $translates = [
         'en' => "Content:",
         'ru' => "Контент:"
     ],
+    'you do not have ce' => [
+        'en' => "You haven't dropped any creative gems yet",
+        'ru' => "У тебя пока нет креативных штучек"
+    ],
 ];
