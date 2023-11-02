@@ -821,7 +821,7 @@ $translates = [
         'ru' => "Начнём!"
     ],
     "Please attach file of CE" => [
-        'en' => "Please attach a file (maximum size 20MB), share a link to your creative expression or enter text for text expression",
+        'en' => "Please attach a file (maximum size 20MB), share a link to your creative expression or enter text for a text expression",
         'ru' => "Прикрепи файл (максимальный размер 20МБ), поделись ссылкой на твоё творчество или вставь текст для текстового творчества"
     ],
     "Add creative expression" => [
