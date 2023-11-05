@@ -49,7 +49,7 @@ function user_is_verified($telegram_id) {
 
 function get_command_for_expressions_create($expression)
 {
-    if(empty($expression['type'])) {
+    if(empty($expression['type_enum'])) {
         return 'expression_choose_type';
     } else if(empty($expression['description'])) {
         return 'expression_choose_description';
