@@ -1773,6 +1773,8 @@ function expression_choose_file($update, $telegram, $callbackName)
     }
 
     if(!empty($message_text)){//TEXT
+        mb_substitute_character(mb_ord('_', 'UTF-8'));//character to replace bad json symbols in server response
+        $message_text=mb_convert_encoding($message_text,'UTF-8','UTF-8');
         $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text], 'array', 'POST');
 
         if($result['status'] === 'success')
