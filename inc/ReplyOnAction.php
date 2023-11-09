@@ -594,7 +594,7 @@ function registration_step_invitation_code($update, $telegram) {
         }
 //	}
 
-    //send message to go code owner
+/*    //send message to go code owner
     if($result['status'] === 'success' AND isset($result['owner_user'])){
         if (empty($user['telegram_alias']))
             $telegram_alias = '';
@@ -615,7 +615,7 @@ function registration_step_invitation_code($update, $telegram) {
                 $telegram_alias2 = ' (@'.$result['owner_user']['telegram_alias'].')';
             $telegram->sendMessage(['chat_id' => $conn_user['telegram'], 'text' => sprintf(__("Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars.", $conn_user['language']), $user['publicAlias'], $telegram_alias, $result['owner_user']['publicAlias'], $telegram_alias2, $conn_user['currentLovestarsCounter'])]);
         }
-    }
+    }*/
 }
 
 function after_registration_step_3($update, $telegram) {
@@ -1260,7 +1260,8 @@ function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
     $telegram->sendMessage(['chat_id' => $telegram_id,'text'=>__('Request has been sent.', $is_verified['user']['language'])]);
 
     //notify potential friend
-    $return_data = $lcApi->makeRequest('get-user-by-user-id', ['user_id' => $user_id_2]);
+    //we use notification system built-in set-user-connection
+/*    $return_data = $lcApi->makeRequest('get-user-by-user-id', ['user_id' => $user_id_2]);
     $user_id_1=$is_verified['user']['id'];
     if($return_data['status'] === 'success') {
         $user_text='';
@@ -1285,7 +1286,7 @@ function create_new_connection($update, $telegram, $user_id_2)//,$callbackName)
             'resize_keyboard' => true
         ]);
         $telegram->sendMessage($options);
-    }
+    }*/
     return true;
 }
 function resend_invitation($update, $telegram, $callbackName)
@@ -1466,8 +1467,9 @@ function accept_connection($update, $telegram,$callbackName)
     if(!$is_verified['status']) return false;
     $telegram_id = $update->getMessage()->chat->id;
     $ids=explode('__',$callbackName);
+    if(!isset($ids[3])) $ids[3] = NULL;
     $lcApi = new \LCAPPAPI();
-    $return_data = $lcApi->makeRequest('accept-user-connection-request', ['telegram_id' => $telegram_id,'user_id_1' => intval($ids[1]),'user_id_2' => intval($ids[2])]);
+    $return_data = $lcApi->makeRequest('accept-user-connection-request', ['telegram_id' => $telegram_id,'user_id_1' => intval($ids[1]),'user_id_2' => intval($ids[2]),'notification_id' => $ids[3]]);
 
     if($return_data['status'] === 'error' || empty($return_data)) {
         $options['chat_id'] = $telegram_id;
@@ -1484,8 +1486,9 @@ function decline_connection($update, $telegram,$callbackName)
     if(!$is_verified['status']) return false;
     $telegram_id = $update->getMessage()->chat->id;
     $ids=explode('__',$callbackName);
+    if(!isset($ids[3])) $ids[3] = NULL;
     $lcApi = new \LCAPPAPI();
-    $return_data = $lcApi->makeRequest('decline-user-connection-request', ['telegram_id' => $telegram_id,'user_id_1' => intval($ids[1]),'user_id_2' => intval($ids[2])]);
+    $return_data = $lcApi->makeRequest('decline-user-connection-request', ['telegram_id' => $telegram_id,'user_id_1' => intval($ids[1]),'user_id_2' => intval($ids[2]),'notification_id' => $ids[3]]);
 
     if($return_data['status'] === 'error' || empty($return_data)) {
         $options['chat_id'] = $telegram_id;
