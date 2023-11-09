@@ -936,4 +936,8 @@ $translates = [
         'en' => "You haven't dropped any creative gems yet",
         'ru' => "У тебя пока нет креативных штучек"
     ],
+    'unsupported format, choose different file' => [
+        'en' => "Oops, that format won't fly. Pick a different file, cool?",
+        'ru' => "Ой, этот формат не прокатит. Выбери другой файл, окей?"
+    ],
 ];

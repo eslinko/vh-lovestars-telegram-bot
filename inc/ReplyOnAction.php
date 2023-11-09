@@ -1738,16 +1738,35 @@ function expression_choose_file($update, $telegram, $callbackName)
     $is_verified = user_is_verified($telegram_id);
     if(!$is_verified['status']) return false;
 
+    $supported_formats = ["jpg", "gif", "png","mp4", "mov", "webm", "3gp", "ogg",'mp3','aac','wav','wma','flac'];
     $message_text = trim($message->text);
 
     // if its url to content
     if(filter_var($message_text, FILTER_VALIDATE_URL)){
-        $result = $lcApi->makeRequest('set-url-content-to-expression', ['telegram_id' => $telegram_id, 'url' => $message_text]);
+        $arr = explode('.', $message_text);
+        $ext = strtolower($arr[count($arr)-1]);
+        if(in_array($ext,$supported_formats)){
+                $result = $lcApi->makeRequest('set-url-content-to-expression', ['telegram_id' => $telegram_id, 'url' => $message_text]);
 
-        $telegram->triggerCommand('expression_confirm_creation', $update);
-        set_command_to_last_message('expression_confirm_creation', $telegram_id);
+                $telegram->triggerCommand('expression_confirm_creation', $update);
+                set_command_to_last_message('expression_confirm_creation', $telegram_id);
 
-        return false;
+                return false;
+        } else {
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('unsupported format, choose different file', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+                'inline_keyboard' =>  [
+                    [
+                        Keyboard::inlineButton([
+                            'text' => __('Try again', $is_verified['user']['language']),
+                            'callback_data' => 'expression_choose_file'
+                        ])
+                    ]
+                ],
+                'resize_keyboard' => true,
+            ])]);
+            return false;
+        }
+
     }
 
 
@@ -1766,12 +1785,30 @@ function expression_choose_file($update, $telegram, $callbackName)
         }
 
         if(!empty($file_id)) {
-            $result = $lcApi->makeRequest('set-file-content-to-expression', ['telegram_id' => $telegram_id, 'file_id' => $file_id]);
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $file_id]);
 
-            $telegram->triggerCommand('expression_confirm_creation', $update);
-            set_command_to_last_message('expression_confirm_creation', $update->getMessage()->chat->id);
+            $result = $lcApi->makeRequest('set-file-content-to-expression', ['telegram_id' => $telegram_id, 'file_id' => $file_id, 'supported_formats' => $supported_formats]);
+            if($result['status'] === 'success') {
+                $telegram->triggerCommand('expression_confirm_creation', $update);
+                set_command_to_last_message('expression_confirm_creation', $update->getMessage()->chat->id);
 
-            return false;
+                return false;
+            }
+            if($result['status'] === 'error' AND $result['text'] === 'unsupported_format') {
+                $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('unsupported format, choose different file', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+                    'inline_keyboard' =>  [
+                        [
+                            Keyboard::inlineButton([
+                                'text' => __('Try again', $is_verified['user']['language']),
+                                'callback_data' => 'expression_choose_file'
+                            ])
+                        ]
+                    ],
+                    'resize_keyboard' => true,
+                ])]);
+                return false;
+            }
+
         }
     }
 
