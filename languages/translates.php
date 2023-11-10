@@ -34,7 +34,7 @@ $translates = [
 	],
 
 	'View a list of commands.' => [
-		'en' => 'View a list of commands.',
+		'en' => 'View a list of commands',
 		'ru' => 'Список команд'
 	],
 
