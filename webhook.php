@@ -68,6 +68,8 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher($callbackName, $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'expression_choose_expiration')!==false) {
         reply_on_action_switcher('expression_choose_expiration', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'update_json_profile')!==false) {
+        reply_on_action_switcher('update_json_profile', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
@@ -78,7 +80,13 @@ if ($update->isType('callback_query')) {
 
 		if(!empty($last_message_object->reply_markup)) {
 			$callbackName = $last_message_object->reply_markup->inline_keyboard[0][0]->callback_data;
-			reply_on_action_switcher($callbackName, $update, $telegram, $last_message_object);
+            //here we come when we set last message via set_command_to_last_message
+            if (strpos($callbackName, 'write_json_profile') !== false) {
+                reply_on_action_switcher('write_json_profile', $update, $telegram, $callbackName);
+            } else {
+                reply_on_action_switcher($callbackName, $update, $telegram, $last_message_object);
+            }
+
 		} else {
             //TGKeyboard::processKeyboard($update,$telegram);
 			$telegram->commandsHandler(true);

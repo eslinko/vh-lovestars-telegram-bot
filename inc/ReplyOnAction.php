@@ -138,6 +138,12 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_choose_expiration':
             expression_choose_expiration($update, $telegram, $last_message_object);
             break;
+        case 'update_json_profile':
+            update_json_profile($update, $telegram, $last_message_object);
+            break;
+        case 'write_json_profile':
+            write_json_profile($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -2017,4 +2023,81 @@ function expression_choose_expiration($update, $telegram, $callbackName)
     $telegram->triggerCommand('expression_choose_tags', $update);
     set_command_to_last_message('expression_choose_tags', $update->getMessage()->chat->id);
 
+}
+
+function update_json_profile($update, $telegram, $callbackName)
+{
+    $telegram_id = $update->getMessage()->chat->id;
+    $is_verified = user_is_verified($telegram_id );
+    if(!$is_verified['status']) return false;
+
+
+    $comm=explode('__',$callbackName);
+    switch ($comm[1])
+    {
+        case 'creative_name':
+            $text = __("Enter your creative name", $is_verified['user']['language']);
+            break;
+        case 'city_village':
+            $text = __("Enter city where you live", $is_verified['user']['language']);
+            break;
+        case 'creative_job':
+            $text = __("Enter your creative job", $is_verified['user']['language']);
+            break;
+        case 'about_you':
+            $text = __("Enter about you info", $is_verified['user']['language']);
+            break;
+        case 'facebook':
+            $text = __("Enter your facebook", $is_verified['user']['language']);
+            break;
+        case 'youtube':
+            $text = __("Enter your youtube", $is_verified['user']['language']);
+            break;
+        case 'tik_tok':
+            $text = __("Enter your tiktok", $is_verified['user']['language']);
+            break;
+        case 'linkedin':
+            $text = __("Enter your linkedin", $is_verified['user']['language']);
+            break;
+        case 'instagram':
+            $text = __("Enter your instagram", $is_verified['user']['language']);
+            break;
+        case 'twitter':
+            $text = __("Enter your twitter", $is_verified['user']['language']);
+            break;
+        case 'pinterest':
+            $text = __("Enter your pinterest", $is_verified['user']['language']);
+            break;
+        case 'twitch':
+            $text = __("Enter your twitch", $is_verified['user']['language']);
+            break;
+        case 'snapchat':
+            $text = __("Enter your snapchat", $is_verified['user']['language']);
+            break;
+        default:
+            return;
+
+
+    }
+    $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text]);
+    set_command_to_last_message('write_json_profile__'.$comm[1], $update->getMessage()->chat->id);
+}
+function write_json_profile($update, $telegram, $callbackName)
+{
+    $telegram_id = $update->getMessage()->chat->id;
+    $is_verified = user_is_verified($telegram_id );
+    if(!$is_verified['status']) return false;
+
+    $comm=explode('__',$callbackName);
+
+    $new_data = trim($update->getMessage()->text);
+
+    $lcApi = new \LCAPPAPI();
+    $result = $lcApi->makeRequest('set-json-profile-data', ['telegram_id' => $telegram_id, 'field' => $comm[1], 'data' => $new_data]);
+    if($result['status'] === 'error') {
+        $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language'])]);
+        return false;
+    }
+    $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Data is written successfully", $is_verified['user']['language'])]);
+    $telegram->triggerCommand('my_data', $update);
 }
