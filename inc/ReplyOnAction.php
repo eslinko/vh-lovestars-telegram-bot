@@ -1785,8 +1785,6 @@ function expression_choose_file($update, $telegram, $callbackName)
         }
 
         if(!empty($file_id)) {
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $file_id]);
-
             $result = $lcApi->makeRequest('set-file-content-to-expression', ['telegram_id' => $telegram_id, 'file_id' => $file_id, 'supported_formats' => $supported_formats]);
             if($result['status'] === 'success') {
                 $telegram->triggerCommand('expression_confirm_creation', $update);
