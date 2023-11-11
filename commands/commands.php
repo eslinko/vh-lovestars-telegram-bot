@@ -31,6 +31,7 @@ require_once  'user/ReportAnIssueCommand.php';
 require_once  'user/MyMatchesCommand.php';
 require_once  'user/ClaimMyLovestarsCommand.php';
 require_once 'user/InterestsAnswersCommand.php';
+require_once 'user/UploadAvatarCommand.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -101,6 +102,8 @@ $telegram->addCommand( Telegram\Bot\Commands\ReportAnIssueCommand::class);
 $telegram->addCommand(Telegram\Bot\Commands\MyMatchesCommand::class);
 $telegram->addCommand(Telegram\Bot\Commands\ClaimMyLovestarsCommand::class);
 $telegram->addCommand(Telegram\Bot\Commands\InterestsAnswersCommand::class);
+$telegram->addCommand(Telegram\Bot\Commands\UploadAvatarCommand::class);
+
 
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);
@@ -120,6 +123,8 @@ $telegram->addCommand( Telegram\Bot\Commands\ExpressionFinishedCreationCommand::
 $telegram->addCommand( Telegram\Bot\Commands\ExploreCeCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ViewCreativeExpressionsCommand::class);
 $telegram->addCommand( Telegram\Bot\Commands\ExpressionChooseExpirationCommand::class);
+
+
 //teacher command
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateCommand::class);
 //$telegram->addCommand( Telegram\Bot\Commands\TeacherCreateStep2Command::class);
