@@ -144,6 +144,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'write_json_profile':
             write_json_profile($update, $telegram, $last_message_object);
             break;
+        case 'upload_avatar':
+            upload_avatar($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -1744,7 +1747,7 @@ function expression_choose_file($update, $telegram, $callbackName)
     $is_verified = user_is_verified($telegram_id);
     if(!$is_verified['status']) return false;
 
-    $supported_formats = ["jpg", "gif", "png","mp4", "mov", "webm", "3gp", "ogg",'mp3','aac','wav','wma','flac'];
+    $supported_formats = ["jpg", "jpeg", "gif", "png","mp4", "mov", "webm", "3gp", "ogg",'mp3','aac','wav','wma','flac'];
     $message_text = trim($message->text);
 
     // if its url to content
@@ -2100,4 +2103,58 @@ function write_json_profile($update, $telegram, $callbackName)
     }
     $telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __("Data is written successfully", $is_verified['user']['language'])]);
     $telegram->triggerCommand('my_data', $update);
+}
+
+function upload_avatar($update, $telegram, $callbackName)
+{
+    $telegram_id = $update->getMessage()->chat->id;
+    $lcApi = new \LCAPPAPI();
+    $is_verified = user_is_verified($telegram_id);
+    if(!$is_verified['status']) return false;
+    $message = $update->getMessage();
+    if(!empty($message['document']) || !empty($message['photo'])) {
+
+        if(!empty($message['document'])) {
+            $file_id = $message['document']['file_id'];
+        } else if (!empty($message['photo'])) {
+            $file_id = end($message['photo'])['file_id'];
+        }
+
+        if(!empty($file_id)) {
+            $result = $lcApi->makeRequest('upload-avatar', ['telegram_id' => $telegram_id, 'file_id' => $file_id]);
+            if($result['status'] === 'success') {
+                $telegram->triggerCommand('my_data', $update);
+                return false;
+            }
+            //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($result)]);
+            if($result['status'] === 'error' AND $result['text'] === 'unsupported_format') {
+                $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('unsupported format, choose different file', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+                    'inline_keyboard' =>  [
+                        [
+                            Keyboard::inlineButton([
+                                'text' => __('Try again', $is_verified['user']['language']),
+                                'callback_data' => 'upload_avatar'
+                            ])
+                        ]
+                    ],
+                    'resize_keyboard' => true,
+                ])]);
+                return false;
+            }
+
+        }
+    }
+    //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($message)]);
+
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please attach cool avatar', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+        'inline_keyboard' =>  [
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Try again', $is_verified['user']['language']),
+                    'callback_data' => 'upload_avatar'
+                ])
+            ]
+        ],
+        'resize_keyboard' => true,
+    ])]);
 }

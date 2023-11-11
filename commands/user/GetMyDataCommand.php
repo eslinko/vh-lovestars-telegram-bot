@@ -3,6 +3,7 @@
 namespace Telegram\Bot\Commands;
 
 use Telegram\Bot\Keyboard\Keyboard;
+use Telegram\Bot\FileUpload\InputFile;
 
 /**
  * Class GetMyDataCommand.
@@ -74,6 +75,32 @@ class GetMyDataCommand extends Command
 
         //new profile data
         $profile_data = json_decode($user['user']['profile_data'] ?? '{}', true);
+
+        if(isset($profile_data['avatar'])){
+            $photo =  InputFile::create(parse_url(getenv('API_URL'))['scheme'].'://'.parse_url(getenv('API_URL'))['host'].'/backend/web/uploads/avatars/'.$profile_data['avatar'],$profile_data['avatar']);
+
+        } else {
+            $photo =  InputFile::create(parse_url(getenv('API_URL'))['scheme'].'://'.parse_url(getenv('API_URL'))['host'].'/backend/web/assets/images/avatar-default.png','avatar-default.png');
+        }
+        $photo_options = [
+                'chat_id' => $telegram_id,
+            ];
+        $photo_options['photo'] = $photo;
+        $photo_options['caption'] = __("Your avatar", $user['user']['language']);
+        $photo_options['reply_markup'] = Keyboard::make([
+        'inline_keyboard' =>  [
+                    [
+                        Keyboard::inlineButton([
+                            'text' => __('Update avatar', $user['user']['language']),
+                            'callback_data' => 'upload_avatar'
+                        ])
+                    ],
+                ],
+                'resize_keyboard' => true,
+            ]);
+        $this->telegram->sendPhoto($photo_options);
+
+        //button list
         $reply_markup = Keyboard::make([
             'inline_keyboard' =>  [
 				[
