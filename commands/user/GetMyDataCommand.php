@@ -127,65 +127,74 @@ class GetMyDataCommand extends Command
                         'callback_data' => 'update_json_profile__about_you'
                     ])
                 ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Facebook:', $user['user']['language']).($profile_data['facebook'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__facebook'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Youtube:', $user['user']['language']).($profile_data['youtube'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__youtube'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Tik tok:', $user['user']['language']).($profile_data['tik_tok'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__tik_tok'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Linkedin:', $user['user']['language']).($profile_data['linkedin'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__linkedin'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Instagram:', $user['user']['language']).($profile_data['instagram'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__instagram'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Twitter:', $user['user']['language']).($profile_data['twitter'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__twitter'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Pinterest:', $user['user']['language']).($profile_data['pinterest'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__pinterest'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Twitch:', $user['user']['language']).($profile_data['twitch'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__twitch'
-                    ])
-                ],
-                [
-                    Keyboard::inlineButton([
-                        'text' => __('Snapchat:', $user['user']['language']).($profile_data['snapchat'] ?? __('NOT SET', $user['user']['language'])) ,
-                        'callback_data' => 'update_json_profile__snapchat'
-                    ])
-                ],
             ],
             'resize_keyboard' => true,
         ]);
         $options['reply_markup'] = $reply_markup;
         $options['text'] = __('Public profile:', $user['user']['language']);
+        $this->telegram->sendMessage($options);
+
+        $reply_markup = Keyboard::make([
+            'inline_keyboard' =>[
+                [
+                Keyboard::inlineButton([
+                    'text' => __('Facebook:', $user['user']['language']).($profile_data['facebook'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__facebook'
+                ])
+                ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Youtube:', $user['user']['language']).($profile_data['youtube'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__youtube'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Tik tok:', $user['user']['language']).($profile_data['tik_tok'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__tik_tok'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Linkedin:', $user['user']['language']).($profile_data['linkedin'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__linkedin'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Instagram:', $user['user']['language']).($profile_data['instagram'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__instagram'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Twitter:', $user['user']['language']).($profile_data['twitter'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__twitter'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Pinterest:', $user['user']['language']).($profile_data['pinterest'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__pinterest'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Twitch:', $user['user']['language']).($profile_data['twitch'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__twitch'
+                ])
+            ],
+            [
+                Keyboard::inlineButton([
+                    'text' => __('Snapchat:', $user['user']['language']).($profile_data['snapchat'] ?? __('NOT SET', $user['user']['language'])) ,
+                    'callback_data' => 'update_json_profile__snapchat'
+                ])
+            ],
+        ],
+            'resize_keyboard' => true,
+        ]);
+        $options['reply_markup'] = $reply_markup;
+        $options['text'] = __('Social media platforms:', $user['user']['language']);
         $this->telegram->sendMessage($options);
 	}
 }

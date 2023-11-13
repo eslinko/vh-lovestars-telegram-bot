@@ -2121,9 +2121,9 @@ function upload_avatar($update, $telegram, $callbackName)
         }
 
         if(!empty($file_id)) {
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => $telegram_id.' '.$file_id]);
+
             $result = $lcApi->makeRequest('upload-avatar', ['telegram_id' => $telegram_id, 'file_id' => $file_id]);
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($result)]);
+
             if($result['status'] === 'success') {
                 $telegram->triggerCommand('my_data', $update);
                 return false;
