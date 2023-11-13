@@ -595,7 +595,18 @@ function registration_step_invitation_code($update, $telegram) {
         if($resp['status'] === false OR $resp['status'] === 'error'){
             $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($resp['message'], $user['language'])]);
         } else {
-            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $user['language'])]);
+            $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Congratulations! You have received your first Lovestar!', $user['language']),
+                'reply_markup' => Keyboard::make([
+                    'inline_keyboard' =>  [
+                        [
+                            Keyboard::inlineButton([
+                                'text' => __('Next step! Add your creative expression', $user['language']),
+                                'callback_data' => 'expression_start_create'
+                            ])
+                        ]
+                    ],
+                    'resize_keyboard' => true,
+                ])]);
 
             if(!empty($result['register_with_lovestars']) && $result['register_with_lovestars'] === true) {
                 $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => sprintf(__("Bonus Lovestars have been added to your account courtesy of a special invitation code. Your total Lovestars tally is now %s. You can always check your Lovestars balance in the \"My Lovestars\" section. \nStay tuned for updates on all the cool things you can do with those Lovestars as our platform expands its functionality.", $user['language']), $result['current_lovestars'])]);

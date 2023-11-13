@@ -1068,4 +1068,8 @@ $translates = [
         'en' => "NOT SET",
         'ru' => "ПУСТО"
     ],
+    'Next step! Add your creative expression' => [
+        'en' => "Next step! Add your creative expression!",
+        'ru' => "А теперь добавь своё творческое творение!"
+    ],
 ];
