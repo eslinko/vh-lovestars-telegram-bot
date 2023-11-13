@@ -940,4 +940,128 @@ $translates = [
         'en' => "Oops, that format won't fly. Pick a different file, cool?",
         'ru' => "Ой, этот формат не прокатит. Выбери другой файл, окей?"
     ],
+    'Your avatar' => [
+        'en' => "Your avatar",
+        'ru' => "Твой аватар"
+    ],
+    'Update avatar' => [
+        'en' => "Update avatar",
+        'ru' => "Изменить аватар"
+    ],
+    'Your creative name:' => [
+        'en' => "Your creative name: ",
+        'ru' => "Твое творческое имя: "
+    ],
+    'City where you live:' => [
+        'en' => "City where you live: ",
+        'ru' => "Город, где ты живёшь: "
+    ],
+    'Your creative job:' => [
+        'en' => "Your creative job: ",
+        'ru' => "Твоя творческая профессия: "
+    ],
+    'About you:' => [
+        'en' => "About me: ",
+        'ru' => "Обо мне: "
+    ],
+    'Facebook:' => [
+        'en' => "Facebook: ",
+        'ru' => "Фейсбук: "
+    ],
+    'Youtube:' => [
+        'en' => "Youtube: ",
+        'ru' => "Ютуб: "
+    ],
+    'Tik tok:' => [
+        'en' => "TikTok: ",
+        'ru' => "ТикТок: "
+    ],
+    'Linkedin:' => [
+        'en' => "LinkedIn: ",
+        'ru' => "LinkedIn: "
+    ],
+    'Instagram:' => [
+        'en' => "Instagram: ",
+        'ru' => "Инстаграм: "
+    ],
+    'Twitter:' => [
+        'en' => "Twitter: ",
+        'ru' => "Твиттер: "
+    ],
+    'Pinterest:' => [
+        'en' => "Pinterest: ",
+        'ru' => "Pinterest: "
+    ],
+    'Twitch:' => [
+        'en' => "Twitch: ",
+        'ru' => "Твитч: "
+    ],
+    'Snapchat:' => [
+        'en' => "Snapchat: ",
+        'ru' => "Snapchat: "
+    ],
+    'Social media platforms:' => [
+        'en' => "Social media platforms",
+        'ru' => "Социальные сети"
+    ],
+    'Please attach cool avatar' => [
+        'en' => "Please attach cool avatar",
+        'ru' => "Прикрепи крутой аватар"
+    ],
+    'Data is written successfully' => [
+        'en' => "Updated",
+        'ru' => "Обновлено"
+    ],
+    'Enter your creative name' => [
+        'en' => "Enter your creative name",
+        'ru' => "Введи своё творческое имя"
+    ],
+    'Enter city where you live' => [
+        'en' => "Enter city where you live",
+        'ru' => "Введи город, где ты живёшь"
+    ],
+    'Enter your creative job' => [
+        'en' => "Enter your creative job",
+        'ru' => "Введи свою творческую профессию"
+    ],
+    'Enter about you info' => [
+        'en' => "Enter about you info",
+        'ru' => "Введи информацию о себе"
+    ],
+    'Enter your facebook' => [
+        'en' => "Enter your facebook",
+        'ru' => "Введи свой фейсбук"
+    ],
+    'Enter your youtube' => [
+        'en' => "Enter your youtube",
+        'ru' => "Введи свой ютуб"
+    ],
+    'Enter your tiktok' => [
+        'en' => "Enter your tiktok",
+        'ru' => "Введи свой тикток"
+    ],
+    'Enter your linkedin' => [
+        'en' => "Enter your linkedin",
+        'ru' => "Введи свой linkedin"
+    ],
+    'Enter your instagram' => [
+        'en' => "Enter your instagram",
+        'ru' => "Введи свой инстаграм"
+    ],
+    'Enter your twitter' => [
+        'en' => "Enter your twitter",
+        'ru' => "Введи свой твиттер"
+    ],
+    'Enter your pinterest' => [
+        'en' => "Enter your pinterest",
+        'ru' => "Введи свой pinterest"
+    ],
+    'Enter your twitch' => [
+        'en' => "Enter your twitch",
+        'ru' => "Введи свой twitch"
+    ],
+    'Enter your snapchat' => [
+        'en' => "Enter your snapchat",
+        'ru' => "Введи свой snapchat"
+    ],
 ];
