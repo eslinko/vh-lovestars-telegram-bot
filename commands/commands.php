@@ -32,6 +32,7 @@ require_once  'user/MyMatchesCommand.php';
 require_once  'user/ClaimMyLovestarsCommand.php';
 require_once 'user/InterestsAnswersCommand.php';
 require_once 'user/UploadAvatarCommand.php';
+require_once 'user/DieCommand.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -154,4 +155,5 @@ if(in_array($user['user']['role'], ['event_organizer', 'admin'])) {
 
 if($user['user']['role'] === 'admin') {
     $telegram->addCommand( Telegram\Bot\Commands\GenerateCodesCommand::class);
+    $telegram->addCommand( Telegram\Bot\Commands\DieCommand::class);
 }
