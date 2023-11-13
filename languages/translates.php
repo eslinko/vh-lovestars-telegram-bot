@@ -1064,4 +1064,8 @@ $translates = [
         'en' => "Enter your snapchat",
         'ru' => "Введи свой snapchat"
     ],
+    'NOT SET' => [
+        'en' => "NOT SET",
+        'ru' => "ПУСТО"
+    ],
 ];
