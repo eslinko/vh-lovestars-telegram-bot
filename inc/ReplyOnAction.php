@@ -860,7 +860,8 @@ function update_my_password($update, $telegram) {
 		return false;
 	}
 	
-	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('You have successfully changed your password.', $result['user']['language']), 'reply_markup' => Keyboard::make([
+	$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('You have successfully changed your password.', $result['user']['language'])]);
+/*        ,'reply_markup' => Keyboard::make([
 		'inline_keyboard' =>  [
 			[
 				Keyboard::inlineButton([
@@ -870,7 +871,7 @@ function update_my_password($update, $telegram) {
 			]
 		],
 		'resize_keyboard' => true,
-	])]);
+	])]);*/
     //TGKeyboard::showMyDataKeyboard($update->getMessage()->chat->id,$telegram, $result['user'], 'OK');
     return false;
 }
