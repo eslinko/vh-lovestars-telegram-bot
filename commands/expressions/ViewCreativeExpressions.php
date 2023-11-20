@@ -39,9 +39,10 @@ class ViewCreativeExpressionsCommand extends Command
             if(count($data['data']) == 0){
                 $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __('you do not have ce', $result['user']['language'])]);
             } else {
-                $text = '';
+
                 $i = 1;
                 foreach ($data['data'] as $exp) {
+                    $text = '';
                     $exp_time = ($exp['active_period'] - time()) / 3600;
                     if ($exp_time > 0) {
                         $exp_text = sprintf(__('%d hours left', $result['user']['language']), round($exp_time));
@@ -55,8 +56,9 @@ class ViewCreativeExpressionsCommand extends Command
                     $text .= __("Content:", $result['user']['language']) . ' ' . $exp['content'] . "\n";
                     $text .= __("Expiration time:", $result['user']['language']) . ' ' . $exp_text . "\n\n";
                     $i++;
+                    $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text]);
                 }
-                $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text]);
+
             }
 
         }
