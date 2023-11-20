@@ -1076,4 +1076,8 @@ Use commas or columns to list your interests and hobbies.
         'en' => "Next step! Add your creative expression!",
         'ru' => "Следующий шаг! А теперь добавь своё творческое творение!"
     ],
+    'Public profile:' => [
+        'en' => "Your public profile:",
+        'ru' => "Твой публичный профиль:"
+    ],
 ];
