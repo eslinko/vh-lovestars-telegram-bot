@@ -1755,7 +1755,7 @@ function expression_choose_file($update, $telegram, $callbackName)
     $message = $update->getMessage();
     $telegram_id = $message->chat->id;
 
-    $lcApi = new \LCAPPAPI();
+        $lcApi = new \LCAPPAPI();
     $is_verified = user_is_verified($telegram_id);
     if(!$is_verified['status']) return false;
 
@@ -1795,17 +1795,39 @@ function expression_choose_file($update, $telegram, $callbackName)
 
         if(!empty($message['document'])) {
             $file_id = $message['document']['file_id'];
+            $file_size = $message['document']['file_size'];
         } else if (!empty($message['photo'])) {
             $file_id = end($message['photo'])['file_id'];
+            $file_size = end($message['photo'])['file_size'];
         } else if(!empty($message['video'])) {
             $file_id = $message['video']['file_id'];
+            $file_size = $message['video']['file_size'];
         } else if(!empty($message['voice'])) {
             $file_id = $message['voice']['file_id'];
+            $file_size = $message['voice']['file_size'];
         } elseif(!empty($message['audio'])){
             $file_id = $message['audio']['file_id'];
+            $file_size = $message['audio']['file_size'];
         }
 
         if(!empty($file_id)) {
+
+            if($file_size >= 20000000) {
+                $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('File size is more than 20MB', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+                    'inline_keyboard' =>  [
+                        [
+                            Keyboard::inlineButton([
+                                'text' => __('Try again', $is_verified['user']['language']),
+                                'callback_data' => 'expression_choose_file'
+                            ])
+                        ]
+                    ],
+                    'resize_keyboard' => true,
+                ])]);
+                return;
+            }
+
+
             $result = $lcApi->makeRequest('set-file-content-to-expression', ['telegram_id' => $telegram_id, 'file_id' => $file_id, 'supported_formats' => $supported_formats]);
             if($result['status'] === 'success') {
                 $telegram->triggerCommand('expression_confirm_creation', $update);
