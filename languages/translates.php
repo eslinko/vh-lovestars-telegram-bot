@@ -825,8 +825,12 @@ Use commas or columns to list your interests and hobbies.
         'ru' => "Начнём!"
     ],
     "Please attach file of CE" => [
-        'en' => "Please attach a file (maximum size 20MB), share a link to your creative expression or enter text for a text expression",
-        'ru' => "Прикрепи файл (максимальный размер 20МБ), поделись ссылкой на твоё творчество или вставь текст для текстового творчества"
+        'en' => "Please attach a file (maximum size 20MB), share a link to your creative expression",
+        'ru' => "Прикрепи файл (максимальный размер 20МБ), поделись ссылкой на твоё творчество"
+    ],
+    "Please attach file of text CE" => [
+        'en' => "Please attach a file (maximum size 20MB), share a link to your creative expression or paste text",
+        'ru' => "Прикрепи файл (максимальный размер 20МБ), поделись ссылкой на твоё творчество или вставь текст"
     ],
     "Add creative expression" => [
         'en' => "Add creative expression",
