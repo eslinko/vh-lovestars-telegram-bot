@@ -1754,7 +1754,6 @@ function expression_choose_file($update, $telegram, $callbackName)
 {
     $message = $update->getMessage();
     $telegram_id = $message->chat->id;
-    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($message, JSON_PRETTY_PRINT)]);
 
         $lcApi = new \LCAPPAPI();
     $is_verified = user_is_verified($telegram_id);
