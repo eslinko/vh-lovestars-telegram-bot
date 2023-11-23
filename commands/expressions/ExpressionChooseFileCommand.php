@@ -37,11 +37,12 @@ class ExpressionChooseFileCommand extends Command
         $this->telegram->sendMessage($options);*/
         if($result["expressions_in_proccess"]["type_enum"] === 'Text'){
             TGKeyboard::showMainKeyboard($telegram_id, $this->telegram, $result['user'],__('Please attach file of text CE', $result['user']['language']));
-
+            set_command_to_last_message('expression_paste_text', $telegram_id);
         }else{
             TGKeyboard::showMainKeyboard($telegram_id, $this->telegram, $result['user'],__('Please attach file of CE', $result['user']['language']));
+            set_command_to_last_message('expression_choose_file', $telegram_id);
         }
 
-        set_command_to_last_message($this->name, $telegram_id);
+
     }
 }

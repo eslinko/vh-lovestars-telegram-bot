@@ -111,6 +111,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_choose_file':
             expression_choose_file($update, $telegram, $last_message_object);
             break;
+        case 'expression_paste_text':
+            expression_paste_text($update, $telegram, $last_message_object);
+            break;
         case 'confirm_remove_connection_by_id':
             confirm_remove_connection_by_id($update, $telegram, $last_message_object);
             break;
@@ -1747,7 +1750,7 @@ function expression_choose_tags($update, $telegram, $callbackName)
 
     $telegram->triggerCommand('expression_choose_file', $update);
 
-    set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
+    //set_command_to_last_message('expression_choose_file', $update->getMessage()->chat->id);
     }
 
 function expression_choose_file($update, $telegram, $callbackName)
@@ -1853,7 +1856,7 @@ function expression_choose_file($update, $telegram, $callbackName)
         }
     }
 
-    if(!empty($message_text)){//TEXT
+/*    if(!empty($message_text)){//TEXT
         mb_substitute_character(mb_ord('_', 'UTF-8'));//character to replace bad json symbols in server response
         $message_text=mb_convert_encoding($message_text,'UTF-8','UTF-8');
         $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text], 'array', 'POST');
@@ -1864,7 +1867,7 @@ function expression_choose_file($update, $telegram, $callbackName)
             set_command_to_last_message('expression_confirm_creation', $telegram_id);
             return false;
         }
-    }
+    }*/
 
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Please attach file of CE', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
         'inline_keyboard' =>  [
@@ -1877,6 +1880,44 @@ function expression_choose_file($update, $telegram, $callbackName)
         ],
         'resize_keyboard' => true,
     ])]);
+}
+
+function expression_paste_text($update, $telegram, $callbackName){
+    $message = $update->getMessage();
+    $telegram_id = $message->chat->id;
+
+    $lcApi = new \LCAPPAPI();
+    $is_verified = user_is_verified($telegram_id);
+    if(!$is_verified['status']) return false;
+
+    $message_text = trim($message->text);
+
+    if(!empty($message_text)){//TEXT
+        mb_substitute_character(mb_ord('_', 'UTF-8'));//character to replace bad json symbols in server response
+        $message_text=mb_convert_encoding($message_text,'UTF-8','UTF-8');
+        $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text], 'array', 'POST');
+
+        if($result['status'] === 'success')
+        {//if our format was TEXT we set text, otherwise error
+            $telegram->triggerCommand('expression_confirm_creation', $update);
+            set_command_to_last_message('expression_confirm_creation', $telegram_id);
+            return false;
+        }
+    } else{
+        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Oops, seems like you attached some file. Please paste text', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
+            'inline_keyboard' =>  [
+                [
+                    Keyboard::inlineButton([
+                        'text' => __('Try again', $is_verified['user']['language']),
+                        'callback_data' => 'expression_choose_file'
+                    ])
+                ]
+            ],
+            'resize_keyboard' => true,
+        ])]);
+    }
+
+
 }
 
 function claim_my_lovestars($update, $telegram, $callbackName)
