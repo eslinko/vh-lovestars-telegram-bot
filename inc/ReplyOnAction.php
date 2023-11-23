@@ -1903,6 +1903,13 @@ function expression_paste_text($update, $telegram, $callbackName){
             set_command_to_last_message('expression_confirm_creation', $telegram_id);
             return false;
         }
+        else
+        {
+            $options['chat_id'] = $telegram_id;
+            $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+            $telegram->sendMessage($options);
+            return false;
+        }
     } else{
         $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Oops, seems like you attached some file. Please paste text', $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
             'inline_keyboard' =>  [
