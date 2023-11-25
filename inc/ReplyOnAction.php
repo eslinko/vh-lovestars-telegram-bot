@@ -2141,6 +2141,9 @@ function update_json_profile($update, $telegram, $callbackName)
         case 'tik_tok':
             $text = __("Enter your tiktok", $is_verified['user']['language']);
             break;
+        case 'discord':
+            $text = __("Enter your discord", $is_verified['user']['language']);
+            break;
         case 'linkedin':
             $text = __("Enter your linkedin", $is_verified['user']['language']);
             break;

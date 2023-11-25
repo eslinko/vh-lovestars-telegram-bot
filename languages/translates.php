@@ -1092,4 +1092,12 @@ Use commas or columns to list your interests and hobbies.
         'en' => "Oops, your file is too big. Max size is 20MB",
         'ru' => "Ой, твой файл слишком большой. Максимальный размер 20МБ"
     ],
+    'Your connections' => [
+        'en' => "Your connections",
+        'ru' => "Твои связи"
+    ],
+    "Enter your discord" => [
+        'en' => "Enter your discord",
+        'ru' => "Введи свой дискорд"
+    ],
 ];
