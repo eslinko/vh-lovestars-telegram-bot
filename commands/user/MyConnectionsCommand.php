@@ -59,7 +59,7 @@ class MyConnectionsCommand extends Command
                     $inline_keyboard[]=[
                         Keyboard::inlineButton([
                             'text' => $text,
-                            'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$user['user']['id']]
+                            'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$item['user_id']]
                         ])
                     ];
                     $i++;
