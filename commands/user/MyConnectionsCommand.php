@@ -35,20 +35,10 @@ class MyConnectionsCommand extends Command
         $options = [
             'chat_id' => $telegram_id,
         ];
-
-
-        //show commands
-        $options['text'] = '/sent_invites - '.__("Your sent invites.", $user['user']['language'])."\n";
-        $options['text'] .= '/rejected_invites - '.__("Rejected invites.", $user['user']['language']);
-        $this->telegram->sendMessage($options);
-        $options['text'] = '';
-
-
+        $url = parse_url(getenv('API_URL'));
 
         $lcApi = new \LCAPPAPI();
         $data = $lcApi->makeRequest('get-user-connections', ['telegram_id' => $telegram_id]);
-
-
 
         if($data['status'] === 'error' || empty($data)) {
             $options['text'] = __("Error! Try again later.", $user['user']['language']);
@@ -58,11 +48,20 @@ class MyConnectionsCommand extends Command
             if(empty($data['connections'])) {
                 $options['text'] = __('You do not have connections', $user['user']['language']);
             } else {
+                $options['text'] = __('Your connections', $user['user']['language']);
                 $i=1;
+                $inline_keyboard = [];
                 foreach ($data['connections'] as $item) {
                     $user_name_text = $item['public_alias'];
                     if(!empty($item['telegram_alias']))$user_name_text.=' (@'.$item['telegram_alias'].')';
-                    $options['text'].=$i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['created_on']))."\n";
+
+                    $text=$i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['created_on']))."\n";
+                    $inline_keyboard[]=[
+                        Keyboard::inlineButton([
+                            'text' => $text,
+                            'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$user['user']['id']]
+                        ])
+                    ];
                     $i++;
                 }
             }
@@ -71,20 +70,7 @@ class MyConnectionsCommand extends Command
 
 
 		$options['reply_markup'] = Keyboard::make([
-			'inline_keyboard' =>  [
-				[
-					Keyboard::inlineButton([
-						'text' => __('Add new', $user['user']['language']),
-						'callback_data' => 'add_new_connection'
-					]),
-                    Keyboard::inlineButton([
-                        'text' => __('Delete', $user['user']['language']),
-                        'callback_data' => 'delete_connections'
-                    ])
-				]
-
-
-			],
+			'inline_keyboard' =>  $inline_keyboard,
 			'resize_keyboard' => true
 		]);
 		
