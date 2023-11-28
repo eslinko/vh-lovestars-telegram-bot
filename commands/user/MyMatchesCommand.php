@@ -36,8 +36,8 @@ class MyMatchesCommand extends Command
             'chat_id' => $telegram_id,
         ];
 
-        $options['text'] = '';
 
+        $url = parse_url(getenv('API_URL'));
         $lcApi = new \LCAPPAPI();
         $data = $lcApi->makeRequest('get-user-matches', ['telegram_id' => $telegram_id]);
 
@@ -49,19 +49,30 @@ class MyMatchesCommand extends Command
             if(empty($data['matches'])) {
                 $options['text'] = __('You do not have matches', $user['user']['language']);
             } else {
+                $options['text'] = __('Your matches', $user['user']['language']);
                 $i=1;
+                $inline_keyboard = [];
                 foreach ($data['matches'] as $item) {
                     $user_name_text = $item['user']['publicAlias'];
                     if(!empty($item['user']['telegram_alias']))$user_name_text = '@'.$item['user']['telegram_alias'].' ('.$user_name_text.')';
-                    $options['text'] .= $i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['timestamp']))."\n";
+                    $text = $i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['timestamp']))."\n";
+                    $inline_keyboard[]=[
+                        Keyboard::inlineButton([
+                            'text' => $text,
+                            'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$item['user']['id']]
+                        ])
+                    ];
                     $i++;
                 }
             }
 
         }
-        $url = parse_url(getenv('API_URL'));
 
-		$options['reply_markup'] = Keyboard::make([
+        $options['reply_markup'] = Keyboard::make([
+            'inline_keyboard' =>  $inline_keyboard,
+            'resize_keyboard' => true
+        ]);
+		/*$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
 				[
 					Keyboard::inlineButton([
@@ -71,7 +82,7 @@ class MyMatchesCommand extends Command
 				]
 			],
 			'resize_keyboard' => true
-		]);
+		]);*/
 		
 		$this->telegram->sendMessage($options);
 	}

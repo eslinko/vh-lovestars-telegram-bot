@@ -1100,4 +1100,8 @@ Use commas or columns to list your interests and hobbies.
         'en' => "Enter your discord",
         'ru' => "Введи свой дискорд"
     ],
+    'Your matches' => [
+        'en' => "Your matches",
+        'ru' => "Твои совпадения"
+    ]
 ];
