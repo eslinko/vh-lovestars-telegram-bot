@@ -841,8 +841,8 @@ Use commas or columns to list your interests and hobbies.
         'ru' => "Добавить творчество"
     ],
     "Please select the type of your creative expression:" => [
-        'en' => "Please select the type of your creative expression:",
-        'ru' => "Пожалуйста выбери тип своего творчества:"
+        'en' => "Please select the type of your creative expression (press the corresponding button):",
+        'ru' => "Пожалуйста выбери тип своего творчества (нажми на соответствующую кнопку):"
     ],
     "give description of ce:" => [
         'en' => "Enter a description of your creative expression:",
