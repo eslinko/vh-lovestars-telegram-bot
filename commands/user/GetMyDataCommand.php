@@ -156,7 +156,7 @@ class GetMyDataCommand extends Command
             ],
                 [
                     Keyboard::inlineButton([
-                        'text' => __('Tik tok:', $user['user']['language']).($profile_data['discord'] ?? __('NOT SET', $user['user']['language'])) ,
+                        'text' => __('Discord:', $user['user']['language']).($profile_data['discord'] ?? __('NOT SET', $user['user']['language'])) ,
                         'callback_data' => 'update_json_profile__discord'
                     ])
                 ],

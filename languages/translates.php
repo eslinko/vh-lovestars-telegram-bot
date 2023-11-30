@@ -988,6 +988,10 @@ Use commas or columns to list your interests and hobbies.
         'en' => "TikTok: ",
         'ru' => "ТикТок: "
     ],
+    'Discord:' => [
+        'en' => "Discord: ",
+        'ru' => "Discord: "
+    ],
     'Linkedin:' => [
         'en' => "LinkedIn: ",
         'ru' => "LinkedIn: "
