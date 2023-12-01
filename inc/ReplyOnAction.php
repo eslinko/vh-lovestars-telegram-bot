@@ -1885,8 +1885,8 @@ function expression_choose_file($update, $telegram, $callbackName)
 function expression_paste_text($update, $telegram, $callbackName){
     $message = $update->getMessage();
     $telegram_id = $message->chat->id;
-    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($message, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
-    return;
+    //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($message, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
+    //return;
     $lcApi = new \LCAPPAPI();
     $is_verified = user_is_verified($telegram_id);
     if(!$is_verified['status']) return false;
@@ -1897,8 +1897,8 @@ function expression_paste_text($update, $telegram, $callbackName){
         mb_substitute_character(mb_ord('_', 'UTF-8'));//character to replace bad json symbols in server response
         $message_text=mb_convert_encoding($message_text,'UTF-8','UTF-8');
         $result = $lcApi->makeRequest('set-text-content-to-expression', ['telegram_id' => $telegram_id, 'text' => $message_text], 'array', 'POST');
-        $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
-        return;
+        //$telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
+       // return;
         if($result['status'] === 'success')
         {//if our format was TEXT we set text, otherwise error
             $telegram->triggerCommand('expression_confirm_creation', $update);
