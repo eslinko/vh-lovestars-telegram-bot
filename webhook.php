@@ -21,7 +21,7 @@ $update = $telegram->getWebhookUpdate();
 send_post(['update' => json_encode($update, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
 $last_message = $lcApi->makeRequest('get-user-last-message', ['telegram_id' => $update->getMessage()->chat->id]);
 send_post(['last_message' => json_encode($last_message, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
-$request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())]);
+$request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())],'array', 'POST');
 send_post(['set_last_message' => json_encode($request, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
 // user is blocked
 if(!empty($last_message['user']) && (int) $last_message['user']['status'] === 0) {
