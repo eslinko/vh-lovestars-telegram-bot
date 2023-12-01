@@ -1885,7 +1885,8 @@ function expression_choose_file($update, $telegram, $callbackName)
 function expression_paste_text($update, $telegram, $callbackName){
     $message = $update->getMessage();
     $telegram_id = $message->chat->id;
-
+    $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => json_encode($message, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
+    return;
     $lcApi = new \LCAPPAPI();
     $is_verified = user_is_verified($telegram_id);
     if(!$is_verified['status']) return false;
