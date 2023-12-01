@@ -4,7 +4,7 @@ use Telegram\Bot\Keyboard\Keyboard;
 
 function set_command_to_last_message($command_name, $telegram_id, $additional_data = []) {
 	$lcApi = new \LCAPPAPI();
-	$lcApi->makeRequest('set-user-last-message', ['telegram_id' => $telegram_id, 'message' => json_encode(array_merge(['reply_markup' => ['inline_keyboard' => [[['callback_data' => $command_name]]]]], $additional_data))]);
+	$lcApi->makeRequest('set-user-last-message', ['telegram_id' => $telegram_id, 'message' => json_encode(array_merge(['reply_markup' => ['inline_keyboard' => [[['callback_data' => $command_name]]]]], $additional_data))],'array', 'POST');
 }
 
 function user_is_verified($telegram_id) {
