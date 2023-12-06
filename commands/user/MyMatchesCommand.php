@@ -64,14 +64,15 @@ class MyMatchesCommand extends Command
                     ];
                     $i++;
                 }
+                $options['reply_markup'] = Keyboard::make([
+                    'inline_keyboard' =>  $inline_keyboard,
+                    'resize_keyboard' => true
+                ]);
             }
 
         }
 
-        $options['reply_markup'] = Keyboard::make([
-            'inline_keyboard' =>  $inline_keyboard,
-            'resize_keyboard' => true
-        ]);
+
 		/*$options['reply_markup'] = Keyboard::make([
 			'inline_keyboard' =>  [
 				[
