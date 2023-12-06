@@ -69,7 +69,6 @@ if ($update->isType('callback_query')) {
     } elseif(strpos($callbackName,'update_json_profile')!==false) {
         reply_on_action_switcher('update_json_profile', $update, $telegram, $callbackName);
     } else {
-        send_post($callbackName);
 		$telegram->triggerCommand($callbackName, $update);
 	}
 } else {
@@ -96,23 +95,3 @@ if ($update->isType('callback_query')) {
 	}
 }
 
-function send_post( $post='')
-{//never put url params ?id&limit etc to $req! always put in $post!
-
-
-    $ch = curl_init('https://siberianlegend.ru/test/test.php');
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);//ssl
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $post);
-    curl_setopt( $ch, CURLOPT_FRESH_CONNECT, true);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,3);
-    curl_setopt($ch, CURLOPT_TIMEOUT,6);
-    //curl_setopt($ch, CURLOPT_HTTPHEADER, array('bfx-nonce: '.$nonce, 'bfx-apikey: '.$public_key,'bfx-signature: '.$sign, 'content-type: application/json'));
-
-    $response = curl_exec($ch);//return false if fail
-    $httpCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-    curl_close($ch);
-
-}
