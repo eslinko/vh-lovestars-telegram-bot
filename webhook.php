@@ -69,6 +69,7 @@ if ($update->isType('callback_query')) {
     } elseif(strpos($callbackName,'update_json_profile')!==false) {
         reply_on_action_switcher('update_json_profile', $update, $telegram, $callbackName);
     } else {
+        send_post($callbackName);
 		$telegram->triggerCommand($callbackName, $update);
 	}
 } else {
