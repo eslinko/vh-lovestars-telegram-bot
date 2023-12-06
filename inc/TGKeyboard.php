@@ -4,7 +4,7 @@ class TGKeyboard
 {
     static public function processKeyboard($update, $telegram)
     {
-        if(!isset($update->getMessage()['text']))return;
+        if(!isset($update->getMessage()['text']))return false;
         $telegram_id = $update->getMessage()->chat->id;
         $user = user_is_verified($telegram_id);
         if(!$user['status']) {//unknown user, show start keyboard
