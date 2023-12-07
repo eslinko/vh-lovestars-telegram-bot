@@ -2,6 +2,8 @@
 
 namespace Telegram\Bot\Commands;
 
+use Telegram\Bot\Keyboard\Keyboard;
+
 class ViewCreativeExpressionsCommand extends Command
 {
     /**
@@ -44,10 +46,31 @@ class ViewCreativeExpressionsCommand extends Command
                 foreach ($data['data'] as $exp) {
                     $text = '';
                     $exp_time = ($exp['active_period'] - time()) / 3600;
+                    $show_buttons = false;
                     if ($exp_time > 0) {
                         $exp_text = sprintf(__('%d hours left', $result['user']['language']), round($exp_time));
                     } else {
                         $exp_text = __('Expired', $result['user']['language']);
+                        $show_buttons = true;
+                        $reply_markup = Keyboard::make([
+                            'inline_keyboard' =>  [
+                                [
+                                    Keyboard::inlineButton([
+                                        'text' => __('24 hours', $result['user']['language']),
+                                        'callback_data' => 'expression_update_expiration__'.$exp['id'].'__24'
+                                    ]),
+                                    Keyboard::inlineButton([
+                                        'text' => __('48 hours', $result['user']['language']),
+                                        'callback_data' => 'expression_choose_expiration__'.$exp['id'].'__48'
+                                    ]),
+                                    Keyboard::inlineButton([
+                                        'text' => __('72 hours', $result['user']['language']),
+                                        'callback_data' => 'expression_choose_expiration__'.$exp['id'].'__72'
+                                    ])
+                                ]
+                            ],
+                            'resize_keyboard' => true
+                        ]);
                     }
                     $text .= $i.".\n";
                     $text .= __("Type:", $result['user']['language']) . ' ' . __($exp['type_enum'], $result['user']['language']) . "\n";
@@ -56,7 +79,10 @@ class ViewCreativeExpressionsCommand extends Command
                     $text .= __("Content:", $result['user']['language']) . ' ' . $exp['content'] . "\n";
                     $text .= __("Expiration time:", $result['user']['language']) . ' ' . $exp_text . "\n\n";
                     $i++;
-                    $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text]);
+                    if($show_buttons == false)
+                        $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text]);
+                    else
+                        $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => $text, 'reply_markup' => $reply_markup]);
                 }
 
             }

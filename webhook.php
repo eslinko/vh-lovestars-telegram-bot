@@ -68,6 +68,8 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher('expression_choose_expiration', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'update_json_profile')!==false) {
         reply_on_action_switcher('update_json_profile', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'expression_update_expiration')!==false) {
+        reply_on_action_switcher('expression_update_expiration', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
