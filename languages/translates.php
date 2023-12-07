@@ -1107,5 +1107,9 @@ Use commas or columns to list your interests and hobbies.
     'Your matches' => [
         'en' => "Your matches",
         'ru' => "Твои совпадения"
+    ],
+    'Creative expression has been updated' => [
+        'en' => "Yo, your creative vibe just got a refresh!",
+        'ru' => "Твоё творчество обновлено!"
     ]
 ];
