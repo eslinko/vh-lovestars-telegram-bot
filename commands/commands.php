@@ -33,6 +33,7 @@ require_once  'user/ClaimMyLovestarsCommand.php';
 require_once 'user/InterestsAnswersCommand.php';
 require_once 'user/UploadAvatarCommand.php';
 require_once 'user/DieCommand.php';
+require_once 'user/NotificationSettings.php';
 
 //registration user command
 require_once 'registration/RegistrationStep1Command.php';
@@ -104,7 +105,7 @@ $telegram->addCommand(Telegram\Bot\Commands\MyMatchesCommand::class);
 $telegram->addCommand(Telegram\Bot\Commands\ClaimMyLovestarsCommand::class);
 $telegram->addCommand(Telegram\Bot\Commands\InterestsAnswersCommand::class);
 $telegram->addCommand(Telegram\Bot\Commands\UploadAvatarCommand::class);
-
+$telegram->addCommand(Telegram\Bot\Commands\NotificationSettingsCommand::class);
 
 //registration user command
 $telegram->addCommand( Telegram\Bot\Commands\RegistrationStep1Command::class);

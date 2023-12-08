@@ -1111,5 +1111,13 @@ Use commas or columns to list your interests and hobbies.
     'Creative expression has been updated' => [
         'en' => "Yo, your creative vibe just got a refresh!",
         'ru' => "Твоё творчество обновлено!"
+    ],
+    'Btn_Notifications' => [
+        'en' => "Notification settings",
+        'ru' => "Настройки уведомлений"
+    ],
+    'Setting has been updated' => [
+        'en' => "Settings tweaked. Cool, right?",
+        'ru' => "Настройки подправлены. Круто, правда?"
     ]
 ];
