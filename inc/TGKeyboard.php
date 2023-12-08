@@ -205,6 +205,7 @@ class TGKeyboard
                 ],[
                     Keyboard::button(['text' => "\xF0\x9F\x94\x92".__('Update Password', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Btn_Change the language', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Btn_Notifications', $user['language'])]),
                 ]
             ],
             'resize_keyboard' => true

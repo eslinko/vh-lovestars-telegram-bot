@@ -153,6 +153,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'expression_update_expiration':
             expression_update_expiration($update, $telegram, $last_message_object);
             break;
+        case 'notification_settings':
+            notification_settings($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -2270,6 +2273,31 @@ function expression_update_expiration($update, $telegram, $callbackName){
         $options['chat_id'] = $telegram_id;
         $options['text'] = __("Creative expression has been updated", $is_verified['user']['language']);
         $telegram->sendMessage($options);
+        return false;
+    }
+}
+
+function notification_settings($update, $telegram, $callbackName){
+    $telegram_id = $update->getMessage()->chat->id;
+    $is_verified = user_is_verified($telegram_id );
+    if(!$is_verified['status']) return false;
+
+    $ids=explode('__',$callbackName);
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('set-notification-settings', ['telegram_id' => $telegram_id, 'setting' => $ids[1], 'value' => intval($ids[2])]);
+
+    if($return_data['status'] === 'error') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+    if($return_data['status'] === 'success') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Setting has been updated", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        $telegram->triggerCommand('notification_settings', $update);
         return false;
     }
 }
