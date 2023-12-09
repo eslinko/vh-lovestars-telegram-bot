@@ -1151,5 +1151,9 @@ Use commas or columns to list your interests and hobbies.
     'Btn_notify_ce_activity_is_off' => [
         'en' => "Creative Expressions notifications are OFF",
         'ru' => "Уведомления о творчестве выключены"
+    ],
+    'Press button to turn off or turn on notification' => [
+        'en' => "Press button to turn off or turn on notifications",
+        'ru' => "Нажми на кнопку чтобы выключить или включить уведомления"
     ]
 ];
