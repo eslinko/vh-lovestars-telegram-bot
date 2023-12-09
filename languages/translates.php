@@ -1119,5 +1119,37 @@ Use commas or columns to list your interests and hobbies.
     'Setting has been updated' => [
         'en' => "Settings tweaked. Cool, right?",
         'ru' => "Настройки подправлены. Круто, правда?"
+    ],
+    'Btn_notify_connections_is_on' => [
+        'en' => "Connection notifications are ON",
+        'ru' => "Уведомления о связях включены"
+    ],
+    'Btn_notify_connections_is_off' => [
+        'en' => "Connection notifications are OFF",
+        'ru' => "Уведомления о связях выключены"
+    ],
+    'Btn_notify_matches_is_on' => [
+        'en' => "Matches notifications are ON",
+        'ru' => "Уведомления о совпадениях включены"
+    ],
+    'Btn_notify_matches_is_off' => [
+        'en' => "Matches notifications are OFF",
+        'ru' => "Уведомления о совпадениях выключены"
+    ],
+    'Btn_notify_invite_codes_is_on' => [
+        'en' => "Invitation codes notifications are ON",
+        'ru' => "Уведомления о кодах приглашения включены"
+    ],
+    'Btn_notify_invite_codes_is_off' => [
+        'en' => "Invitation codes notifications are OFF",
+        'ru' => "Уведомления о кодах приглашения выключены"
+    ],
+    'Btn_notify_ce_activity_is_on' => [
+        'en' => "Creative Expressions notifications are ON",
+        'ru' => "Уведомления о творчестве включены"
+    ],
+    'Btn_notify_ce_activity_is_off' => [
+        'en' => "Creative Expressions notifications are OFF",
+        'ru' => "Уведомления о творчестве выключены"
     ]
 ];
