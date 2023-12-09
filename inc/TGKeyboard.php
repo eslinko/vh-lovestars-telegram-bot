@@ -102,6 +102,9 @@ class TGKeyboard
             case "\xF0\x9F\x8E\xA8".__('My creative expressions', $user['language']):
                 $telegram->triggerCommand('view_creative_expressions', $update);
                 break;
+            case "\xF0\x9F\x94\x94".__('Btn_Notifications', $user['language']):
+                $telegram->triggerCommand('notification_settings', $update);
+                break;
             default:
                 //TGKeyboard::showMainKeyboard($telegram_id, $telegram, $user);
                 return false;
@@ -205,7 +208,7 @@ class TGKeyboard
                 ],[
                     Keyboard::button(['text' => "\xF0\x9F\x94\x92".__('Update Password', $user['language'])]),
                     Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Btn_Change the language', $user['language'])]),
-                    Keyboard::button(['text' => "\xF0\x9F\x91\x84".__('Btn_Notifications', $user['language'])]),
+                    Keyboard::button(['text' => "\xF0\x9F\x94\x94".__('Btn_Notifications', $user['language'])]),
                 ]
             ],
             'resize_keyboard' => true
