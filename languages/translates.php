@@ -1155,5 +1155,9 @@ Use commas or columns to list your interests and hobbies.
     'Press button to turn off or turn on notification' => [
         'en' => "Press button to turn off or turn on notifications",
         'ru' => "Нажми на кнопку чтобы выключить или включить уведомления"
+    ],
+    'Expired' => [
+        'en' => "Expired",
+        'ru' => "Просрочено"
     ]
 ];

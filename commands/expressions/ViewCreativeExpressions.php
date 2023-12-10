@@ -61,11 +61,11 @@ class ViewCreativeExpressionsCommand extends Command
                                     ]),
                                     Keyboard::inlineButton([
                                         'text' => __('48 hours', $result['user']['language']),
-                                        'callback_data' => 'expression_choose_expiration__'.$exp['id'].'__48'
+                                        'callback_data' => 'expression_update_expiration__'.$exp['id'].'__48'
                                     ]),
                                     Keyboard::inlineButton([
                                         'text' => __('72 hours', $result['user']['language']),
-                                        'callback_data' => 'expression_choose_expiration__'.$exp['id'].'__72'
+                                        'callback_data' => 'expression_update_expiration__'.$exp['id'].'__72'
                                     ])
                                 ]
                             ],
