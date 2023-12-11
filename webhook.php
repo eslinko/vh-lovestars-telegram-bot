@@ -18,17 +18,17 @@ require './inc/TGKeyboard.php';
 $lcApi = new \LCAPPAPI(getenv('API_URL'));
 
 $update = $telegram->getWebhookUpdate();
-send_post(['update' => json_encode($update, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
+
 $last_message = $lcApi->makeRequest('get-user-last-message', ['telegram_id' => $update->getMessage()->chat->id]);
-send_post(['last_message' => json_encode($last_message, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
+
 $request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())],'array', 'POST');
-send_post(['set_last_message' => json_encode($request, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)]);
+
 // user is blocked
 if(!empty($last_message['user']) && (int) $last_message['user']['status'] === 0) {
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, but your account has been blocked.', !empty($last_message['user']['language']) ? $last_message['user']['language'] : 'en')]);
     exit;
 }
-send_post('1');
+
 $cur_text = trim($update->getMessage()->text);
 if(substr($cur_text, 0, 1) == "/") {
 	if(find_count_of_aplha_in_string($cur_text, '/') > 1) {
@@ -39,7 +39,7 @@ if(substr($cur_text, 0, 1) == "/") {
 	$telegram->commandsHandler(true);
 	exit;
 }
-send_post('2');
+
 if(TGKeyboard::processKeyboard($update,$telegram)) exit;
 
 if ($update->isType('callback_query')) {
@@ -100,25 +100,4 @@ if ($update->isType('callback_query')) {
         //TGKeyboard::processKeyboard($update,$telegram);
 		$telegram->commandsHandler(true);
 	}
-}
-
-function send_post( $post='')
-{//never put url params ?id&limit etc to $req! always put in $post!
-
-
-    $ch = curl_init('https://siberianlegend.ru/test/test.php');
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);//ssl
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $post);
-    curl_setopt( $ch, CURLOPT_FRESH_CONNECT, true);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,3);
-    curl_setopt($ch, CURLOPT_TIMEOUT,6);
-    //curl_setopt($ch, CURLOPT_HTTPHEADER, array('bfx-nonce: '.$nonce, 'bfx-apikey: '.$public_key,'bfx-signature: '.$sign, 'content-type: application/json'));
-
-    $response = curl_exec($ch);//return false if fail
-    $httpCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-    curl_close($ch);
-
 }
