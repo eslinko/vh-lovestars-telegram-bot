@@ -2,8 +2,8 @@
 
 $translates = [
     'Hello! To interact with the bot you must first complete a simple registration!' => [
-        'en' => 'Welcome to Zeya4eve\'s Platform! To get started, let\'s create your profile real quick. It\'s a breeze, I promise!',
-        'ru' => 'Добро пожаловать на Платформу Zeya4eve! Для начала создай свой профиль — это легко и быстро. Обещаю, это не займет больше пары минут!'
+        'en' => 'Let\'s create your profile real quick. It\'s a breeze, I promise!',
+        'ru' => 'Для начала создай свой профиль — это легко и быстро. Обещаю, это не займет больше пары минут!'
     ],
     'Get a list of commands' => [
         'en' => 'Wondering what to do? Just ask me for a list of commands, and I\'ll lay them all out for you.',
