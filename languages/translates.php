@@ -1159,5 +1159,16 @@ Use commas or columns to list your interests and hobbies.
     'Expired' => [
         'en' => "Expired",
         'ru' => "Просрочено"
+    ],
+    'To get started, you have two options' => [
+    'en' => "Welcome to the Zeya4eve community!💜\nTo get started, you have two options:\n
+1. If you have an invite code from a community member, enter it during the registration process.\n
+2. Get an invite code by making a donation through the ViralHelp link: https://viralhelp.me/en/donations/\n
+If you have any questions, please contact the administrator /report_an_issue. Thank you for choosing us!💜",
+    'ru' => "Приветствую вас в Zeya4eve community!💜\n
+Для начала работы у вас есть два варианта:\n
+1. Если у вас есть инвайт-код от участника комьюнити, введите его в процессе регистрации.\n
+2. Получите инвайт-код, сделав донат по ссылке ViralHelp: https://viralhelp.me/ru/donations/\n
+Если у вас есть вопросы обращайтесь к администратору /report_an_issueСпасибо, что выбрали нас!💜"
     ]
 ];
