@@ -64,9 +64,9 @@ class StartCommand extends Command
 				break;
 		}
         if(empty($return_data['user']['language']))
-            $this->telegram->sendMessage(['text' => __('To get started, you have two options', 'en')]);
+            $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __('To get started, you have two options', 'en')]);
         else
-            $this->telegram->sendMessage(['text' => __('To get started, you have two options', $return_data['user']['language'])]);
+            $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __('To get started, you have two options', $return_data['user']['language'])]);
 
         $this->telegram->sendMessage($options);
 	}
