@@ -1707,7 +1707,7 @@ function expression_choose_description($update, $telegram, $callbackName)
     $description = trim($update->getMessage()->text);
 
     $lcApi = new \LCAPPAPI();
-    $result = $lcApi->makeRequest('set-description-to-expression', ['telegram_id' => $telegram_id, 'desc' => $description]);
+    $result = $lcApi->makeRequest('set-description-to-expression', ['telegram_id' => $telegram_id, 'desc' => $description], 'array', 'POST');
 
     if($result['status'] === 'error') {
         $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __($result['text'], $is_verified['user']['language']), 'reply_markup' => Keyboard::make([
