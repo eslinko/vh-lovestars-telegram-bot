@@ -46,8 +46,8 @@ class ExpressionConfirmCreationCommand extends Command
         $options['text'] .= __("Description:", $result['user']['language']).' '.$result['expressions_in_proccess']['description']."\n";
         $options['text'] .= __("Tags:", $result['user']['language']).' '.$result['expressions_in_proccess']['tags']."\n";
         $options['text'] .= __("Expiration time:", $result['user']['language']).' '.$exp_text."\n";
-
-        $options['text'] .= __("Content:", $result['user']['language']).' '.$result['expressions_in_proccess']['content']."\n";
+        if(filter_var($result['expressions_in_proccess']['content'], FILTER_VALIDATE_URL) === false)
+            $options['text'] .= __("Content:", $result['user']['language']).' '.$result['expressions_in_proccess']['content']."\n";
 
         $options['reply_markup'] = Keyboard::make([
             'inline_keyboard' =>  [
