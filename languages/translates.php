@@ -933,12 +933,12 @@ Use commas or columns to list your interests and hobbies.
         'ru' => "Круто! А что делаем дальше?"
     ],
     'Create new creative expression' => [
-        'en' => "New creativity - let's roll!",
-        'ru' => "Поехали, создаем новый креатив"
+        'en' => "Post more",
+        'ru' => "Создать ещё одно"
     ],
     'View your creative expressions' => [
-        'en' => "Check out your cool stuff",
-        'ru' => "Заглянуть в свои креативные штучки"
+        'en' => "View my posts",
+        'ru' => "Посмотреть моё творчество"
     ],
     'Content:' => [
         'en' => "Content:",
