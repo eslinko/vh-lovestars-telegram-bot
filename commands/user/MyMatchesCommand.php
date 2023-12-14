@@ -53,13 +53,26 @@ class MyMatchesCommand extends Command
                 $i=1;
                 $inline_keyboard = [];
                 foreach ($data['matches'] as $item) {
+                    if($item['connected'])
+                        $hide_connect_button = 'yes';
+                    else
+                        $hide_connect_button = 'no';
                     $user_name_text = $item['user']['publicAlias'];
                     if(!empty($item['user']['telegram_alias']))$user_name_text = '@'.$item['user']['telegram_alias'].' ('.$user_name_text.')';
                     $text = $i.'. '.$user_name_text.' '.__('created on', $user['user']['language']).' '.date('j/m/y',strtotime($item['timestamp']))."\n";
                     $inline_keyboard[]=[
                         Keyboard::inlineButton([
                             'text' => $text,
-                            'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$item['user']['id']]
+                            'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$item['user']['id'].'&hide_connect_button='.$hide_connect_button]
+                        ])
+                    ];
+
+
+                    $text = __('Open chat with', $user['user']['language']).' '.$user_name_text;
+                    $inline_keyboard[]=[
+                        Keyboard::inlineButton([
+                            'text' => $text,
+                            'url' => 'tg://user?id='.$item['user']['telegram']
                         ])
                     ];
                     $i++;

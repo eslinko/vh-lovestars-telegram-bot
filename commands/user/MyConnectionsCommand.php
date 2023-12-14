@@ -62,6 +62,13 @@ class MyConnectionsCommand extends Command
                             'web_app' => ['url' => $url['scheme']."://".$url['host'].'/frontend/web/user_profile/user_profile.htm?user_id='.$item['user_id']]
                         ])
                     ];
+                    $text = __('Open chat with', $user['user']['language']).' '.$user_name_text;
+                    $inline_keyboard[]=[
+                        Keyboard::inlineButton([
+                            'text' => $text,
+                            'url' => 'tg://user?id='.$item['telegram']
+                        ])
+                    ];
                     $i++;
                 }
                 $options['reply_markup'] = Keyboard::make([
