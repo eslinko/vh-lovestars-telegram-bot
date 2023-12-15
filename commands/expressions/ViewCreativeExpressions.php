@@ -76,7 +76,8 @@ class ViewCreativeExpressionsCommand extends Command
                     $text .= __("Type:", $result['user']['language']) . ' ' . __($exp['type_enum'], $result['user']['language']) . "\n";
                     $text .= __("Description:", $result['user']['language']) . ' ' . $exp['description'] . "\n";
                     $text .= __("Tags:", $result['user']['language']) . ' ' . $exp['tags'] . "\n";
-                    $text .= __("Content:", $result['user']['language']) . ' ' . $exp['content'] . "\n";
+                    if(filter_var($exp['content'], FILTER_VALIDATE_URL) === false)
+                        $text .= __("Content:", $result['user']['language']) . ' ' . $exp['content'] . "\n";
                     $text .= __("Expiration time:", $result['user']['language']) . ' ' . $exp_text . "\n\n";
                     $i++;
                     if($show_buttons == false)
