@@ -2,8 +2,8 @@
 
 $translates = [
     'Hello! To interact with the bot you must first complete a simple registration!' => [
-        'en' => 'Welcome to Zeya4eve\'s Platform! To get started, let\'s create your profile real quick. It\'s a breeze, I promise!',
-        'ru' => 'Добро пожаловать на Платформу Zeya4eve! Для начала создай свой профиль — это легко и быстро. Обещаю, это не займет больше пары минут!'
+        'en' => 'Welcome to ViralLove Platform! To get started, let\'s create your profile real quick. It\'s a breeze, I promise!',
+        'ru' => 'Добро пожаловать на Платформу ViralLove! Для начала создай свой профиль — это легко и быстро. Обещаю, это не займет больше пары минут!'
     ],
     'Get a list of commands' => [
         'en' => 'Wondering what to do? Just ask me for a list of commands, and I\'ll lay them all out for you.',
@@ -14,8 +14,8 @@ $translates = [
         'ru' => 'Отличная работа! Ты успешно настроил(а) языковые предпочтения.'
     ],
     "Welcome %s!\nYou’re successfully connected to your Zeya account.\nHow can I help you?" => [
-        'en' => "Hey there, %s!\nYou are now part of Zeya4eve community. How can I assist you today?",
-        'ru' => "Привет, %s!\nПоздравляю! Ты теперь часть сообщества Zeya4eve. Как я могу тебе помочь?"
+        'en' => "Hey there, %s!\nYou are now part of ViralLove community. How can I assist you today?",
+        'ru' => "Привет, %s!\nПоздравляю! Ты теперь часть сообщества ViralLove. Как я могу тебе помочь?"
     ],
 
     'Sorry, there was an error, please contact the administrator.' => [
@@ -89,8 +89,8 @@ $translates = [
     ],
 
     'Congratulations, you have successfully registered!' => [
-        'en' => 'Welcome Aboard: It\'s official – you\'re a part of Zeya4eve community now! Congratulations on a successful registration!',
-        'ru' => 'Добро пожаловать на борт: Теперь ты часть сообщества Zeya4eve! Поздравляем с успешной регистрацией!'
+        'en' => 'Welcome Aboard: It\'s official – you\'re a part of ViralLove community now! Congratulations on a successful registration!',
+        'ru' => 'Добро пожаловать на борт: Теперь ты часть сообщества ViralLove! Поздравляем с успешной регистрацией!'
     ],
 
     'Update my public alias.' => [
@@ -229,8 +229,8 @@ $translates = [
     ],
 
     'Message about successful registration' => [
-        'en' => 'You\'ve successfully registered! Welcome aboard to Zeya4eve Community!',
-        'ru' => 'Успешная регистрация! Добро пожаловать в сообщество Zeya4eve!'
+        'en' => 'You\'ve successfully registered! Welcome aboard to ViralLove Community!',
+        'ru' => 'Успешная регистрация! Добро пожаловать в сообщество ViralLove!'
     ],
 
     'Add event url.' => [
@@ -368,12 +368,12 @@ $translates = [
         'ru' => 'Поделись вестью о нашей платформе: Разошли приглашения своим друзьям в Telegram.'
     ],
     'This is an invitation to Zeya' => [
-        'en' => 'Zeya4eve Community Invite: Welcome to Zeya4eve! Connect with like-minded people based on shared interests and emotional resonance. Open bot: @Zeya4eve_bot and use your unique code during registration.',
-        'ru' => 'Приглашение в сообщество Zeya4eve: Добро пожаловать! Найди единомышленников по интересам. Используй бот: @Zeya4eve_bot и введи уникальный код при регистрации.'
+        'en' => 'ViralLove Community Invite: Welcome to ViralLove! Connect with like-minded people based on shared interests and emotional resonance. Open bot: @virallove_community_bot and use your unique code during registration.',
+        'ru' => 'Приглашение в сообщество ViralLove: Добро пожаловать! Найди единомышленников по интересам. Используй бот: @virallove_community_bot и введи уникальный код при регистрации.'
     ],
     'You are already registered' => [
-        'en' => 'Already Part of the Community: You\'re already registered with Zeya4eve.',
-        'ru' => 'Уже в Zeya4eve: Ты уже зарегистрирован.'
+        'en' => 'Already Part of the Community: You\'re already registered with ViralLove.',
+        'ru' => 'Уже в ViralLove: Ты уже зарегистрирован.'
     ],
     'Description_My interests and values' => [
         'en' => 'My Passions and Values: What drives you? Share your interests, hobbies, and values.',
@@ -452,8 +452,8 @@ $translates = [
         'ru' => "Нет, отмена"
     ],
     "Type Zeya platform alias or Telegram alias of a person you want to make a connection with." => [
-        'en' => "Type Zeya4eve platform alias or Telegram alias of a person you want to make a connection with.",
-        'ru' => "Введи алиас на платформе Zeya4eve или псевдоним в Телеграмме того человека, с которым ты хочешь соединиться."
+        'en' => "Type ViralLove platform alias or Telegram alias of a person you want to make a connection with.",
+        'ru' => "Введи алиас на платформе ViralLove или псевдоним в Телеграмме того человека, с которым ты хочешь соединиться."
     ],
     "You do not have connections" => [
         'en' => "You do not have connections",
@@ -532,8 +532,8 @@ $translates = [
         'ru' => "Введи только текст. Пожалуйста, попробуй снова."
     ],
     "This person is not registered on Zeya." => [
-        'en' => "This person isn't registered on Zeya4eve. You can use one of your invitation codes listed below and forward it with instructions on how to use it.",
-        'ru' => "Этот пользователь не зарегистрирован на платформе Zeya4eve. Ты можешь использовать один из своих кодов приглашений, перечисленных ниже, и отправить его вместе с инструкциями о том, как его использовать."
+        'en' => "This person isn't registered on ViralLove. You can use one of your invitation codes listed below and forward it with instructions on how to use it.",
+        'ru' => "Этот пользователь не зарегистрирован на платформе ViralLove. Ты можешь использовать один из своих кодов приглашений, перечисленных ниже, и отправить его вместе с инструкциями о том, как его использовать."
     ],
     "You do not have pending or rejected invites" => [
         'en' => "You do not have pending or rejected invites",
@@ -608,12 +608,12 @@ Use commas or columns to list your interests and hobbies.
         'ru' => "Поздравляем! Ты получил свой первый Лавсатар! Пригласи 8 человек с помощью своих уникальных кодов и получи по одному Лавстару за каждую успешную регистрацию."
     ],
     "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 with your invitation code (%s). You now have %s Lovestars." => [
-        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya4eve with your invitation code (%s). You now have %s Lovestars.",
-        'ru' => "Поздравляем! Ты получил(а) Лавстар, потому что %s%s зарегистрировался на платформе Zeya4eve с кодом приглашения (%s). Теперь у тебя %s Лавстаров."
+        'en' => "Congratulations! You have received one Lovestar because %s%s registered on ViralLove with your invitation code (%s). You now have %s Lovestars.",
+        'ru' => "Поздравляем! Ты получил(а) Лавстар, потому что %s%s зарегистрировался на платформе ViralLove с кодом приглашения (%s). Теперь у тебя %s Лавстаров."
     ],
     "Congratulations! You have received one Lovestar because %s%s registered on Zeya888 via the invitation of your connection %s%s. You now have %s Lovestars." => [
-        'en' => "Congratulations! You have received one Lovestar because %s%s registered on Zeya4eve via the invitation of your connection %s%s. You now have %s Lovestars. P.S. This is a bonus offered in the early stage of the community to boost user growth.",
-        'ru' => "Поздравляем! Ты получил(а) Лавстар, потому что %s%s зарегистрировался(ась) на платформе Zeya4eve с помощью приглашения от %s%s. Теперь у вас %s Лавстаров. P.S. Это бонус, который мы предлагаем на раннем этапе развития сообщества для стимулирования роста пользователей."
+        'en' => "Congratulations! You have received one Lovestar because %s%s registered on ViralLove via the invitation of your connection %s%s. You now have %s Lovestars. P.S. This is a bonus offered in the early stage of the community to boost user growth.",
+        'ru' => "Поздравляем! Ты получил(а) Лавстар, потому что %s%s зарегистрировался(ась) на платформе ViralLove с помощью приглашения от %s%s. Теперь у вас %s Лавстаров. P.S. Это бонус, который мы предлагаем на раннем этапе развития сообщества для стимулирования роста пользователей."
     ],
     "You have %s Lovestars" => [
         'en' => "You have %s Lovestars",
@@ -629,7 +629,7 @@ Use commas or columns to list your interests and hobbies.
     ],
     "Would you like to confirm a request from %s to be part of your connections?" => [
         'en' => "Would you like to confirm the request from %s to be part of your connections?",
-        'ru' => "Ты хочешь принять запрос от %s в качестве связи на платформе Zeya4eve?"
+        'ru' => "Ты хочешь принять запрос от %s в качестве связи на платформе ViralLove?"
     ],
     "Accept" => [
         'en' => "Accept",
