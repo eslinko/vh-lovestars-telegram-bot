@@ -63,8 +63,12 @@ class StartCommand extends Command
 				$options = $this->chooseStep($options, $return_data['user'], $telegram_id);
 				break;
 		}
-		
-		$this->telegram->sendMessage($options);
+        if(empty($return_data['user']['language']))
+            $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __('To get started, you have two options', 'en')]);
+        else
+            $this->telegram->sendMessage(['chat_id' => $telegram_id, 'text' => __('To get started, you have two options', $return_data['user']['language'])]);
+
+        $this->telegram->sendMessage($options);
 	}
 	
 	private function chooseStep($options, $user, $telegram_id = '') {

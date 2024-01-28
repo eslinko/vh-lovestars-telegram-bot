@@ -61,11 +61,11 @@ class ViewCreativeExpressionsCommand extends Command
                                     ]),
                                     Keyboard::inlineButton([
                                         'text' => __('48 hours', $result['user']['language']),
-                                        'callback_data' => 'expression_choose_expiration__'.$exp['id'].'__48'
+                                        'callback_data' => 'expression_update_expiration__'.$exp['id'].'__48'
                                     ]),
                                     Keyboard::inlineButton([
                                         'text' => __('72 hours', $result['user']['language']),
-                                        'callback_data' => 'expression_choose_expiration__'.$exp['id'].'__72'
+                                        'callback_data' => 'expression_update_expiration__'.$exp['id'].'__72'
                                     ])
                                 ]
                             ],
@@ -76,7 +76,8 @@ class ViewCreativeExpressionsCommand extends Command
                     $text .= __("Type:", $result['user']['language']) . ' ' . __($exp['type_enum'], $result['user']['language']) . "\n";
                     $text .= __("Description:", $result['user']['language']) . ' ' . $exp['description'] . "\n";
                     $text .= __("Tags:", $result['user']['language']) . ' ' . $exp['tags'] . "\n";
-                    $text .= __("Content:", $result['user']['language']) . ' ' . $exp['content'] . "\n";
+                    if(filter_var($exp['content'], FILTER_VALIDATE_URL) === false)
+                        $text .= __("Content:", $result['user']['language']) . ' ' . $exp['content'] . "\n";
                     $text .= __("Expiration time:", $result['user']['language']) . ' ' . $exp_text . "\n\n";
                     $i++;
                     if($show_buttons == false)

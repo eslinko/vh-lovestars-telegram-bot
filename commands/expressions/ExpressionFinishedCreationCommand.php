@@ -49,7 +49,9 @@ class ExpressionFinishedCreationCommand extends Command
                         Keyboard::inlineButton([
                             'text' => __('Create new creative expression', $result['user']['language']),
                             'callback_data' => 'expression_start_create'
-                        ]),
+                        ])
+                    ],
+                    [
                         Keyboard::inlineButton([
                             'text' => __('View your creative expressions', $result['user']['language']),
                             'callback_data' => 'view_creative_expressions'

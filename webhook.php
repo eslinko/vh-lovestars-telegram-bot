@@ -18,8 +18,11 @@ require './inc/TGKeyboard.php';
 $lcApi = new \LCAPPAPI(getenv('API_URL'));
 
 $update = $telegram->getWebhookUpdate();
+
 $last_message = $lcApi->makeRequest('get-user-last-message', ['telegram_id' => $update->getMessage()->chat->id]);
+
 $request = $lcApi->makeRequest('set-user-last-message', ['telegram_id' => $update->getMessage()->chat->id, 'message' => json_encode($update->getMessage())],'array', 'POST');
+
 // user is blocked
 if(!empty($last_message['user']) && (int) $last_message['user']['status'] === 0) {
     $telegram->sendMessage(['chat_id' => $update->getMessage()->chat->id, 'text' => __('Sorry, but your account has been blocked.', !empty($last_message['user']['language']) ? $last_message['user']['language'] : 'en')]);
@@ -98,4 +101,3 @@ if ($update->isType('callback_query')) {
 		$telegram->commandsHandler(true);
 	}
 }
-
