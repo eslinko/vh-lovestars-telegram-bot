@@ -156,6 +156,9 @@ function reply_on_action_switcher($callback_data, $update, $telegram, $last_mess
         case 'notification_settings':
             notification_settings($update, $telegram, $last_message_object);
             break;
+        case 'love_do_for_user_id':
+            love_do_for_user_id($update, $telegram, $last_message_object);
+            break;
 		default:
 			$telegram->commandsHandler(true);
 			break;
@@ -2299,5 +2302,30 @@ function notification_settings($update, $telegram, $callbackName){
         $telegram->sendMessage($options);
         $telegram->triggerCommand('notification_settings', $update);
         return false;
+    }
+}
+
+function love_do_for_user_id($update, $telegram, $callbackName){
+    $telegram_id = $update->getMessage()->chat->id;
+    $is_verified = user_is_verified($telegram_id );
+    if(!$is_verified['status']) return false;
+
+    $ids=explode('__',$callbackName);
+
+    $lcApi = new \LCAPPAPI();
+    $return_data = $lcApi->makeRequest('set-lovedo-userid-to-expression', ['telegram_id' => $telegram_id, 'lovedo_userid' => $ids[1]]);
+
+    if($return_data['status'] === 'error') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = __("Sorry, there was an error, please contact the administrator.", $is_verified['user']['language']);
+        $telegram->sendMessage($options);
+        return false;
+    }
+    if($return_data['status'] === 'success') {
+        $options['chat_id'] = $telegram_id;
+        $options['text'] = sprintf(__("You are making LoveDO post for", $is_verified['user']['language']),$return_data['user_name']);
+        $telegram->sendMessage($options);
+        TGKeyboard::showCreativeExpressionsTypeKeyboard($telegram_id, $telegram, $is_verified['user'], __('Please select the type of your creative expression:', $is_verified['user']['language']));
+        return true;
     }
 }
