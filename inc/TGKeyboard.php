@@ -96,6 +96,9 @@ class TGKeyboard
             case "\xF0\x9F\x94\x97".__('Btn_URL', $user['language']):
                 TGKeyboard::setCreativeExpressionType(__('Btn_URL', $user['language']), $telegram_id, $telegram, $user);
                 break;
+            case "\xF0\x9F\x92\x9C".__('Btn_LoveDO_create', $user['language']):
+                $telegram->triggerCommand('lovedo_create', $update);
+                break;
             case "\xF0\x9F\x96\x8C".__('Add creative expression', $user['language']):
                 $telegram->triggerCommand('expression_start_create', $update);
                 break;
@@ -135,6 +138,9 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x96\x8C".__('Add creative expression', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x8E\xA8".__('My creative expressions', $user['language'])])
+                    ],[
+                        Keyboard::button(['text' => "\xF0\x9F\x92\x9C".__('Btn_LoveDO_create', $user['language'])]),
+
                     ],[
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url.', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x93\x84".__('Get list of my events.', $user['language'])]),
@@ -241,6 +247,7 @@ class TGKeyboard
     static public function showCreativeExpressionsTypeKeyboard($telegram_id, $telegram, $user, $text){
         $options =[];
         $options['chat_id'] = $telegram_id;
+
         $options['reply_markup'] = Keyboard::make([
             'keyboard' =>  [
                 [

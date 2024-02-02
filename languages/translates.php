@@ -1174,5 +1174,13 @@ If you have any questions, please contact the administrator /report_an_issue. Th
     'Open chat with' => [
         'en' => "Open chat with",
         'ru' => "Открыть чат с"
+    ],
+    'Btn_LoveDO_create' => [
+        'en' => "Create LoveDO post",
+        'ru' => "Создать LoveDO пост"
+    ],
+    'You are making LoveDO post for' => [
+        'en' => "You are making LoveDO post for %s",
+        'ru' => "Ты делаешь LoveDO пост для %s"
     ]
 ];

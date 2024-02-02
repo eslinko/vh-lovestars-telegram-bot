@@ -75,6 +75,8 @@ if ($update->isType('callback_query')) {
         reply_on_action_switcher('expression_update_expiration', $update, $telegram, $callbackName);
     } elseif(strpos($callbackName,'notification_settings')!==false) {
         reply_on_action_switcher('notification_settings', $update, $telegram, $callbackName);
+    } elseif(strpos($callbackName,'love_do_for_user_id')!==false) {
+        reply_on_action_switcher('love_do_for_user_id', $update, $telegram, $callbackName);
     } else {
 		$telegram->triggerCommand($callbackName, $update);
 	}
