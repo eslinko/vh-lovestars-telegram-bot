@@ -161,6 +161,9 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x94\x97".__('My connections', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language'])]),
 
+                    ],[
+                        Keyboard::button(['text' => "\xF0\x9F\x92\x9C".__('Btn_LoveDO_create', $user['language'])]),
+
                     ],
                     [
                         Keyboard::button(['text' => "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language'])]),
