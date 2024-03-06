@@ -139,10 +139,10 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x96\x8C".__('Add creative expression', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x8E\xA8".__('My creative expressions', $user['language'])])
                     ],
-                    /*[
+                    [
                         Keyboard::button(['text' => "\xF0\x9F\x92\x9C".__('Btn_LoveDO_create', $user['language'])]),
 
-                    ],*/
+                    ],
                     [
                         Keyboard::button(['text' => "\xF0\x9F\x93\x9D".__('Add event url.', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x93\x84".__('Get list of my events.', $user['language'])]),
@@ -164,10 +164,10 @@ class TGKeyboard
                         Keyboard::button(['text' => "\xF0\x9F\x98\x8D".__('Btn_My matches', $user['language'])]),
 
                     ],
-                    /*[
+                    [
                         Keyboard::button(['text' => "\xF0\x9F\x92\x9C".__('Btn_LoveDO_create', $user['language'])]),
 
-                    ],*/
+                    ],
                     [
                         Keyboard::button(['text' => "\xF0\x9F\x91\x80".__('Explore CE (tinder)', $user['language'])]),
                         Keyboard::button(['text' => "\xF0\x9F\x96\x8C".__('Add creative expression', $user['language'])]),
