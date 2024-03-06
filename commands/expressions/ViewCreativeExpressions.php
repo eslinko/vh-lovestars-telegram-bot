@@ -51,7 +51,7 @@ class ViewCreativeExpressionsCommand extends Command
                         $exp_text = sprintf(__('%d hours left', $result['user']['language']), round($exp_time));
                     } else {
                         $exp_text = __('Expired', $result['user']['language']);
-                        $show_buttons = true;
+                        if($exp['functionalType'] !== 'LoveDO') $show_buttons = true;
                         $reply_markup = Keyboard::make([
                             'inline_keyboard' =>  [
                                 [
